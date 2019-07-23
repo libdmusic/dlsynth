@@ -22,5 +22,9 @@ constexpr riffcpp::FourCC lar2_id = {'l', 'a', 'r', '2'};
 constexpr riffcpp::FourCC lins_id = {'l', 'i', 'n', 's'};
 constexpr riffcpp::FourCC ptbl_id = {'p', 't', 'b', 'l'};
 constexpr riffcpp::FourCC wvpl_id = {'w', 'v', 'p', 'l'};
+constexpr riffcpp::FourCC rgnh_id = {'r', 'g', 'n', 'h'};
+constexpr riffcpp::FourCC wlnk_id = {'w', 'l', 'n', 'k'};
+constexpr riffcpp::FourCC rgn_id = {'r', 'g', 'n', ' '};
+constexpr riffcpp::FourCC rgn2_id = {'r', 'g', 'n', '2'};
 
 #endif

@@ -2,6 +2,7 @@
 #define INSTRUMENT_HPP
 #include "Articulator.hpp"
 #include "ExpressionParser.hpp"
+#include "Region.hpp"
 #include <cstdint>
 #include <riffcpp.hpp>
 
@@ -30,6 +31,9 @@ public:
 
   /// Returns the connection blocks defined for this instrument
   const std::vector<ConnectionBlock> &connectionBlocks() const;
+
+  /// Returns the regions defined for this instrument
+  const std::vector<Region> &regions() const;
 };
 } // namespace DLSynth
 

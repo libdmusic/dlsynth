@@ -42,9 +42,7 @@ Articulator::Articulator(riffcpp::Chunk &chunk,
                          const ExpressionParser &exprParser) {
   for (auto child : chunk) {
     if (child.id() == cdl_id) {
-      std::vector<std::uint8_t> data(child.size());
-      child.read_data(reinterpret_cast<char *>(data.data()), data.size());
-      if (!exprParser.execute(data)) {
+      if (!exprParser.execute(child)) {
         throw Error("Condition failed", ErrorCode::CONDITION_FAILED);
       }
     } else if (child.id() == art1_id) {

@@ -18,8 +18,15 @@ struct Instrument::impl {
   std::uint32_t m_midiBank;
   std::uint32_t m_midiInstrument;
   std::vector<ConnectionBlock> m_blocks;
+  std::vector<Region> m_regions;
   void load_regions(riffcpp::Chunk &chunk, const ExpressionParser &exprParser) {
-    // TODO
+    for (auto child : chunk) {
+      if (child.id() == riffcpp::list_id) {
+        if (child.type() == rgn_id || child.type() == rgn2_id) {
+          m_regions.emplace_back(child, exprParser);
+        }
+      }
+    }
   }
   void load_articulators(riffcpp::Chunk &chunk,
                          const ExpressionParser &exprParser) {

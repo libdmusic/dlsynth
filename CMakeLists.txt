@@ -21,6 +21,7 @@ target_sources(dlsynth
         ${CMAKE_CURRENT_LIST_DIR}/src/Error.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/ExpressionParser.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/Instrument.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/src/Region.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/Sound.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/Wave.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/Wavesample.cpp

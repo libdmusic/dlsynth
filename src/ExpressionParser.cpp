@@ -170,4 +170,10 @@ bool ExpressionParser::execute(const std::vector<std::uint8_t> &data) const {
   return stack.top();
 }
 
+bool ExpressionParser::execute(riffcpp::Chunk &chunk) const {
+  std::vector<std::uint8_t> data(chunk.size());
+  chunk.read_data(reinterpret_cast<char *>(data.data()), data.size());
+  return execute(data);
+}
+
 ExpressionParser::~ExpressionParser() = default;
