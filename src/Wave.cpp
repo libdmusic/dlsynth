@@ -2,6 +2,7 @@
 #include "DecoderTable.hpp"
 #include "Error.hpp"
 #include "Uuid.hpp"
+#include "WaveDecoder.hpp"
 #include "Wavesample.hpp"
 #include <cassert>
 #include <vector>
@@ -78,6 +79,7 @@ struct Wave::impl {
     }
 
     std::unique_ptr<WaveDecoder> decoder;
+    const auto &decoderTable = DecoderTable::getInstance();
 
     if (fmt.size() == sizeof(WaveFormat)) {
       WaveFormat *format = reinterpret_cast<WaveFormat *>(fmt.data());
@@ -88,12 +90,11 @@ struct Wave::impl {
       }
 
       m_sampleRate = format->SamplesPerSec;
-      auto factory = DecoderTable::getInstance().getFactory(format->FormatTag);
 
       if (fact_found) {
-        decoder = factory->createDecoder(*format, fact, data);
+        decoder = decoderTable.getDecoder(*format, fact, data);
       } else {
-        decoder = factory->createDecoder(*format, data);
+        decoder = decoderTable.getDecoder(*format, data);
       }
     } else if (fmt.size() > sizeof(WaveFormat)) {
       WaveFormatEx *format = reinterpret_cast<WaveFormatEx *>(fmt.data());
@@ -104,12 +105,11 @@ struct Wave::impl {
       }
 
       m_sampleRate = format->SamplesPerSec;
-      auto factory = DecoderTable::getInstance().getFactory(format->FormatTag);
 
       if (fact_found) {
-        decoder = factory->createDecoder(*format, fact, data);
+        decoder = decoderTable.getDecoder(*format, fact, data);
       } else {
-        decoder = factory->createDecoder(*format, data);
+        decoder = decoderTable.getDecoder(*format, data);
       }
     } else {
       throw Error("Invalid format chunk", ErrorCode::INVALID_FILE);

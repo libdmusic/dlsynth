@@ -1,6 +1,6 @@
 #ifndef DECODERS_HPP
 #define DECODERS_HPP
-#include "../Wave.hpp"
+#include "../WaveDecoder.hpp"
 
 #define DLSYNTH_FACTORY(name)                                                  \
   class name : public WaveDecoderFactory {                                     \
