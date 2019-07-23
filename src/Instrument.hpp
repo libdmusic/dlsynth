@@ -6,6 +6,7 @@
 
 namespace DLSynth {
 struct Uuid;
+/// A DLS instrument, part of a DLS Collection
 class Instrument {
   struct impl;
   impl *m_pimpl;
@@ -17,8 +18,13 @@ public:
 
   Instrument &operator=(const Instrument &) = delete;
 
+  /// Returns the \ref Uuid of this instrument, if it exists
   const Uuid *dlid() const;
+
+  /// Returns the MIDI bank location of this instrument
   std::uint32_t midiBank() const;
+
+  /// Returns the MIDI Program Change of this instrument
   std::uint32_t midiInstrument() const;
 };
 } // namespace DLSynth

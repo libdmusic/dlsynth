@@ -55,12 +55,19 @@ public:
 
   Wave &operator=(const Wave &) = delete;
 
+  /// Returns the left channel audio data of this file
   const std::vector<float> &leftData() const;
+
+  /// Returns the right channel audio data of this file
   const std::vector<float> &rightData() const;
 
+  /// Returns the \ref Uuid of this file, if it exists
   const Uuid *guid() const;
+
+  /// Returns the associated \ref Wavesample object, if it exists
   const Wavesample *wavesample() const;
 
+  /// Returns the sample rate of the WAV file
   int sampleRate() const;
 };
 } // namespace DLSynth

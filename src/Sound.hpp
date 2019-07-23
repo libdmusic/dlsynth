@@ -20,6 +20,7 @@ public:
 
   Sound &operator=(const Sound &) = delete;
 
+  /// Returns the \ref Uuid of the sound, if it exists
   const Uuid *dlid() const;
 };
 } // namespace DLSynth
