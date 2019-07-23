@@ -5,6 +5,13 @@
 
 using namespace DLSynth;
 
+Transform::Transform(bool invert, bool bipolar, TransformType type)
+  : m_type(type), m_invert(invert), m_bipolar(bipolar) {}
+
+bool Transform::invert() const { return m_invert; }
+bool Transform::bipolar() const { return m_bipolar; }
+TransformType Transform::type() const { return m_type; }
+
 ConnectionBlock::ConnectionBlock(Source src, Source ctrl, Destination dest,
                                  std::int32_t scale, const Transform &srcTrans,
                                  const Transform &ctrlTrans,
