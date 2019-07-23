@@ -1,12 +1,6 @@
 var searchData=
 [
-  ['query_5fgminhardware',['Query_GMInHardware',['../_expression_parser_8cpp.html#a75fb29cc54523410ad8366971f1ee826',1,'ExpressionParser.cpp']]],
-  ['query_5fgsinhardware',['Query_GSInHardware',['../_expression_parser_8cpp.html#a5b779bad9e6164f00a44e9c299f46ced',1,'ExpressionParser.cpp']]],
-  ['query_5fmanufacturersid',['Query_ManufacturersID',['../_expression_parser_8cpp.html#a4bcc1ed20c666a3b5eadd51f7e65af90',1,'ExpressionParser.cpp']]],
-  ['query_5fproductid',['Query_ProductID',['../_expression_parser_8cpp.html#aad0325a5a249ae9ab5fe94623ad077a2',1,'ExpressionParser.cpp']]],
-  ['query_5fsamplememorysize',['Query_SampleMemorySize',['../_expression_parser_8cpp.html#a55ed3573bc2e217840422dae42d2a7ff',1,'ExpressionParser.cpp']]],
-  ['query_5fsampleplaybackrate',['Query_SamplePlaybackRate',['../_expression_parser_8cpp.html#a486279debe0e9fa2169812af7e1e11f2',1,'ExpressionParser.cpp']]],
-  ['query_5fsupportsdls1',['Query_SupportsDLS1',['../_expression_parser_8cpp.html#acd43ad6ca231f30d0961e96e8cceff8b',1,'ExpressionParser.cpp']]],
-  ['query_5fsupportsdls2',['Query_SupportsDLS2',['../_expression_parser_8cpp.html#ae688fbfcffdd8a4498ea802bc1697c66',1,'ExpressionParser.cpp']]],
-  ['query_5fxginhardware',['Query_XGInHardware',['../_expression_parser_8cpp.html#adf17de65b8429eee503d59fe8fca3bf3',1,'ExpressionParser.cpp']]]
+  ['pcm',['Pcm',['../struct_d_l_synth_1_1_wave_format.html#add3b349f97ff20e63b978c83cb2509d2',1,'DLSynth::WaveFormat']]],
+  ['predictor',['predictor',['../struct_adpcm_header.html#a22b9de28335df065e08b967ff9e82222',1,'AdpcmHeader']]],
+  ['ptbl_5fid',['ptbl_id',['../_common_four_c_cs_8hpp.html#a8291733c7bdf9d0237b2efb48ee4030b',1,'CommonFourCCs.hpp']]]
 ];

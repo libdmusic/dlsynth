@@ -22,7 +22,7 @@ var searchData=
   ['error_2ecpp',['Error.cpp',['../_error_8cpp.html',1,'']]],
   ['error_2ehpp',['Error.hpp',['../_error_8hpp.html',1,'']]],
   ['errorcode',['ErrorCode',['../namespace_d_l_synth.html#a30571f4357f7c5194614f1ec64f7c5af',1,'DLSynth']]],
-  ['execute',['execute',['../class_d_l_synth_1_1_expression_parser.html#a6d532763066c8b7378e5512f5eeaa665',1,'DLSynth::ExpressionParser']]],
+  ['execute',['execute',['../class_d_l_synth_1_1_expression_parser.html#a6d532763066c8b7378e5512f5eeaa665',1,'DLSynth::ExpressionParser::execute(const std::vector&lt; std::uint8_t &gt; &amp;data) const'],['../class_d_l_synth_1_1_expression_parser.html#ab9306b703e29db9278cf08eeaffd36b8',1,'DLSynth::ExpressionParser::execute(riffcpp::Chunk &amp;chunk) const']]],
   ['expressionparser',['ExpressionParser',['../class_d_l_synth_1_1_expression_parser.html',1,'DLSynth::ExpressionParser'],['../class_d_l_synth_1_1_expression_parser.html#ac05f82211db511625a2e29c2d551648d',1,'DLSynth::ExpressionParser::ExpressionParser()']]],
   ['expressionparser_2ecpp',['ExpressionParser.cpp',['../_expression_parser_8cpp.html',1,'']]],
   ['expressionparser_2ehpp',['ExpressionParser.hpp',['../_expression_parser_8hpp.html',1,'']]],

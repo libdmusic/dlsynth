@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['pcm',['Pcm',['../struct_d_l_synth_1_1_wave_format.html#add3b349f97ff20e63b978c83cb2509d2',1,'DLSynth::WaveFormat']]],
-  ['predictor',['predictor',['../struct_adpcm_header.html#a22b9de28335df065e08b967ff9e82222',1,'AdpcmHeader']]],
-  ['ptbl_5fid',['ptbl_id',['../_common_four_c_cs_8hpp.html#a8291733c7bdf9d0237b2efb48ee4030b',1,'CommonFourCCs.hpp']]]
+  ['num_5fchannels',['num_channels',['../structdlsynth__settings.html#a6cad305f16437c0bb395fa66d9fb9778',1,'dlsynth_settings']]],
+  ['numchannels',['NumChannels',['../struct_d_l_synth_1_1_wave_format.html#ae17b4044210d0b2c87d01f4687d131f9',1,'DLSynth::WaveFormat::NumChannels()'],['../struct_d_l_synth_1_1_wave_format_ex.html#a4ed751ff225a21dd7b7a5fc9cd430724',1,'DLSynth::WaveFormatEx::NumChannels()']]],
+  ['numcoeffs',['numCoeffs',['../struct_adpcm_format.html#a738553fe2d3aa54814672f55527a5300',1,'AdpcmFormat']]]
 ];

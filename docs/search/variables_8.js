@@ -1,10 +1,11 @@
 var searchData=
 [
-  ['lar2_5fid',['lar2_id',['../_common_four_c_cs_8hpp.html#a13f031fd05365e7a86fdb1b70614a4d2',1,'CommonFourCCs.hpp']]],
-  ['lart_5fid',['lart_id',['../_common_four_c_cs_8hpp.html#a40d1111efada83b5ea0d8346820add2b',1,'CommonFourCCs.hpp']]],
-  ['lgain',['lGain',['../structwsmp.html#a95985ac633835af6c12f9ad7bed24b1b',1,'wsmp']]],
-  ['lins_5fid',['lins_id',['../_common_four_c_cs_8hpp.html#a4df5e69bd576c27a074c09147603a709',1,'CommonFourCCs.hpp']]],
-  ['loops',['loops',['../structwsmp.html#a93c2afff7fcf8b9d51868d030a51f50e',1,'wsmp']]],
-  ['lrgn_5fid',['lrgn_id',['../_common_four_c_cs_8hpp.html#ac26709b0bf0085c8c04301aa94c0682f',1,'CommonFourCCs.hpp']]],
-  ['lscale',['lScale',['../structcblock.html#a05f11440015c2bb67f76a76b9f3a7c64',1,'cblock']]]
+  ['icoef1',['iCoef1',['../struct_adpcm_coeffs.html#a0b473c3f5e40a20b82098633dfa8f376',1,'AdpcmCoeffs']]],
+  ['icoef2',['iCoef2',['../struct_adpcm_coeffs.html#a92103982a81670992ea55c26bd1e641b',1,'AdpcmCoeffs']]],
+  ['idelta',['iDelta',['../struct_adpcm_header.html#ad5807c962eb44fbce5125d8f0ad586f1',1,'AdpcmHeader']]],
+  ['imaadpcm',['ImaAdpcm',['../struct_d_l_synth_1_1_wave_format.html#a691548877ffd1d1cd592792bc3d66b84',1,'DLSynth::WaveFormat']]],
+  ['index',['index',['../structdlsynth__instr.html#a3a286611c6653c33b7b606317d4af6a4',1,'dlsynth_instr']]],
+  ['ins_5fid',['ins_id',['../_common_four_c_cs_8hpp.html#af1f7614479e7ac808886a4c15cbc2f4e',1,'CommonFourCCs.hpp']]],
+  ['insh_5fid',['insh_id',['../_common_four_c_cs_8hpp.html#afddd6bb536f364117ce078ce37bb69fc',1,'CommonFourCCs.hpp']]],
+  ['interleaved',['interleaved',['../structdlsynth__settings.html#a84c0694f0e83c994bf0169ba5a99cb22',1,'dlsynth_settings']]]
 ];
