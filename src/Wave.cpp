@@ -1,4 +1,5 @@
 #include "Wave.hpp"
+#include "CommonFourCCs.hpp"
 #include "DecoderTable.hpp"
 #include "Error.hpp"
 #include "Uuid.hpp"
@@ -8,16 +9,6 @@
 #include <vector>
 
 using namespace DLSynth;
-
-constexpr riffcpp::FourCC wave_id = {'w', 'a', 'v', 'e'};
-constexpr riffcpp::FourCC WAVE_id = {'W', 'A', 'V', 'E'};
-constexpr riffcpp::FourCC fmt_id = {'f', 'm', 't', ' '};
-constexpr riffcpp::FourCC fact_id = {'f', 'a', 'c', 't'};
-constexpr riffcpp::FourCC data_id = {'d', 'a', 't', 'a'};
-
-constexpr riffcpp::FourCC guid_id = {'g', 'u', 'i', 'd'};
-constexpr riffcpp::FourCC dlid_id = {'d', 'l', 'i', 'd'};
-constexpr riffcpp::FourCC wsmp_id = {'w', 's', 'm', 'p'};
 
 WaveDecoder::~WaveDecoder() = default;
 WaveDecoderFactory::~WaveDecoderFactory() = default;

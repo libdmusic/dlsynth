@@ -1,17 +1,11 @@
 #include "Instrument.hpp"
+#include "CommonFourCCs.hpp"
 #include "Error.hpp"
 #include "Uuid.hpp"
 #include <cassert>
 #include <memory>
 
 using namespace DLSynth;
-
-constexpr riffcpp::FourCC ins_id = {'i', 'n', 's', ' '};
-constexpr riffcpp::FourCC insh_id = {'i', 'n', 's', 'h'};
-constexpr riffcpp::FourCC dlid_id = {'d', 'l', 'i', 'd'};
-constexpr riffcpp::FourCC lrgn_id = {'l', 'r', 'g', 'n'};
-constexpr riffcpp::FourCC lart_id = {'l', 'a', 'r', 't'};
-constexpr riffcpp::FourCC lar2_id = {'l', 'a', 'r', '2'};
 
 struct insh {
   std::uint32_t cRegions;
@@ -23,11 +17,22 @@ struct Instrument::impl {
   std::unique_ptr<Uuid> m_dlid;
   std::uint32_t m_midiBank;
   std::uint32_t m_midiInstrument;
+  std::vector<ConnectionBlock> m_blocks;
   void load_regions(riffcpp::Chunk &chunk, const ExpressionParser &exprParser) {
-
+    // TODO
   }
   void load_articulators(riffcpp::Chunk &chunk,
-                         const ExpressionParser &exprParser) {}
+                         const ExpressionParser &exprParser) {
+    try {
+      Articulator art(chunk, exprParser);
+      m_blocks.insert(m_blocks.end(), art.connectionBlocks().begin(),
+                      art.connectionBlocks().end());
+    } catch (const Error &e) {
+      if (e.code() != ErrorCode::CONDITION_FAILED) {
+        throw e;
+      }
+    }
+  }
 
   impl(riffcpp::Chunk &chunk, const ExpressionParser &exprParser) {
     assert(chunk.id() == riffcpp::list_id && chunk.type() == ins_id);

@@ -1,17 +1,10 @@
 #include "Sound.hpp"
+#include "CommonFourCCs.hpp"
 #include "Error.hpp"
 #include "Uuid.hpp"
 #include <cassert>
 
 using namespace DLSynth;
-
-constexpr riffcpp::FourCC lins_id = {'l', 'i', 'n', 's'};
-constexpr riffcpp::FourCC ins_id = {'i', 'n', 's', ' '};
-constexpr riffcpp::FourCC ptbl_id = {'p', 't', 'b', 'l'};
-constexpr riffcpp::FourCC wvpl_id = {'w', 'v', 'p', 'l'};
-constexpr riffcpp::FourCC cdl_id = {'c', 'd', 'l', ' '};
-constexpr riffcpp::FourCC dlid_id = {'d', 'l', 'i', 'd'};
-constexpr riffcpp::FourCC wave_id = {'w', 'a', 'v', 'e'};
 
 struct Sound::impl {
   ExpressionParser m_exprParser;

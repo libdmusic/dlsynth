@@ -71,6 +71,9 @@ $(function() {
 <li>ALaw
 : <a class="el" href="struct_d_l_synth_1_1_wave_format.html#ab80c3ee18c16e0cddf8abe4093e33c58">DLSynth::WaveFormat</a>
 </li>
+<li>Articulator()
+: <a class="el" href="class_d_l_synth_1_1_articulator.html#a9505cae82affa1777d2a0d565263ba1e">DLSynth::Articulator</a>
+</li>
 <li>AvgBytesPerSec
 : <a class="el" href="struct_d_l_synth_1_1_wave_format.html#ac65369cc7991f3cbf2a73a61ff6505a9">DLSynth::WaveFormat</a>
 , <a class="el" href="struct_d_l_synth_1_1_wave_format_ex.html#a69f57db42acfaefa77138e41adaadcb6">DLSynth::WaveFormatEx</a>
@@ -81,6 +84,9 @@ $(function() {
 <h3><a id="index_b"></a>- b -</h3><ul>
 <li>b
 : <a class="el" href="struct_d_l_synth_1_1_uuid.html#a0aaedc610f58dc592f7a5fd2390dcf69">DLSynth::Uuid</a>
+</li>
+<li>bipolar()
+: <a class="el" href="class_d_l_synth_1_1_transform.html#ad1bf22ac4d14428a5a506d0a7fc666f7">DLSynth::Transform</a>
 </li>
 <li>BitsPerSample
 : <a class="el" href="struct_d_l_synth_1_1_wave_format_ex.html#a7e2fe7c03a6084138f7428288464a4b1">DLSynth::WaveFormatEx</a>
@@ -97,8 +103,12 @@ $(function() {
 : <a class="el" href="struct_d_l_synth_1_1_uuid.html#a922a6a50ebd9dbdea943d2ef8645dc44">DLSynth::Uuid</a>
 </li>
 <li>cbSize
-: <a class="el" href="struct_d_l_synth_1_1wsmp__loop.html#ae2096ce962c353d2d46f5972011fe185">DLSynth::wsmp_loop</a>
+: <a class="el" href="structart.html#abe2c51a09ac3e5e7fa0be944e2f2676e">art</a>
+, <a class="el" href="struct_d_l_synth_1_1wsmp__loop.html#ae2096ce962c353d2d46f5972011fe185">DLSynth::wsmp_loop</a>
 , <a class="el" href="structwsmp.html#a6502370d5ba03344136fda82b7e32f08">wsmp</a>
+</li>
+<li>cConnectionBlocks
+: <a class="el" href="structart.html#a2d8a29d42ea94bf6bcea51c95da822ef">art</a>
 </li>
 <li>code()
 : <a class="el" href="class_d_l_synth_1_1_error.html#a2304cac83da7275e59b4048c4746f77b">DLSynth::Error</a>
@@ -106,8 +116,22 @@ $(function() {
 <li>coeffs
 : <a class="el" href="struct_adpcm_format.html#a50f3a2d49a28b6b952943a550fc75501">AdpcmFormat</a>
 </li>
+<li>ConnectionBlock()
+: <a class="el" href="class_d_l_synth_1_1_connection_block.html#a2074f4a8272740a2ae072561704d447b">DLSynth::ConnectionBlock</a>
+</li>
+<li>connectionBlocks
+: <a class="el" href="structart.html#ac9de5ce3d92bdc5f7795713bd16b96b9">art</a>
+, <a class="el" href="class_d_l_synth_1_1_articulator.html#a3170145a1cbfb5278e0fcfec6c61d254">DLSynth::Articulator</a>
+, <a class="el" href="class_d_l_synth_1_1_instrument.html#ab531f22bdf65b7f2d24997f9fc7aed2b">DLSynth::Instrument</a>
+</li>
+<li>control()
+: <a class="el" href="class_d_l_synth_1_1_connection_block.html#af71033976b4740e49272728f26aa0080">DLSynth::ConnectionBlock</a>
+</li>
+<li>controlTransform()
+: <a class="el" href="class_d_l_synth_1_1_connection_block.html#ac8791b4a10b8430193412120435dcc33">DLSynth::ConnectionBlock</a>
+</li>
 <li>createDecoder()
-: <a class="el" href="class_d_l_synth_1_1_wave_decoder_factory.html#aae55454540ce69ccfce161391a9c237a">DLSynth::WaveDecoderFactory</a>
+: <a class="el" href="class_d_l_synth_1_1_wave_decoder_factory.html#a9aea99c814c68b0880beff60280aa67d">DLSynth::WaveDecoderFactory</a>
 </li>
 <li>cRegions
 : <a class="el" href="structinsh.html#ae70f16b61606b75ada4f8f1a19089c2f">insh</a>
@@ -131,6 +155,9 @@ $(function() {
 </li>
 <li>DecoderTable()
 : <a class="el" href="class_d_l_synth_1_1_decoder_table.html#a04bdf0cb9f4fd48d415d73750f760046">DLSynth::DecoderTable</a>
+</li>
+<li>destination()
+: <a class="el" href="class_d_l_synth_1_1_connection_block.html#a85bd4986d2a7917893c5c13b071c4cf7">DLSynth::ConnectionBlock</a>
 </li>
 <li>dlid()
 : <a class="el" href="class_d_l_synth_1_1_instrument.html#a4c29de226c6f24e468edf51ecf0a6839">DLSynth::Instrument</a>
@@ -222,13 +249,16 @@ $(function() {
 : <a class="el" href="structdlsynth__instr.html#a3a286611c6653c33b7b606317d4af6a4">dlsynth_instr</a>
 </li>
 <li>Instrument()
-: <a class="el" href="class_d_l_synth_1_1_instrument.html#a98795aa7793ddd8890143d4e716fb883">DLSynth::Instrument</a>
+: <a class="el" href="class_d_l_synth_1_1_instrument.html#a70393b3128b510b446ee9d47d9ec12e4">DLSynth::Instrument</a>
 </li>
 <li>instruments()
 : <a class="el" href="class_d_l_synth_1_1_sound.html#a420033f7df38df4c8c17488869dd3880">DLSynth::Sound</a>
 </li>
 <li>interleaved
 : <a class="el" href="structdlsynth__settings.html#a84c0694f0e83c994bf0169ba5a99cb22">dlsynth_settings</a>
+</li>
+<li>invert()
+: <a class="el" href="class_d_l_synth_1_1_transform.html#a4cd6f739e2cd16a36b1a3945be02e869">DLSynth::Transform</a>
 </li>
 </ul>
 
@@ -264,10 +294,16 @@ $(function() {
 <li>loops
 : <a class="el" href="structwsmp.html#a93c2afff7fcf8b9d51868d030a51f50e">wsmp</a>
 </li>
+<li>lScale
+: <a class="el" href="structcblock.html#a05f11440015c2bb67f76a76b9f3a7c64">cblock</a>
+</li>
 </ul>
 
 
 <h3><a id="index_m"></a>- m -</h3><ul>
+<li>m_blocks
+: <a class="el" href="struct_instrument_1_1impl.html#a152a4f1a6ac0e16167eebe866a79a657">DLSynth::Instrument::impl</a>
+</li>
 <li>m_dlid
 : <a class="el" href="struct_instrument_1_1impl.html#aeac0c0627c6637f42e06db8368af1623">DLSynth::Instrument::impl</a>
 , <a class="el" href="struct_sound_1_1impl.html#a3d2fa87164dd24379adf1cc70c4b7c40">DLSynth::Sound::impl</a>
@@ -318,7 +354,7 @@ $(function() {
 : <a class="el" href="struct_d_l_synth_1_1_wave_format.html#acc4dc15e2445280724d626b0042ac041">DLSynth::WaveFormat</a>
 </li>
 <li>MsAdpcmDecoder()
-: <a class="el" href="class_ms_adpcm_decoder.html#adb92cab6b380ebf9711a3df6bd06e1ec">MsAdpcmDecoder</a>
+: <a class="el" href="class_ms_adpcm_decoder.html#a65cb2af30b0f69683863b82996c28a56">MsAdpcmDecoder</a>
 </li>
 <li>MuLaw
 : <a class="el" href="struct_d_l_synth_1_1_wave_format.html#ab7e77bb0e81135da2461f57415faee4c">DLSynth::WaveFormat</a>
@@ -383,6 +419,9 @@ $(function() {
 <li>operator&gt;=()
 : <a class="el" href="struct_d_l_synth_1_1int24__t.html#a55e76208db851dae84dc7eb772f28b11">DLSynth::int24_t</a>
 </li>
+<li>outputTransformType()
+: <a class="el" href="class_d_l_synth_1_1_connection_block.html#a85fa910ad62a8b26627cec6be50c403e">DLSynth::ConnectionBlock</a>
+</li>
 </ul>
 
 
@@ -436,15 +475,24 @@ $(function() {
 : <a class="el" href="struct_d_l_synth_1_1_wave_format.html#ae2300ebff25786c05d8304af631b73e0">DLSynth::WaveFormat</a>
 , <a class="el" href="struct_d_l_synth_1_1_wave_format_ex.html#af43681d9156e7d1f4026aba086b8e49c">DLSynth::WaveFormatEx</a>
 </li>
+<li>scale()
+: <a class="el" href="class_d_l_synth_1_1_connection_block.html#a20568e5bec3e1e06d1e6ef9e30889c34">DLSynth::ConnectionBlock</a>
+</li>
 <li>sFineTune
 : <a class="el" href="structwsmp.html#aef8b02aeaace3eb1148e62f1fb89baae">wsmp</a>
 </li>
 <li>Sound()
-: <a class="el" href="class_d_l_synth_1_1_sound.html#a17878818107e30798ac7ae271c0f41f0">DLSynth::Sound</a>
+: <a class="el" href="class_d_l_synth_1_1_sound.html#a0bee94e58c27fab4aeb16bcf569372b9">DLSynth::Sound</a>
 </li>
 <li>sound
 : <a class="el" href="structdlsynth__instr.html#ad157c53202f490d4fa2c440bac5adc5c">dlsynth_instr</a>
 , <a class="el" href="structdlsynth__sound.html#af3537258e0a0329b227cf07087290571">dlsynth_sound</a>
+</li>
+<li>source()
+: <a class="el" href="class_d_l_synth_1_1_connection_block.html#a05e9e1cefb49ba72216d8a635b20d5c2">DLSynth::ConnectionBlock</a>
+</li>
+<li>sourceTransform()
+: <a class="el" href="class_d_l_synth_1_1_connection_block.html#ad513b67eb1159ebb0994ea33588c3050">DLSynth::ConnectionBlock</a>
 </li>
 <li>start()
 : <a class="el" href="class_d_l_synth_1_1_wavesample_loop.html#a5332628c7965e636a580e2b3db3cdd9f">DLSynth::WavesampleLoop</a>
@@ -459,8 +507,12 @@ $(function() {
 <li>toWaveFormat()
 : <a class="el" href="struct_d_l_synth_1_1_wave_format_ex.html#a21ca76223c7c384a03298e912dadbea9">DLSynth::WaveFormatEx</a>
 </li>
+<li>Transform()
+: <a class="el" href="class_d_l_synth_1_1_transform.html#ace1015011d26ef12ca081bbf8439315d">DLSynth::Transform</a>
+</li>
 <li>type()
-: <a class="el" href="class_d_l_synth_1_1_wavesample_loop.html#ac0ada91aae3fa7b0b2d9861d7bd4eb7b">DLSynth::WavesampleLoop</a>
+: <a class="el" href="class_d_l_synth_1_1_transform.html#a8cdc2227096e4d70eedea169c8d84ebc">DLSynth::Transform</a>
+, <a class="el" href="class_d_l_synth_1_1_wavesample_loop.html#ac0ada91aae3fa7b0b2d9861d7bd4eb7b">DLSynth::WavesampleLoop</a>
 </li>
 </ul>
 
@@ -486,6 +538,18 @@ $(function() {
 </li>
 <li>Unknown
 : <a class="el" href="struct_d_l_synth_1_1_wave_format.html#ae0ff552d4182ce25fe87509507802544">DLSynth::WaveFormat</a>
+</li>
+<li>usControl
+: <a class="el" href="structcblock.html#ad2f485ed67ec739ab39b026710b8b4d8">cblock</a>
+</li>
+<li>usDestination
+: <a class="el" href="structcblock.html#af037ca0601be36ff79b407bfded224fe">cblock</a>
+</li>
+<li>usSource
+: <a class="el" href="structcblock.html#ac5986120b21738e165f1b88c7a067c6a">cblock</a>
+</li>
+<li>usTransform
+: <a class="el" href="structcblock.html#a5c16b48dc8aceaeac784d4802fdeefd7">cblock</a>
 </li>
 <li>usUnityNote
 : <a class="el" href="structwsmp.html#a2a96ade135594d661f10c8af66ace100">wsmp</a>

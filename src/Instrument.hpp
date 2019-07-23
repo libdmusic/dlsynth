@@ -1,5 +1,6 @@
 #ifndef INSTRUMENT_HPP
 #define INSTRUMENT_HPP
+#include "Articulator.hpp"
 #include "ExpressionParser.hpp"
 #include <cstdint>
 #include <riffcpp.hpp>
@@ -26,6 +27,9 @@ public:
 
   /// Returns the MIDI Program Change of this instrument
   std::uint32_t midiInstrument() const;
+
+  /// Returns the connection blocks defined for this instrument
+  const std::vector<ConnectionBlock> &connectionBlocks() const;
 };
 } // namespace DLSynth
 

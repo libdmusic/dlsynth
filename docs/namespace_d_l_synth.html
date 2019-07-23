@@ -79,6 +79,12 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_articulator.html">Articulator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A set of <a class="el" href="class_d_l_synth_1_1_connection_block.html">ConnectionBlock</a> s that defines the parameters of an instrument.  <a href="class_d_l_synth_1_1_articulator.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_connection_block.html">ConnectionBlock</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines how an input signal affects an instrument parameter.  <a href="class_d_l_synth_1_1_connection_block.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_decoder_table.html">DecoderTable</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows access to the supported WAV decoders.  <a href="class_d_l_synth_1_1_decoder_table.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -94,6 +100,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_sound.html">Sound</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A DLS Collection of instruments.  <a href="class_d_l_synth_1_1_sound.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_transform.html">Transform</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_d_l_synth_1_1_uuid.html">Uuid</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -119,6 +127,86 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
+<tr class="memitem:a407e32fd406a3269a40aa958b22ea196"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196">Source</a> : std::uint16_t { <br />
+&#160;&#160;<a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196a6adf97f83acf6453d4a6a4b1070f3754">Source::None</a> = 0x0000, 
+<a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196ae3fbe998c30a2912f5e9127cd2c4c572">Source::LFO</a> = 0x0001, 
+<a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196a6ec34e8b04c68b0d0dc89cb91639f357">Source::KeyOnVelocity</a> = 0x0002, 
+<a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196a5c093fdbe0cc120c58499b4ee19a5b79">Source::KeyNumber</a> = 0x0003, 
+<br />
+&#160;&#160;<a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196a98d3707bca086bd36b09d19f1a17fff3">Source::EG1</a> = 0x0004, 
+<a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196aff255f850f7f528e7fcae99c810ad0cb">Source::EG2</a> = 0x0005, 
+<a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196aaa426759128edb47189f07d57dd95ee9">Source::PitchWheel</a> = 0x0006, 
+<a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196a47fad3a2611da4c29592164b55856b32">Source::PolyPressure</a> = 0x0007, 
+<br />
+&#160;&#160;<a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196ab9ee37141db8aade98233a4f73262238">Source::ChannelPressure</a> = 0x0008, 
+<a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196a3dd28adc822a97ff429a9edd9b95cda3">Source::Vibrato</a> = 0x0009, 
+<a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196ab9853e9a6a852eaff4e4c4306d97daf7">Source::CC1</a> = 0x0081, 
+<a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196a0e5819283225ae0e0b15c4e6a8ab747b">Source::CC7</a> = 0x0087, 
+<br />
+&#160;&#160;<a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196abbf31209d43ccd814f5210f45365d2d9">Source::CC10</a> = 0x008a, 
+<a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196a0a67e3e5a6c6b1a1f27233fc7107b214">Source::CC11</a> = 0x008b, 
+<a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196a655ee77cd8cce3214d07d087ff4a3920">Source::CC91</a> = 0x00db, 
+<a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196a0770c7bf74fc7a9d0900b683a2e7938d">Source::CC93</a> = 0x00dd, 
+<br />
+&#160;&#160;<a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196a78ff8216392d2a02baa793f3c8bac167">Source::RPN0</a> = 0x0100, 
+<a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196a659cc1a10c51e05e7d207c91b67e232b">Source::RPN1</a> = 0x0101, 
+<a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196aaa485e8498edd5a868ac1c052f1ce617">Source::RPN2</a> = 0x0102
+<br />
+ }</td></tr>
+<tr class="separator:a407e32fd406a3269a40aa958b22ea196"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1a4cc00c93ef96301ba03aaf4370981"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981">Destination</a> : std::uint16_t { <br />
+&#160;&#160;<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a6adf97f83acf6453d4a6a4b1070f3754">Destination::None</a> = 0x0000, 
+<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a35d72fa7d84f4ae67d705373d1d44b88">Destination::Gain</a> = 0x0001, 
+<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a942d4e37dd5607ab68e54755540d4a47">Destination::Reserved</a> = 0x0002, 
+<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a87f800274a7f46c50e17114f89171e2e">Destination::Pitch</a> = 0x0003, 
+<br />
+&#160;&#160;<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981af6d4a17b27da35c2d90ce13801f36782">Destination::Pan</a> = 0x0004, 
+<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a5c093fdbe0cc120c58499b4ee19a5b79">Destination::KeyNumber</a> = 0x0005, 
+<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a748d3bccb23d516b27154eb2f85c72fb">Destination::LeftCh</a> = 0x0010, 
+<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a56f9ea1de722ea6c1d3b4e17960f673b">Destination::RightCh</a> = 0x0011, 
+<br />
+&#160;&#160;<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a219f72625c3c2a7bc30ce62222ee57ca">Destination::CenterCh</a> = 0x0012, 
+<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a8bbaf074e0342bb9505bf7d0a435b009">Destination::LfeCh</a> = 0x0013, 
+<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a1e8a1e31935c2d7936691e9444b2ff31">Destination::LeftRearCh</a> = 0x0014, 
+<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a84d7df0951ee7ebe043292454cfcae34">Destination::RightRearCh</a> = 0x0015, 
+<br />
+&#160;&#160;<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a9dcf77c2f2237c9e2013ea0175bf1745">Destination::Chorus</a> = 0x0080, 
+<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a3e90790c668535d048f76550a04adb64">Destination::Reverb</a> = 0x0081, 
+<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981ad7ebeb93a0b5bde7d7770db310057e0a">Destination::LfoFrequency</a> = 0x0104, 
+<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981abfbf23f070feaf68a156bb8166fb1408">Destination::LfoStartDelay</a> = 0x0105, 
+<br />
+&#160;&#160;<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a9eb24cd1daad2aaf073cf0cdc83b16b4">Destination::VibratoFrequency</a> = 0x0114, 
+<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981afa0994f2b3129ad00840f17c23402db2">Destination::VibratoStartDelay</a> = 0x0115, 
+<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a27aaeed3b161a83ef1bbc2e5dc0dcf47">Destination::EG1AttackTime</a> = 0x0206, 
+<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a6ce554d1a4bdb88c6d9864e222b02390">Destination::EG1DecayTime</a> = 0x0207, 
+<br />
+&#160;&#160;<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981af559de30d29ee671f571633aafbc235f">Destination::EG1Reserved</a> = 0x0208, 
+<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a4b320dc0f938642023525490f4358a8c">Destination::EG1ReleaseTime</a> = 0x0209, 
+<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a8fdeab3ffedd005594f36ee1dbbf733d">Destination::EG1SustainLevel</a> = 0x020A, 
+<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981af851c42367a391562cc55f0722f9620a">Destination::EG1DelayTime</a> = 0x020B, 
+<br />
+&#160;&#160;<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981acb37df1238e8db535f47f66ccc4a5bdc">Destination::EG1HoldTime</a> = 0x020C, 
+<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a20bc7bab036e5b24563f7b548375f92c">Destination::EG1ShutdownTime</a> = 0x020D, 
+<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a8f6c60bdee81444dc077d2cf77f93f2f">Destination::EG2AttackTime</a> = 0x030A, 
+<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981ae9859d7502c3425f68e0e923d09326ac">Destination::EG2DecayTime</a> = 0x030B, 
+<br />
+&#160;&#160;<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a5368f743c5307a8fea312074da212a17">Destination::EG2Reserved</a> = 0x030C, 
+<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a6cd3d0528f1d8cac0f8a1065c9370c37">Destination::EG2ReleaseTime</a> = 0x030D, 
+<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a7ed0c1abf17feaa0a734ae820fcee194">Destination::EG2SustainLevel</a> = 0x030E, 
+<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a7769eb1ee32cd5af757a0600516ca5c8">Destination::EG2DelayTime</a> = 0x030F, 
+<br />
+&#160;&#160;<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a9296de09f190f97cc6586e2ba7405160">Destination::EG2HoldTime</a> = 0x0310, 
+<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981add8e70ca37d678d16e2e6de929615973">Destination::FilterCutoff</a> = 0x0500, 
+<a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981acb2ad97e1ec5f14eaa3beca44db40126">Destination::FilterQ</a> = 0x0501
+<br />
+ }</td></tr>
+<tr class="separator:ae1a4cc00c93ef96301ba03aaf4370981"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25a6d41585e95b5e72cad1f65e4684ad"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#a25a6d41585e95b5e72cad1f65e4684ad">TransformType</a> : std::uint16_t { <a class="el" href="namespace_d_l_synth.html#a25a6d41585e95b5e72cad1f65e4684ada6adf97f83acf6453d4a6a4b1070f3754">TransformType::None</a> = 0x0000, 
+<a class="el" href="namespace_d_l_synth.html#a25a6d41585e95b5e72cad1f65e4684ada1cb290ed5917afdbf2532bb2bf6f0192">TransformType::Concave</a> = 0x0001, 
+<a class="el" href="namespace_d_l_synth.html#a25a6d41585e95b5e72cad1f65e4684ada766cae017fab4bcc1d1e83fbb9af87c3">TransformType::Convex</a> = 0x0002, 
+<a class="el" href="namespace_d_l_synth.html#a25a6d41585e95b5e72cad1f65e4684adabbc155fb2b111bf61c4f5ff892915e6b">TransformType::Switch</a> = 0x0003
+ }</td></tr>
+<tr class="separator:a25a6d41585e95b5e72cad1f65e4684ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30571f4357f7c5194614f1ec64f7c5af"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#a30571f4357f7c5194614f1ec64f7c5af">ErrorCode</a> : int { <a class="el" href="namespace_d_l_synth.html#a30571f4357f7c5194614f1ec64f7c5afa3da47ab3386705685d6dc6399b9edf5b">ErrorCode::DLSYNTH_ERROR</a>, 
 <a class="el" href="namespace_d_l_synth.html#a30571f4357f7c5194614f1ec64f7c5afa67c088f813e08bd03d12bd1ea03c11b4">ErrorCode::DLSYNTH_ERROR</a> =(CONDITION_FAILED, 6)# 11 "C:/Users/berto/dlsynth/src/Error.hpp" 2
  }</td></tr>
@@ -153,6 +241,65 @@ Functions</h2></td></tr>
 <tr class="separator:ae3ce51c940d4e8393b1b25e1dfcb8400"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="ae1a4cc00c93ef96301ba03aaf4370981"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1a4cc00c93ef96301ba03aaf4370981">&#9670;&nbsp;</a></span>Destination</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981">DLSynth::Destination</a> : std::uint16_t</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981a6adf97f83acf6453d4a6a4b1070f3754"></a>None&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981a35d72fa7d84f4ae67d705373d1d44b88"></a>Gain&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981a942d4e37dd5607ab68e54755540d4a47"></a>Reserved&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981a87f800274a7f46c50e17114f89171e2e"></a>Pitch&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981af6d4a17b27da35c2d90ce13801f36782"></a>Pan&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981a5c093fdbe0cc120c58499b4ee19a5b79"></a>KeyNumber&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981a748d3bccb23d516b27154eb2f85c72fb"></a>LeftCh&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981a56f9ea1de722ea6c1d3b4e17960f673b"></a>RightCh&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981a219f72625c3c2a7bc30ce62222ee57ca"></a>CenterCh&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981a8bbaf074e0342bb9505bf7d0a435b009"></a>LfeCh&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981a1e8a1e31935c2d7936691e9444b2ff31"></a>LeftRearCh&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981a84d7df0951ee7ebe043292454cfcae34"></a>RightRearCh&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981a9dcf77c2f2237c9e2013ea0175bf1745"></a>Chorus&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981a3e90790c668535d048f76550a04adb64"></a>Reverb&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981ad7ebeb93a0b5bde7d7770db310057e0a"></a>LfoFrequency&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981abfbf23f070feaf68a156bb8166fb1408"></a>LfoStartDelay&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981a9eb24cd1daad2aaf073cf0cdc83b16b4"></a>VibratoFrequency&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981afa0994f2b3129ad00840f17c23402db2"></a>VibratoStartDelay&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981a27aaeed3b161a83ef1bbc2e5dc0dcf47"></a>EG1AttackTime&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981a6ce554d1a4bdb88c6d9864e222b02390"></a>EG1DecayTime&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981af559de30d29ee671f571633aafbc235f"></a>EG1Reserved&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981a4b320dc0f938642023525490f4358a8c"></a>EG1ReleaseTime&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981a8fdeab3ffedd005594f36ee1dbbf733d"></a>EG1SustainLevel&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981af851c42367a391562cc55f0722f9620a"></a>EG1DelayTime&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981acb37df1238e8db535f47f66ccc4a5bdc"></a>EG1HoldTime&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981a20bc7bab036e5b24563f7b548375f92c"></a>EG1ShutdownTime&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981a8f6c60bdee81444dc077d2cf77f93f2f"></a>EG2AttackTime&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981ae9859d7502c3425f68e0e923d09326ac"></a>EG2DecayTime&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981a5368f743c5307a8fea312074da212a17"></a>EG2Reserved&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981a6cd3d0528f1d8cac0f8a1065c9370c37"></a>EG2ReleaseTime&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981a7ed0c1abf17feaa0a734ae820fcee194"></a>EG2SustainLevel&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981a7769eb1ee32cd5af757a0600516ca5c8"></a>EG2DelayTime&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981a9296de09f190f97cc6586e2ba7405160"></a>EG2HoldTime&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981add8e70ca37d678d16e2e6de929615973"></a>FilterCutoff&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae1a4cc00c93ef96301ba03aaf4370981acb2ad97e1ec5f14eaa3beca44db40126"></a>FilterQ&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
 <a id="a30571f4357f7c5194614f1ec64f7c5af"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a30571f4357f7c5194614f1ec64f7c5af">&#9670;&nbsp;</a></span>ErrorCode</h2>
 
@@ -203,6 +350,77 @@ Functions</h2></td></tr>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ac19ebe34ed1eb9f1a213d24de6e340ffa67d2f6740a8eaebf4d5c6f79be8da481"></a>Forward&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ac19ebe34ed1eb9f1a213d24de6e340ffab8e7b465df7c5979dc731d06e84ce2cf"></a>Release&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a407e32fd406a3269a40aa958b22ea196"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a407e32fd406a3269a40aa958b22ea196">&#9670;&nbsp;</a></span>Source</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196">DLSynth::Source</a> : std::uint16_t</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a407e32fd406a3269a40aa958b22ea196a6adf97f83acf6453d4a6a4b1070f3754"></a>None&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a407e32fd406a3269a40aa958b22ea196ae3fbe998c30a2912f5e9127cd2c4c572"></a>LFO&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a407e32fd406a3269a40aa958b22ea196a6ec34e8b04c68b0d0dc89cb91639f357"></a>KeyOnVelocity&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a407e32fd406a3269a40aa958b22ea196a5c093fdbe0cc120c58499b4ee19a5b79"></a>KeyNumber&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a407e32fd406a3269a40aa958b22ea196a98d3707bca086bd36b09d19f1a17fff3"></a>EG1&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a407e32fd406a3269a40aa958b22ea196aff255f850f7f528e7fcae99c810ad0cb"></a>EG2&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a407e32fd406a3269a40aa958b22ea196aaa426759128edb47189f07d57dd95ee9"></a>PitchWheel&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a407e32fd406a3269a40aa958b22ea196a47fad3a2611da4c29592164b55856b32"></a>PolyPressure&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a407e32fd406a3269a40aa958b22ea196ab9ee37141db8aade98233a4f73262238"></a>ChannelPressure&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a407e32fd406a3269a40aa958b22ea196a3dd28adc822a97ff429a9edd9b95cda3"></a>Vibrato&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a407e32fd406a3269a40aa958b22ea196ab9853e9a6a852eaff4e4c4306d97daf7"></a>CC1&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a407e32fd406a3269a40aa958b22ea196a0e5819283225ae0e0b15c4e6a8ab747b"></a>CC7&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a407e32fd406a3269a40aa958b22ea196abbf31209d43ccd814f5210f45365d2d9"></a>CC10&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a407e32fd406a3269a40aa958b22ea196a0a67e3e5a6c6b1a1f27233fc7107b214"></a>CC11&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a407e32fd406a3269a40aa958b22ea196a655ee77cd8cce3214d07d087ff4a3920"></a>CC91&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a407e32fd406a3269a40aa958b22ea196a0770c7bf74fc7a9d0900b683a2e7938d"></a>CC93&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a407e32fd406a3269a40aa958b22ea196a78ff8216392d2a02baa793f3c8bac167"></a>RPN0&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a407e32fd406a3269a40aa958b22ea196a659cc1a10c51e05e7d207c91b67e232b"></a>RPN1&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a407e32fd406a3269a40aa958b22ea196aaa485e8498edd5a868ac1c052f1ce617"></a>RPN2&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a25a6d41585e95b5e72cad1f65e4684ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25a6d41585e95b5e72cad1f65e4684ad">&#9670;&nbsp;</a></span>TransformType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespace_d_l_synth.html#a25a6d41585e95b5e72cad1f65e4684ad">DLSynth::TransformType</a> : std::uint16_t</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a25a6d41585e95b5e72cad1f65e4684ada6adf97f83acf6453d4a6a4b1070f3754"></a>None&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a25a6d41585e95b5e72cad1f65e4684ada1cb290ed5917afdbf2532bb2bf6f0192"></a>Concave&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a25a6d41585e95b5e72cad1f65e4684ada766cae017fab4bcc1d1e83fbb9af87c3"></a>Convex&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a25a6d41585e95b5e72cad1f65e4684adabbc155fb2b111bf61c4f5ff892915e6b"></a>Switch&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>

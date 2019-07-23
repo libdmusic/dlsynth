@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['msadpcmdecoder',['MsAdpcmDecoder',['../class_ms_adpcm_decoder.html',1,'']]]
+  ['logarithmicdecoder',['LogarithmicDecoder',['../class_logarithmic_decoder.html',1,'']]]
 ];

@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['m_5fblocks',['m_blocks',['../struct_instrument_1_1impl.html#a152a4f1a6ac0e16167eebe866a79a657',1,'Instrument::impl']]],
   ['m_5fdlid',['m_dlid',['../struct_instrument_1_1impl.html#aeac0c0627c6637f42e06db8368af1623',1,'DLSynth::Instrument::impl::m_dlid()'],['../struct_sound_1_1impl.html#a3d2fa87164dd24379adf1cc70c4b7c40',1,'DLSynth::Sound::impl::m_dlid()']]],
   ['m_5fexprparser',['m_exprParser',['../struct_sound_1_1impl.html#a03389694f422f9bc8fea8382fb2d4ff5',1,'Sound::impl']]],
   ['m_5fguid',['m_guid',['../struct_wave_1_1impl.html#a95c13e020c06e16ffeae8a9256424b58',1,'Wave::impl']]],

@@ -15,6 +15,7 @@ target_sources(dlsynth
         ${CMAKE_CURRENT_LIST_DIR}/src/Decoders/LogarithmicDecoder.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/Decoders/MsAdpcmDecoder.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/Decoders/PcmDecoder.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/src/Articulator.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/DecoderTable.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/dlsynth.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/Error.cpp
@@ -94,7 +95,7 @@ export(PACKAGE dlsynth)
 # Packaging support
 set(CPACK_PACKAGE_VENDOR "Francesco Bertolaccini")
 set(CPACK_PACKAGE_CONTACT "francesco@bertolaccini.dev")
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "DLS Synth liobrary")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "DLS Synth library")
 set(CPACK_PACKAGE_VERSION_MAJOR ${PROJECT_VERSION_MAJOR})
 set(CPACK_PACKAGE_VERSION_MINOR ${PROJECT_VERSION_MINOR})
 set(CPACK_PACKAGE_VERSION_PATCH ${PROJECT_VERSION_PATCH})

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logarithmicdecoder_2ecpp',['LogarithmicDecoder.cpp',['../_logarithmic_decoder_8cpp.html',1,'']]]
+  ['floatdecoder_2ecpp',['FloatDecoder.cpp',['../_float_decoder_8cpp.html',1,'']]]
 ];
