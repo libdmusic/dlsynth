@@ -47,5 +47,6 @@ var searchData=
   ['dlsynth_5fsound_5finstr_5fcount',['dlsynth_sound_instr_count',['../dlsynth_8h.html#ab1ac49bf036f7c9ef560b22f73d7e91f',1,'dlsynth_sound_instr_count(const struct dlsynth_sound *sound, size_t *count):&#160;dlsynth.h'],['../dlsynth_8cpp.html#a4c55a79eddc9cec89742865438701bf1',1,'dlsynth_sound_instr_count(const struct dlsynth_sound *sound, std::size_t *count):&#160;dlsynth.cpp']]],
   ['dlsynth_5fsound_5finstr_5finfo',['dlsynth_sound_instr_info',['../dlsynth_8h.html#a735b2742c52fed520c1bbf1594d4a744',1,'dlsynth_sound_instr_info(const struct dlsynth_instr *instr, uint32_t *bank, uint32_t *patch):&#160;dlsynth.cpp'],['../dlsynth_8cpp.html#aa296e565eda4d885e409382566e3634c',1,'dlsynth_sound_instr_info(const struct dlsynth_instr *instr, uint32_t *bank, uint32_t *patch):&#160;dlsynth.cpp']]],
   ['dlsynth_5fwav',['dlsynth_wav',['../structdlsynth__wav.html',1,'']]],
-  ['dviadpcm',['DviAdpcm',['../struct_d_l_synth_1_1_wave_format.html#aea110d9a629dd45ac6da42350c0a7f50',1,'DLSynth::WaveFormat']]]
+  ['dviadpcm',['DviAdpcm',['../struct_d_l_synth_1_1_wave_format.html#aea110d9a629dd45ac6da42350c0a7f50',1,'DLSynth::WaveFormat']]],
+  ['dlsynth',['dlsynth',['../index.html',1,'']]]
 ];
