@@ -1,6 +1,7 @@
 var searchData=
 [
   ['a',['a',['../struct_d_l_synth_1_1_uuid.html#a1951577fe817845e23c1862425e28ae3',1,'DLSynth::Uuid']]],
+  ['absolutepitchtofrequency',['absolutePitchToFrequency',['../namespace_d_l_synth.html#ad908108ebfacdbc70da360c23db737ec',1,'DLSynth']]],
   ['adaptationtable',['AdaptationTable',['../_ms_adpcm_decoder_8cpp.html#adad0467fc93be85d4596616ec4124449',1,'MsAdpcmDecoder.cpp']]],
   ['add',['Add',['../_expression_parser_8cpp.html#a751f5463d98870f136ae2a46f6e76017aec211f7c20af43e742bf2570c3cb84f9',1,'ExpressionParser.cpp']]],
   ['adpcmcoeffs',['AdpcmCoeffs',['../struct_adpcm_coeffs.html',1,'']]],

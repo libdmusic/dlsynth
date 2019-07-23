@@ -1,4 +1,5 @@
 #include "Wavesample.hpp"
+#include "NumericUtils.hpp"
 #include <algorithm>
 
 using namespace DLSynth;
@@ -39,13 +40,12 @@ Wavesample::Wavesample(riffcpp::Chunk &chunk) {
   m_gain = wavesample->lGain;
   m_fineTune = wavesample->sFineTune;
   m_unityNote = wavesample->usUnityNote;
-  m_loops.reserve(wavesample->cSampleLoops);
-  for (int i = 0; i < wavesample->cSampleLoops; i++) {
-    m_loops.push_back(WavesampleLoop(wavesample->loops + i));
+  if (wavesample->cSampleLoops) {
+    m_loop = std::make_unique<WavesampleLoop>(wavesample->loops);
   }
 }
 
-std::int32_t Wavesample::gain() const { return m_gain; }
-std::int16_t Wavesample::fineTune() const { return m_fineTune; }
+float Wavesample::gain() const { return relativeGainToRatio(m_gain); }
+float Wavesample::fineTune() const { return relativePitchToRatio(m_fineTune); }
 std::uint16_t Wavesample::unityNote() const { return m_unityNote; }
-const std::vector<WavesampleLoop> &Wavesample::loops() const { return m_loops; }
+const WavesampleLoop *Wavesample::loop() const { return m_loop.get(); }

@@ -86,15 +86,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:abdea42a5f2b28599eabdaab5dcb7060b"><td class="memItemLeft" align="right" valign="top">std::uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_wavesample.html#abdea42a5f2b28599eabdaab5dcb7060b">unityNote</a> () const</td></tr>
 <tr class="memdesc:abdea42a5f2b28599eabdaab5dcb7060b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the MIDI note at which the sample will be played at its original pitch.  <a href="#abdea42a5f2b28599eabdaab5dcb7060b">More...</a><br /></td></tr>
 <tr class="separator:abdea42a5f2b28599eabdaab5dcb7060b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3b84e1bc6c252b9a849dc8c5c3d1c76"><td class="memItemLeft" align="right" valign="top">std::int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_wavesample.html#af3b84e1bc6c252b9a849dc8c5c3d1c76">fineTune</a> () const</td></tr>
-<tr class="memdesc:af3b84e1bc6c252b9a849dc8c5c3d1c76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the tuning offset from <a class="el" href="class_d_l_synth_1_1_wavesample.html#abdea42a5f2b28599eabdaab5dcb7060b">unityNote</a> specified in relative pitch units.  <a href="#af3b84e1bc6c252b9a849dc8c5c3d1c76">More...</a><br /></td></tr>
-<tr class="separator:af3b84e1bc6c252b9a849dc8c5c3d1c76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9fd34999871864eecc85b4b209e220d6"><td class="memItemLeft" align="right" valign="top">std::int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_wavesample.html#a9fd34999871864eecc85b4b209e220d6">gain</a> () const</td></tr>
-<tr class="memdesc:a9fd34999871864eecc85b4b209e220d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the gain to be applied to the sample in absolute gain units.  <a href="#a9fd34999871864eecc85b4b209e220d6">More...</a><br /></td></tr>
-<tr class="separator:a9fd34999871864eecc85b4b209e220d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6465f29f6a9bf9f7955b48557a87e773"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="class_d_l_synth_1_1_wavesample_loop.html">WavesampleLoop</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_wavesample.html#a6465f29f6a9bf9f7955b48557a87e773">loops</a> () const</td></tr>
-<tr class="memdesc:a6465f29f6a9bf9f7955b48557a87e773"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the loops of the sample.  <a href="#a6465f29f6a9bf9f7955b48557a87e773">More...</a><br /></td></tr>
-<tr class="separator:a6465f29f6a9bf9f7955b48557a87e773"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d22fe222d3e93dc629194632333a997"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_wavesample.html#a7d22fe222d3e93dc629194632333a997">fineTune</a> () const</td></tr>
+<tr class="memdesc:a7d22fe222d3e93dc629194632333a997"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the tuning offset from <a class="el" href="class_d_l_synth_1_1_wavesample.html#abdea42a5f2b28599eabdaab5dcb7060b">unityNote</a> as a pitch ratio.  <a href="#a7d22fe222d3e93dc629194632333a997">More...</a><br /></td></tr>
+<tr class="separator:a7d22fe222d3e93dc629194632333a997"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f6dd6986df91abf8b3567e34de9baa3"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_wavesample.html#a0f6dd6986df91abf8b3567e34de9baa3">gain</a> () const</td></tr>
+<tr class="memdesc:a0f6dd6986df91abf8b3567e34de9baa3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the gain to be applied to the sample.  <a href="#a0f6dd6986df91abf8b3567e34de9baa3">More...</a><br /></td></tr>
+<tr class="separator:a0f6dd6986df91abf8b3567e34de9baa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a689112a700b5656231f4791d8d56a5ec"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_d_l_synth_1_1_wavesample_loop.html">WavesampleLoop</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_wavesample.html#a689112a700b5656231f4791d8d56a5ec">loop</a> () const</td></tr>
+<tr class="memdesc:a689112a700b5656231f4791d8d56a5ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the loop of the sample, if it exists.  <a href="#a689112a700b5656231f4791d8d56a5ec">More...</a><br /></td></tr>
+<tr class="separator:a689112a700b5656231f4791d8d56a5ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Describes the synthesis parameters of a WAV file. </p>
@@ -118,14 +118,14 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="af3b84e1bc6c252b9a849dc8c5c3d1c76"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af3b84e1bc6c252b9a849dc8c5c3d1c76">&#9670;&nbsp;</a></span>fineTune()</h2>
+<a id="a7d22fe222d3e93dc629194632333a997"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d22fe222d3e93dc629194632333a997">&#9670;&nbsp;</a></span>fineTune()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::int16_t Wavesample::fineTune </td>
+          <td class="memname">float Wavesample::fineTune </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -133,18 +133,19 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Returns the tuning offset from <a class="el" href="class_d_l_synth_1_1_wavesample.html#abdea42a5f2b28599eabdaab5dcb7060b">unityNote</a> specified in relative pitch units. </p>
+<p>Returns the tuning offset from <a class="el" href="class_d_l_synth_1_1_wavesample.html#abdea42a5f2b28599eabdaab5dcb7060b">unityNote</a> as a pitch ratio. </p>
+<p>That is, <code>targetFreq = freq(unityNote()) * <a class="el" href="class_d_l_synth_1_1_wavesample.html#a7d22fe222d3e93dc629194632333a997" title="Returns the tuning offset from unityNote as a pitch ratio.">fineTune()</a></code> </p>
 
 </div>
 </div>
-<a id="a9fd34999871864eecc85b4b209e220d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9fd34999871864eecc85b4b209e220d6">&#9670;&nbsp;</a></span>gain()</h2>
+<a id="a0f6dd6986df91abf8b3567e34de9baa3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f6dd6986df91abf8b3567e34de9baa3">&#9670;&nbsp;</a></span>gain()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::int32_t Wavesample::gain </td>
+          <td class="memname">float Wavesample::gain </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -152,18 +153,18 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Returns the gain to be applied to the sample in absolute gain units. </p>
+<p>Returns the gain to be applied to the sample. </p>
 
 </div>
 </div>
-<a id="a6465f29f6a9bf9f7955b48557a87e773"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6465f29f6a9bf9f7955b48557a87e773">&#9670;&nbsp;</a></span>loops()</h2>
+<a id="a689112a700b5656231f4791d8d56a5ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a689112a700b5656231f4791d8d56a5ec">&#9670;&nbsp;</a></span>loop()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const std::vector&lt; <a class="el" href="class_d_l_synth_1_1_wavesample_loop.html">WavesampleLoop</a> &gt; &amp; Wavesample::loops </td>
+          <td class="memname">const <a class="el" href="class_d_l_synth_1_1_wavesample_loop.html">WavesampleLoop</a> * Wavesample::loop </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -171,7 +172,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Returns the loops of the sample. </p>
+<p>Returns the loop of the sample, if it exists. </p>
+<p>If this returns null, then this <a class="el" href="class_d_l_synth_1_1_wavesample.html" title="Describes the synthesis parameters of a WAV file.">Wavesample</a> is one-shot. </p>
 
 </div>
 </div>

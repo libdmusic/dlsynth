@@ -2,6 +2,7 @@
 #define WAVESAMPLE_HPP
 
 #include <cstdint>
+#include <memory>
 #include <riffcpp.hpp>
 #include <vector>
 
@@ -28,7 +29,7 @@ class Wavesample {
   std::uint16_t m_unityNote;
   std::int16_t m_fineTune;
   std::int32_t m_gain;
-  std::vector<WavesampleLoop> m_loops;
+  std::unique_ptr<WavesampleLoop> m_loop = nullptr;
 
 public:
   Wavesample(riffcpp::Chunk &chunk);
@@ -37,15 +38,20 @@ public:
   /// pitch
   std::uint16_t unityNote() const;
 
-  /// Returns the tuning offset from \ref unityNote specified in relative pitch
-  /// units
-  std::int16_t fineTune() const;
+  /// Returns the tuning offset from \ref unityNote as a pitch ratio
+  /**
+   * That is, `targetFreq = freq(unityNote()) * fineTune()`
+   */
+  float fineTune() const;
 
-  /// Returns the gain to be applied to the sample in absolute gain units
-  std::int32_t gain() const;
+  /// Returns the gain to be applied to the sample
+  float gain() const;
 
-  /// Returns the loops of the sample
-  const std::vector<WavesampleLoop> &loops() const;
+  /// Returns the loop of the sample, if it exists
+  /**
+   * If this returns null, then this Wavesample is one-shot.
+   */
+  const WavesampleLoop *loop() const;
 };
 } // namespace DLSynth
 

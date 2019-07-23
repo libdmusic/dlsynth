@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['normalize',['normalize',['../namespace_d_l_synth.html#a9fa755510741453c9dc9acc90a98fc1f',1,'DLSynth::normalize(T value)'],['../namespace_d_l_synth.html#a6900327bb60c19bccb00ca9f274fa7f8',1,'DLSynth::normalize(std::uint8_t value)']]],
-  ['num_5fframes',['num_frames',['../class_float_decoder.html#aa1499a6d83487578fb15ce0262339ecd',1,'FloatDecoder::num_frames()'],['../class_logarithmic_decoder.html#a9796262660b0d90ffe298e1ebfe58f6a',1,'LogarithmicDecoder::num_frames()'],['../class_ms_adpcm_decoder.html#ae52ff9a795716d1b2ae420c7ddb31220',1,'MsAdpcmDecoder::num_frames()'],['../class_pcm_decoder.html#ad732edba988fcc051bae477ac8878dff',1,'PcmDecoder::num_frames()'],['../class_d_l_synth_1_1_wave_decoder.html#a6d80784a7687a9b69d4b88339234dd1c',1,'DLSynth::WaveDecoder::num_frames()']]]
+  ['max',['max',['../structstd_1_1numeric__limits_3_01_d_l_synth_1_1int24__t_01_4.html#a22e2d8590a45ee9d622755ff26ba3842',1,'std::numeric_limits&lt; DLSynth::int24_t &gt;']]],
+  ['midibank',['midiBank',['../class_d_l_synth_1_1_instrument.html#a5755a40a5da84c93b893800524406825',1,'DLSynth::Instrument']]],
+  ['midiinstrument',['midiInstrument',['../class_d_l_synth_1_1_instrument.html#af3120787f20832758d905be1c043294d',1,'DLSynth::Instrument']]],
+  ['min',['min',['../structstd_1_1numeric__limits_3_01_d_l_synth_1_1int24__t_01_4.html#a3adbbc7e6f4cab8b5631d6bc06b84c35',1,'std::numeric_limits&lt; DLSynth::int24_t &gt;']]],
+  ['msadpcmdecoder',['MsAdpcmDecoder',['../class_ms_adpcm_decoder.html#adb92cab6b380ebf9711a3df6bd06e1ec',1,'MsAdpcmDecoder::MsAdpcmDecoder(const WaveFormatEx &amp;format, std::uint32_t fact, const std::vector&lt; char &gt; &amp;data)'],['../class_ms_adpcm_decoder.html#a65cb2af30b0f69683863b82996c28a56',1,'MsAdpcmDecoder::MsAdpcmDecoder(const WaveFormatEx &amp;format, const std::vector&lt; char &gt; &amp;data)']]]
 ];

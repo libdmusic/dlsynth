@@ -2,6 +2,7 @@
 #define NUMERICUTILS_HPP
 
 #include <array>
+#include <cmath>
 #include <cstdint>
 #include <limits>
 
@@ -46,6 +47,27 @@ template <typename TIn, typename TOut> constexpr TOut clamp_convert(TIn value) {
     return (TOut)value;
   }
 }
+
+/// Converts a frequency expressed in absolute pitch units to hertz
+inline float absolutePitchToFrequency(std::int32_t value) {
+  return std::exp2((((float)value / 65536.f) - 6900.f) / 1200.f) * 440.f;
+}
+
+/// Converts a relative pitch value to a ratio
+inline float relativePitchToRatio(std::int16_t value) {
+  return std::exp2((float)value / 1200.f);
+}
+
+/// Converts a duration expressed in time cents to seconds
+inline float timeCentsToSecs(std::int32_t value) {
+  return std::exp2((float)value / (1200.f * 65536.f));
+}
+
+/// Converts a gain expressed in relative gain units to a ratio
+inline float relativeGainToRatio(std::int32_t value) {
+  return std::exp((float)value / (200.f * 65536.f));
+}
+
 } // namespace DLSynth
 
 static_assert(sizeof(DLSynth::int24_t) == 3, "Needs to be 3-byte aligned");
