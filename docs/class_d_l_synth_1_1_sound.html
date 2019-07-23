@@ -75,6 +75,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>A DLS Collection of instruments.  
+ <a href="class_d_l_synth_1_1_sound.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_sound_8hpp_source.html">Sound.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
@@ -95,8 +98,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6610edf7056dcdaf730931291e26934b"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="struct_d_l_synth_1_1_uuid.html">Uuid</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_sound.html#a6610edf7056dcdaf730931291e26934b">dlid</a> () const</td></tr>
 <tr class="memdesc:a6610edf7056dcdaf730931291e26934b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="struct_d_l_synth_1_1_uuid.html">Uuid</a> of the sound, if it exists.  <a href="#a6610edf7056dcdaf730931291e26934b">More...</a><br /></td></tr>
 <tr class="separator:a6610edf7056dcdaf730931291e26934b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a420033f7df38df4c8c17488869dd3880"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="class_d_l_synth_1_1_instrument.html">Instrument</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_sound.html#a420033f7df38df4c8c17488869dd3880">instruments</a> () const</td></tr>
+<tr class="memdesc:a420033f7df38df4c8c17488869dd3880"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the instruments contained in this collection.  <a href="#a420033f7df38df4c8c17488869dd3880">More...</a><br /></td></tr>
+<tr class="separator:a420033f7df38df4c8c17488869dd3880"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac488dc3aa541dd38dc199bafd5bec32f"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="class_d_l_synth_1_1_wave.html">Wave</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_sound.html#ac488dc3aa541dd38dc199bafd5bec32f">wavepool</a> () const</td></tr>
+<tr class="memdesc:ac488dc3aa541dd38dc199bafd5bec32f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the wavepool of this collection.  <a href="#ac488dc3aa541dd38dc199bafd5bec32f">More...</a><br /></td></tr>
+<tr class="separator:ac488dc3aa541dd38dc199bafd5bec32f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A DLS Collection of instruments. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a17878818107e30798ac7ae271c0f41f0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a17878818107e30798ac7ae271c0f41f0">&#9670;&nbsp;</a></span>Sound() <span class="overload">[1/2]</span></h2>
 
@@ -180,6 +191,25 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a420033f7df38df4c8c17488869dd3880"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a420033f7df38df4c8c17488869dd3880">&#9670;&nbsp;</a></span>instruments()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; <a class="el" href="class_d_l_synth_1_1_instrument.html">Instrument</a> &gt; &amp; Sound::instruments </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the instruments contained in this collection. </p>
+
+</div>
+</div>
 <a id="adc9bc57242e852630fa242746ea7d773"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adc9bc57242e852630fa242746ea7d773">&#9670;&nbsp;</a></span>operator=()</h2>
 
@@ -203,6 +233,25 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac488dc3aa541dd38dc199bafd5bec32f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac488dc3aa541dd38dc199bafd5bec32f">&#9670;&nbsp;</a></span>wavepool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; <a class="el" href="class_d_l_synth_1_1_wave.html">Wave</a> &gt; &amp; Sound::wavepool </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the wavepool of this collection. </p>
 
 </div>
 </div>

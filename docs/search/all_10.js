@@ -7,7 +7,7 @@ var searchData=
   ['samplesperblock',['samplesPerBlock',['../struct_adpcm_format.html#ab9c637d25f80f36788eb3186b60830f9',1,'AdpcmFormat']]],
   ['samplespersec',['SamplesPerSec',['../struct_d_l_synth_1_1_wave_format.html#ae2300ebff25786c05d8304af631b73e0',1,'DLSynth::WaveFormat::SamplesPerSec()'],['../struct_d_l_synth_1_1_wave_format_ex.html#af43681d9156e7d1f4026aba086b8e49c',1,'DLSynth::WaveFormatEx::SamplesPerSec()']]],
   ['sfinetune',['sFineTune',['../structwsmp.html#aef8b02aeaace3eb1148e62f1fb89baae',1,'wsmp']]],
-  ['sound',['Sound',['../class_d_l_synth_1_1_sound.html',1,'DLSynth::Sound'],['../structdlsynth__sound.html#af3537258e0a0329b227cf07087290571',1,'dlsynth_sound::sound()'],['../class_d_l_synth_1_1_sound.html#a17878818107e30798ac7ae271c0f41f0',1,'DLSynth::Sound::Sound(riffcpp::Chunk &amp;chunk, std::uint32_t sampleRate)'],['../class_d_l_synth_1_1_sound.html#a0bee94e58c27fab4aeb16bcf569372b9',1,'DLSynth::Sound::Sound(Sound &amp;&amp;snd)']]],
+  ['sound',['Sound',['../class_d_l_synth_1_1_sound.html',1,'DLSynth::Sound'],['../class_d_l_synth_1_1_sound.html#a17878818107e30798ac7ae271c0f41f0',1,'DLSynth::Sound::Sound(riffcpp::Chunk &amp;chunk, std::uint32_t sampleRate)'],['../class_d_l_synth_1_1_sound.html#a0bee94e58c27fab4aeb16bcf569372b9',1,'DLSynth::Sound::Sound(Sound &amp;&amp;snd)'],['../structdlsynth__sound.html#af3537258e0a0329b227cf07087290571',1,'dlsynth_sound::sound()'],['../structdlsynth__instr.html#ad157c53202f490d4fa2c440bac5adc5c',1,'dlsynth_instr::sound()']]],
   ['sound_2ecpp',['Sound.cpp',['../_sound_8cpp.html',1,'']]],
   ['sound_2ehpp',['Sound.hpp',['../_sound_8hpp.html',1,'']]],
   ['start',['start',['../class_d_l_synth_1_1_wavesample_loop.html#a5332628c7965e636a580e2b3db3cdd9f',1,'DLSynth::WavesampleLoop']]],

@@ -6,5 +6,5 @@ var searchData=
   ['samplesperblock',['samplesPerBlock',['../struct_adpcm_format.html#ab9c637d25f80f36788eb3186b60830f9',1,'AdpcmFormat']]],
   ['samplespersec',['SamplesPerSec',['../struct_d_l_synth_1_1_wave_format.html#ae2300ebff25786c05d8304af631b73e0',1,'DLSynth::WaveFormat::SamplesPerSec()'],['../struct_d_l_synth_1_1_wave_format_ex.html#af43681d9156e7d1f4026aba086b8e49c',1,'DLSynth::WaveFormatEx::SamplesPerSec()']]],
   ['sfinetune',['sFineTune',['../structwsmp.html#aef8b02aeaace3eb1148e62f1fb89baae',1,'wsmp']]],
-  ['sound',['sound',['../structdlsynth__sound.html#af3537258e0a0329b227cf07087290571',1,'dlsynth_sound']]]
+  ['sound',['sound',['../structdlsynth__sound.html#af3537258e0a0329b227cf07087290571',1,'dlsynth_sound::sound()'],['../structdlsynth__instr.html#ad157c53202f490d4fa2c440bac5adc5c',1,'dlsynth_instr::sound()']]]
 ];

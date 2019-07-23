@@ -99,8 +99,8 @@ Enumerations</h2></td></tr>
 <a class="el" href="dlsynth_8h.html#a0d6089813141c0c58ced90eb211c969aaf3737be7b748d98aeef3201bb4f0adaf">DLSYNTH_SEQUENTIAL</a>
  }</td></tr>
 <tr class="separator:a0d6089813141c0c58ced90eb211c969a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf24e9ecadad58acffda48af229fe9bb"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> { <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bba6013bee0d4371b01251589ccba604997">DLSYNTH_ERROR</a> =(CONDITION_FAILED, 6)# 194 "C:/Users/berto/dlsynth/include/dlsynth.h" 2, 
-<a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bba6013bee0d4371b01251589ccba604997">DLSYNTH_ERROR</a> =(CONDITION_FAILED, 6)# 194 "C:/Users/berto/dlsynth/include/dlsynth.h" 2
+<tr class="memitem:aaf24e9ecadad58acffda48af229fe9bb"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> { <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bba6013bee0d4371b01251589ccba604997">DLSYNTH_ERROR</a> =(CONDITION_FAILED, 6)# 237 "C:/Users/berto/dlsynth/include/dlsynth.h" 2, 
+<a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bba6013bee0d4371b01251589ccba604997">DLSYNTH_ERROR</a> =(CONDITION_FAILED, 6)# 237 "C:/Users/berto/dlsynth/include/dlsynth.h" 2
  }</td></tr>
 <tr class="separator:aaf24e9ecadad58acffda48af229fe9bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -136,14 +136,21 @@ Functions</h2></td></tr>
 <tr class="memitem:a1fabd22f79c54d4878c002174db63ece"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#a1fabd22f79c54d4878c002174db63ece">dlsynth_free_sound</a> (struct <a class="el" href="structdlsynth__sound.html">dlsynth_sound</a> *sound)</td></tr>
 <tr class="memdesc:a1fabd22f79c54d4878c002174db63ece"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the resources allocated for a DLS file.  <a href="#a1fabd22f79c54d4878c002174db63ece">More...</a><br /></td></tr>
 <tr class="separator:a1fabd22f79c54d4878c002174db63ece"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37e25ea84593243a7a5c7b8d6dbcb0e3"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#a37e25ea84593243a7a5c7b8d6dbcb0e3">dlsynth_sound_instr_count</a> (const struct <a class="el" href="structdlsynth__sound.html">dlsynth_sound</a> *sound, int *count)</td></tr>
-<tr class="separator:a37e25ea84593243a7a5c7b8d6dbcb0e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf5895ec3e0525386b56d60bfb23114e"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#abf5895ec3e0525386b56d60bfb23114e">dlsynth_sound_instr_info</a> (const struct <a class="el" href="structdlsynth__sound.html">dlsynth_sound</a> *sound, int instr, int *bank, int *patch)</td></tr>
-<tr class="separator:abf5895ec3e0525386b56d60bfb23114e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a010eff3100f7dab1d2de905a15a98306"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#a010eff3100f7dab1d2de905a15a98306">dlsynth_get_instr_patch</a> (int bank, int patch, const struct <a class="el" href="structdlsynth__sound.html">dlsynth_sound</a> *sound, struct <a class="el" href="structdlsynth__instr.html">dlsynth_instr</a> **instr)</td></tr>
-<tr class="separator:a010eff3100f7dab1d2de905a15a98306"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a6f03ccf7a4f81eb687849c08052b45"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#a5a6f03ccf7a4f81eb687849c08052b45">dlsynth_get_instr_num</a> (int instr_num, const struct <a class="el" href="structdlsynth__sound.html">dlsynth_sound</a> *sound, struct <a class="el" href="structdlsynth__instr.html">dlsynth_instr</a> **instr)</td></tr>
-<tr class="separator:a5a6f03ccf7a4f81eb687849c08052b45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1ac49bf036f7c9ef560b22f73d7e91f"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#ab1ac49bf036f7c9ef560b22f73d7e91f">dlsynth_sound_instr_count</a> (const struct <a class="el" href="structdlsynth__sound.html">dlsynth_sound</a> *sound, size_t *count)</td></tr>
+<tr class="memdesc:ab1ac49bf036f7c9ef560b22f73d7e91f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtains the number of instruments in this sound.  <a href="#ab1ac49bf036f7c9ef560b22f73d7e91f">More...</a><br /></td></tr>
+<tr class="separator:ab1ac49bf036f7c9ef560b22f73d7e91f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a735b2742c52fed520c1bbf1594d4a744"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#a735b2742c52fed520c1bbf1594d4a744">dlsynth_sound_instr_info</a> (const struct <a class="el" href="structdlsynth__instr.html">dlsynth_instr</a> *instr, uint32_t *bank, uint32_t *patch)</td></tr>
+<tr class="memdesc:a735b2742c52fed520c1bbf1594d4a744"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtains info about an instrument contained in a sound collection.  <a href="#a735b2742c52fed520c1bbf1594d4a744">More...</a><br /></td></tr>
+<tr class="separator:a735b2742c52fed520c1bbf1594d4a744"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae58fc769fece3dfe1dd2474b5cd52dc1"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#ae58fc769fece3dfe1dd2474b5cd52dc1">dlsynth_get_instr_patch</a> (uint32_t bank, uint32_t patch, const struct <a class="el" href="structdlsynth__sound.html">dlsynth_sound</a> *sound, struct <a class="el" href="structdlsynth__instr.html">dlsynth_instr</a> **instr)</td></tr>
+<tr class="memdesc:ae58fc769fece3dfe1dd2474b5cd52dc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtains a reference to a DLS instrument from its MIDI parameters.  <a href="#ae58fc769fece3dfe1dd2474b5cd52dc1">More...</a><br /></td></tr>
+<tr class="separator:ae58fc769fece3dfe1dd2474b5cd52dc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a254ccba7653b9621fbc4d981b9e99172"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#a254ccba7653b9621fbc4d981b9e99172">dlsynth_get_instr_num</a> (size_t instr_num, const struct <a class="el" href="structdlsynth__sound.html">dlsynth_sound</a> *sound, struct <a class="el" href="structdlsynth__instr.html">dlsynth_instr</a> **instr)</td></tr>
+<tr class="memdesc:a254ccba7653b9621fbc4d981b9e99172"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtains a reference to a DLS instrument from its index.  <a href="#a254ccba7653b9621fbc4d981b9e99172">More...</a><br /></td></tr>
+<tr class="separator:a254ccba7653b9621fbc4d981b9e99172"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3953a94bd91dd0531cf604c449ac159f"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#a3953a94bd91dd0531cf604c449ac159f">dlsynth_free_instr</a> (struct <a class="el" href="structdlsynth__instr.html">dlsynth_instr</a> *instr)</td></tr>
+<tr class="memdesc:a3953a94bd91dd0531cf604c449ac159f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees a reference to a DLS instrument.  <a href="#a3953a94bd91dd0531cf604c449ac159f">More...</a><br /></td></tr>
+<tr class="separator:a3953a94bd91dd0531cf604c449ac159f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff857a7504497b578c7b632042aacd78"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#aff857a7504497b578c7b632042aacd78">dlsynth_load_wav_file</a> (const char *path, struct <a class="el" href="structdlsynth__wav.html">dlsynth_wav</a> **wav)</td></tr>
 <tr class="memdesc:aff857a7504497b578c7b632042aacd78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads a WAV file for decoding.  <a href="#aff857a7504497b578c7b632042aacd78">More...</a><br /></td></tr>
 <tr class="separator:aff857a7504497b578c7b632042aacd78"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -160,8 +167,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:a952c50ee5a8f950db19cc33ac784aee0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the resources allocated for a WAV file.  <a href="#a952c50ee5a8f950db19cc33ac784aee0">More...</a><br /></td></tr>
 <tr class="separator:a952c50ee5a8f950db19cc33ac784aee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d45b9077e3a1fc32412914ca33d01d6"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#a7d45b9077e3a1fc32412914ca33d01d6">dlsynth_get_last_error</a> (void)</td></tr>
+<tr class="memdesc:a7d45b9077e3a1fc32412914ca33d01d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the last error generated by a function call.  <a href="#a7d45b9077e3a1fc32412914ca33d01d6">More...</a><br /></td></tr>
 <tr class="separator:a7d45b9077e3a1fc32412914ca33d01d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a3cdd9cc5df85e9efb0db1551e332a8"><td class="memItemLeft" align="right" valign="top">void DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#a9a3cdd9cc5df85e9efb0db1551e332a8">dlsynth_reset_last_error</a> (void)</td></tr>
+<tr class="memdesc:a9a3cdd9cc5df85e9efb0db1551e332a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the last generated error to DLSYNTH_NO_ERROR.  <a href="#a9a3cdd9cc5df85e9efb0db1551e332a8">More...</a><br /></td></tr>
 <tr class="separator:a9a3cdd9cc5df85e9efb0db1551e332a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -262,6 +271,27 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a3953a94bd91dd0531cf604c449ac159f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3953a94bd91dd0531cf604c449ac159f">&#9670;&nbsp;</a></span>dlsynth_free_instr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DLSYNTH_EXPORT dlsynth_free_instr </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structdlsynth__instr.html">dlsynth_instr</a> *&#160;</td>
+          <td class="paramname"><em>instr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Frees a reference to a DLS instrument. </p>
+<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+
+</div>
+</div>
 <a id="a1fabd22f79c54d4878c002174db63ece"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1fabd22f79c54d4878c002174db63ece">&#9670;&nbsp;</a></span>dlsynth_free_sound()</h2>
 
@@ -304,8 +334,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a5a6f03ccf7a4f81eb687849c08052b45"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a6f03ccf7a4f81eb687849c08052b45">&#9670;&nbsp;</a></span>dlsynth_get_instr_num()</h2>
+<a id="a254ccba7653b9621fbc4d981b9e99172"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a254ccba7653b9621fbc4d981b9e99172">&#9670;&nbsp;</a></span>dlsynth_get_instr_num()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -313,7 +343,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int DLSYNTH_EXPORT dlsynth_get_instr_num </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>instr_num</em>, </td>
         </tr>
         <tr>
@@ -336,10 +366,22 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Obtains a reference to a DLS instrument from its index. </p>
+<dl class="section remark"><dt>Remarks</dt><dd>Access to an instrument after the containing <a class="el" href="structdlsynth__sound.html">dlsynth_sound</a> has been free'd is undefined and should not be attempted. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">instr_num</td><td>Index of the instrument </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">sound</td><td>DLS sound where the instrument is contained </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">instr</td><td>The instrument </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="a010eff3100f7dab1d2de905a15a98306"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a010eff3100f7dab1d2de905a15a98306">&#9670;&nbsp;</a></span>dlsynth_get_instr_patch()</h2>
+<a id="ae58fc769fece3dfe1dd2474b5cd52dc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae58fc769fece3dfe1dd2474b5cd52dc1">&#9670;&nbsp;</a></span>dlsynth_get_instr_patch()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -347,13 +389,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int DLSYNTH_EXPORT dlsynth_get_instr_patch </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">uint32_t&#160;</td>
           <td class="paramname"><em>bank</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">uint32_t&#160;</td>
           <td class="paramname"><em>patch</em>, </td>
         </tr>
         <tr>
@@ -376,6 +418,19 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Obtains a reference to a DLS instrument from its MIDI parameters. </p>
+<dl class="section remark"><dt>Remarks</dt><dd>Access to an instrument after the containing <a class="el" href="structdlsynth__sound.html">dlsynth_sound</a> has been free'd is undefined and should not be attempted. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">bank</td><td>MIDI bank of the instrument </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">patch</td><td>MIDI Program Change of the instrument </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">sound</td><td>DLS sound where the instrument is contained </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">instr</td><td>The instrument </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a7d45b9077e3a1fc32412914ca33d01d6"></a>
@@ -393,6 +448,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Returns the last error generated by a function call. </p>
 
 </div>
 </div>
@@ -900,6 +957,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Resets the last generated error to DLSYNTH_NO_ERROR. </p>
+
 </div>
 </div>
 <a id="aaabc9b629ef006a1326c4d55beba8d77"></a>
@@ -940,8 +999,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a37e25ea84593243a7a5c7b8d6dbcb0e3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a37e25ea84593243a7a5c7b8d6dbcb0e3">&#9670;&nbsp;</a></span>dlsynth_sound_instr_count()</h2>
+<a id="ab1ac49bf036f7c9ef560b22f73d7e91f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1ac49bf036f7c9ef560b22f73d7e91f">&#9670;&nbsp;</a></span>dlsynth_sound_instr_count()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -955,7 +1014,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int *&#160;</td>
+          <td class="paramtype">size_t *&#160;</td>
           <td class="paramname"><em>count</em>&#160;</td>
         </tr>
         <tr>
@@ -966,10 +1025,20 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Obtains the number of instruments in this sound. </p>
+<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">sound</td><td>The sound of which to obtain the number of instruments </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">count</td><td>The number of instruments contained in the sound </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="abf5895ec3e0525386b56d60bfb23114e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abf5895ec3e0525386b56d60bfb23114e">&#9670;&nbsp;</a></span>dlsynth_sound_instr_info()</h2>
+<a id="a735b2742c52fed520c1bbf1594d4a744"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a735b2742c52fed520c1bbf1594d4a744">&#9670;&nbsp;</a></span>dlsynth_sound_instr_info()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -977,25 +1046,19 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int DLSYNTH_EXPORT dlsynth_sound_instr_info </td>
           <td>(</td>
-          <td class="paramtype">const struct <a class="el" href="structdlsynth__sound.html">dlsynth_sound</a> *&#160;</td>
-          <td class="paramname"><em>sound</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const struct <a class="el" href="structdlsynth__instr.html">dlsynth_instr</a> *&#160;</td>
           <td class="paramname"><em>instr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int *&#160;</td>
+          <td class="paramtype">uint32_t *&#160;</td>
           <td class="paramname"><em>bank</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int *&#160;</td>
+          <td class="paramtype">uint32_t *&#160;</td>
           <td class="paramname"><em>patch</em>&#160;</td>
         </tr>
         <tr>
@@ -1005,6 +1068,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Obtains info about an instrument contained in a sound collection. </p>
+<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">instr</td><td>The instrument of which to obtain info </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">bank</td><td>MIDI bank of the instrument </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">patch</td><td>MIDI Program Change of the instrument </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

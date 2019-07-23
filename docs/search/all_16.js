@@ -1,6 +1,8 @@
 var searchData=
 [
   ['_7edecodertable',['~DecoderTable',['../class_d_l_synth_1_1_decoder_table.html#a3645ae9cf5f476c78d9036998e4c7c94',1,'DLSynth::DecoderTable']]],
+  ['_7edlsynth_5fsound',['~dlsynth_sound',['../structdlsynth__sound.html#a602faf77f51af5fe4062ab64c56f0e30',1,'dlsynth_sound']]],
+  ['_7edlsynth_5fwav',['~dlsynth_wav',['../structdlsynth__wav.html#a20c969dc0ca3339c474d277bbec24752',1,'dlsynth_wav']]],
   ['_7eexpressionparser',['~ExpressionParser',['../class_d_l_synth_1_1_expression_parser.html#a12a5380920220c77bc102728625bc64f',1,'DLSynth::ExpressionParser']]],
   ['_7efloatdecoder',['~FloatDecoder',['../class_float_decoder.html#a03c5d5e3f91fd669ad14fcfa865c2675',1,'FloatDecoder']]],
   ['_7eimpl',['~impl',['../struct_sound_1_1impl.html#a487fe8bc6ddb226529734f8f8e4da912',1,'Sound::impl']]],

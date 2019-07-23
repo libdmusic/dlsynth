@@ -99,3 +99,13 @@ const Uuid *Sound::dlid() const {
   assert(m_pimpl != nullptr);
   return m_pimpl->m_dlid.get();
 }
+
+const std::vector<Instrument> &Sound::instruments() const {
+  assert(m_pimpl != nullptr);
+  return m_pimpl->m_instruments;
+}
+
+const std::vector<Wave> &Sound::wavepool() const {
+  assert(m_pimpl != nullptr);
+  return m_pimpl->m_wavepool;
+}
