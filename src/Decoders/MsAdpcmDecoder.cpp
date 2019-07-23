@@ -1,4 +1,5 @@
 #include "../Error.hpp"
+#include "../NumericUtils.hpp"
 #include "Decoders.hpp"
 #include <algorithm>
 #include <array>
@@ -39,10 +40,6 @@ template <int NumChannels> struct AdpcmHeader {
 
 constexpr int AdaptationTable[] = {230, 230, 230, 230, 307, 409, 512, 614,
                                    768, 614, 512, 409, 307, 230, 230, 230};
-
-static inline float normalize(std::int16_t value) {
-  return value < 0 ? -((float)value / INT16_MIN) : (float)value / INT16_MAX;
-}
 
 class MsAdpcmDecoder : public WaveDecoder {
   std::vector<std::int16_t> m_leftData, m_rightData;
@@ -134,13 +131,13 @@ public:
     std::copy(formatData->coeffs, formatData->coeffs + formatData->numCoeffs,
               m_coeffs.begin());
 
-    int numBlocks = data.size() / format.BlockAlign;
+    std::size_t numBlocks = data.size() / format.BlockAlign;
     if (data.size() % format.BlockAlign)
       numBlocks++;
 
     const char *blockData = data.data();
     const char *blockDataEnd = blockData + data.size();
-    for (int i = 0; i < numBlocks; i++) {
+    for (std::size_t i = 0; i < numBlocks; i++) {
       auto remainingSize = blockDataEnd - blockData;
       auto blockSize =
        remainingSize < format.BlockAlign ? remainingSize : format.BlockAlign;
@@ -184,7 +181,7 @@ public:
     std::copy(formatData->coeffs, formatData->coeffs + formatData->numCoeffs,
               m_coeffs.begin());
 
-    int numBlocks = data.size() / format.BlockAlign;
+    std::size_t numBlocks = data.size() / format.BlockAlign;
     if (data.size() % format.BlockAlign)
       numBlocks++;
 
@@ -193,7 +190,7 @@ public:
 
     const char *blockData = data.data();
     const char *blockDataEnd = blockData + data.size();
-    for (int i = 0; i < numBlocks; i++) {
+    for (std::size_t i = 0; i < numBlocks; i++) {
       auto remainingSize = blockDataEnd - blockData;
       auto blockSize =
        remainingSize < format.BlockAlign ? remainingSize : format.BlockAlign;
@@ -215,9 +212,9 @@ public:
                       std::size_t bufferSize) override {
     std::size_t len = std::min(bufferSize, m_leftData.size());
     std::transform(m_leftData.begin(), m_leftData.begin() + len, leftBuffer,
-                   normalize);
+                   [](auto x) { return normalize(x); });
     std::transform(m_rightData.begin(), m_rightData.begin() + len, rightBuffer,
-                   normalize);
+                   [](auto x) { return normalize(x); });
   }
 
   virtual std::size_t num_frames() override { return m_leftData.size(); }

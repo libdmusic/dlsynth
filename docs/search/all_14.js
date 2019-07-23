@@ -3,7 +3,7 @@ var searchData=
   ['wave',['Wave',['../class_d_l_synth_1_1_wave.html',1,'DLSynth::Wave'],['../class_d_l_synth_1_1_wave.html#a78ba12d891a78aa83181b660f579bad4',1,'DLSynth::Wave::Wave(riffcpp::Chunk &amp;chunk)'],['../class_d_l_synth_1_1_wave.html#a2eb65c7aebf1b8eab0bcc6732f9c26be',1,'DLSynth::Wave::Wave(Wave &amp;&amp;wave)'],['../structdlsynth__wav.html#aced2cd80edf948ef120c26adb4aef751',1,'dlsynth_wav::wave()']]],
   ['wave_2ecpp',['Wave.cpp',['../_wave_8cpp.html',1,'']]],
   ['wave_2ehpp',['Wave.hpp',['../_wave_8hpp.html',1,'']]],
-  ['wave_5fid',['WAVE_id',['../_wave_8cpp.html#a96953d83625fe81ebb13e531728cf280',1,'WAVE_id():&#160;Wave.cpp'],['../_sound_8cpp.html#a25ef3824b1504569e7ddd8d3a57e6c04',1,'wave_id():&#160;Sound.cpp'],['../_wave_8cpp.html#a25ef3824b1504569e7ddd8d3a57e6c04',1,'wave_id():&#160;Wave.cpp']]],
+  ['wave_5fid',['wave_id',['../_sound_8cpp.html#a25ef3824b1504569e7ddd8d3a57e6c04',1,'wave_id():&#160;Sound.cpp'],['../_wave_8cpp.html#a25ef3824b1504569e7ddd8d3a57e6c04',1,'wave_id():&#160;Wave.cpp'],['../_wave_8cpp.html#a96953d83625fe81ebb13e531728cf280',1,'WAVE_id():&#160;Wave.cpp']]],
   ['wavedecoder',['WaveDecoder',['../class_d_l_synth_1_1_wave_decoder.html',1,'DLSynth']]],
   ['wavedecoder_2ehpp',['WaveDecoder.hpp',['../_wave_decoder_8hpp.html',1,'']]],
   ['wavedecoderfactory',['WaveDecoderFactory',['../class_d_l_synth_1_1_wave_decoder_factory.html',1,'DLSynth']]],
