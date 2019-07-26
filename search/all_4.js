@@ -1,5 +1,8 @@
 var searchData=
 [
+  ['eg',['EG',['../class_d_l_synth_1_1_synth_1_1_e_g.html',1,'DLSynth::Synth::EG'],['../class_d_l_synth_1_1_synth_1_1_e_g.html#aaac3e6421311e167f9f9e6ab5496cadc',1,'DLSynth::Synth::EG::EG()']]],
+  ['eg_2ecpp',['EG.cpp',['../_e_g_8cpp.html',1,'']]],
+  ['eg_2ehpp',['EG.hpp',['../_e_g_8hpp.html',1,'']]],
   ['eg1',['EG1',['../namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196a98d3707bca086bd36b09d19f1a17fff3',1,'DLSynth']]],
   ['eg1attacktime',['EG1AttackTime',['../namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a27aaeed3b161a83ef1bbc2e5dc0dcf47',1,'DLSynth']]],
   ['eg1decaytime',['EG1DecayTime',['../namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a6ce554d1a4bdb88c6d9864e222b02390',1,'DLSynth']]],
@@ -18,6 +21,7 @@ var searchData=
   ['eg2reserved',['EG2Reserved',['../namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a5368f743c5307a8fea312074da212a17',1,'DLSynth']]],
   ['eg2sustainlevel',['EG2SustainLevel',['../namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a7ed0c1abf17feaa0a734ae820fcee194',1,'DLSynth']]],
   ['eq',['Eq',['../_expression_parser_8cpp.html#a751f5463d98870f136ae2a46f6e76017a3718b5ecf60aa0dba49e150e96cb1fc3',1,'ExpressionParser.cpp']]],
+  ['equal_5fto_3c_20connectionblock_20_3e',['equal_to&lt; ConnectionBlock &gt;',['../structstd_1_1equal__to_3_01_connection_block_01_4.html',1,'std']]],
   ['error',['Error',['../class_d_l_synth_1_1_error.html',1,'DLSynth::Error'],['../class_d_l_synth_1_1_error.html#a12b4e2325056fdd125b4c089b9df534d',1,'DLSynth::Error::Error()']]],
   ['error_2ecpp',['Error.cpp',['../_error_8cpp.html',1,'']]],
   ['error_2ehpp',['Error.hpp',['../_error_8hpp.html',1,'']]],

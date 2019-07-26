@@ -66,7 +66,8 @@ $(function() {
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">DLSynth Namespace Reference</div>  </div>
 </div><!--header-->
@@ -75,6 +76,8 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespace_d_l_synth_1_1_decoders"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth_1_1_decoders.html">Decoders</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespace_d_l_synth_1_1_synth"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth_1_1_synth.html">Synth</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
@@ -223,6 +226,8 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a95467e083b4b4f4968fc004c477244cd"><td class="memItemLeft" align="right" valign="top">constexpr std::uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#a95467e083b4b4f4968fc004c477244cd">maxValue</a> (<a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196">Source</a> source)</td></tr>
+<tr class="separator:a95467e083b4b4f4968fc004c477244cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9fa755510741453c9dc9acc90a98fc1f"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a9fa755510741453c9dc9acc90a98fc1f"><td class="memTemplItemLeft" align="right" valign="top">constexpr float&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#a9fa755510741453c9dc9acc90a98fc1f">normalize</a> (T value)</td></tr>
 <tr class="separator:a9fa755510741453c9dc9acc90a98fc1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -232,18 +237,23 @@ Functions</h2></td></tr>
 <tr class="memitem:a08d1e6124add9fea414d2df0f95de374"><td class="memTemplParams" colspan="2">template&lt;typename TIn , typename TOut &gt; </td></tr>
 <tr class="memitem:a08d1e6124add9fea414d2df0f95de374"><td class="memTemplItemLeft" align="right" valign="top">constexpr TOut&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#a08d1e6124add9fea414d2df0f95de374">clamp_convert</a> (TIn value)</td></tr>
 <tr class="separator:a08d1e6124add9fea414d2df0f95de374"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad908108ebfacdbc70da360c23db737ec"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#ad908108ebfacdbc70da360c23db737ec">absolutePitchToFrequency</a> (std::int32_t value)</td></tr>
-<tr class="memdesc:ad908108ebfacdbc70da360c23db737ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a frequency expressed in absolute pitch units to hertz.  <a href="#ad908108ebfacdbc70da360c23db737ec">More...</a><br /></td></tr>
-<tr class="separator:ad908108ebfacdbc70da360c23db737ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac55984e1c62040ba4d7a3c34cddf41c0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#ac55984e1c62040ba4d7a3c34cddf41c0">relativePitchToRatio</a> (std::int16_t value)</td></tr>
-<tr class="memdesc:ac55984e1c62040ba4d7a3c34cddf41c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a relative pitch value to a ratio.  <a href="#ac55984e1c62040ba4d7a3c34cddf41c0">More...</a><br /></td></tr>
-<tr class="separator:ac55984e1c62040ba4d7a3c34cddf41c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0336385af03d82238b6e50c7cdb3a33"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#ac0336385af03d82238b6e50c7cdb3a33">timeCentsToSecs</a> (std::int32_t value)</td></tr>
-<tr class="memdesc:ac0336385af03d82238b6e50c7cdb3a33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a duration expressed in time cents to seconds.  <a href="#ac0336385af03d82238b6e50c7cdb3a33">More...</a><br /></td></tr>
-<tr class="separator:ac0336385af03d82238b6e50c7cdb3a33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3ce51c940d4e8393b1b25e1dfcb8400"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#ae3ce51c940d4e8393b1b25e1dfcb8400">relativeGainToRatio</a> (std::int32_t value)</td></tr>
-<tr class="memdesc:ae3ce51c940d4e8393b1b25e1dfcb8400"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a gain expressed in relative gain units to a ratio.  <a href="#ae3ce51c940d4e8393b1b25e1dfcb8400">More...</a><br /></td></tr>
-<tr class="separator:ae3ce51c940d4e8393b1b25e1dfcb8400"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75347ecc05803d0136ee15960505235d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#a75347ecc05803d0136ee15960505235d">absolutePitchToCents</a> (std::int32_t value)</td></tr>
+<tr class="memdesc:a75347ecc05803d0136ee15960505235d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a frequency expressed in absolute pitch units to cents.  <a href="#a75347ecc05803d0136ee15960505235d">More...</a><br /></td></tr>
+<tr class="separator:a75347ecc05803d0136ee15960505235d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad90bf9cd5639e29bd698e8d5b9e128e6"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#ad90bf9cd5639e29bd698e8d5b9e128e6">timeUnitsToCents</a> (std::int32_t value)</td></tr>
+<tr class="memdesc:ad90bf9cd5639e29bd698e8d5b9e128e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a duration expressed in 32-bit time cents to time cents.  <a href="#ad90bf9cd5639e29bd698e8d5b9e128e6">More...</a><br /></td></tr>
+<tr class="separator:ad90bf9cd5639e29bd698e8d5b9e128e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac36eba82ad888dad35beef10d6afd036"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#ac36eba82ad888dad35beef10d6afd036">relativeGainUnitsToBels</a> (std::int32_t value)</td></tr>
+<tr class="memdesc:ac36eba82ad888dad35beef10d6afd036"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a gain expressed in relative gain units to bels.  <a href="#ac36eba82ad888dad35beef10d6afd036">More...</a><br /></td></tr>
+<tr class="separator:ac36eba82ad888dad35beef10d6afd036"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63e85e113f5699c6c7f13ac9523a3d78"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#a63e85e113f5699c6c7f13ac9523a3d78">percentUnitsToRatio</a> (std::int32_t value)</td></tr>
+<tr class="memdesc:a63e85e113f5699c6c7f13ac9523a3d78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a percentage expressed in percent units to a ratio.  <a href="#a63e85e113f5699c6c7f13ac9523a3d78">More...</a><br /></td></tr>
+<tr class="separator:a63e85e113f5699c6c7f13ac9523a3d78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a2bc19f31ad62078f441ac0013d6f2f6e"><td class="memItemLeft" align="right" valign="top">constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#a2bc19f31ad62078f441ac0013d6f2f6e">PI</a> = 3.14159f</td></tr>
+<tr class="separator:a2bc19f31ad62078f441ac0013d6f2f6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="ae1a4cc00c93ef96301ba03aaf4370981"></a>
@@ -431,8 +441,8 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ad908108ebfacdbc70da360c23db737ec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad908108ebfacdbc70da360c23db737ec">&#9670;&nbsp;</a></span>absolutePitchToFrequency()</h2>
+<a id="a75347ecc05803d0136ee15960505235d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75347ecc05803d0136ee15960505235d">&#9670;&nbsp;</a></span>absolutePitchToCents()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -441,7 +451,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">float DLSynth::absolutePitchToFrequency </td>
+          <td class="memname">float DLSynth::absolutePitchToCents </td>
           <td>(</td>
           <td class="paramtype">std::int32_t&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
@@ -455,7 +465,8 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Converts a frequency expressed in absolute pitch units to hertz. </p>
+<p>Converts a frequency expressed in absolute pitch units to cents. </p>
+<p>A value of 6900 means 440hz (A4) </p>
 
 </div>
 </div>
@@ -472,6 +483,24 @@ template&lt;typename TIn , typename TOut &gt; </div>
           <td>(</td>
           <td class="paramtype">TIn&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a95467e083b4b4f4968fc004c477244cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95467e083b4b4f4968fc004c477244cd">&#9670;&nbsp;</a></span>maxValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr std::uint16_t DLSynth::maxValue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196">Source</a>&#160;</td>
+          <td class="paramname"><em>source</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -519,8 +548,8 @@ template&lt;&gt; </div>
 
 </div>
 </div>
-<a id="ae3ce51c940d4e8393b1b25e1dfcb8400"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae3ce51c940d4e8393b1b25e1dfcb8400">&#9670;&nbsp;</a></span>relativeGainToRatio()</h2>
+<a id="a63e85e113f5699c6c7f13ac9523a3d78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63e85e113f5699c6c7f13ac9523a3d78">&#9670;&nbsp;</a></span>percentUnitsToRatio()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -529,7 +558,7 @@ template&lt;&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">float DLSynth::relativeGainToRatio </td>
+          <td class="memname">float DLSynth::percentUnitsToRatio </td>
           <td>(</td>
           <td class="paramtype">std::int32_t&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
@@ -543,12 +572,12 @@ template&lt;&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Converts a gain expressed in relative gain units to a ratio. </p>
+<p>Converts a percentage expressed in percent units to a ratio. </p>
 
 </div>
 </div>
-<a id="ac55984e1c62040ba4d7a3c34cddf41c0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac55984e1c62040ba4d7a3c34cddf41c0">&#9670;&nbsp;</a></span>relativePitchToRatio()</h2>
+<a id="ac36eba82ad888dad35beef10d6afd036"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac36eba82ad888dad35beef10d6afd036">&#9670;&nbsp;</a></span>relativeGainUnitsToBels()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -557,35 +586,7 @@ template&lt;&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">float DLSynth::relativePitchToRatio </td>
-          <td>(</td>
-          <td class="paramtype">std::int16_t&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Converts a relative pitch value to a ratio. </p>
-
-</div>
-</div>
-<a id="ac0336385af03d82238b6e50c7cdb3a33"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0336385af03d82238b6e50c7cdb3a33">&#9670;&nbsp;</a></span>timeCentsToSecs()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float DLSynth::timeCentsToSecs </td>
+          <td class="memname">float DLSynth::relativeGainUnitsToBels </td>
           <td>(</td>
           <td class="paramtype">std::int32_t&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
@@ -599,7 +600,50 @@ template&lt;&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Converts a duration expressed in time cents to seconds. </p>
+<p>Converts a gain expressed in relative gain units to bels. </p>
+
+</div>
+</div>
+<a id="ad90bf9cd5639e29bd698e8d5b9e128e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad90bf9cd5639e29bd698e8d5b9e128e6">&#9670;&nbsp;</a></span>timeUnitsToCents()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DLSynth::timeUnitsToCents </td>
+          <td>(</td>
+          <td class="paramtype">std::int32_t&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Converts a duration expressed in 32-bit time cents to time cents. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a2bc19f31ad62078f441ac0013d6f2f6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bc19f31ad62078f441ac0013d6f2f6e">&#9670;&nbsp;</a></span>PI</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr float DLSynth::PI = 3.14159f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

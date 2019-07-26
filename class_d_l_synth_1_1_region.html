@@ -98,6 +98,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:add3d847ff88e476805494e8b54595532"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_d_l_synth_1_1_wavesample.html">Wavesample</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_region.html#add3d847ff88e476805494e8b54595532">wavesample</a> () const</td></tr>
 <tr class="memdesc:add3d847ff88e476805494e8b54595532"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns wavesample data that overrides the one specified in the wave, if it exists.  <a href="#add3d847ff88e476805494e8b54595532">More...</a><br /></td></tr>
 <tr class="separator:add3d847ff88e476805494e8b54595532"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8eaf3806c7638eea9f59596dbd8cc52"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_region.html#ab8eaf3806c7638eea9f59596dbd8cc52">selfNonExclusive</a> () const</td></tr>
+<tr class="memdesc:ab8eaf3806c7638eea9f59596dbd8cc52"><td class="mdescLeft">&#160;</td><td class="mdescRight">If true, playing a note while a voice is already playing the same note spawns a new voice instead of restarting the preexisting one.  <a href="#ab8eaf3806c7638eea9f59596dbd8cc52">More...</a><br /></td></tr>
+<tr class="separator:ab8eaf3806c7638eea9f59596dbd8cc52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="afcc0b378cae8127c0a25df8eb356b405"></a>
@@ -184,6 +187,25 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns the range of notes for which this region is valid. </p>
+
+</div>
+</div>
+<a id="ab8eaf3806c7638eea9f59596dbd8cc52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8eaf3806c7638eea9f59596dbd8cc52">&#9670;&nbsp;</a></span>selfNonExclusive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Region::selfNonExclusive </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>If true, playing a note while a voice is already playing the same note spawns a new voice instead of restarting the preexisting one. </p>
 
 </div>
 </div>

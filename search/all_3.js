@@ -15,6 +15,7 @@ var searchData=
   ['dlsynth',['dlsynth',['../structdlsynth.html',1,'dlsynth'],['../namespace_d_l_synth.html',1,'DLSynth']]],
   ['dlsynth_2ecpp',['dlsynth.cpp',['../dlsynth_8cpp.html',1,'']]],
   ['dlsynth_2eh',['dlsynth.h',['../dlsynth_8h.html',1,'']]],
+  ['dlsynth_5fdefault_5fconn',['DLSYNTH_DEFAULT_CONN',['../_voice_8cpp.html#a84fcf2e6862ca5877285d737730c7d39',1,'Voice.cpp']]],
   ['dlsynth_5ferror',['dlsynth_error',['../dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb',1,'dlsynth_error():&#160;dlsynth.h'],['../dlsynth_8h.html#a233dbe455fe794cec01945f7b01da666',1,'DLSYNTH_ERROR():&#160;dlsynth.h'],['../_error_8hpp.html#a233dbe455fe794cec01945f7b01da666',1,'DLSYNTH_ERROR():&#160;Error.hpp'],['../dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bba6013bee0d4371b01251589ccba604997',1,'DLSYNTH_ERROR():&#160;dlsynth.h'],['../namespace_d_l_synth.html#a30571f4357f7c5194614f1ec64f7c5afa3da47ab3386705685d6dc6399b9edf5b',1,'DLSynth::DLSYNTH_ERROR()'],['../namespace_d_l_synth.html#a30571f4357f7c5194614f1ec64f7c5afa67c088f813e08bd03d12bd1ea03c11b4',1,'DLSynth::DLSYNTH_ERROR()']]],
   ['dlsynth_5ferrors_2eh',['dlsynth_errors.h',['../dlsynth__errors_8h.html',1,'']]],
   ['dlsynth_5ffactory',['DLSYNTH_FACTORY',['../_decoders_8hpp.html#a5dab4ea8774914dd78e5a3d9578a49a4',1,'Decoders.hpp']]],
@@ -48,5 +49,6 @@ var searchData=
   ['dlsynth_5fsound_5finstr_5finfo',['dlsynth_sound_instr_info',['../dlsynth_8h.html#a735b2742c52fed520c1bbf1594d4a744',1,'dlsynth_sound_instr_info(const struct dlsynth_instr *instr, uint32_t *bank, uint32_t *patch):&#160;dlsynth.cpp'],['../dlsynth_8cpp.html#aa296e565eda4d885e409382566e3634c',1,'dlsynth_sound_instr_info(const struct dlsynth_instr *instr, uint32_t *bank, uint32_t *patch):&#160;dlsynth.cpp']]],
   ['dlsynth_5fwav',['dlsynth_wav',['../structdlsynth__wav.html',1,'']]],
   ['dviadpcm',['DviAdpcm',['../struct_d_l_synth_1_1_wave_format.html#aea110d9a629dd45ac6da42350c0a7f50',1,'DLSynth::WaveFormat']]],
-  ['dlsynth',['dlsynth',['../index.html',1,'']]]
+  ['dlsynth',['dlsynth',['../index.html',1,'']]],
+  ['synth',['Synth',['../namespace_d_l_synth_1_1_synth.html',1,'DLSynth']]]
 ];

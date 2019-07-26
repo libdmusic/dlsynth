@@ -68,6 +68,15 @@ $(function() {
 <li>m_blocks
 : <a class="el" href="struct_instrument_1_1impl.html#a152a4f1a6ac0e16167eebe866a79a657">DLSynth::Instrument::impl</a>
 </li>
+<li>m_connections
+: <a class="el" href="struct_voice_params.html#ae5f3161c4267aff84790081e57b53e2e">VoiceParams</a>
+</li>
+<li>m_currentParams
+: <a class="el" href="struct_voice_1_1impl.html#a9d834fb365ac29df05d607c1005f85f6">DLSynth::Synth::Voice::impl</a>
+</li>
+<li>m_destinations
+: <a class="el" href="struct_voice_params.html#a7958c96776a8eb59ee3f62aea1604bf9">VoiceParams</a>
+</li>
 <li>m_dlid
 : <a class="el" href="struct_instrument_1_1impl.html#aeac0c0627c6637f42e06db8368af1623">DLSynth::Instrument::impl</a>
 , <a class="el" href="struct_sound_1_1impl.html#a3d2fa87164dd24379adf1cc70c4b7c40">DLSynth::Sound::impl</a>
@@ -75,8 +84,19 @@ $(function() {
 <li>m_exprParser
 : <a class="el" href="struct_sound_1_1impl.html#a03389694f422f9bc8fea8382fb2d4ff5">DLSynth::Sound::impl</a>
 </li>
+<li>m_filtEg
+: <a class="el" href="struct_voice_params.html#ade195aca1e6dfc6c56ec157b6a9aa947">VoiceParams</a>
+</li>
 <li>m_guid
 : <a class="el" href="struct_wave_1_1impl.html#a95c13e020c06e16ffeae8a9256424b58">DLSynth::Wave::impl</a>
+</li>
+<li>m_instrSources
+: <a class="el" href="struct_voice_1_1impl.html#a241a9c9533937ff65a602fd03817ddbd">DLSynth::Synth::Voice::impl</a>
+, <a class="el" href="struct_voice_params.html#a086eb358856578f9fdff26acbc9c9857">VoiceParams</a>
+</li>
+<li>m_instrument
+: <a class="el" href="struct_synthesizer_1_1impl.html#af73612b5f1fdccdd33705cd7992f226b">DLSynth::Synth::Synthesizer::impl</a>
+, <a class="el" href="struct_voice_1_1impl.html#ad0bc2d97617b575e0c58e684d757657f">DLSynth::Synth::Voice::impl</a>
 </li>
 <li>m_instruments
 : <a class="el" href="struct_sound_1_1impl.html#aa6e996cfa819bea0a7d1bed476e8db70">DLSynth::Sound::impl</a>
@@ -90,20 +110,59 @@ $(function() {
 <li>m_midiInstrument
 : <a class="el" href="struct_instrument_1_1impl.html#aaf97b8be5b13afd453764e07a9740fc3">DLSynth::Instrument::impl</a>
 </li>
+<li>m_modLfo
+: <a class="el" href="struct_voice_params.html#a006e6980521c4715b4509cc930445ca1">VoiceParams</a>
+</li>
+<li>m_newParams
+: <a class="el" href="struct_voice_1_1impl.html#ab8e82990eb92b1a2beaa39b56e4e2d5c">DLSynth::Synth::Voice::impl</a>
+</li>
+<li>m_paramSet1
+: <a class="el" href="struct_voice_1_1impl.html#a4f5a7800ad7b40bb180a8af3768933d2">DLSynth::Synth::Voice::impl</a>
+</li>
+<li>m_paramSet2
+: <a class="el" href="struct_voice_1_1impl.html#a08d97bf61b9d671309c7b95b0edcdba4">DLSynth::Synth::Voice::impl</a>
+</li>
+<li>m_playing
+: <a class="el" href="struct_voice_params.html#abe12254c87ebdc02774a01b6ef589d8d">VoiceParams</a>
+</li>
 <li>m_regions
 : <a class="el" href="struct_instrument_1_1impl.html#ad87fc899f502eaed184ec2c7fbed9f2a">DLSynth::Instrument::impl</a>
 </li>
 <li>m_rightData
 : <a class="el" href="struct_wave_1_1impl.html#a1739f67c215f12c11787a4c55c81b31c">DLSynth::Wave::impl</a>
 </li>
+<li>m_sample
+: <a class="el" href="struct_voice_params.html#afc12753b356f794b23e31a8a67f43d36">VoiceParams</a>
+</li>
+<li>m_samplePos
+: <a class="el" href="struct_voice_params.html#ae0feb290c6771ca75997bb1bdd34cc16">VoiceParams</a>
+</li>
 <li>m_sampleRate
-: <a class="el" href="struct_wave_1_1impl.html#a2467f4f17d746295570a3e5670aea5ba">DLSynth::Wave::impl</a>
+: <a class="el" href="struct_voice_1_1impl.html#af1b6b8f13fca213b300cc4c7fec6d8c2">DLSynth::Synth::Voice::impl</a>
+, <a class="el" href="struct_wave_1_1impl.html#a2467f4f17d746295570a3e5670aea5ba">DLSynth::Wave::impl</a>
+</li>
+<li>m_sources
+: <a class="el" href="struct_synthesizer_1_1impl.html#aff2e3b1aa4f5c352ee80dfbe8952441b">DLSynth::Synth::Synthesizer::impl</a>
+, <a class="el" href="struct_voice_params.html#af60ce2d61f948c6e3891ab2d1c405910">VoiceParams</a>
+</li>
+<li>m_sustain
+: <a class="el" href="struct_synthesizer_1_1impl.html#ab5359e11db46bd58602844e6b08a7920">DLSynth::Synth::Synthesizer::impl</a>
+</li>
+<li>m_vibLfo
+: <a class="el" href="struct_voice_params.html#a0c8a3a6b89521a6bc47e28a349f011f8">VoiceParams</a>
+</li>
+<li>m_voices
+: <a class="el" href="struct_synthesizer_1_1impl.html#a9451cf0b1197a6ef9cdb35a5889f0c9a">DLSynth::Synth::Synthesizer::impl</a>
+</li>
+<li>m_volEg
+: <a class="el" href="struct_voice_params.html#a8b4d60fe2a1f4741e6f07f35f52862cc">VoiceParams</a>
 </li>
 <li>m_wavepool
 : <a class="el" href="struct_sound_1_1impl.html#a8b6fbca444d59671fdf47ac917f61148">DLSynth::Sound::impl</a>
 </li>
 <li>m_wavesample
 : <a class="el" href="struct_wave_1_1impl.html#ae20a0916929b8a722e11e600fd8eff45">DLSynth::Wave::impl</a>
+, <a class="el" href="struct_voice_params.html#ab07266cf5b398fd5c3f9f0625cf583ea">VoiceParams</a>
 </li>
 <li>max()
 : <a class="el" href="structstd_1_1numeric__limits_3_01_d_l_synth_1_1int24__t_01_4.html#a22e2d8590a45ee9d622755ff26ba3842">std::numeric_limits&lt; DLSynth::int24_t &gt;</a>
@@ -116,6 +175,9 @@ $(function() {
 </li>
 <li>min()
 : <a class="el" href="structstd_1_1numeric__limits_3_01_d_l_synth_1_1int24__t_01_4.html#a3adbbc7e6f4cab8b5631d6bc06b84c35">std::numeric_limits&lt; DLSynth::int24_t &gt;</a>
+</li>
+<li>modulation()
+: <a class="el" href="class_d_l_synth_1_1_synth_1_1_synthesizer.html#af92a232d3e7d45ffb74636a3572e8d47">DLSynth::Synth::Synthesizer</a>
 </li>
 <li>MsAdpcm
 : <a class="el" href="struct_d_l_synth_1_1_wave_format.html#acc4dc15e2445280724d626b0042ac041">DLSynth::WaveFormat</a>

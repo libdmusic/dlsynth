@@ -11,6 +11,8 @@ var searchData=
   ['_7emsadpcmdecoder',['~MsAdpcmDecoder',['../class_ms_adpcm_decoder.html#acb5cb2ccf78614ddf50cad96075359b4',1,'MsAdpcmDecoder']]],
   ['_7epcmdecoder',['~PcmDecoder',['../class_pcm_decoder.html#a269f2bf125c2c6c60e9122c35c533be4',1,'PcmDecoder']]],
   ['_7esound',['~Sound',['../class_d_l_synth_1_1_sound.html#a0907389078bf740be2a5763366ad3376',1,'DLSynth::Sound']]],
+  ['_7esynthesizer',['~Synthesizer',['../class_d_l_synth_1_1_synth_1_1_synthesizer.html#a23e5e65b4d7024318009d4f550c11c04',1,'DLSynth::Synth::Synthesizer']]],
+  ['_7evoice',['~Voice',['../class_d_l_synth_1_1_synth_1_1_voice.html#ac4923262f6851444fadd03fccce828ef',1,'DLSynth::Synth::Voice']]],
   ['_7ewave',['~Wave',['../class_d_l_synth_1_1_wave.html#a1ee01745e8ec8fff53f1581f0bd3af1f',1,'DLSynth::Wave']]],
   ['_7ewavedecoder',['~WaveDecoder',['../class_d_l_synth_1_1_wave_decoder.html#a9a27a0599c5b8817750b02120baa612d',1,'DLSynth::WaveDecoder']]],
   ['_7ewavedecoderfactory',['~WaveDecoderFactory',['../class_d_l_synth_1_1_wave_decoder_factory.html#a0d835e4c5fbfd71d26c1ce89965b963e',1,'DLSynth::WaveDecoderFactory']]]
