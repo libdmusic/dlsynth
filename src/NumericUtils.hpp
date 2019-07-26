@@ -48,25 +48,36 @@ template <typename TIn, typename TOut> constexpr TOut clamp_convert(TIn value) {
   }
 }
 
-/// Converts a frequency expressed in absolute pitch units to hertz
-inline float absolutePitchToFrequency(std::int32_t value) {
-  return std::exp2((((float)value / 65536.f) - 6900.f) / 1200.f) * 440.f;
+/// Converts a frequency expressed in absolute pitch units to cents
+/**
+ * A value of 6900 means 440hz (A4)
+ */
+inline float absolutePitchToCents(std::int32_t value) {
+  return value / 65536.f;
 }
 
-/// Converts a relative pitch value to a ratio
-inline float relativePitchToRatio(std::int16_t value) {
-  return std::exp2((float)value / 1200.f);
+/// Converts a duration expressed in 32-bit time cents to time cents
+inline float timeUnitsToCents(std::int32_t value) {
+  if (value == 0x80000000) {
+    return -std::numeric_limits<float>::infinity();
+  }
+  return value / 65536.f;
 }
 
-/// Converts a duration expressed in time cents to seconds
-inline float timeCentsToSecs(std::int32_t value) {
-  return std::exp2((float)value / (1200.f * 65536.f));
+/// Converts a gain expressed in relative gain units to bels
+inline float relativeGainUnitsToBels(std::int32_t value) {
+  if (value == 0x80000000) {
+    return -std::numeric_limits<float>::infinity();
+  }
+  return (float)value / (200.f * 65536.f);
 }
 
-/// Converts a gain expressed in relative gain units to a ratio
-inline float relativeGainToRatio(std::int32_t value) {
-  return std::exp((float)value / (200.f * 65536.f));
+/// Converts a percentage expressed in percent units to a ratio
+inline float percentUnitsToRatio(std::int32_t value) {
+  return (float)value / (1000.f * 65536.f);
 }
+
+constexpr float PI = 3.14159f;
 
 } // namespace DLSynth
 

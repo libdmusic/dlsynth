@@ -5,24 +5,15 @@
 
 using namespace DLSynth;
 
-Transform::Transform(bool invert, bool bipolar, TransformType type)
-  : m_type(type), m_invert(invert), m_bipolar(bipolar) {}
-
-bool Transform::invert() const { return m_invert; }
-bool Transform::bipolar() const { return m_bipolar; }
-TransformType Transform::type() const { return m_type; }
-
 ConnectionBlock::ConnectionBlock(Source src, Source ctrl, Destination dest,
                                  std::int32_t scale, const Transform &srcTrans,
-                                 const Transform &ctrlTrans,
-                                 TransformType outTrans)
+                                 const Transform &ctrlTrans)
   : m_source(src)
   , m_control(ctrl)
   , m_destination(dest)
   , m_scale(scale)
   , m_sourceTransform(srcTrans)
-  , m_controlTransform(ctrlTrans)
-  , m_outputTransformType(outTrans) {}
+  , m_controlTransform(ctrlTrans) {}
 
 Source ConnectionBlock::source() const { return m_source; }
 Source ConnectionBlock::control() const { return m_control; }
@@ -34,10 +25,6 @@ const Transform &ConnectionBlock::sourceTransform() const {
 const Transform &ConnectionBlock::controlTransform() const {
   return m_controlTransform;
 }
-TransformType ConnectionBlock::outputTransformType() const {
-  return m_outputTransformType;
-}
-
 Articulator::Articulator(riffcpp::Chunk &chunk,
                          const ExpressionParser &exprParser) {
   for (auto child : chunk) {
@@ -77,8 +64,6 @@ void Articulator::load_art2(riffcpp::Chunk &chunk) {
   art *articulator = reinterpret_cast<art *>(data.data());
   for (std::uint32_t i = 0; i < articulator->cConnectionBlocks; i++) {
     cblock connectionBlock = articulator->connectionBlocks[i];
-    TransformType outTransType =
-     (TransformType)(connectionBlock.usTransform & 0x000F);
     TransformType ctrlTransType =
      (TransformType)((connectionBlock.usTransform & 0x00F0) >> 4);
     bool ctrlBipolar = connectionBlock.usTransform & (1 << 8);
@@ -91,8 +76,7 @@ void Articulator::load_art2(riffcpp::Chunk &chunk) {
     m_blocks.emplace_back(connectionBlock.usSource, connectionBlock.usControl,
                           connectionBlock.usDestination, connectionBlock.lScale,
                           Transform(srcInvert, srcBipolar, srcTransType),
-                          Transform(ctrlInvert, ctrlBipolar, ctrlTransType),
-                          outTransType);
+                          Transform(ctrlInvert, ctrlBipolar, ctrlTransType));
   }
 }
 
@@ -119,6 +103,6 @@ void Articulator::load_art1(riffcpp::Chunk &chunk) {
      src, ctrl, dst, connectionBlock.lScale,
      Transform(invertedSources.find(src) != invertedSources.end(),
                bipolarSources.find(src) != bipolarSources.end(), transType),
-     Transform(false, false, transType), transType);
+     Transform(false, false, transType));
   }
 }

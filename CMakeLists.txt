@@ -15,6 +15,10 @@ target_sources(dlsynth
         ${CMAKE_CURRENT_LIST_DIR}/src/Decoders/LogarithmicDecoder.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/Decoders/MsAdpcmDecoder.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/Decoders/PcmDecoder.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/src/Synth/EG.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/src/Synth/LFO.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/src/Synth/Synthesizer.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/src/Synth/Voice.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/Articulator.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/DecoderTable.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/dlsynth.cpp

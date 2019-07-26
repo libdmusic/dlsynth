@@ -12,6 +12,11 @@ namespace DLSynth {
 struct Range {
   std::uint16_t low;  ///< Lower bound
   std::uint16_t high; ///< Higher bound
+
+  /// Returns `true` if \p value falls within the range
+  constexpr bool inRange(std::uint16_t value) const {
+    return value <= high && value >= low;
+  }
 };
 
 class Region {
@@ -50,6 +55,10 @@ public:
   /// Returns wavesample data that overrides the one specified in the wave, if
   /// it exists
   const Wavesample *wavesample() const;
+
+  /// If true, playing a note while a voice is already playing the same note
+  /// spawns a new voice instead of restarting the preexisting one
+  bool selfNonExclusive() const;
 };
 } // namespace DLSynth
 

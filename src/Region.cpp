@@ -86,3 +86,5 @@ const std::vector<ConnectionBlock> &Region::connectionBlocks() const {
 }
 std::uint32_t Region::waveIndex() const { return m_waveIndex; }
 const Wavesample *Region::wavesample() const { return m_wavesample.get(); }
+
+bool Region::selfNonExclusive() const { return m_selfNonExclusive; }

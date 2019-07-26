@@ -29,6 +29,14 @@ enum class Source : std::uint16_t {
   RPN2 = 0x0102
 };
 
+constexpr std::uint16_t maxValue(Source source) {
+  if (source == Source::PitchWheel || ((std::uint16_t)source & 0x0100)) {
+    return 0x4000;
+  } else {
+    return 0x0080;
+  }
+}
+
 enum class Destination : std::uint16_t {
   None = 0x0000,
   Gain = 0x0001,
@@ -80,10 +88,11 @@ class Transform {
   TransformType m_type;
 
 public:
-  Transform(bool invert, bool bipolar, TransformType type);
-  bool invert() const;
-  bool bipolar() const;
-  TransformType type() const;
+  constexpr Transform(bool invert, bool bipolar, TransformType type)
+    : m_invert(invert), m_bipolar(bipolar), m_type(type) {}
+  constexpr bool invert() const { return m_invert; }
+  constexpr bool bipolar() const { return m_bipolar; }
+  constexpr TransformType type() const { return m_type; }
 };
 
 /// Defines how an input signal affects an instrument parameter
@@ -94,12 +103,10 @@ class ConnectionBlock {
   std::int32_t m_scale;
   Transform m_sourceTransform;
   Transform m_controlTransform;
-  TransformType m_outputTransformType;
 
 public:
   ConnectionBlock(Source src, Source ctrl, Destination dest, std::int32_t scale,
-                  const Transform &srcTrans, const Transform &ctrlTrans,
-                  TransformType outTrans);
+                  const Transform &srcTrans, const Transform &ctrlTrans);
 
   Source source() const;
   Source control() const;
@@ -107,7 +114,6 @@ public:
   std::int32_t scale() const;
   const Transform &sourceTransform() const;
   const Transform &controlTransform() const;
-  TransformType outputTransformType() const;
 };
 
 /// A set of \ref ConnectionBlock s that defines the parameters of an instrument
