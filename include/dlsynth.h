@@ -84,15 +84,6 @@ int DLSYNTH_EXPORT dlsynth_render_float_mix(
  size_t frames          ///< [in] The number of frames to render
 );
 
-/// Sets the instrument the syntheisizer should use to render the audio data
-/**
- * @return Nonzero on success, zero on failure
- */
-int DLSYNTH_EXPORT dlsynth_set_instr(
- struct dlsynth *synth, ///< [in] The synthesizer to set the instrument to
- const struct dlsynth_instr *instr ///< [in] The instrument to set
-);
-
 /// Loads a DLS file from a path
 /**
  * @return Nonzero on success, zero on failure
