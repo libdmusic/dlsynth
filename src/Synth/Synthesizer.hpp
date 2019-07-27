@@ -22,7 +22,7 @@ namespace Synth {
     void noteOn(std::uint8_t note, std::uint8_t velocity);
 
     /// Sends a MIDI Note Off event
-    void noteOff(std::uint8_t note, std::uint8_t velocity);
+    void noteOff(std::uint8_t note);
 
     /// Sends a MIDI Poly Pressure (Aftertouch) event
     void pressure(std::uint8_t note, std::uint8_t value);

@@ -2,7 +2,9 @@
 #include "../NumericUtils.hpp"
 #include "EG.hpp"
 #include "LFO.hpp"
+#include <atomic>
 #include <map>
+#include <mutex>
 #include <unordered_set>
 
 using namespace DLSynth;
@@ -27,12 +29,9 @@ template <> struct equal_to<ConnectionBlock> {
 } // namespace std
 
 #define DLSYNTH_DEFAULT_CONN(src, ctrl, dst, scale, bip, inv, type)            \
-  {                                                                            \
-    Source::src, Source::ctrl, Destination::dts, scale,                        \
-     {inv, bip, TransformType::type}, {                                        \
-      false, false, TransformType::None                                        \
-    }                                                                          \
-  }
+  ConnectionBlock(Source::src, Source::ctrl, Destination::dst, scale,          \
+                  Transform(inv, bip, TransformType::type),                    \
+                  Transform(false, false, TransformType::None))
 
 static float concaveTransform(float value) {
   static float threshold = 1.f - std::pow(10, -12.f / 5.f);
@@ -164,8 +163,11 @@ struct VoiceParams {
   std::unordered_set<ConnectionBlock> m_connections;
   std::map<Source, float> m_sources;
   std::map<Destination, float> m_destinations;
-  const std::map<Source, std::uint16_t> &m_instrSources;
+  const std::map<Source, float> &m_instrSources;
   bool m_playing;
+  std::uint8_t m_note;
+  std::uint8_t m_velocity;
+  std::chrono::steady_clock::time_point m_startTime;
 
   const Wave *m_sample = nullptr;
   const Wavesample *m_wavesample = nullptr;
@@ -174,9 +176,8 @@ struct VoiceParams {
   LFO m_modLfo, m_vibLfo;
   EG m_volEg, m_filtEg;
 
-  VoiceParams(const std::map<Source, std::uint16_t> &instrSources,
-              std::uint32_t sampleRate, const Wave &sample,
-              const Wavesample &wavesample)
+  VoiceParams(const std::map<Source, float> &instrSources,
+              std::uint32_t sampleRate)
     : m_instrSources(instrSources)
     , m_modLfo(sampleRate)
     , m_vibLfo(sampleRate)
@@ -190,7 +191,7 @@ struct VoiceParams {
     if (m_sources.find(source) != m_sources.end()) {
       return m_sources.at(source);
     } else if (m_instrSources.find(source) != m_instrSources.end()) {
-      return (float)m_instrSources.at(source) / (float)maxValue(source);
+      return m_instrSources.at(source);
     } else {
       return 0;
     }
@@ -218,7 +219,7 @@ struct VoiceParams {
 
   void resetConnections() {
     m_connections = {
-     DLSYNTH_DEFAULT_CONN(Source, None, LfoFrequency, -55791973, false, false,
+     DLSYNTH_DEFAULT_CONN(None, None, LfoFrequency, -55791973, false, false,
                           None),
      DLSYNTH_DEFAULT_CONN(None, None, LfoStartDelay, -522494112, false, false,
                           None),
@@ -240,12 +241,12 @@ struct VoiceParams {
                           None),
      DLSYNTH_DEFAULT_CONN(None, None, EG1ShutdownTime, -476490789, false, false,
                           None),
-     DLSYNTH_DEFAULT_CONN(None, None, EG1AttackTime, 0, false, false, None),
-     DLSYNTH_DEFAULT_CONN(KeyOnVelocity, None, EG1DecayTime, 0, false, false,
+     DLSYNTH_DEFAULT_CONN(KeyOnVelocity, None, EG1AttackTime, 0, false, false,
                           None),
+     DLSYNTH_DEFAULT_CONN(KeyNumber, None, EG1DecayTime, 0, false, false, None),
      DLSYNTH_DEFAULT_CONN(KeyNumber, None, EG1HoldTime, 0, false, false, None),
-     DLSYNTH_DEFAULT_CONN(KeyNumber, None, EG2DelayTime, 0x80000000, false,
-                          false, None),
+     DLSYNTH_DEFAULT_CONN(None, None, EG2DelayTime, 0x80000000, false, false,
+                          None),
      DLSYNTH_DEFAULT_CONN(None, None, EG2AttackTime, 0x80000000, false, false,
                           None),
      DLSYNTH_DEFAULT_CONN(None, None, EG2HoldTime, 0x80000000, false, false,
@@ -256,51 +257,51 @@ struct VoiceParams {
                           None),
      DLSYNTH_DEFAULT_CONN(None, None, EG2ReleaseTime, 0x80000000, false, false,
                           None),
-     DLSYNTH_DEFAULT_CONN(None, None, EG2AttackTime, 0, false, false, None),
-     DLSYNTH_DEFAULT_CONN(KeyOnVelocity, None, EG2DecayTime, 0, false, false,
+     DLSYNTH_DEFAULT_CONN(KeyOnVelocity, None, EG2AttackTime, 0, false, false,
                           None),
+     DLSYNTH_DEFAULT_CONN(KeyNumber, None, EG2DecayTime, 0, false, false, None),
      DLSYNTH_DEFAULT_CONN(KeyNumber, None, EG2HoldTime, 0, false, false, None),
      DLSYNTH_DEFAULT_CONN(KeyNumber, None, KeyNumber, 838860800, false, false,
                           None),
-     DLSYNTH_DEFAULT_CONN(KeyNumber, None, KeyNumber, 419430400, true, false,
-                          None),
-     DLSYNTH_DEFAULT_CONN(RPN2, None, FilterCutoff, 0x7FFFFFFF, false, false,
+     DLSYNTH_DEFAULT_CONN(RPN2, None, KeyNumber, 419430400, true, false, None),
+     DLSYNTH_DEFAULT_CONN(None, None, FilterCutoff, 0x7FFFFFFF, false, false,
                           None),
      DLSYNTH_DEFAULT_CONN(None, None, FilterQ, 0, false, false, None),
-     DLSYNTH_DEFAULT_CONN(None, None, FilterCutoff, 0, true, false, None),
+     DLSYNTH_DEFAULT_CONN(LFO, None, FilterCutoff, 0, true, false, None),
      DLSYNTH_DEFAULT_CONN(LFO, CC1, FilterCutoff, 0, true, false, None),
      DLSYNTH_DEFAULT_CONN(LFO, ChannelPressure, FilterCutoff, 0, true, false,
                           None),
-     DLSYNTH_DEFAULT_CONN(LFO, None, FilterCutoff, 0, false, false, None),
      DLSYNTH_DEFAULT_CONN(EG2, None, FilterCutoff, 0, false, false, None),
      DLSYNTH_DEFAULT_CONN(KeyOnVelocity, None, FilterCutoff, 0, false, false,
                           None),
-     DLSYNTH_DEFAULT_CONN(KeyNumber, None, Gain, 0, true, false, None),
+     DLSYNTH_DEFAULT_CONN(KeyNumber, None, FilterCutoff, 0, false, false, None),
+     DLSYNTH_DEFAULT_CONN(LFO, None, Gain, 0, true, false, None),
      DLSYNTH_DEFAULT_CONN(LFO, CC1, Gain, 0, true, false, None),
      DLSYNTH_DEFAULT_CONN(LFO, ChannelPressure, Gain, 0, true, false, None),
-     DLSYNTH_DEFAULT_CONN(LFO, None, Gain, 0x80000000, false, true, None),
      DLSYNTH_DEFAULT_CONN(KeyOnVelocity, None, Gain, 0x80000000, false, true,
                           None),
      DLSYNTH_DEFAULT_CONN(CC7, None, Gain, 0x80000000, false, true, None),
-     DLSYNTH_DEFAULT_CONN(CC11, None, Pan, 0, false, false, None),
-     DLSYNTH_DEFAULT_CONN(None, None, Pan, 33292288, true, false, None),
-     DLSYNTH_DEFAULT_CONN(CC10, None, Reverb, 65536000, false, false, None),
-     DLSYNTH_DEFAULT_CONN(CC91, None, Reverb, 0, false, false, None),
-     DLSYNTH_DEFAULT_CONN(None, None, Chorus, 65536000, false, false, None),
-     DLSYNTH_DEFAULT_CONN(CC93, None, Chorus, 0, false, false, None),
+     DLSYNTH_DEFAULT_CONN(CC11, None, Gain, 0x80000000, false, true, None),
+     DLSYNTH_DEFAULT_CONN(None, None, Pan, 0, false, false, None),
+     DLSYNTH_DEFAULT_CONN(CC10, None, Pan, 33292288, true, false, None),
+     DLSYNTH_DEFAULT_CONN(CC91, None, Reverb, 65536000, false, false, None),
+     DLSYNTH_DEFAULT_CONN(None, None, Reverb, 0, false, false, None),
+     DLSYNTH_DEFAULT_CONN(CC93, None, Chorus, 65536000, false, false, None),
+     DLSYNTH_DEFAULT_CONN(None, None, Chorus, 0, false, false, None),
      DLSYNTH_DEFAULT_CONN(None, None, Pitch, 0, false, false, None),
-     DLSYNTH_DEFAULT_CONN(None, RPN0, Pitch, 838860800, true, false, None),
-     DLSYNTH_DEFAULT_CONN(PitchWheel, None, Pitch, 838860800, false, false,
+     DLSYNTH_DEFAULT_CONN(PitchWheel, RPN0, Pitch, 838860800, true, false,
                           None),
-     DLSYNTH_DEFAULT_CONN(KeyNumber, None, Pitch, 6553600, false, false, None),
-     DLSYNTH_DEFAULT_CONN(RPN1, None, Pitch, 0, true, false, None),
+     DLSYNTH_DEFAULT_CONN(KeyNumber, None, Pitch, 838860800, false, false,
+                          None),
+     DLSYNTH_DEFAULT_CONN(RPN1, None, Pitch, 6553600, false, false, None),
+     DLSYNTH_DEFAULT_CONN(Vibrato, None, Pitch, 0, true, false, None),
      DLSYNTH_DEFAULT_CONN(Vibrato, CC1, Pitch, 0, true, false, None),
      DLSYNTH_DEFAULT_CONN(Vibrato, ChannelPressure, Pitch, 0, true, false,
                           None),
-     DLSYNTH_DEFAULT_CONN(Vibrato, None, Pitch, 0, true, false, None),
+     DLSYNTH_DEFAULT_CONN(LFO, None, Pitch, 0, true, false, None),
      DLSYNTH_DEFAULT_CONN(LFO, CC1, Pitch, 0, true, false, None),
      DLSYNTH_DEFAULT_CONN(LFO, ChannelPressure, Pitch, 0, true, false, None),
-     DLSYNTH_DEFAULT_CONN(LFO, None, Pitch, 0, false, false, None),
+     DLSYNTH_DEFAULT_CONN(EG2, None, Pitch, 0, false, false, None),
     };
   }
 
@@ -317,31 +318,31 @@ struct VoiceParams {
   }
 
   void resetDestinations() {
-    m_destinations = {{Destination::Gain, 0},
-                      {Destination::Pitch, 0},
-                      {Destination::Pan, 0},
-                      {Destination::KeyNumber, 0},
-                      {Destination::LfoFrequency, 0},
-                      {Destination::LfoStartDelay, 0},
-                      {Destination::VibratoFrequency, 0},
-                      {Destination::VibratoStartDelay, 0},
-                      {Destination::EG1AttackTime, 0},
-                      {Destination::EG1DecayTime, 0},
-                      {Destination::EG1Reserved, 0},
-                      {Destination::EG1ReleaseTime, 0},
-                      {Destination::EG1SustainLevel, 0},
-                      {Destination::EG1DelayTime, 0},
-                      {Destination::EG1HoldTime, 0},
-                      {Destination::EG1ShutdownTime, 0},
-                      {Destination::EG2AttackTime, 0},
-                      {Destination::EG2DecayTime, 0},
-                      {Destination::EG2Reserved, 0},
-                      {Destination::EG2ReleaseTime, 0},
-                      {Destination::EG2SustainLevel, 0},
-                      {Destination::EG2DelayTime, 0},
-                      {Destination::EG2HoldTime, 0},
-                      {Destination::FilterCutoff, 0},
-                      {Destination::FilterQ, 0}};
+    m_destinations = {{Destination::Gain, 0.f},
+                      {Destination::Pitch, 0.f},
+                      {Destination::Pan, 0.f},
+                      {Destination::KeyNumber, 0.f},
+                      {Destination::LfoFrequency, 0.f},
+                      {Destination::LfoStartDelay, 0.f},
+                      {Destination::VibratoFrequency, 0.f},
+                      {Destination::VibratoStartDelay, 0.f},
+                      {Destination::EG1AttackTime, 0.f},
+                      {Destination::EG1DecayTime, 0.f},
+                      {Destination::EG1Reserved, 0.f},
+                      {Destination::EG1ReleaseTime, 0.f},
+                      {Destination::EG1SustainLevel, 0.f},
+                      {Destination::EG1DelayTime, 0.f},
+                      {Destination::EG1HoldTime, 0.f},
+                      {Destination::EG1ShutdownTime, 0.f},
+                      {Destination::EG2AttackTime, 0.f},
+                      {Destination::EG2DecayTime, 0.f},
+                      {Destination::EG2Reserved, 0.f},
+                      {Destination::EG2ReleaseTime, 0.f},
+                      {Destination::EG2SustainLevel, 0.f},
+                      {Destination::EG2DelayTime, 0.f},
+                      {Destination::EG2HoldTime, 0.f},
+                      {Destination::FilterCutoff, 0.f},
+                      {Destination::FilterQ, 0.f}};
   }
 
   void updateModLfo() {
@@ -375,6 +376,10 @@ struct VoiceParams {
     float output = 2 * std::log10(m_volEg.nextSample(delay, attack, hold, decay,
                                                      sustain, release));
 
+    if (!m_volEg.isActive()) {
+      m_playing = false;
+    }
+
     m_sources.at(Source::EG1) = output;
   }
 
@@ -394,10 +399,11 @@ struct VoiceParams {
 
   void render_mix(float *beginLeft, float *endLeft, float *beginRight,
                   float *endRight) {
-    float lp = beginLeft;
-    float rp = beginRight;
+    float *lp = beginLeft;
+    float *rp = beginRight;
 
-    if (m_sample == nullptr || m_wavesample == nullptr) {
+    if (m_sample == nullptr || m_wavesample == nullptr || !m_playing) {
+      m_playing = false;
       return;
     }
 
@@ -422,16 +428,40 @@ struct VoiceParams {
 
       float lsample = interpolateSample(m_samplePos, m_sample->leftData()) *
                       belsToGain(leftGain);
-      float rsample = interpolateSample(m_samplePos, m_sample->rightData() * belsToGain(rightGain);
+      float rsample = interpolateSample(m_samplePos, m_sample->rightData()) *
+                      belsToGain(rightGain);
 
       m_samplePos += freqRatio;
+      const WavesampleLoop *loop = m_wavesample->loop();
 
-      if(lp < endLeft) {
+      if (loop != nullptr) {
+        float loopStart = loop->start();
+        float loopLength = loop->length();
+        float loopEnd = loopStart + loopEnd;
+
+        if (loop->type() == LoopType::Forward) {
+          if (m_samplePos > loopEnd) {
+            m_samplePos -= loopLength;
+          }
+        } else {
+          if (m_playing) {
+            if (m_samplePos > loopEnd) {
+              m_samplePos -= loopLength;
+            }
+          } else {
+            if (m_samplePos > m_sample->leftData().size()) {
+              m_playing = false;
+            }
+          }
+        }
+      }
+
+      if (lp < endLeft) {
         *lp = lsample;
         lp++;
       }
 
-      if(rp < endRight) {
+      if (rp < endRight) {
         *rp = rsample;
         rp++;
       }
@@ -440,24 +470,30 @@ struct VoiceParams {
 
   void render_fill(float *beginLeft, float *endLeft, float *beginRight,
                    float *endRight) {
-    std::fill(beginLeft, endLeft, 0);
-    std::fill(beginRight, endRight, 0);
+    std::fill(beginLeft, endLeft, 0.f);
+    std::fill(beginRight, endRight, 0.f);
     render_mix(beginLeft, endLeft, beginRight, endRight);
+  }
+
+  void noteOff() {
+    m_volEg.noteOff();
+    m_filtEg.noteOff();
   }
 };
 
 struct Voice::impl {
   const Instrument &m_instrument;
-  const std::map<Source, std::uint16_t> &m_instrSources;
+  const std::map<Source, float> &m_instrSources;
   std::uint32_t m_sampleRate;
 
   VoiceParams m_paramSet1;
   VoiceParams m_paramSet2;
 
+  std::mutex m_currentParamsMtx;
   std::atomic<VoiceParams *> m_currentParams;
   std::atomic<VoiceParams *> m_newParams;
 
-  impl(const Instrument &instr, const std::map<Source, std::uint16_t> &sources,
+  impl(const Instrument &instr, const std::map<Source, float> &sources,
        std::uint32_t sampleRate)
     : m_instrument(instr)
     , m_instrSources(sources)
@@ -469,8 +505,7 @@ struct Voice::impl {
 };
 
 Voice::Voice(const Instrument &instrument,
-             const std::map<Source, std::uint16_t> &sources,
-             std::uint32_t sampleRate)
+             const std::map<Source, float> &sources, std::uint32_t sampleRate)
   : pimpl(new impl(instrument, sources, sampleRate)) {}
 
 Voice::Voice(Voice &&voice) : pimpl(voice.pimpl) { voice.pimpl = nullptr; }
@@ -479,4 +514,67 @@ Voice::~Voice() {
   if (pimpl != nullptr) {
     delete pimpl;
   }
+}
+
+void Voice::noteOn(std::uint8_t note, std::uint8_t velocity,
+                   const Wavesample *wavesample, const Wave &sample) {
+  std::lock_guard<std::mutex> guard(pimpl->m_currentParamsMtx);
+  while (true) {
+    VoiceParams *reusedData = pimpl->m_newParams;
+    if (reusedData == nullptr) {
+      continue;
+    }
+    pimpl->m_newParams = nullptr;
+
+    reusedData->m_playing = true;
+    reusedData->resetConnections();
+    reusedData->resetDestinations();
+    reusedData->m_wavesample = wavesample;
+    reusedData->m_sample = &sample;
+    reusedData->m_samplePos = 0;
+    reusedData->m_note = note;
+    reusedData->m_velocity = velocity;
+    reusedData->m_startTime = std::chrono::steady_clock::now();
+    reusedData->m_sources[Source::KeyNumber] = (float)note / 128.f;
+    reusedData->m_sources[Source::KeyOnVelocity] = (float)velocity / 128.f;
+
+    pimpl->m_currentParams = reusedData;
+  }
+}
+void Voice::noteOff() {
+  std::lock_guard<std::mutex> guard(pimpl->m_currentParamsMtx);
+  VoiceParams *params = pimpl->m_currentParams;
+  params->noteOff();
+}
+void Voice::soundOff() {
+  std::lock_guard<std::mutex> guard(pimpl->m_currentParamsMtx);
+  while (true) {
+    VoiceParams *reusedData = pimpl->m_newParams;
+    if (reusedData == nullptr) {
+      continue;
+    }
+    pimpl->m_newParams = nullptr;
+
+    reusedData->m_playing = false;
+    reusedData->m_wavesample = nullptr;
+    reusedData->m_sample = nullptr;
+
+    pimpl->m_currentParams = reusedData;
+  }
+}
+
+bool Voice::playing() const {
+  std::lock_guard<std::mutex> guard(pimpl->m_currentParamsMtx);
+  VoiceParams *params = pimpl->m_currentParams;
+  return params->m_playing;
+}
+std::uint8_t Voice::note() const {
+  std::lock_guard<std::mutex> guard(pimpl->m_currentParamsMtx);
+  VoiceParams *params = pimpl->m_currentParams;
+  return params->m_note;
+}
+std::chrono::steady_clock::time_point Voice::startTime() const {
+  std::lock_guard<std::mutex> guard(pimpl->m_currentParamsMtx);
+  VoiceParams *params = pimpl->m_currentParams;
+  return params->m_startTime;
 }

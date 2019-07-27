@@ -3,6 +3,7 @@
 
 #include "../Articulator.hpp"
 #include "../Instrument.hpp"
+#include "../Region.hpp"
 #include "../Wave.hpp"
 #include "../Wavesample.hpp"
 #include <chrono>
@@ -24,8 +25,9 @@ namespace Synth {
 
     Voice &operator=(const Voice &) = delete;
 
-    void noteOn(std::uint8_t note, std::uint8_t velocity);
-    void noteOff(std::uint8_t velocity);
+    void noteOn(std::uint8_t note, std::uint8_t velocity,
+                const Wavesample *wavesample, const Wave &sample);
+    void noteOff();
     void soundOff();
 
     bool playing() const;

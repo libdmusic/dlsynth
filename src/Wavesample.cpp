@@ -45,7 +45,7 @@ Wavesample::Wavesample(riffcpp::Chunk &chunk) {
   }
 }
 
-float Wavesample::gain() const { return relativeGainToRatio(m_gain); }
-float Wavesample::fineTune() const { return relativePitchToRatio(m_fineTune); }
+float Wavesample::gain() const { return relativeGainUnitsToBels(m_gain); }
+float Wavesample::fineTune() const { return m_fineTune; }
 std::uint16_t Wavesample::unityNote() const { return m_unityNote; }
 const WavesampleLoop *Wavesample::loop() const { return m_loop.get(); }

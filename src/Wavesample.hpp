@@ -38,10 +38,7 @@ public:
   /// pitch
   std::uint16_t unityNote() const;
 
-  /// Returns the tuning offset from \ref unityNote as a pitch ratio
-  /**
-   * That is, `targetFreq = freq( unityNote() ) * fineTune()`
-   */
+  /// Returns the tuning offset from \ref unityNote in cents
   float fineTune() const;
 
   /// Returns the gain to be applied to the sample in bels

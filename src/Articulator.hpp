@@ -105,15 +105,26 @@ class ConnectionBlock {
   Transform m_controlTransform;
 
 public:
-  ConnectionBlock(Source src, Source ctrl, Destination dest, std::int32_t scale,
-                  const Transform &srcTrans, const Transform &ctrlTrans);
+  constexpr ConnectionBlock(Source src, Source ctrl, Destination dest,
+                            std::int32_t scale, const Transform &srcTrans,
+                            const Transform &ctrlTrans)
+    : m_source(src)
+    , m_control(ctrl)
+    , m_destination(dest)
+    , m_scale(scale)
+    , m_sourceTransform(srcTrans)
+    , m_controlTransform(ctrlTrans) {}
 
-  Source source() const;
-  Source control() const;
-  Destination destination() const;
-  std::int32_t scale() const;
-  const Transform &sourceTransform() const;
-  const Transform &controlTransform() const;
+  constexpr Source source() const { return m_source; }
+  constexpr Source control() const { return m_control; }
+  constexpr Destination destination() const { return m_destination; }
+  constexpr std::int32_t scale() const { return m_scale; }
+  constexpr const Transform &sourceTransform() const {
+    return m_sourceTransform;
+  }
+  constexpr const Transform &controlTransform() const {
+    return m_controlTransform;
+  }
 };
 
 /// A set of \ref ConnectionBlock s that defines the parameters of an instrument

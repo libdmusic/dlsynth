@@ -4,27 +4,6 @@
 #include <set>
 
 using namespace DLSynth;
-
-ConnectionBlock::ConnectionBlock(Source src, Source ctrl, Destination dest,
-                                 std::int32_t scale, const Transform &srcTrans,
-                                 const Transform &ctrlTrans)
-  : m_source(src)
-  , m_control(ctrl)
-  , m_destination(dest)
-  , m_scale(scale)
-  , m_sourceTransform(srcTrans)
-  , m_controlTransform(ctrlTrans) {}
-
-Source ConnectionBlock::source() const { return m_source; }
-Source ConnectionBlock::control() const { return m_control; }
-Destination ConnectionBlock::destination() const { return m_destination; }
-std::int32_t ConnectionBlock::scale() const { return m_scale; }
-const Transform &ConnectionBlock::sourceTransform() const {
-  return m_sourceTransform;
-}
-const Transform &ConnectionBlock::controlTransform() const {
-  return m_controlTransform;
-}
 Articulator::Articulator(riffcpp::Chunk &chunk,
                          const ExpressionParser &exprParser) {
   for (auto child : chunk) {
