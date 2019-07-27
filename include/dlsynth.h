@@ -84,17 +84,6 @@ int DLSYNTH_EXPORT dlsynth_render_float_mix(
  size_t frames          ///< [in] The number of frames to render
 );
 
-/// Renders audio in 16-bit integer format
-/**
- * New audio data will be mixed on top of the existing data in the buffer.
- * @return Nonzero on success, zero on failure
- */
-int DLSYNTH_EXPORT dlsynth_render_int16_mix(
- struct dlsynth *synth, ///< [in] The synthesizer to use for rendering
- int16_t *buffer,       ///< [in,out] The buffer to execute rendering in
- size_t frames          ///< [in] The number of frames to render
-);
-
 /// Sets the instrument the syntheisizer should use to render the audio data
 /**
  * @return Nonzero on success, zero on failure
