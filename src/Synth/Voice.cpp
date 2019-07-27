@@ -13,8 +13,9 @@ using namespace DLSynth::Synth;
 namespace std {
 template <> struct hash<ConnectionBlock> {
   constexpr std::size_t operator()(const ConnectionBlock &s) const noexcept {
-    return ((std::size_t)s.source() << 0) | ((std::size_t)s.control() << 16) |
-           ((std::size_t)s.destination() << 32);
+    return (static_cast<std::size_t>(s.source()) << 0) |
+           (static_cast<std::size_t>(s.control()) << 16) |
+           (static_cast<std::size_t>(s.destination()) << 32);
   }
 };
 
@@ -140,7 +141,7 @@ static float getScaleValue(Destination dest, std::int32_t scale) {
 inline float lerp(float v0, float v1, float t) { return (1 - t) * v0 + t * v1; }
 
 static float interpolateSample(float pos, const std::vector<float> samples) {
-  std::size_t floor = (std::size_t)std::floor(pos);
+  std::size_t floor = static_cast<std::size_t>(std::floor(pos));
 
   float sample1 = samples[floor];
   float sample2 = samples[floor + 1];
@@ -535,8 +536,9 @@ void Voice::noteOn(std::uint8_t note, std::uint8_t velocity,
     reusedData->m_note = note;
     reusedData->m_velocity = velocity;
     reusedData->m_startTime = std::chrono::steady_clock::now();
-    reusedData->m_sources[Source::KeyNumber] = (float)note / 128.f;
-    reusedData->m_sources[Source::KeyOnVelocity] = (float)velocity / 128.f;
+    reusedData->m_sources[Source::KeyNumber] = static_cast<float>(note) / 128.f;
+    reusedData->m_sources[Source::KeyOnVelocity] =
+     static_cast<float>(velocity) / 128.f;
 
     pimpl->m_currentParams = reusedData;
   }

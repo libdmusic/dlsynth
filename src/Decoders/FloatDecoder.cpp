@@ -62,9 +62,9 @@ public:
                       std::size_t bufferSize) override {
     std::size_t len = std::min(bufferSize, m_leftData.size());
     std::transform(m_leftData.begin(), m_leftData.begin() + len, leftBuffer,
-                   [](auto x) { return (float)x; });
+                   [](auto x) { return static_cast<float>(x); });
     std::transform(m_rightData.begin(), m_rightData.begin() + len, rightBuffer,
-                   [](auto x) { return (float)x; });
+                   [](auto x) { return static_cast<float>(x); });
   }
 
   virtual std::size_t num_frames() override { return m_leftData.size(); }

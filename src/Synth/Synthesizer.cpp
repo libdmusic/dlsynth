@@ -48,45 +48,45 @@ Synthesizer::~Synthesizer() {
 }
 
 void Synthesizer::pressure(std::uint8_t value) {
-  pimpl->m_sources[Source::ChannelPressure] = (float)value / 128.f;
+  pimpl->m_sources[Source::ChannelPressure] = static_cast<float>(value) / 128.f;
 }
 
 void Synthesizer::pitchBend(std::uint16_t value) {
-  pimpl->m_sources[Source::PitchWheel] = (float)value / 16384.f;
+  pimpl->m_sources[Source::PitchWheel] = static_cast<float>(value) / 16384.f;
 }
 
 void Synthesizer::volume(std::uint8_t value) {
-  pimpl->m_sources[Source::CC7] = (float)value / 128.f;
+  pimpl->m_sources[Source::CC7] = static_cast<float>(value) / 128.f;
 }
 
 void Synthesizer::pan(std::uint8_t value) {
-  pimpl->m_sources[Source::CC10] = (float)value / 128.f;
+  pimpl->m_sources[Source::CC10] = static_cast<float>(value) / 128.f;
 }
 
 void Synthesizer::modulation(std::uint8_t value) {
-  pimpl->m_sources[Source::CC1] = (float)value / 128.f;
+  pimpl->m_sources[Source::CC1] = static_cast<float>(value) / 128.f;
 }
 
 void Synthesizer::sustain(bool status) { pimpl->m_sustain = status; }
 
 void Synthesizer::reverb(std::uint8_t value) {
-  pimpl->m_sources[Source::CC91] = (float)value / 128.f;
+  pimpl->m_sources[Source::CC91] = static_cast<float>(value) / 128.f;
 }
 
 void Synthesizer::chorus(std::uint8_t value) {
-  pimpl->m_sources[Source::CC93] = (float)value / 128.f;
+  pimpl->m_sources[Source::CC93] = static_cast<float>(value) / 128.f;
 }
 
 void Synthesizer::pitchBendRange(std::uint16_t value) {
-  pimpl->m_sources[Source::RPN0] = (float)value / 16384.f;
+  pimpl->m_sources[Source::RPN0] = static_cast<float>(value) / 16384.f;
 }
 
 void Synthesizer::fineTuning(std::uint16_t value) {
-  pimpl->m_sources[Source::RPN1] = (float)value / 16384.f;
+  pimpl->m_sources[Source::RPN1] = static_cast<float>(value) / 16384.f;
 }
 
 void Synthesizer::coarseTuning(std::uint16_t value) {
-  pimpl->m_sources[Source::RPN2] = (float)value / 16384.f;
+  pimpl->m_sources[Source::RPN2] = static_cast<float>(value) / 16384.f;
 }
 
 void Synthesizer::resetControllers() {

@@ -44,11 +44,11 @@ void Articulator::load_art2(riffcpp::Chunk &chunk) {
   for (std::uint32_t i = 0; i < articulator->cConnectionBlocks; i++) {
     cblock connectionBlock = articulator->connectionBlocks[i];
     TransformType ctrlTransType =
-     (TransformType)((connectionBlock.usTransform & 0x00F0) >> 4);
+     static_cast<TransformType>((connectionBlock.usTransform & 0x00F0) >> 4);
     bool ctrlBipolar = connectionBlock.usTransform & (1 << 8);
     bool ctrlInvert = connectionBlock.usTransform & (1 << 9);
     TransformType srcTransType =
-     (TransformType)((connectionBlock.usTransform & 0x0F00) >> 8);
+     static_cast<TransformType>((connectionBlock.usTransform & 0x0F00) >> 8);
     bool srcBipolar = connectionBlock.usTransform & (1 << 14);
     bool srcInvert = connectionBlock.usTransform & (1 << 15);
 
