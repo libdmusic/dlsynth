@@ -5,6 +5,7 @@
 #include <atomic>
 #include <map>
 #include <mutex>
+#include <thread>
 #include <unordered_set>
 
 using namespace DLSynth;
@@ -523,6 +524,7 @@ void Voice::noteOn(std::uint8_t note, std::uint8_t velocity,
   while (true) {
     VoiceParams *reusedData = pimpl->m_newParams;
     if (reusedData == nullptr) {
+      std::this_thread::yield();
       continue;
     }
     pimpl->m_newParams = nullptr;
@@ -553,6 +555,7 @@ void Voice::soundOff() {
   while (true) {
     VoiceParams *reusedData = pimpl->m_newParams;
     if (reusedData == nullptr) {
+      std::this_thread::yield();
       continue;
     }
     pimpl->m_newParams = nullptr;
