@@ -24,13 +24,19 @@ enum dlsynth_interleave { DLSYNTH_INTERLEAVED, DLSYNTH_SEQUENTIAL };
 /// Settings that should be used when rendering audio
 struct dlsynth_settings {
   /// Sample rate at which to render the audio
-  int sample_rate;
+  uint32_t sample_rate;
 
   /// Number of audio channels to render
   int num_channels;
 
   /// Wheter the audio channels should be interleaved or sequential
   enum dlsynth_interleave interleaved;
+
+  /// Maximum number of voices to allocate for rendering
+  unsigned num_voices;
+
+  /// The instrument to use for rendering
+  const struct dlsynth_instr *instrument;
 };
 
 /// Initializes a DLS synthesizer
@@ -59,7 +65,9 @@ int DLSYNTH_EXPORT dlsynth_free(
 int DLSYNTH_EXPORT dlsynth_render_float(
  struct dlsynth *synth, ///< [in] The synthesizer to use for rendering
  float *buffer,         ///< [in,out] The buffer to execute rendering in
- size_t frames          ///< [in] The number of frames to render
+ size_t frames,         ///< [in] The number of frames to render
+ float gain ///< [in] Gain to apply while rendering (0 means silent, 1 means
+            ///< unity gain)
 );
 
 /// Renders audio in 16-bit integer format
@@ -70,7 +78,9 @@ int DLSYNTH_EXPORT dlsynth_render_float(
 int DLSYNTH_EXPORT dlsynth_render_int16(
  struct dlsynth *synth, ///< [in] The synthesizer to use for rendering
  int16_t *buffer,       ///< [in,out] The buffer to execute rendering in
- size_t frames          ///< [in] The number of frames to render
+ size_t frames,         ///< [in] The number of frames to render
+ float gain ///< [in] Gain to apply while rendering (0 means silent, 1 means
+            ///< unity gain)
 );
 
 /// Renders audio in 32-bit float format
@@ -81,17 +91,41 @@ int DLSYNTH_EXPORT dlsynth_render_int16(
 int DLSYNTH_EXPORT dlsynth_render_float_mix(
  struct dlsynth *synth, ///< [in] The synthesizer to use for rendering
  float *buffer,         ///< [in,out] The buffer to execute rendering in
- size_t frames          ///< [in] The number of frames to render
+ size_t frames,         ///< [in] The number of frames to render
+ float gain ///< [in] Gain to apply while rendering (0 means silent, 1 means
+            ///< unity gain)
 );
+
+int DLSYNTH_EXPORT dlsynth_note_on(struct dlsynth *synth, uint8_t note,
+                                   uint8_t velocity);
+int DLSYNTH_EXPORT dlsynth_note_off(struct dlsynth *synth, uint8_t note);
+int DLSYNTH_EXPORT dlsynth_poly_pressure(struct dlsynth *synth, uint8_t note,
+                                         uint8_t velocity);
+int DLSYNTH_EXPORT dlsynth_channel_pressure(struct dlsynth *synth, uint8_t note,
+                                            uint8_t velocity);
+int DLSYNTH_EXPORT dlsynth_pitch_bend(struct dlsynth *synth, uint16_t value);
+int DLSYNTH_EXPORT dlsynth_volume(struct dlsynth *synth, uint8_t value);
+int DLSYNTH_EXPORT dlsynth_pan(struct dlsynth *synth, uint8_t value);
+int DLSYNTH_EXPORT dlsynth_modulation(struct dlsynth *synth, uint8_t value);
+int DLSYNTH_EXPORT dlsynth_sustain(struct dlsynth *synth, int status);
+int DLSYNTH_EXPORT dlsynth_reverb(struct dlsynth *synth, uint8_t value);
+int DLSYNTH_EXPORT dlsynth_chorus(struct dlsynth *synth, uint8_t value);
+int DLSYNTH_EXPORT dlsynth_pitch_bend_range(struct dlsynth *synth,
+                                            uint16_t value);
+int DLSYNTH_EXPORT dlsynth_fine_tuning(struct dlsynth *synth, uint16_t value);
+int DLSYNTH_EXPORT dlsynth_coarse_tuning(struct dlsynth *synth, uint16_t value);
+int DLSYNTH_EXPORT dlsynth_reset_controllers(struct dlsynth *synth);
+int DLSYNTH_EXPORT dlsynth_all_notes_off(struct dlsynth *synth);
+int DLSYNTH_EXPORT dlsynth_all_sound_off(struct dlsynth *synth);
 
 /// Loads a DLS file from a path
 /**
  * @return Nonzero on success, zero on failure
  */
 int DLSYNTH_EXPORT dlsynth_load_sound_file(
- const char *path, ///< [in] Path of the file to load
- uint32_t
-  sampleRate, ///< [in] Sampling rate that will be used during reproduction
+ const char *path,            ///< [in] Path of the file to load
+ uint32_t sampleRate,         ///< [in] Sampling rate that will
+                              ///< be used during reproduction
  struct dlsynth_sound **sound ///< [out] The loaded file
 );
 
