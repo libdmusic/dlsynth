@@ -19,6 +19,7 @@ target_sources(dlsynth
         ${CMAKE_CURRENT_LIST_DIR}/src/Synth/LFO.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/Synth/Synthesizer.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/Synth/Voice.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/src/Synth/VoiceMessage.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/Articulator.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/DecoderTable.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/dlsynth.cpp

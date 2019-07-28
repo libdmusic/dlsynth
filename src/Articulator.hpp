@@ -29,6 +29,8 @@ enum class Source : std::uint16_t {
   RPN2 = 0x0102
 };
 
+constexpr std::uint16_t max_source = static_cast<std::uint16_t>(Source::RPN2);
+
 constexpr std::uint16_t maxValue(Source source) {
   if (source == Source::PitchWheel || ((std::uint16_t)source & 0x0100)) {
     return 0x4000;
@@ -74,6 +76,9 @@ enum class Destination : std::uint16_t {
   FilterCutoff = 0x0500,
   FilterQ = 0x0501
 };
+
+constexpr std::uint16_t max_destination =
+ static_cast<std::uint16_t>(Destination::FilterQ);
 
 enum class TransformType : std::uint16_t {
   None = 0x0000,

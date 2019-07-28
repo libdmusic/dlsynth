@@ -112,3 +112,8 @@ std::uint32_t Instrument::midiInstrument() const {
   assert(m_pimpl != nullptr);
   return m_pimpl->m_midiInstrument;
 }
+
+const std::vector<Region> &Instrument::regions() const {
+  assert(m_pimpl != nullptr);
+  return m_pimpl->m_regions;
+}

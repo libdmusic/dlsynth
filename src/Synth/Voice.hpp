@@ -6,6 +6,7 @@
 #include "../Region.hpp"
 #include "../Wave.hpp"
 #include "../Wavesample.hpp"
+#include <array>
 #include <chrono>
 #include <cstdint>
 #include <map>
@@ -18,7 +19,8 @@ namespace Synth {
     impl *pimpl;
 
   public:
-    Voice(const Instrument &instrument, const std::map<Source, float> &sources,
+    Voice(const Instrument &instrument,
+          const std::array<float, max_source + 1> &sources,
           std::uint32_t sampleRate);
     Voice(Voice &&voice);
     ~Voice();
@@ -35,10 +37,10 @@ namespace Synth {
     std::chrono::steady_clock::time_point startTime() const;
 
     void render_fill(float *beginLeft, float *endLeft, float *beginRight,
-                     float *endRight, float gain);
+                     float *endRight, std::size_t bufferSkip, float gain);
 
     void render_mix(float *beginLeft, float *endLeft, float *beginRight,
-                    float *endRight, float gain);
+                    float *endRight, std::size_t bufferSkip, float gain);
   };
 } // namespace Synth
 } // namespace DLSynth

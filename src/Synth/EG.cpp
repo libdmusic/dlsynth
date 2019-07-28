@@ -44,7 +44,8 @@ float EG::nextSample(float delayTime, float attackTime, float holdTime,
       return m_lastValue;
     }
 
-    return sustainLevel;
+    m_lastValue = 1;
+    return m_lastValue;
   } else {
     if (time < releaseTime) {
       float diff = m_lastValue;

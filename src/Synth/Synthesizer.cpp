@@ -2,6 +2,7 @@
 #include "../Articulator.hpp"
 #include "Voice.hpp"
 #include <algorithm>
+#include <array>
 #include <cassert>
 #include <map>
 #include <vector>
@@ -10,20 +11,31 @@ using namespace DLSynth;
 using namespace DLSynth::Synth;
 
 struct Synthesizer::impl {
-  std::map<Source, float> m_sources{
-   {Source::CC7, 100.f / 128.f}, {Source::CC10, 64.f / 128.f},
-   {Source::CC91, 40.f / 128.f}, {Source::ChannelPressure, 0.f},
-   {Source::RPN1, 0.f},          {Source::CC11, 127.f / 128.f},
-   {Source::CC1, 0.f},           {Source::CC93, 0.f},
-   {Source::RPN0, 2.f / 128.f},  {Source::RPN2, 0.f},
-   {Source::None, 1.f}};
+  std::array<float, max_source + 1> m_sources{0.f};
   bool m_sustain = false;
   std::vector<Voice> m_voices;
   const Instrument &m_instrument;
   const Sound &m_collection;
 
+  inline float &getSource(Source src) {
+    return m_sources[static_cast<std::uint16_t>(src)];
+  }
+
   impl(const Sound &collection, const Instrument &instr)
-    : m_instrument(instr), m_collection(collection) {}
+    : m_instrument(instr), m_collection(collection) {
+
+    getSource(Source::CC7) = 100.f / 128.f;
+    getSource(Source::CC10) = 64.f / 128.f;
+    getSource(Source::CC91) = 40.f / 128.f;
+    getSource(Source::ChannelPressure) = 0.f;
+    getSource(Source::RPN1) = 0.f;
+    getSource(Source::CC11) = 127.f / 128.f;
+    getSource(Source::CC1) = 0.f;
+    getSource(Source::CC93) = 0.f;
+    getSource(Source::RPN0) = 2.f / 128.f;
+    getSource(Source::RPN2) = 0.f;
+    getSource(Source::None) = 1.f;
+  }
 };
 
 Synthesizer::Synthesizer(const Sound &collection, std::size_t instrumentIndex,
@@ -48,54 +60,63 @@ Synthesizer::~Synthesizer() {
 }
 
 void Synthesizer::pressure(std::uint8_t value) {
-  pimpl->m_sources[Source::ChannelPressure] = static_cast<float>(value) / 128.f;
+  pimpl->getSource(Source::ChannelPressure) = static_cast<float>(value) / 128.f;
+}
+
+void Synthesizer::pressure(std::uint8_t note, std::uint8_t value) {
+  // TODO: Not implemented
 }
 
 void Synthesizer::pitchBend(std::uint16_t value) {
-  pimpl->m_sources[Source::PitchWheel] = static_cast<float>(value) / 16384.f;
+  pimpl->getSource(Source::PitchWheel) = static_cast<float>(value) / 16384.f;
 }
 
 void Synthesizer::volume(std::uint8_t value) {
-  pimpl->m_sources[Source::CC7] = static_cast<float>(value) / 128.f;
+  pimpl->getSource(Source::CC7) = static_cast<float>(value) / 128.f;
 }
 
 void Synthesizer::pan(std::uint8_t value) {
-  pimpl->m_sources[Source::CC10] = static_cast<float>(value) / 128.f;
+  pimpl->getSource(Source::CC10) = static_cast<float>(value) / 128.f;
 }
 
 void Synthesizer::modulation(std::uint8_t value) {
-  pimpl->m_sources[Source::CC1] = static_cast<float>(value) / 128.f;
+  pimpl->getSource(Source::CC1) = static_cast<float>(value) / 128.f;
 }
 
 void Synthesizer::sustain(bool status) { pimpl->m_sustain = status; }
 
 void Synthesizer::reverb(std::uint8_t value) {
-  pimpl->m_sources[Source::CC91] = static_cast<float>(value) / 128.f;
+  pimpl->getSource(Source::CC91) = static_cast<float>(value) / 128.f;
 }
 
 void Synthesizer::chorus(std::uint8_t value) {
-  pimpl->m_sources[Source::CC93] = static_cast<float>(value) / 128.f;
+  pimpl->getSource(Source::CC93) = static_cast<float>(value) / 128.f;
 }
 
 void Synthesizer::pitchBendRange(std::uint16_t value) {
-  pimpl->m_sources[Source::RPN0] = static_cast<float>(value) / 16384.f;
+  pimpl->getSource(Source::RPN0) = static_cast<float>(value) / 16384.f;
 }
 
 void Synthesizer::fineTuning(std::uint16_t value) {
-  pimpl->m_sources[Source::RPN1] = static_cast<float>(value) / 16384.f;
+  pimpl->getSource(Source::RPN1) = static_cast<float>(value) / 16384.f;
 }
 
 void Synthesizer::coarseTuning(std::uint16_t value) {
-  pimpl->m_sources[Source::RPN2] = static_cast<float>(value) / 16384.f;
+  pimpl->getSource(Source::RPN2) = static_cast<float>(value) / 16384.f;
 }
 
 void Synthesizer::resetControllers() {
-  pimpl->m_sources = {
-   {Source::CC7, 100.f / 128.f}, {Source::CC10, 64.f / 128.f},
-   {Source::CC91, 40.f / 128.f}, {Source::ChannelPressure, 0.f},
-   {Source::RPN1, 0.f},          {Source::CC11, 127 / 128.f},
-   {Source::CC1, 0.f},           {Source::CC93, 0.f},
-   {Source::RPN0, 2.f / 128.f},  {Source::RPN2, 0.f}};
+  pimpl->getSource(Source::CC7) = 100.f / 128.f;
+  pimpl->getSource(Source::CC10) = 64.f / 128.f;
+  pimpl->getSource(Source::CC91) = 40.f / 128.f;
+  pimpl->getSource(Source::ChannelPressure) = 0.f;
+  pimpl->getSource(Source::RPN1) = 0.f;
+  pimpl->getSource(Source::CC11) = 127.f / 128.f;
+  pimpl->getSource(Source::CC1) = 0.f;
+  pimpl->getSource(Source::CC93) = 0.f;
+  pimpl->getSource(Source::RPN0) = 2.f / 128.f;
+  pimpl->getSource(Source::RPN2) = 0.f;
+  pimpl->getSource(Source::None) = 1.f;
   pimpl->m_sustain = false;
 }
 
@@ -152,21 +173,26 @@ void Synthesizer::noteOff(std::uint8_t note) {
 }
 
 void Synthesizer::render_fill(float *beginLeft, float *endLeft,
-                              float *beginRight, float *endRight, float gain) {
+                              float *beginRight, float *endRight,
+                              std::size_t bufferSkip, float gain) {
   bool isFirst = true;
   for (auto &voice : pimpl->m_voices) {
     if (isFirst) {
-      voice.render_fill(beginLeft, endLeft, beginRight, endRight, gain);
+      voice.render_fill(beginLeft, endLeft, beginRight, endRight, bufferSkip,
+                        gain);
       isFirst = false;
     } else {
-      voice.render_mix(beginLeft, endLeft, beginRight, endRight, gain);
+      voice.render_mix(beginLeft, endLeft, beginRight, endRight, bufferSkip,
+                       gain);
     }
   }
 }
 
 void Synthesizer::render_mix(float *beginLeft, float *endLeft,
-                             float *beginRight, float *endRight, float gain) {
+                             float *beginRight, float *endRight,
+                             std::size_t bufferSkip, float gain) {
   for (auto &voice : pimpl->m_voices) {
-    voice.render_mix(beginLeft, endLeft, beginRight, endRight, gain);
+    voice.render_mix(beginLeft, endLeft, beginRight, endRight, bufferSkip,
+                     gain);
   }
 }

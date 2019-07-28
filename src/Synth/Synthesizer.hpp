@@ -71,11 +71,11 @@ namespace Synth {
 
     /// Overwrites the specified buffers with rendered audio data
     void render_fill(float *beginLeft, float *endLeft, float *beginRight,
-                     float *endRight, float gain);
+                     float *endRight, std::size_t bufferSkip, float gain);
 
     /// Mixes additional rendered audio data on top of the specified buffers
     void render_mix(float *beginLeft, float *endLeft, float *beginRight,
-                    float *endRight, float gain);
+                    float *endRight, std::size_t bufferSkip, float gain);
   };
 } // namespace Synth
 } // namespace DLSynth
