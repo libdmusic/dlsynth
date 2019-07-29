@@ -2,6 +2,7 @@
 #define WAVEDECODER_HPP
 
 #include "Wave.hpp"
+#include "WaveFormat.hpp"
 #include <cstddef>
 #include <cstdint>
 #include <memory>

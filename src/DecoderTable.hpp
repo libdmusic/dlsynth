@@ -2,6 +2,7 @@
 #define DECODERTABLE_HPP
 
 #include "Wave.hpp"
+#include "WaveFormat.hpp"
 #include <memory>
 #include <unordered_map>
 
