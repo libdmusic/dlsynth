@@ -9,19 +9,19 @@
 namespace DLSynth {
 enum class LoopType : std::uint32_t { Forward = 0x0000, Release = 0x0001 };
 
-struct wsmp_loop;
-
 class WavesampleLoop {
   LoopType m_type;
   std::uint32_t m_start;
   std::uint32_t m_length;
 
 public:
-  WavesampleLoop(const wsmp_loop *loop);
+  constexpr WavesampleLoop(LoopType type, std::uint32_t start,
+                           std::uint32_t length)
+    : m_type(type), m_start(start), m_length(length) {}
 
-  LoopType type() const;
-  std::uint32_t start() const;
-  std::uint32_t length() const;
+  constexpr LoopType type() const { return m_type; }
+  constexpr std::uint32_t start() const { return m_start; }
+  constexpr std::uint32_t length() const { return m_length; }
 };
 
 /// Describes the synthesis parameters of a WAV file

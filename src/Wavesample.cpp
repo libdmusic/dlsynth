@@ -4,23 +4,12 @@
 
 using namespace DLSynth;
 
-namespace DLSynth {
 struct wsmp_loop {
   std::uint32_t cbSize;
   LoopType ulLoopType;
   std::uint32_t ulLoopStart;
   std::uint32_t ulLoopLength;
 };
-} // namespace DLSynth
-
-WavesampleLoop::WavesampleLoop(const wsmp_loop *loop)
-  : m_type(loop->ulLoopType)
-  , m_start(loop->ulLoopStart)
-  , m_length(loop->ulLoopLength) {}
-
-LoopType WavesampleLoop::type() const { return m_type; }
-std::uint32_t WavesampleLoop::start() const { return m_start; }
-std::uint32_t WavesampleLoop::length() const { return m_length; }
 
 struct wsmp {
   std::uint32_t cbSize;
@@ -41,7 +30,9 @@ Wavesample::Wavesample(riffcpp::Chunk &chunk) {
   m_fineTune = wavesample->sFineTune;
   m_unityNote = wavesample->usUnityNote;
   if (wavesample->cSampleLoops) {
-    m_loop = std::make_unique<WavesampleLoop>(wavesample->loops);
+    wsmp_loop *loopData = wavesample->loops;
+    m_loop = std::make_unique<WavesampleLoop>(
+     loopData->ulLoopType, loopData->ulLoopStart, loopData->ulLoopLength);
   }
 }
 
