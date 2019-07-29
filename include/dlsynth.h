@@ -100,9 +100,9 @@ int DLSYNTH_EXPORT dlsynth_note_on(struct dlsynth *synth, uint8_t note,
                                    uint8_t velocity);
 int DLSYNTH_EXPORT dlsynth_note_off(struct dlsynth *synth, uint8_t note);
 int DLSYNTH_EXPORT dlsynth_poly_pressure(struct dlsynth *synth, uint8_t note,
-                                         uint8_t velocity);
+                                         uint8_t value);
 int DLSYNTH_EXPORT dlsynth_channel_pressure(struct dlsynth *synth, uint8_t note,
-                                            uint8_t velocity);
+                                            uint8_t value);
 int DLSYNTH_EXPORT dlsynth_pitch_bend(struct dlsynth *synth, uint16_t value);
 int DLSYNTH_EXPORT dlsynth_volume(struct dlsynth *synth, uint8_t value);
 int DLSYNTH_EXPORT dlsynth_pan(struct dlsynth *synth, uint8_t value);

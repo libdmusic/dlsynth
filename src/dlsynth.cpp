@@ -337,8 +337,8 @@ int dlsynth_render_float(dlsynth *synth, float *buffer, size_t frames,
   return 1;
 }
 
-int DLSYNTH_EXPORT dlsynth_render_int16(struct dlsynth *synth, int16_t *buffer,
-                                        size_t frames, float gain) {
+int dlsynth_render_int16(struct dlsynth *synth, int16_t *buffer, size_t frames,
+                         float gain) {
   if (synth == nullptr || buffer == nullptr) {
     dlsynth_error = DLSYNTH_INVALID_ARGS;
     return 0;
@@ -390,21 +390,114 @@ int dlsynth_render_float_mix(dlsynth *synth, float *buffer, size_t frames,
   return 1;
 }
 
-int dlsynth_note_on(struct dlsynth *synth, uint8_t note, uint8_t velocity) {
-  if (synth == nullptr) {
-    dlsynth_error = DLSYNTH_INVALID_ARGS;
-    return 0;
+#define DLSYNTH_CHECK_SYNTH_NOT_NULL                                           \
+  if (synth == nullptr) {                                                      \
+    dlsynth_error = DLSYNTH_INVALID_ARGS;                                      \
+    return 0;                                                                  \
   }
+
+int dlsynth_note_on(struct dlsynth *synth, uint8_t note, uint8_t velocity) {
+  DLSYNTH_CHECK_SYNTH_NOT_NULL
 
   synth->synth->noteOn(note, velocity);
   return 1;
 }
 int dlsynth_note_off(struct dlsynth *synth, uint8_t note) {
-  if (synth == nullptr) {
-    dlsynth_error = DLSYNTH_INVALID_ARGS;
-    return 0;
-  }
+  DLSYNTH_CHECK_SYNTH_NOT_NULL
 
   synth->synth->noteOff(note);
+  return 1;
+}
+
+int dlsynth_poly_pressure(struct dlsynth *synth, uint8_t note,
+                          uint8_t velocity) {
+  DLSYNTH_CHECK_SYNTH_NOT_NULL
+
+  synth->synth->pressure(note, velocity);
+  return 1;
+}
+int dlsynth_channel_pressure(struct dlsynth *synth, uint8_t note,
+                             uint8_t velocity) {
+  DLSYNTH_CHECK_SYNTH_NOT_NULL
+
+  synth->synth->pressure(velocity);
+  return 1;
+}
+int dlsynth_pitch_bend(struct dlsynth *synth, uint16_t value) {
+  DLSYNTH_CHECK_SYNTH_NOT_NULL
+
+  synth->synth->pitchBend(value);
+  return 1;
+}
+int dlsynth_volume(struct dlsynth *synth, uint8_t value) {
+  DLSYNTH_CHECK_SYNTH_NOT_NULL
+
+  synth->synth->volume(value);
+  return 1;
+}
+int dlsynth_pan(struct dlsynth *synth, uint8_t value) {
+  DLSYNTH_CHECK_SYNTH_NOT_NULL
+
+  synth->synth->pan(value);
+  return 1;
+}
+int dlsynth_modulation(struct dlsynth *synth, uint8_t value) {
+  DLSYNTH_CHECK_SYNTH_NOT_NULL
+
+  synth->synth->modulation(value);
+  return 1;
+}
+int dlsynth_sustain(struct dlsynth *synth, int status) {
+  DLSYNTH_CHECK_SYNTH_NOT_NULL
+
+  synth->synth->sustain(status);
+  return 1;
+}
+int dlsynth_reverb(struct dlsynth *synth, uint8_t value) {
+  DLSYNTH_CHECK_SYNTH_NOT_NULL
+
+  synth->synth->reverb(value);
+  return 1;
+}
+int dlsynth_chorus(struct dlsynth *synth, uint8_t value) {
+  DLSYNTH_CHECK_SYNTH_NOT_NULL
+
+  synth->synth->chorus(value);
+  return 1;
+}
+int dlsynth_pitch_bend_range(struct dlsynth *synth, uint16_t value) {
+  DLSYNTH_CHECK_SYNTH_NOT_NULL
+
+  synth->synth->pitchBendRange(value);
+  return 1;
+}
+int dlsynth_fine_tuning(struct dlsynth *synth, uint16_t value) {
+  DLSYNTH_CHECK_SYNTH_NOT_NULL
+
+  synth->synth->fineTuning(value);
+  return 1;
+}
+int dlsynth_coarse_tuning(struct dlsynth *synth, uint16_t value) {
+  DLSYNTH_CHECK_SYNTH_NOT_NULL
+
+  synth->synth->coarseTuning(value);
+  return 1;
+}
+int dlsynth_reset_controllers(struct dlsynth *synth) {
+  DLSYNTH_CHECK_SYNTH_NOT_NULL
+
+  synth->synth->resetControllers();
+  return 1;
+}
+int dlsynth_all_notes_off(struct dlsynth *synth) {
+  DLSYNTH_CHECK_SYNTH_NOT_NULL
+
+  synth->synth->allNotesOff();
+  return 1;
+}
+int dlsynth_all_sound_off(struct dlsynth *synth) {
+  DLSYNTH_CHECK_SYNTH_NOT_NULL
+
+  synth->synth->allSoundOff();
   return 1;
 }
