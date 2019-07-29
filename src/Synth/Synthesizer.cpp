@@ -172,6 +172,22 @@ void Synthesizer::noteOff(std::uint8_t note) {
   }
 }
 
+void Synthesizer::allNotesOff() {
+  if (pimpl->m_sustain) {
+    return;
+  }
+
+  for (auto &voice : pimpl->m_voices) {
+    voice.noteOff();
+  }
+}
+
+void Synthesizer::allSoundOff() {
+  for (auto &voice : pimpl->m_voices) {
+    voice.soundOff();
+  }
+}
+
 void Synthesizer::render_fill(float *beginLeft, float *endLeft,
                               float *beginRight, float *endRight,
                               std::size_t bufferSkip, float gain) {
