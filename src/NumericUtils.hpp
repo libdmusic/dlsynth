@@ -80,9 +80,6 @@ inline float timeUnitsToCents(std::int32_t value) {
 
 /// Converts a gain expressed in relative gain units to centibels
 inline float relativeGainUnitsToBels(std::int32_t value) {
-  if (value == 0x80000000) {
-    return -960.f;
-  }
   return (float)value / (200.f * 65536.f);
 }
 

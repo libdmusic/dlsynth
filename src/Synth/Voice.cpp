@@ -158,9 +158,7 @@ inline float centsToFreq(float cents) {
   return centsToRatio(cents - 6900) * 440.f;
 }
 
-inline float belsToGain(float bels) {
-  return std::pow(10.f, bels / (200.f * 65536.f));
-}
+inline float belsToGain(float bels) { return std::pow(10.f, bels); }
 
 inline float centsToSecs(float cents) { return std::exp2(cents / 1200); }
 
@@ -505,10 +503,9 @@ struct Voice::impl : public VoiceMessageExecutor {
         float pan = getDestination(Destination::Pan);
         float gain = getDestination(Destination::Gain) + m_wavesample->gain();
 
-        float leftGain =
-         200 * std::log10(std::cos((PI / 2.f) * (pan + 0.5f))) + gain;
-        float rightGain =
-         200 * std::log10(std::sin((PI / 2.f) * (pan + 0.5f))) + gain;
+        float panParameter = (PI / 2.f) * (pan + 0.5f);
+        float leftGain = std::log10(std::cos(panParameter)) + gain;
+        float rightGain = std::log10(std::sin(panParameter)) + gain;
 
         float pitch = getDestination(Destination::Pitch);
         float samplePitch = m_wavesample->unityNote() * 100.f;
