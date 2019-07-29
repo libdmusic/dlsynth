@@ -130,8 +130,6 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_wavesample_loop.html">WavesampleLoop</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_d_l_synth_1_1wsmp__loop.html">wsmp_loop</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -234,6 +232,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a6900327bb60c19bccb00ca9f274fa7f8"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
 <tr class="memitem:a6900327bb60c19bccb00ca9f274fa7f8"><td class="memTemplItemLeft" align="right" valign="top">constexpr float&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#a6900327bb60c19bccb00ca9f274fa7f8">normalize</a> (std::uint8_t value)</td></tr>
 <tr class="separator:a6900327bb60c19bccb00ca9f274fa7f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1ce1dc73ec4c3b2e6a5fda29f3ec862"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:af1ce1dc73ec4c3b2e6a5fda29f3ec862"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#af1ce1dc73ec4c3b2e6a5fda29f3ec862">inverse_normalize</a> (float value)</td></tr>
+<tr class="separator:af1ce1dc73ec4c3b2e6a5fda29f3ec862"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08d1e6124add9fea414d2df0f95de374"><td class="memTemplParams" colspan="2">template&lt;typename TIn , typename TOut &gt; </td></tr>
 <tr class="memitem:a08d1e6124add9fea414d2df0f95de374"><td class="memTemplItemLeft" align="right" valign="top">constexpr TOut&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#a08d1e6124add9fea414d2df0f95de374">clamp_convert</a> (TIn value)</td></tr>
 <tr class="separator:a08d1e6124add9fea414d2df0f95de374"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -244,7 +245,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:ad90bf9cd5639e29bd698e8d5b9e128e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a duration expressed in 32-bit time cents to time cents.  <a href="#ad90bf9cd5639e29bd698e8d5b9e128e6">More...</a><br /></td></tr>
 <tr class="separator:ad90bf9cd5639e29bd698e8d5b9e128e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac36eba82ad888dad35beef10d6afd036"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#ac36eba82ad888dad35beef10d6afd036">relativeGainUnitsToBels</a> (std::int32_t value)</td></tr>
-<tr class="memdesc:ac36eba82ad888dad35beef10d6afd036"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a gain expressed in relative gain units to bels.  <a href="#ac36eba82ad888dad35beef10d6afd036">More...</a><br /></td></tr>
+<tr class="memdesc:ac36eba82ad888dad35beef10d6afd036"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a gain expressed in relative gain units to centibels.  <a href="#ac36eba82ad888dad35beef10d6afd036">More...</a><br /></td></tr>
 <tr class="separator:ac36eba82ad888dad35beef10d6afd036"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63e85e113f5699c6c7f13ac9523a3d78"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#a63e85e113f5699c6c7f13ac9523a3d78">percentUnitsToRatio</a> (std::int32_t value)</td></tr>
 <tr class="memdesc:a63e85e113f5699c6c7f13ac9523a3d78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a percentage expressed in percent units to a ratio.  <a href="#a63e85e113f5699c6c7f13ac9523a3d78">More...</a><br /></td></tr>
@@ -252,6 +253,10 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
+<tr class="memitem:abe6924b46ba3719c62953845f880f8c7"><td class="memItemLeft" align="right" valign="top">constexpr std::uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#abe6924b46ba3719c62953845f880f8c7">max_source</a> = static_cast&lt;std::uint16_t&gt;(<a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196aaa485e8498edd5a868ac1c052f1ce617">Source::RPN2</a>)</td></tr>
+<tr class="separator:abe6924b46ba3719c62953845f880f8c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0915c9ae0803e2d18929590beaf7553"><td class="memItemLeft" align="right" valign="top">constexpr std::uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#af0915c9ae0803e2d18929590beaf7553">max_destination</a></td></tr>
+<tr class="separator:af0915c9ae0803e2d18929590beaf7553"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2bc19f31ad62078f441ac0013d6f2f6e"><td class="memItemLeft" align="right" valign="top">constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#a2bc19f31ad62078f441ac0013d6f2f6e">PI</a> = 3.14159f</td></tr>
 <tr class="separator:a2bc19f31ad62078f441ac0013d6f2f6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -490,6 +495,26 @@ template&lt;typename TIn , typename TOut &gt; </div>
 
 </div>
 </div>
+<a id="af1ce1dc73ec4c3b2e6a5fda29f3ec862"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1ce1dc73ec4c3b2e6a5fda29f3ec862">&#9670;&nbsp;</a></span>inverse_normalize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr T DLSynth::inverse_normalize </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a95467e083b4b4f4968fc004c477244cd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a95467e083b4b4f4968fc004c477244cd">&#9670;&nbsp;</a></span>maxValue()</h2>
 
@@ -600,7 +625,7 @@ template&lt;&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Converts a gain expressed in relative gain units to bels. </p>
+<p>Converts a gain expressed in relative gain units to centibels. </p>
 
 </div>
 </div>
@@ -633,6 +658,34 @@ template&lt;&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="af0915c9ae0803e2d18929590beaf7553"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0915c9ae0803e2d18929590beaf7553">&#9670;&nbsp;</a></span>max_destination</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr std::uint16_t DLSynth::max_destination</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div><div class="line"> static_cast&lt;std::uint16_t&gt;(Destination::FilterQ)</div></div><!-- fragment -->
+</div>
+</div>
+<a id="abe6924b46ba3719c62953845f880f8c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe6924b46ba3719c62953845f880f8c7">&#9670;&nbsp;</a></span>max_source</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr std::uint16_t DLSynth::max_source = static_cast&lt;std::uint16_t&gt;(<a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196aaa485e8498edd5a868ac1c052f1ce617">Source::RPN2</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a2bc19f31ad62078f441ac0013d6f2f6e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2bc19f31ad62078f441ac0013d6f2f6e">&#9670;&nbsp;</a></span>PI</h2>
 

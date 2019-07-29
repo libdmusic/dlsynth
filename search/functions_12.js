@@ -1,8 +1,8 @@
 var searchData=
 [
   ['unitynote',['unityNote',['../class_d_l_synth_1_1_wavesample.html#abdea42a5f2b28599eabdaab5dcb7060b',1,'DLSynth::Wavesample']]],
-  ['updatefilteg',['updateFiltEg',['../struct_voice_params.html#a4c99819154738d0af0f0d5d0f05de627',1,'VoiceParams']]],
-  ['updatemodlfo',['updateModLfo',['../struct_voice_params.html#a08ce8da5fec07979ed394f262531e5ef',1,'VoiceParams']]],
-  ['updateviblfo',['updateVibLfo',['../struct_voice_params.html#a6e5bfd07a01949a6bc0a27acedbe2fb3',1,'VoiceParams']]],
-  ['updatevoleg',['updateVolEg',['../struct_voice_params.html#a868c145ac53a89cdd54d0ead1a71fc40',1,'VoiceParams']]]
+  ['updatefilteg',['updateFiltEg',['../struct_voice_1_1impl.html#aed8552eb76f8e7637f8527accb1ca522',1,'Voice::impl']]],
+  ['updatemodlfo',['updateModLfo',['../struct_voice_1_1impl.html#a3c170a33038937e604264b099aa68bf0',1,'Voice::impl']]],
+  ['updateviblfo',['updateVibLfo',['../struct_voice_1_1impl.html#a6775479f95afe9d8e65ea43c1d78ecd5',1,'Voice::impl']]],
+  ['updatevoleg',['updateVolEg',['../struct_voice_1_1impl.html#af910539dc551caa41b54fe7dfa7da77b',1,'Voice::impl']]]
 ];

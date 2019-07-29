@@ -99,8 +99,8 @@ Enumerations</h2></td></tr>
 <a class="el" href="dlsynth_8h.html#a0d6089813141c0c58ced90eb211c969aaf3737be7b748d98aeef3201bb4f0adaf">DLSYNTH_SEQUENTIAL</a>
  }</td></tr>
 <tr class="separator:a0d6089813141c0c58ced90eb211c969a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf24e9ecadad58acffda48af229fe9bb"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> { <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bba6013bee0d4371b01251589ccba604997">DLSYNTH_ERROR</a> =(CONDITION_FAILED, 6)# 237 "C:/Users/berto/dlsynth/include/dlsynth.h" 2, 
-<a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bba6013bee0d4371b01251589ccba604997">DLSYNTH_ERROR</a> =(CONDITION_FAILED, 6)# 237 "C:/Users/berto/dlsynth/include/dlsynth.h" 2
+<tr class="memitem:aaf24e9ecadad58acffda48af229fe9bb"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> { <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bba6013bee0d4371b01251589ccba604997">DLSYNTH_ERROR</a> =(CONDITION_FAILED, 6)# 251 "C:/Users/berto/dlsynth/include/dlsynth.h" 2, 
+<a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bba6013bee0d4371b01251589ccba604997">DLSYNTH_ERROR</a> =(CONDITION_FAILED, 6)# 251 "C:/Users/berto/dlsynth/include/dlsynth.h" 2
  }</td></tr>
 <tr class="separator:aaf24e9ecadad58acffda48af229fe9bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -112,21 +112,49 @@ Functions</h2></td></tr>
 <tr class="memitem:a5b3175dc379fd78e050756470cdec84f"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#a5b3175dc379fd78e050756470cdec84f">dlsynth_free</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth)</td></tr>
 <tr class="memdesc:a5b3175dc379fd78e050756470cdec84f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the resources allocated for a synthesizer.  <a href="#a5b3175dc379fd78e050756470cdec84f">More...</a><br /></td></tr>
 <tr class="separator:a5b3175dc379fd78e050756470cdec84f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb265bd82ed2cc0a7d328c4a68c3660d"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#adb265bd82ed2cc0a7d328c4a68c3660d">dlsynth_render_float</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, float *buffer, size_t frames)</td></tr>
-<tr class="memdesc:adb265bd82ed2cc0a7d328c4a68c3660d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders audio in 32-bit float format.  <a href="#adb265bd82ed2cc0a7d328c4a68c3660d">More...</a><br /></td></tr>
-<tr class="separator:adb265bd82ed2cc0a7d328c4a68c3660d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf866cd31ba3ab59a6f3a78a9f48cc99"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#adf866cd31ba3ab59a6f3a78a9f48cc99">dlsynth_render_int16</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, int16_t *buffer, size_t frames)</td></tr>
-<tr class="memdesc:adf866cd31ba3ab59a6f3a78a9f48cc99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders audio in 16-bit integer format.  <a href="#adf866cd31ba3ab59a6f3a78a9f48cc99">More...</a><br /></td></tr>
-<tr class="separator:adf866cd31ba3ab59a6f3a78a9f48cc99"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57e676462fff6dee4ce0840a08880148"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#a57e676462fff6dee4ce0840a08880148">dlsynth_render_float_mix</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, float *buffer, size_t frames)</td></tr>
-<tr class="memdesc:a57e676462fff6dee4ce0840a08880148"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders audio in 32-bit float format.  <a href="#a57e676462fff6dee4ce0840a08880148">More...</a><br /></td></tr>
-<tr class="separator:a57e676462fff6dee4ce0840a08880148"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a032c657ea130f9cdd84bb1b44d45a6d7"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#a032c657ea130f9cdd84bb1b44d45a6d7">dlsynth_render_int16_mix</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, int16_t *buffer, size_t frames)</td></tr>
-<tr class="memdesc:a032c657ea130f9cdd84bb1b44d45a6d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders audio in 16-bit integer format.  <a href="#a032c657ea130f9cdd84bb1b44d45a6d7">More...</a><br /></td></tr>
-<tr class="separator:a032c657ea130f9cdd84bb1b44d45a6d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaabc9b629ef006a1326c4d55beba8d77"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#aaabc9b629ef006a1326c4d55beba8d77">dlsynth_set_instr</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, const struct <a class="el" href="structdlsynth__instr.html">dlsynth_instr</a> *instr)</td></tr>
-<tr class="memdesc:aaabc9b629ef006a1326c4d55beba8d77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the instrument the syntheisizer should use to render the audio data.  <a href="#aaabc9b629ef006a1326c4d55beba8d77">More...</a><br /></td></tr>
-<tr class="separator:aaabc9b629ef006a1326c4d55beba8d77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a907d21aa78c052d6ea1dd98a9b01d2bf"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#a907d21aa78c052d6ea1dd98a9b01d2bf">dlsynth_render_float</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, float *buffer, size_t frames, float gain)</td></tr>
+<tr class="memdesc:a907d21aa78c052d6ea1dd98a9b01d2bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders audio in 32-bit float format.  <a href="#a907d21aa78c052d6ea1dd98a9b01d2bf">More...</a><br /></td></tr>
+<tr class="separator:a907d21aa78c052d6ea1dd98a9b01d2bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a369578bf685b770afba4bbe88d18d427"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#a369578bf685b770afba4bbe88d18d427">dlsynth_render_int16</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, int16_t *buffer, size_t frames, float gain)</td></tr>
+<tr class="memdesc:a369578bf685b770afba4bbe88d18d427"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders audio in 16-bit integer format.  <a href="#a369578bf685b770afba4bbe88d18d427">More...</a><br /></td></tr>
+<tr class="separator:a369578bf685b770afba4bbe88d18d427"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c4b87da9c7351f5b8fa5ca2ddc10fad"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#a9c4b87da9c7351f5b8fa5ca2ddc10fad">dlsynth_render_float_mix</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, float *buffer, size_t frames, float gain)</td></tr>
+<tr class="memdesc:a9c4b87da9c7351f5b8fa5ca2ddc10fad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders audio in 32-bit float format.  <a href="#a9c4b87da9c7351f5b8fa5ca2ddc10fad">More...</a><br /></td></tr>
+<tr class="separator:a9c4b87da9c7351f5b8fa5ca2ddc10fad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb5bf70a560c58827da7411662084f9c"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#acb5bf70a560c58827da7411662084f9c">dlsynth_note_on</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, uint8_t note, uint8_t velocity)</td></tr>
+<tr class="separator:acb5bf70a560c58827da7411662084f9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a621b4b807ce6d8abf713873d8745d885"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#a621b4b807ce6d8abf713873d8745d885">dlsynth_note_off</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, uint8_t note)</td></tr>
+<tr class="separator:a621b4b807ce6d8abf713873d8745d885"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49c4f7a71a40581e55192a9e838af20f"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#a49c4f7a71a40581e55192a9e838af20f">dlsynth_poly_pressure</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, uint8_t note, uint8_t value)</td></tr>
+<tr class="separator:a49c4f7a71a40581e55192a9e838af20f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cf25bfd5d701f2f46a759be5ca1b711"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#a7cf25bfd5d701f2f46a759be5ca1b711">dlsynth_channel_pressure</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, uint8_t note, uint8_t value)</td></tr>
+<tr class="separator:a7cf25bfd5d701f2f46a759be5ca1b711"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2e265c1d16e92685dcc7905b7e9e4de"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#ad2e265c1d16e92685dcc7905b7e9e4de">dlsynth_pitch_bend</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, uint16_t value)</td></tr>
+<tr class="separator:ad2e265c1d16e92685dcc7905b7e9e4de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70e84be65bb9fcc9cac0665a36bad969"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#a70e84be65bb9fcc9cac0665a36bad969">dlsynth_volume</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, uint8_t value)</td></tr>
+<tr class="separator:a70e84be65bb9fcc9cac0665a36bad969"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a11e39bc0184eec45c23ba992b5194c"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#a5a11e39bc0184eec45c23ba992b5194c">dlsynth_pan</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, uint8_t value)</td></tr>
+<tr class="separator:a5a11e39bc0184eec45c23ba992b5194c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d73bae1676299232db56c305d20fa66"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#a6d73bae1676299232db56c305d20fa66">dlsynth_modulation</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, uint8_t value)</td></tr>
+<tr class="separator:a6d73bae1676299232db56c305d20fa66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3a0614df77adca9fa9f6751dcaa95fe"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#ac3a0614df77adca9fa9f6751dcaa95fe">dlsynth_sustain</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, int status)</td></tr>
+<tr class="separator:ac3a0614df77adca9fa9f6751dcaa95fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81659c7e6762737dbb44cbcb7496a920"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#a81659c7e6762737dbb44cbcb7496a920">dlsynth_reverb</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, uint8_t value)</td></tr>
+<tr class="separator:a81659c7e6762737dbb44cbcb7496a920"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a500488fb4d50fc53e7a54e8417499b21"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#a500488fb4d50fc53e7a54e8417499b21">dlsynth_chorus</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, uint8_t value)</td></tr>
+<tr class="separator:a500488fb4d50fc53e7a54e8417499b21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a299d69bfe7a58f804e48acd770996dfe"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#a299d69bfe7a58f804e48acd770996dfe">dlsynth_pitch_bend_range</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, uint16_t value)</td></tr>
+<tr class="separator:a299d69bfe7a58f804e48acd770996dfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04365635f8849a7c83275bf2b86597aa"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#a04365635f8849a7c83275bf2b86597aa">dlsynth_fine_tuning</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, uint16_t value)</td></tr>
+<tr class="separator:a04365635f8849a7c83275bf2b86597aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0089fdeb1ed0a7442eda15d0b440bee"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#af0089fdeb1ed0a7442eda15d0b440bee">dlsynth_coarse_tuning</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, uint16_t value)</td></tr>
+<tr class="separator:af0089fdeb1ed0a7442eda15d0b440bee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace8105adc65df0c4c4cb340f3bf6d691"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#ace8105adc65df0c4c4cb340f3bf6d691">dlsynth_reset_controllers</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth)</td></tr>
+<tr class="separator:ace8105adc65df0c4c4cb340f3bf6d691"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20ac625257c516b353d5bb2697dc9ac7"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#a20ac625257c516b353d5bb2697dc9ac7">dlsynth_all_notes_off</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth)</td></tr>
+<tr class="separator:a20ac625257c516b353d5bb2697dc9ac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6bfc49cac51930c73ae6f6198e2084d"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#ad6bfc49cac51930c73ae6f6198e2084d">dlsynth_all_sound_off</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth)</td></tr>
+<tr class="separator:ad6bfc49cac51930c73ae6f6198e2084d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65642c1ea29989ed0c3837c66c61c9ff"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#a65642c1ea29989ed0c3837c66c61c9ff">dlsynth_load_sound_file</a> (const char *path, uint32_t sampleRate, struct <a class="el" href="structdlsynth__sound.html">dlsynth_sound</a> **sound)</td></tr>
 <tr class="memdesc:a65642c1ea29989ed0c3837c66c61c9ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads a DLS file from a path.  <a href="#a65642c1ea29989ed0c3837c66c61c9ff">More...</a><br /></td></tr>
 <tr class="separator:a65642c1ea29989ed0c3837c66c61c9ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -244,6 +272,160 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a20ac625257c516b353d5bb2697dc9ac7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20ac625257c516b353d5bb2697dc9ac7">&#9670;&nbsp;</a></span>dlsynth_all_notes_off()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DLSYNTH_EXPORT dlsynth_all_notes_off </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
+          <td class="paramname"><em>synth</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad6bfc49cac51930c73ae6f6198e2084d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6bfc49cac51930c73ae6f6198e2084d">&#9670;&nbsp;</a></span>dlsynth_all_sound_off()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DLSYNTH_EXPORT dlsynth_all_sound_off </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
+          <td class="paramname"><em>synth</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7cf25bfd5d701f2f46a759be5ca1b711"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cf25bfd5d701f2f46a759be5ca1b711">&#9670;&nbsp;</a></span>dlsynth_channel_pressure()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DLSYNTH_EXPORT dlsynth_channel_pressure </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
+          <td class="paramname"><em>synth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>note</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a500488fb4d50fc53e7a54e8417499b21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a500488fb4d50fc53e7a54e8417499b21">&#9670;&nbsp;</a></span>dlsynth_chorus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DLSYNTH_EXPORT dlsynth_chorus </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
+          <td class="paramname"><em>synth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af0089fdeb1ed0a7442eda15d0b440bee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0089fdeb1ed0a7442eda15d0b440bee">&#9670;&nbsp;</a></span>dlsynth_coarse_tuning()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DLSYNTH_EXPORT dlsynth_coarse_tuning </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
+          <td class="paramname"><em>synth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a04365635f8849a7c83275bf2b86597aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04365635f8849a7c83275bf2b86597aa">&#9670;&nbsp;</a></span>dlsynth_fine_tuning()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DLSYNTH_EXPORT dlsynth_fine_tuning </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
+          <td class="paramname"><em>synth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a5b3175dc379fd78e050756470cdec84f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5b3175dc379fd78e050756470cdec84f">&#9670;&nbsp;</a></span>dlsynth_free()</h2>
 
@@ -761,8 +943,216 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="adb265bd82ed2cc0a7d328c4a68c3660d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adb265bd82ed2cc0a7d328c4a68c3660d">&#9670;&nbsp;</a></span>dlsynth_render_float()</h2>
+<a id="a6d73bae1676299232db56c305d20fa66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d73bae1676299232db56c305d20fa66">&#9670;&nbsp;</a></span>dlsynth_modulation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DLSYNTH_EXPORT dlsynth_modulation </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
+          <td class="paramname"><em>synth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a621b4b807ce6d8abf713873d8745d885"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a621b4b807ce6d8abf713873d8745d885">&#9670;&nbsp;</a></span>dlsynth_note_off()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DLSYNTH_EXPORT dlsynth_note_off </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
+          <td class="paramname"><em>synth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>note</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acb5bf70a560c58827da7411662084f9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb5bf70a560c58827da7411662084f9c">&#9670;&nbsp;</a></span>dlsynth_note_on()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DLSYNTH_EXPORT dlsynth_note_on </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
+          <td class="paramname"><em>synth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>note</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>velocity</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5a11e39bc0184eec45c23ba992b5194c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a11e39bc0184eec45c23ba992b5194c">&#9670;&nbsp;</a></span>dlsynth_pan()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DLSYNTH_EXPORT dlsynth_pan </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
+          <td class="paramname"><em>synth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad2e265c1d16e92685dcc7905b7e9e4de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2e265c1d16e92685dcc7905b7e9e4de">&#9670;&nbsp;</a></span>dlsynth_pitch_bend()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DLSYNTH_EXPORT dlsynth_pitch_bend </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
+          <td class="paramname"><em>synth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a299d69bfe7a58f804e48acd770996dfe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a299d69bfe7a58f804e48acd770996dfe">&#9670;&nbsp;</a></span>dlsynth_pitch_bend_range()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DLSYNTH_EXPORT dlsynth_pitch_bend_range </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
+          <td class="paramname"><em>synth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a49c4f7a71a40581e55192a9e838af20f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49c4f7a71a40581e55192a9e838af20f">&#9670;&nbsp;</a></span>dlsynth_poly_pressure()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DLSYNTH_EXPORT dlsynth_poly_pressure </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
+          <td class="paramname"><em>synth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>note</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a907d21aa78c052d6ea1dd98a9b01d2bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a907d21aa78c052d6ea1dd98a9b01d2bf">&#9670;&nbsp;</a></span>dlsynth_render_float()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -783,7 +1173,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>frames</em>&#160;</td>
+          <td class="paramname"><em>frames</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>gain</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -800,14 +1196,15 @@ Functions</h2></td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">synth</td><td>The synthesizer to use for rendering </td></tr>
     <tr><td class="paramdir">[in,out]</td><td class="paramname">buffer</td><td>The buffer to execute rendering in </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">frames</td><td>The number of frames to render </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gain</td><td>Gain to apply while rendering (0 means silent, 1 means unity gain) </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a57e676462fff6dee4ce0840a08880148"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a57e676462fff6dee4ce0840a08880148">&#9670;&nbsp;</a></span>dlsynth_render_float_mix()</h2>
+<a id="a9c4b87da9c7351f5b8fa5ca2ddc10fad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c4b87da9c7351f5b8fa5ca2ddc10fad">&#9670;&nbsp;</a></span>dlsynth_render_float_mix()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -828,7 +1225,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>frames</em>&#160;</td>
+          <td class="paramname"><em>frames</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>gain</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -845,14 +1248,15 @@ Functions</h2></td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">synth</td><td>The synthesizer to use for rendering </td></tr>
     <tr><td class="paramdir">[in,out]</td><td class="paramname">buffer</td><td>The buffer to execute rendering in </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">frames</td><td>The number of frames to render </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gain</td><td>Gain to apply while rendering (0 means silent, 1 means unity gain) </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="adf866cd31ba3ab59a6f3a78a9f48cc99"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adf866cd31ba3ab59a6f3a78a9f48cc99">&#9670;&nbsp;</a></span>dlsynth_render_int16()</h2>
+<a id="a369578bf685b770afba4bbe88d18d427"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a369578bf685b770afba4bbe88d18d427">&#9670;&nbsp;</a></span>dlsynth_render_int16()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -873,7 +1277,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>frames</em>&#160;</td>
+          <td class="paramname"><em>frames</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>gain</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -890,54 +1300,28 @@ Functions</h2></td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">synth</td><td>The synthesizer to use for rendering </td></tr>
     <tr><td class="paramdir">[in,out]</td><td class="paramname">buffer</td><td>The buffer to execute rendering in </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">frames</td><td>The number of frames to render </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gain</td><td>Gain to apply while rendering (0 means silent, 1 means unity gain) </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a032c657ea130f9cdd84bb1b44d45a6d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a032c657ea130f9cdd84bb1b44d45a6d7">&#9670;&nbsp;</a></span>dlsynth_render_int16_mix()</h2>
+<a id="ace8105adc65df0c4c4cb340f3bf6d691"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace8105adc65df0c4c4cb340f3bf6d691">&#9670;&nbsp;</a></span>dlsynth_reset_controllers()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_render_int16_mix </td>
+          <td class="memname">int DLSYNTH_EXPORT dlsynth_reset_controllers </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
-          <td class="paramname"><em>synth</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>synth</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">int16_t *&#160;</td>
-          <td class="paramname"><em>buffer</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>frames</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Renders audio in 16-bit integer format. </p>
-<p>New audio data will be mixed on top of the existing data in the buffer. </p><dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">synth</td><td>The synthesizer to use for rendering </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">buffer</td><td>The buffer to execute rendering in </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">frames</td><td>The number of frames to render </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -961,14 +1345,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aaabc9b629ef006a1326c4d55beba8d77"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaabc9b629ef006a1326c4d55beba8d77">&#9670;&nbsp;</a></span>dlsynth_set_instr()</h2>
+<a id="a81659c7e6762737dbb44cbcb7496a920"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81659c7e6762737dbb44cbcb7496a920">&#9670;&nbsp;</a></span>dlsynth_reverb()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_set_instr </td>
+          <td class="memname">int DLSYNTH_EXPORT dlsynth_reverb </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
           <td class="paramname"><em>synth</em>, </td>
@@ -976,8 +1360,8 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const struct <a class="el" href="structdlsynth__instr.html">dlsynth_instr</a> *&#160;</td>
-          <td class="paramname"><em>instr</em>&#160;</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -986,16 +1370,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Sets the instrument the syntheisizer should use to render the audio data. </p>
-<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">synth</td><td>The synthesizer to set the instrument to </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">instr</td><td>The instrument to set </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -1079,6 +1453,62 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="ac3a0614df77adca9fa9f6751dcaa95fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3a0614df77adca9fa9f6751dcaa95fe">&#9670;&nbsp;</a></span>dlsynth_sustain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DLSYNTH_EXPORT dlsynth_sustain </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
+          <td class="paramname"><em>synth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>status</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a70e84be65bb9fcc9cac0665a36bad969"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70e84be65bb9fcc9cac0665a36bad969">&#9670;&nbsp;</a></span>dlsynth_volume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DLSYNTH_EXPORT dlsynth_volume </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
+          <td class="paramname"><em>synth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

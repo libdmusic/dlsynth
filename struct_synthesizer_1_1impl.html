@@ -77,23 +77,27 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a206be9ef6dd4e013e0a52b017da9abce"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_synthesizer_1_1impl.html#a206be9ef6dd4e013e0a52b017da9abce">impl</a> (const <a class="el" href="class_d_l_synth_1_1_instrument.html">Instrument</a> &amp;instr)</td></tr>
-<tr class="separator:a206be9ef6dd4e013e0a52b017da9abce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78953ce0622801cbd5079ea2d868ce60"><td class="memItemLeft" align="right" valign="top">float &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_synthesizer_1_1impl.html#a78953ce0622801cbd5079ea2d868ce60">getSource</a> (<a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196">Source</a> src)</td></tr>
+<tr class="separator:a78953ce0622801cbd5079ea2d868ce60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac96407a4e02a6e2dfd6ddc44a23fd3fb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_synthesizer_1_1impl.html#ac96407a4e02a6e2dfd6ddc44a23fd3fb">impl</a> (const <a class="el" href="class_d_l_synth_1_1_sound.html">Sound</a> &amp;collection, const <a class="el" href="class_d_l_synth_1_1_instrument.html">Instrument</a> &amp;instr)</td></tr>
+<tr class="separator:ac96407a4e02a6e2dfd6ddc44a23fd3fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:aff2e3b1aa4f5c352ee80dfbe8952441b"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196">Source</a>, float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_synthesizer_1_1impl.html#aff2e3b1aa4f5c352ee80dfbe8952441b">m_sources</a></td></tr>
-<tr class="separator:aff2e3b1aa4f5c352ee80dfbe8952441b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa2ff83bb91993594c83991760b9e6e4"><td class="memItemLeft" align="right" valign="top">std::array&lt; float, max_source+1 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_synthesizer_1_1impl.html#aaa2ff83bb91993594c83991760b9e6e4">m_sources</a> {0.f}</td></tr>
+<tr class="separator:aaa2ff83bb91993594c83991760b9e6e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5359e11db46bd58602844e6b08a7920"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_synthesizer_1_1impl.html#ab5359e11db46bd58602844e6b08a7920">m_sustain</a> = false</td></tr>
 <tr class="separator:ab5359e11db46bd58602844e6b08a7920"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9451cf0b1197a6ef9cdb35a5889f0c9a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_d_l_synth_1_1_synth_1_1_voice.html">Voice</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_synthesizer_1_1impl.html#a9451cf0b1197a6ef9cdb35a5889f0c9a">m_voices</a></td></tr>
 <tr class="separator:a9451cf0b1197a6ef9cdb35a5889f0c9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af73612b5f1fdccdd33705cd7992f226b"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_d_l_synth_1_1_instrument.html">Instrument</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_synthesizer_1_1impl.html#af73612b5f1fdccdd33705cd7992f226b">m_instrument</a></td></tr>
 <tr class="separator:af73612b5f1fdccdd33705cd7992f226b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af67d85ad987bd92e1d2fc52edd7c959a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_d_l_synth_1_1_sound.html">Sound</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_synthesizer_1_1impl.html#af67d85ad987bd92e1d2fc52edd7c959a">m_collection</a></td></tr>
+<tr class="separator:af67d85ad987bd92e1d2fc52edd7c959a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a206be9ef6dd4e013e0a52b017da9abce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a206be9ef6dd4e013e0a52b017da9abce">&#9670;&nbsp;</a></span>impl()</h2>
+<a id="ac96407a4e02a6e2dfd6ddc44a23fd3fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac96407a4e02a6e2dfd6ddc44a23fd3fb">&#9670;&nbsp;</a></span>impl()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -104,8 +108,45 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">DLSynth::Synth::Synthesizer::impl::impl </td>
           <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_d_l_synth_1_1_sound.html">Sound</a> &amp;&#160;</td>
+          <td class="paramname"><em>collection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">const <a class="el" href="class_d_l_synth_1_1_instrument.html">Instrument</a> &amp;&#160;</td>
-          <td class="paramname"><em>instr</em></td><td>)</td>
+          <td class="paramname"><em>instr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a78953ce0622801cbd5079ea2d868ce60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78953ce0622801cbd5079ea2d868ce60">&#9670;&nbsp;</a></span>getSource()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float&amp; DLSynth::Synth::Synthesizer::impl::getSource </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196">Source</a>&#160;</td>
+          <td class="paramname"><em>src</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -119,6 +160,20 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="af67d85ad987bd92e1d2fc52edd7c959a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af67d85ad987bd92e1d2fc52edd7c959a">&#9670;&nbsp;</a></span>m_collection</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_d_l_synth_1_1_sound.html">Sound</a>&amp; DLSynth::Synth::Synthesizer::impl::m_collection</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="af73612b5f1fdccdd33705cd7992f226b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af73612b5f1fdccdd33705cd7992f226b">&#9670;&nbsp;</a></span>m_instrument</h2>
 
@@ -133,18 +188,18 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aff2e3b1aa4f5c352ee80dfbe8952441b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aff2e3b1aa4f5c352ee80dfbe8952441b">&#9670;&nbsp;</a></span>m_sources</h2>
+<a id="aaa2ff83bb91993594c83991760b9e6e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa2ff83bb91993594c83991760b9e6e4">&#9670;&nbsp;</a></span>m_sources</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::map&lt;<a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196">Source</a>, float&gt; DLSynth::Synth::Synthesizer::impl::m_sources</td>
+          <td class="memname">std::array&lt;float, max_source + 1&gt; DLSynth::Synth::Synthesizer::impl::m_sources {0.f}</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">   {Source::CC7, 100 / 128.f}, {Source::CC10, 64 / 128.f},</div><div class="line">   {Source::CC91, 40 / 128.f}, {Source::ChannelPressure, 0},</div><div class="line">   {Source::RPN1, 0},          {Source::CC11, 127 / 128.f},</div><div class="line">   {Source::CC1, 0},           {Source::CC93, 0},</div><div class="line">   {Source::RPN0, 2 / 128.f},  {Source::RPN2, 0},</div><div class="line">   {Source::None, 1}}</div></div><!-- fragment -->
+
 </div>
 </div>
 <a id="ab5359e11db46bd58602844e6b08a7920"></a>

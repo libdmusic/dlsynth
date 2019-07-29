@@ -9,5 +9,5 @@ var searchData=
   ['wavesampleloop',['WavesampleLoop',['../class_d_l_synth_1_1_wavesample_loop.html',1,'DLSynth']]],
   ['wlnk',['wlnk',['../structwlnk.html',1,'']]],
   ['wsmp',['wsmp',['../structwsmp.html',1,'']]],
-  ['wsmp_5floop',['wsmp_loop',['../struct_d_l_synth_1_1wsmp__loop.html',1,'DLSynth']]]
+  ['wsmp_5floop',['wsmp_loop',['../structwsmp__loop.html',1,'']]]
 ];

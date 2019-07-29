@@ -70,7 +70,9 @@ $(function() {
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">Voice.cpp File Reference</div>  </div>
 </div><!--header-->
@@ -79,7 +81,8 @@ $(function() {
 <code>#include &quot;<a class="el" href="_numeric_utils_8hpp_source.html">../NumericUtils.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_e_g_8hpp_source.html">EG.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_l_f_o_8hpp_source.html">LFO.hpp</a>&quot;</code><br />
-<code>#include &lt;map&gt;</code><br />
+<code>#include &quot;<a class="el" href="_s_p_s_c_queue_8hpp_source.html">SPSCQueue.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_voice_message_8hpp_source.html">VoiceMessage.hpp</a>&quot;</code><br />
 <code>#include &lt;unordered_set&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
@@ -87,8 +90,6 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structstd_1_1hash_3_01_connection_block_01_4.html">std::hash&lt; ConnectionBlock &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structstd_1_1equal__to_3_01_connection_block_01_4.html">std::equal_to&lt; ConnectionBlock &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_voice_params.html">VoiceParams</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_voice_1_1impl.html">DLSynth::Synth::Voice::impl</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -102,6 +103,13 @@ Namespaces</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:a84fcf2e6862ca5877285d737730c7d39"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_voice_8cpp.html#a84fcf2e6862ca5877285d737730c7d39">DLSYNTH_DEFAULT_CONN</a>(src,  ctrl,  dst,  scale,  bip,  inv,  type)</td></tr>
 <tr class="separator:a84fcf2e6862ca5877285d737730c7d39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a3131ef47404855e3341f902b8cb60618"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_voice_8cpp.html#a3131ef47404855e3341f902b8cb60618">SourceArray</a> = std::array&lt; float, <a class="el" href="namespace_d_l_synth.html#abe6924b46ba3719c62953845f880f8c7">DLSynth::max_source</a>+1 &gt;</td></tr>
+<tr class="separator:a3131ef47404855e3341f902b8cb60618"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a628730b639250f5c2e402d21df4883"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_voice_8cpp.html#a2a628730b639250f5c2e402d21df4883">DestinationArray</a> = std::array&lt; float, <a class="el" href="namespace_d_l_synth.html#af0915c9ae0803e2d18929590beaf7553">DLSynth::max_destination</a>+1 &gt;</td></tr>
+<tr class="separator:a2a628730b639250f5c2e402d21df4883"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -117,6 +125,13 @@ Functions</h2></td></tr>
 <tr class="separator:ad8e48263dd54bb4a6c714d15e51d3e12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad47f3038b53a87fd0407dcc2efa687ed"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_voice_8cpp.html#ad47f3038b53a87fd0407dcc2efa687ed">centsToSecs</a> (float cents)</td></tr>
 <tr class="separator:ad47f3038b53a87fd0407dcc2efa687ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a703e6916573d5bf47db26bee5e95830d"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_voice_8cpp.html#a703e6916573d5bf47db26bee5e95830d">globalSources</a></td></tr>
+<tr class="separator:a703e6916573d5bf47db26bee5e95830d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87f4bf3f76a8326fc0ea1a33303ab398"><td class="memItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_voice_8cpp.html#a87f4bf3f76a8326fc0ea1a33303ab398">messageQueueSize</a> = 128</td></tr>
+<tr class="separator:a87f4bf3f76a8326fc0ea1a33303ab398"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a84fcf2e6862ca5877285d737730c7d39"></a>
@@ -174,7 +189,38 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">{                                                                            \</div><div class="line">    Source::src, Source::ctrl, Destination::dts, scale,                        \</div><div class="line">     {inv, bip, TransformType::type}, {                                        \</div><div class="line">      false, <span class="keyword">false</span>, TransformType::None                                        \</div><div class="line">    }                                                                          \</div><div class="line">  }</div></div><!-- fragment -->
+<b>Value:</b><div class="fragment"><div class="line"><a class="code" href="class_d_l_synth_1_1_connection_block.html">ConnectionBlock</a>(Source::src, Source::ctrl, Destination::dst, scale,          \</div><div class="line">                  <a class="code" href="class_d_l_synth_1_1_transform.html">Transform</a>(inv, bip, TransformType::type),                    \</div><div class="line">                  <a class="code" href="class_d_l_synth_1_1_transform.html">Transform</a>(<span class="keyword">false</span>, <span class="keyword">false</span>, TransformType::None))</div><div class="ttc" id="class_d_l_synth_1_1_transform_html"><div class="ttname"><a href="class_d_l_synth_1_1_transform.html">DLSynth::Transform</a></div><div class="ttdef"><b>Definition:</b> Articulator.hpp:90</div></div>
+<div class="ttc" id="class_d_l_synth_1_1_connection_block_html"><div class="ttname"><a href="class_d_l_synth_1_1_connection_block.html">DLSynth::ConnectionBlock</a></div><div class="ttdoc">Defines how an input signal affects an instrument parameter.</div><div class="ttdef"><b>Definition:</b> Articulator.hpp:104</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="a2a628730b639250f5c2e402d21df4883"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a628730b639250f5c2e402d21df4883">&#9670;&nbsp;</a></span>DestinationArray</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="_voice_8cpp.html#a2a628730b639250f5c2e402d21df4883">DestinationArray</a> =  std::array&lt;float, <a class="el" href="namespace_d_l_synth.html#af0915c9ae0803e2d18929590beaf7553">DLSynth::max_destination</a> + 1&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3131ef47404855e3341f902b8cb60618"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3131ef47404855e3341f902b8cb60618">&#9670;&nbsp;</a></span>SourceArray</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="_voice_8cpp.html#a3131ef47404855e3341f902b8cb60618">SourceArray</a> =  std::array&lt;float, <a class="el" href="namespace_d_l_synth.html#abe6924b46ba3719c62953845f880f8c7">DLSynth::max_source</a> + 1&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
@@ -346,6 +392,35 @@ Functions</h2></td></tr>
 <span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a703e6916573d5bf47db26bee5e95830d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a703e6916573d5bf47db26bee5e95830d">&#9670;&nbsp;</a></span>globalSources</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto globalSources</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {Source::CC1,</div><div class="line">                                Source::CC10,</div><div class="line">                                Source::CC11,</div><div class="line">                                Source::CC7,</div><div class="line">                                Source::CC91,</div><div class="line">                                Source::CC93,</div><div class="line">                                Source::ChannelPressure,</div><div class="line">                                Source::None,</div><div class="line">                                Source::PitchWheel,</div><div class="line">                                Source::RPN0,</div><div class="line">                                Source::RPN1,</div><div class="line">                                Source::RPN2}</div></div><!-- fragment -->
+</div>
+</div>
+<a id="a87f4bf3f76a8326fc0ea1a33303ab398"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87f4bf3f76a8326fc0ea1a33303ab398">&#9670;&nbsp;</a></span>messageQueueSize</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr std::size_t messageQueueSize = 128</td>
+        </tr>
+      </table>
 </div><div class="memdoc">
 
 </div>

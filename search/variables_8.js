@@ -7,5 +7,6 @@ var searchData=
   ['index',['index',['../structdlsynth__instr.html#a3a286611c6653c33b7b606317d4af6a4',1,'dlsynth_instr']]],
   ['ins_5fid',['ins_id',['../_common_four_c_cs_8hpp.html#af1f7614479e7ac808886a4c15cbc2f4e',1,'CommonFourCCs.hpp']]],
   ['insh_5fid',['insh_id',['../_common_four_c_cs_8hpp.html#afddd6bb536f364117ce078ce37bb69fc',1,'CommonFourCCs.hpp']]],
-  ['interleaved',['interleaved',['../structdlsynth__settings.html#a84c0694f0e83c994bf0169ba5a99cb22',1,'dlsynth_settings']]]
+  ['instrument',['instrument',['../structdlsynth__settings.html#a2716f5ca8a5d52b04873ca818ab6d4af',1,'dlsynth_settings']]],
+  ['interleaved',['interleaved',['../structdlsynth__settings.html#a84c0694f0e83c994bf0169ba5a99cb22',1,'dlsynth_settings::interleaved()'],['../structdlsynth.html#a42eefbbe426c687ff058d7ef7f532546',1,'dlsynth::interleaved()']]]
 ];
