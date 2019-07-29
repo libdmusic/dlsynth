@@ -8,7 +8,7 @@ DirectMusic) and outputs audio data.
 `dlsynth` exposes a pure C interface for ease of use from other languages:
 
 ```c
-#include <stdio.h>>
+#include <stdio.h>
 #include <dlsynth.h>
 
 int main() {
