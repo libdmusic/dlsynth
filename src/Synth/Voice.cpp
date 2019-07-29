@@ -425,6 +425,7 @@ struct Voice::impl : public VoiceMessageExecutor {
     m_playing = true;
     resetConnections();
     resetDestinations();
+    loadConnections(message.connectionBlocks());
     m_wavesample = message.wavesample();
     m_sample = &message.sample();
     m_samplePos = 0;
@@ -584,9 +585,10 @@ Voice::~Voice() {
 }
 
 void Voice::noteOn(std::uint8_t note, std::uint8_t velocity,
-                   const Wavesample *wavesample, const Wave &sample) {
-  pimpl->m_messageQueue.push(
-   std::make_unique<NoteOnMessage>(note, velocity, wavesample, sample));
+                   const Wavesample *wavesample, const Wave &sample,
+                   const std::vector<ConnectionBlock> &connectionBlocks) {
+  pimpl->m_messageQueue.push(std::make_unique<NoteOnMessage>(
+   note, velocity, wavesample, sample, connectionBlocks));
 }
 void Voice::noteOff() {
   pimpl->m_messageQueue.push(std::make_unique<NoteOffMessage>());

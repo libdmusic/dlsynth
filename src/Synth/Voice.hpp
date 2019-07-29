@@ -28,7 +28,8 @@ namespace Synth {
     Voice &operator=(const Voice &) = delete;
 
     void noteOn(std::uint8_t note, std::uint8_t velocity,
-                const Wavesample *wavesample, const Wave &sample);
+                const Wavesample *wavesample, const Wave &sample,
+                const std::vector<ConnectionBlock> &connectionBlocks);
     void noteOff();
     void soundOff();
 

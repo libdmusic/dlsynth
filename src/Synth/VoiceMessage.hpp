@@ -1,6 +1,7 @@
 #ifndef VOICEMESSAGE_HPP
 #define VOICEMESSAGE_HPP
 
+#include "../Articulator.hpp"
 #include "../Wave.hpp"
 #include "../Wavesample.hpp"
 #include <cstdint>
@@ -19,10 +20,12 @@ namespace Synth {
     std::uint8_t m_note, m_velocity;
     const Wavesample *m_wavesample;
     const Wave &m_sample;
+    std::vector<ConnectionBlock> m_connectionBlocks;
 
   public:
     NoteOnMessage(std::uint8_t note, std::uint8_t velocity,
-                  const Wavesample *wavesample, const Wave &sample);
+                  const Wavesample *wavesample, const Wave &sample,
+                  const std::vector<ConnectionBlock> &m_connectionBlocks);
     ~NoteOnMessage() override;
     void accept(VoiceMessageExecutor *executor) override;
 
@@ -31,6 +34,7 @@ namespace Synth {
 
     const Wavesample *wavesample() const;
     const Wave &sample() const;
+    const std::vector<ConnectionBlock> &connectionBlocks() const;
   };
 
   class NoteOffMessage : public VoiceMessage {

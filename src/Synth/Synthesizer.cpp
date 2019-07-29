@@ -121,9 +121,16 @@ void Synthesizer::resetControllers() {
 }
 
 void Synthesizer::noteOn(std::uint8_t note, std::uint8_t velocity) {
+
   for (const auto &region : pimpl->m_instrument.regions()) {
     if (region.keyRange().inRange(note) &&
         region.velocityRange().inRange(velocity)) {
+      std::vector<ConnectionBlock> connectionBlocks =
+       pimpl->m_instrument.connectionBlocks();
+
+      connectionBlocks.insert(std::end(connectionBlocks),
+                              std::begin(region.connectionBlocks()),
+                              std::end(region.connectionBlocks()));
 
       const Wave &sample = pimpl->m_collection.wavepool()[region.waveIndex()];
       const Wavesample *wavesample = region.wavesample() != nullptr
@@ -135,7 +142,7 @@ void Synthesizer::noteOn(std::uint8_t note, std::uint8_t velocity) {
       if (!region.selfNonExclusive()) {
         for (auto &voice : pimpl->m_voices) {
           if (voice.playing() && voice.note() == note) {
-            voice.noteOn(note, velocity, wavesample, sample);
+            voice.noteOn(note, velocity, wavesample, sample, connectionBlocks);
             return;
           }
         }
@@ -144,7 +151,7 @@ void Synthesizer::noteOn(std::uint8_t note, std::uint8_t velocity) {
       // Otherwise, search for a free voice.
       for (auto &voice : pimpl->m_voices) {
         if (!voice.playing()) {
-          voice.noteOn(note, velocity, wavesample, sample);
+          voice.noteOn(note, velocity, wavesample, sample, connectionBlocks);
           return;
         }
       }
@@ -155,7 +162,7 @@ void Synthesizer::noteOn(std::uint8_t note, std::uint8_t velocity) {
                         [](const auto &lhs, const auto &rhs) {
                           return lhs.startTime() < rhs.startTime();
                         });
-      oldestVoice->noteOn(note, velocity, wavesample, sample);
+      oldestVoice->noteOn(note, velocity, wavesample, sample, connectionBlocks);
     }
   }
 }
