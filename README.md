@@ -18,7 +18,19 @@ int main() {
     return 1;
   }
 
-  struct dlsynth_settings settings = { 44100, 2, DLSYNTH_INTERLEAVED };
+  struct dlsynth_instr* instr;
+  if(!dlsynth_get_instr_num(0, snd, &instr)) {
+    fprintf(stderr, "Could not load instrument\n");
+    return 1;
+  }
+
+  struct dlsynth_settings settings = {
+    44100,               /* Sample rate        */
+    2,                   /* Number of channels */
+    DLSYNTH_INTERLEAVED, /* Interleaved output */
+    16,                  /* Number of voices   */
+    instr                /* Instrument to use  */
+  };
 
   struct dlsynth* synth;
   if(!dlsynth_init(&settings, &synth)) {
@@ -26,7 +38,8 @@ int main() {
     return 1;
   }
 
-  if(!dlsynth_render_int16(synth, someBuf, bufLen)) {
+  dlsynth_note_on(synth, 43);
+  if(!dlsynth_render_int16(synth, someBuf, bufLen, 1.0f)) {
     fprintf(stderr, "Could not render buffer\n");
     return 1;
   }
