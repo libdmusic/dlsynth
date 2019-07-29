@@ -34,7 +34,8 @@ float EG::nextSample(float delayTime, float attackTime, float holdTime,
 
     time -= attackTime;
     if (time < holdTime) {
-      return 1;
+      m_lastValue = 1;
+      return m_lastValue;
     }
 
     time -= holdTime;
@@ -58,4 +59,4 @@ float EG::nextSample(float delayTime, float attackTime, float holdTime,
   }
 }
 
-bool EG::isActive() const { return !m_gate && m_lastValue == 0; }
+bool EG::gate() const { return m_gate; }

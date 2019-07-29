@@ -32,6 +32,8 @@ namespace Synth {
     void noteOff();
     void soundOff();
 
+    void polyPressure(std::uint8_t value);
+
     bool playing() const;
     std::uint8_t note() const;
     std::chrono::steady_clock::time_point startTime() const;

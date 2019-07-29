@@ -146,7 +146,7 @@ static float interpolateSample(float pos, const std::vector<float> &samples) {
   std::size_t ceil = static_cast<std::size_t>(std::ceil(pos));
 
   float sample1 = samples[floor];
-  float sample2 = samples[ceil];
+  float sample2 = samples[ceil % samples.size()];
 
   float t = pos - floor;
   return lerp(sample1, sample2, t);
@@ -328,10 +328,10 @@ struct Voice::impl : public VoiceMessageExecutor {
      DLSYNTH_DEFAULT_CONN(LFO, None, Gain, 0, true, false, None),
      DLSYNTH_DEFAULT_CONN(LFO, CC1, Gain, 0, true, false, None),
      DLSYNTH_DEFAULT_CONN(LFO, ChannelPressure, Gain, 0, true, false, None),
-     DLSYNTH_DEFAULT_CONN(KeyOnVelocity, None, Gain, 0x80000000, false, true,
+     DLSYNTH_DEFAULT_CONN(KeyOnVelocity, None, Gain, -62914560, false, true,
                           Concave),
-     DLSYNTH_DEFAULT_CONN(CC7, None, Gain, 0x80000000, false, true, Concave),
-     DLSYNTH_DEFAULT_CONN(CC11, None, Gain, 0x80000000, false, true, Concave),
+     DLSYNTH_DEFAULT_CONN(CC7, None, Gain, -62914560, false, true, Concave),
+     DLSYNTH_DEFAULT_CONN(CC11, None, Gain, -62914560, false, true, Concave),
      DLSYNTH_DEFAULT_CONN(None, None, Pan, 0, false, false, None),
      DLSYNTH_DEFAULT_CONN(CC10, None, Pan, 33292288, true, false, None),
      DLSYNTH_DEFAULT_CONN(CC91, None, Reverb, 65536000, false, false, None),
@@ -401,8 +401,8 @@ struct Voice::impl : public VoiceMessageExecutor {
     float output =
      m_volEg.nextSample(delay, attack, hold, decay, sustain, release);
 
-    bool active = m_volEg.isActive();
-    if (!active) {
+    bool gate = m_volEg.gate();
+    if (!gate && output == 0.f) {
       m_playing = false;
     }
 
@@ -464,6 +464,14 @@ struct Voice::impl : public VoiceMessageExecutor {
     float *lp = beginLeft;
     float *rp = beginRight;
 
+    /*
+    Calculating destinations is expensive, so it cannot be done for every
+    sample. Instead, `destinationCalcInterval` specifies how many samples are
+    generated using the same destination values, to reduce CPU load.
+     */
+    int count = 0;
+    constexpr int destinationCalcInterval = 16;
+
     while (lp < endLeft || rp < endRight) {
       if (lp < endLeft && fill) {
         *lp = 0.f;
@@ -478,11 +486,17 @@ struct Voice::impl : public VoiceMessageExecutor {
         m_messageQueue.pop();
 
         msg->accept(this);
+        count = 0;
       }
 
       if (m_sample != nullptr && m_wavesample != nullptr && m_playing) {
-        resetDestinations();
-        calcDestinations();
+        if (count == 0) {
+          resetDestinations();
+          calcDestinations();
+        }
+
+        count = (count + 1) % destinationCalcInterval;
+
         updateVolEg();
         updateFiltEg();
         updateModLfo();
@@ -529,6 +543,10 @@ struct Voice::impl : public VoiceMessageExecutor {
                 m_playing = false;
               }
             }
+          }
+        } else {
+          if (m_samplePos >= m_sample->leftData().size()) {
+            m_playing = false;
           }
         }
 
@@ -578,6 +596,10 @@ void Voice::noteOff() {
 }
 void Voice::soundOff() {
   pimpl->m_messageQueue.push(std::make_unique<SoundOffMessage>());
+}
+
+void Voice::polyPressure(std::uint8_t value) {
+  pimpl->m_messageQueue.push(std::make_unique<PolyPressureMessage>(value));
 }
 
 bool Voice::playing() const { return pimpl->m_playing; }
