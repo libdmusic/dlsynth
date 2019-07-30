@@ -28,7 +28,7 @@ float EG::nextSample(float delayTime, float attackTime, float holdTime,
     time -= delayTime;
     if (time < attackTime) {
       float diff = 1.f - m_lastValue;
-      m_lastValue += diff / (attackTime - time);
+      m_lastValue += (diff / (attackTime - time)) / m_sampleRate;
       return m_lastValue;
     }
 
@@ -41,16 +41,16 @@ float EG::nextSample(float delayTime, float attackTime, float holdTime,
     time -= holdTime;
     if (time < decayTime) {
       float diff = m_lastValue - sustainLevel;
-      m_lastValue -= diff / (decayTime - time);
+      m_lastValue -= (diff / (decayTime - time)) / m_sampleRate;
       return m_lastValue;
     }
 
-    m_lastValue = 1;
+    m_lastValue = sustainLevel;
     return m_lastValue;
   } else {
     if (time < releaseTime) {
       float diff = m_lastValue;
-      m_lastValue -= diff / (releaseTime - time);
+      m_lastValue -= (diff / (releaseTime - time)) / m_sampleRate;
       return m_lastValue;
     }
 

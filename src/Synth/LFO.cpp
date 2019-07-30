@@ -12,7 +12,7 @@ void LFO::reset() {
 }
 
 float LFO::nextSample(float freq, float startDelay) {
-  float out = 0;
+  float out = 0.5f;
   if (m_currentTime > startDelay) {
     float sample = std::sin(m_phase * 2.f * PI);
     m_phase += freq / m_sampleRate;
