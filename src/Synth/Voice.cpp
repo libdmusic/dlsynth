@@ -350,6 +350,7 @@ struct Voice::impl : public VoiceMessageExecutor {
      DLSYNTH_DEFAULT_CONN(LFO, CC1, Pitch, 0, true, false, None),
      DLSYNTH_DEFAULT_CONN(LFO, ChannelPressure, Pitch, 0, true, false, None),
      DLSYNTH_DEFAULT_CONN(EG2, None, Pitch, 0, false, false, None),
+     DLSYNTH_DEFAULT_CONN(EG1, None, Gain, -62914560, false, true, None),
     };
   }
 
