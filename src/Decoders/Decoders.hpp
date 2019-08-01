@@ -3,7 +3,7 @@
 #include "../WaveDecoder.hpp"
 
 #define DLSYNTH_FACTORY(name)                                                  \
-  class name : public WaveDecoderFactory {                                     \
+  class name final : public WaveDecoderFactory {                               \
     name();                                                                    \
                                                                                \
   public:                                                                      \

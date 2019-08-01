@@ -9,7 +9,7 @@
 namespace DLSynth {
 enum class LoopType : std::uint32_t { Forward = 0x0000, Release = 0x0001 };
 
-class WavesampleLoop {
+class WavesampleLoop final {
   LoopType m_type;
   std::uint32_t m_start;
   std::uint32_t m_length;
@@ -25,7 +25,7 @@ public:
 };
 
 /// Describes the synthesis parameters of a WAV file
-class Wavesample {
+class Wavesample final {
   std::uint16_t m_unityNote;
   std::int16_t m_fineTune;
   std::int32_t m_gain;

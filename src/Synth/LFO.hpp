@@ -4,7 +4,7 @@
 namespace DLSynth {
 namespace Synth {
   /// A low-frequency oscillator with variable start delay
-  class LFO {
+  class LFO final {
     float m_phase = 0;
     float m_currentTime = 0;
     float m_sampleRate;

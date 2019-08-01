@@ -7,7 +7,7 @@ namespace DLSynth {
 namespace Synth {
   /// A \ref Synthesizer coordinates a number of \ref Voice objects in order
   /// to produce audio data according to what an \ref Instrument specifies
-  class Synthesizer {
+  class Synthesizer final {
     struct impl;
     impl *pimpl;
 

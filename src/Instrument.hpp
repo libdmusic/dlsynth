@@ -9,7 +9,7 @@
 namespace DLSynth {
 struct Uuid;
 /// A DLS instrument, part of a DLS Collection
-class Instrument {
+class Instrument final {
   struct impl;
   impl *m_pimpl;
 

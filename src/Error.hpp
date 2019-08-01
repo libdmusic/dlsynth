@@ -12,7 +12,7 @@ enum class ErrorCode : int {
 #undef DLSYNTH_ERROR
 };
 
-class Error : public std::runtime_error {
+class Error final : public std::runtime_error {
   ErrorCode m_code;
 
 public:

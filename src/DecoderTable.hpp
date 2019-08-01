@@ -19,7 +19,7 @@ class WaveDecoder;
  * auto decoder = DecoderTable::getInstance().getDecoder(fmt, waveData);
  * @endcode
  */
-class DecoderTable {
+class DecoderTable final {
   DecoderTable();
   std::unordered_map<std::uint16_t, WaveDecoderFactory *> m_decoders;
 

@@ -4,7 +4,7 @@
 namespace DLSynth {
 namespace Synth {
   /// A Delay-Attack-Hold-Decay-Sustain-Release Envelope generator
-  class EG {
+  class EG final {
     float m_currentTime = 0;
     float m_lastValue = 0;
     float m_sampleRate;

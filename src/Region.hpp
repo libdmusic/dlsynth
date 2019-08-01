@@ -19,7 +19,7 @@ struct Range {
   }
 };
 
-class Region {
+class Region final {
   Range m_keyRange;
   Range m_velRange;
   std::uint16_t m_keyGroup;

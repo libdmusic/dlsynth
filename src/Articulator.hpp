@@ -101,7 +101,7 @@ public:
 };
 
 /// Defines how an input signal affects an instrument parameter
-class ConnectionBlock {
+class ConnectionBlock final {
   Source m_source;
   Source m_control;
   Destination m_destination;
@@ -133,7 +133,7 @@ public:
 };
 
 /// A set of \ref ConnectionBlock s that defines the parameters of an instrument
-class Articulator {
+class Articulator final {
   std::vector<ConnectionBlock> m_blocks;
 
   void load_art1(riffcpp::Chunk &chunk);

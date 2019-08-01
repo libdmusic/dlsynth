@@ -11,7 +11,7 @@ namespace DLSynth {
 class Wavesample;
 struct Uuid;
 
-class Wave {
+class Wave final {
   struct impl;
 
   impl *m_pimpl;

@@ -10,7 +10,7 @@ class QueryMap;
 
 namespace DLSynth {
 /// Executes DLS condition expressions, expressed in Reverse Polish Notation
-class ExpressionParser {
+class ExpressionParser final {
   std::unique_ptr<QueryMap> m_queryMap;
 
 public:
