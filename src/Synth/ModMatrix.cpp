@@ -37,6 +37,7 @@ SignalObserver::~SignalObserver() = default;
 
 struct SignalSource::impl {
   float m_value;
+  float m_lastUpdatedValue = 0.f;
 };
 
 SignalSource::SignalSource() : pimpl(new impl()) {}
@@ -55,7 +56,13 @@ SignalSource::operator float() const { return value(); }
 
 void SignalSource::value(float v) {
   pimpl->m_value = v;
-  valueChanged();
+
+  constexpr float valueUpdateThreshold = 0.1f;
+  if (std::abs(pimpl->m_lastUpdatedValue - pimpl->m_value) >
+      valueUpdateThreshold) {
+    pimpl->m_lastUpdatedValue = v;
+    valueChanged();
+  }
 }
 float SignalSource::value() const { return pimpl->m_value; }
 
