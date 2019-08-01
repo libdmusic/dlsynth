@@ -560,39 +560,54 @@ Voice::~Voice() {
 void Voice::noteOn(std::uint8_t note, std::uint8_t velocity,
                    const Wavesample *wavesample, const Wave &sample,
                    const std::vector<ConnectionBlock> &connectionBlocks) {
+  assert(pimpl != nullptr);
   pimpl->m_messageQueue.push(std::make_unique<NoteOnMessage>(
    note, velocity, wavesample, sample, connectionBlocks));
 }
 void Voice::noteOff() {
+  assert(pimpl != nullptr);
   pimpl->m_messageQueue.push(std::make_unique<NoteOffMessage>());
 }
 void Voice::soundOff() {
+  assert(pimpl != nullptr);
   pimpl->m_messageQueue.push(std::make_unique<SoundOffMessage>());
 }
 
 void Voice::controlChange(Source source, float value) {
+  assert(pimpl != nullptr);
   pimpl->m_messageQueue.push(
    std::make_unique<ControlChangeMessage>(source, value));
 }
 
 void Voice::resetControllers() {
+  assert(pimpl != nullptr);
   pimpl->m_messageQueue.push(std::make_unique<ResetControllersMessage>());
 }
 
-bool Voice::playing() const { return pimpl->m_playing; }
-std::uint8_t Voice::note() const { return pimpl->m_note; }
+bool Voice::playing() const {
+  assert(pimpl != nullptr);
+  return pimpl->m_playing;
+}
+
+std::uint8_t Voice::note() const {
+  assert(pimpl != nullptr);
+  return pimpl->m_note;
+}
 std::chrono::steady_clock::time_point Voice::startTime() const {
+  assert(pimpl != nullptr);
   return pimpl->m_startTime;
 }
 
 void Voice::render_fill(float *beginLeft, float *endLeft, float *beginRight,
                         float *endRight, std::size_t bufferSkip, float gain) {
+  assert(pimpl != nullptr);
   pimpl->render(beginLeft, endLeft, beginRight, endRight, gain, true,
                 bufferSkip);
 }
 
 void Voice::render_mix(float *beginLeft, float *endLeft, float *beginRight,
                        float *endRight, std::size_t bufferSkip, float gain) {
+  assert(pimpl != nullptr);
   pimpl->render(beginLeft, endLeft, beginRight, endRight, gain, false,
                 bufferSkip);
 }

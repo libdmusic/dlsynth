@@ -1,6 +1,7 @@
 #include "ModMatrix.hpp"
 #include "../NumericUtils.hpp"
 #include "Transform.hpp"
+#include <cassert>
 #include <cmath>
 
 using namespace DLSynth;
@@ -11,23 +12,31 @@ struct ObservableSignal::impl {
 };
 
 ObservableSignal::ObservableSignal() : pimpl(new impl()) {}
+
+ObservableSignal::ObservableSignal(ObservableSignal &&s) : pimpl(s.pimpl) {
+  s.pimpl = nullptr;
+}
 ObservableSignal::~ObservableSignal() { delete pimpl; }
 
 void ObservableSignal::subscribe(SignalObserver *subscriber) {
+  assert(pimpl != nullptr);
   pimpl->m_subscribers.push_back(subscriber);
 }
 
 void ObservableSignal::unsubscribe(SignalObserver *subscriber) {
+  assert(pimpl != nullptr);
   auto &vector = pimpl->m_subscribers;
   vector.erase(std::find(std::begin(vector), std::end(vector), subscriber));
 }
 
 void ObservableSignal::resetSubscribers() {
+  assert(pimpl != nullptr);
   auto &vector = pimpl->m_subscribers;
   vector.erase(std::begin(vector), std::end(vector));
 }
 
 void ObservableSignal::valueChanged() {
+  assert(pimpl != nullptr);
   for (auto &subscriber : pimpl->m_subscribers) {
     subscriber->sourceChanged();
   }
@@ -55,6 +64,7 @@ SignalSource &SignalSource::operator=(float v) {
 SignalSource::operator float() const { return value(); }
 
 void SignalSource::value(float v) {
+  assert(pimpl != nullptr);
   pimpl->m_value = v;
 
   constexpr float valueUpdateThreshold = 0.1f;
@@ -64,7 +74,10 @@ void SignalSource::value(float v) {
     valueChanged();
   }
 }
-float SignalSource::value() const { return pimpl->m_value; }
+float SignalSource::value() const {
+  assert(pimpl != nullptr);
+  return pimpl->m_value;
+}
 
 struct Connection {
   const SignalSource *src, *ctrl;
@@ -98,6 +111,7 @@ void SignalDestination::addConnection(
  SignalSource &source, const DLSynth::TransformParams &srcTransform,
  SignalSource &control, const DLSynth::TransformParams &ctrlTransform,
  float scale) {
+  assert(pimpl != nullptr);
 
   Connection conn{&source, &control,
                   Transform::create(srcTransform.type(), srcTransform.invert(),
@@ -117,6 +131,7 @@ void SignalDestination::addConnection(
 }
 
 void SignalDestination::sourceChanged() {
+  assert(pimpl != nullptr);
   pimpl->m_upToDate = false;
   pimpl->m_freqUpToDate = false;
   pimpl->m_gainUpToDate = false;
@@ -125,6 +140,7 @@ void SignalDestination::sourceChanged() {
 }
 
 float SignalDestination::value() {
+  assert(pimpl != nullptr);
   if (!pimpl->m_upToDate) {
     pimpl->m_value = 0.f;
     for (auto &conn : pimpl->m_connections) {
@@ -144,6 +160,7 @@ float SignalDestination::value() {
 SignalDestination::operator float() { return value(); }
 
 void SignalDestination::resetConnections() {
+  assert(pimpl != nullptr);
   pimpl->m_connections.erase(std::begin(pimpl->m_connections),
                              std::end(pimpl->m_connections));
   pimpl->m_upToDate = false;
@@ -154,6 +171,7 @@ void SignalDestination::resetConnections() {
 }
 
 float SignalDestination::asFreq() {
+  assert(pimpl != nullptr);
   if (!pimpl->m_freqUpToDate) {
     pimpl->m_freq = centsToFreq(value());
     pimpl->m_freqUpToDate = true;
@@ -161,6 +179,7 @@ float SignalDestination::asFreq() {
   return pimpl->m_freq;
 }
 float SignalDestination::asSecs() {
+  assert(pimpl != nullptr);
   if (!pimpl->m_secsUpToDate) {
     pimpl->m_secs = centsToSecs(value());
     pimpl->m_secsUpToDate = true;
@@ -169,6 +188,7 @@ float SignalDestination::asSecs() {
   return pimpl->m_secs;
 }
 float SignalDestination::asGain() {
+  assert(pimpl != nullptr);
   if (!pimpl->m_gainUpToDate) {
     pimpl->m_gain = belsToGain(value());
     pimpl->m_gainUpToDate = true;

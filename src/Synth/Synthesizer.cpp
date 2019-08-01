@@ -47,11 +47,13 @@ Synthesizer::~Synthesizer() {
 }
 
 void Synthesizer::pressure(std::uint8_t value) {
+  assert(pimpl != nullptr);
   pimpl->controlChange(Source::ChannelPressure,
                        static_cast<float>(value) / 128.f);
 }
 
 void Synthesizer::pressure(std::uint8_t note, std::uint8_t value) {
+  assert(pimpl != nullptr);
   for (auto &voice : pimpl->m_voices) {
     if (voice.playing() && voice.note() == note) {
       voice.controlChange(Source::PolyPressure,
@@ -61,44 +63,57 @@ void Synthesizer::pressure(std::uint8_t note, std::uint8_t value) {
 }
 
 void Synthesizer::pitchBend(std::uint16_t value) {
+  assert(pimpl != nullptr);
   pimpl->controlChange(Source::PitchWheel, static_cast<float>(value) / 16384.f);
 }
 
 void Synthesizer::volume(std::uint8_t value) {
+  assert(pimpl != nullptr);
   pimpl->controlChange(Source::CC7, static_cast<float>(value) / 128.f);
 }
 
 void Synthesizer::pan(std::uint8_t value) {
+  assert(pimpl != nullptr);
   pimpl->controlChange(Source::CC10, static_cast<float>(value) / 128.f);
 }
 
 void Synthesizer::modulation(std::uint8_t value) {
+  assert(pimpl != nullptr);
   pimpl->controlChange(Source::CC1, static_cast<float>(value) / 128.f);
 }
 
-void Synthesizer::sustain(bool status) { pimpl->m_sustain = status; }
+void Synthesizer::sustain(bool status) {
+  assert(pimpl != nullptr);
+  pimpl->m_sustain = status;
+}
 
 void Synthesizer::reverb(std::uint8_t value) {
+  assert(pimpl != nullptr);
   pimpl->controlChange(Source::CC91, static_cast<float>(value) / 128.f);
 }
 
 void Synthesizer::chorus(std::uint8_t value) {
+  assert(pimpl != nullptr);
   pimpl->controlChange(Source::CC93, static_cast<float>(value) / 128.f);
 }
 
 void Synthesizer::pitchBendRange(std::uint16_t value) {
+  assert(pimpl != nullptr);
   pimpl->controlChange(Source::RPN0, static_cast<float>(value) / 16384.f);
 }
 
 void Synthesizer::fineTuning(std::uint16_t value) {
+  assert(pimpl != nullptr);
   pimpl->controlChange(Source::RPN1, static_cast<float>(value) / 16384.f);
 }
 
 void Synthesizer::coarseTuning(std::uint16_t value) {
+  assert(pimpl != nullptr);
   pimpl->controlChange(Source::RPN2, static_cast<float>(value) / 16384.f);
 }
 
 void Synthesizer::resetControllers() {
+  assert(pimpl != nullptr);
   for (auto &voice : pimpl->m_voices) {
     voice.resetControllers();
   }
@@ -106,6 +121,7 @@ void Synthesizer::resetControllers() {
 }
 
 void Synthesizer::noteOn(std::uint8_t note, std::uint8_t velocity) {
+  assert(pimpl != nullptr);
 
   for (const auto &region : pimpl->m_instrument.regions()) {
     if (region.keyRange().inRange(note) &&
@@ -153,6 +169,7 @@ void Synthesizer::noteOn(std::uint8_t note, std::uint8_t velocity) {
 }
 
 void Synthesizer::noteOff(std::uint8_t note) {
+  assert(pimpl != nullptr);
   if (pimpl->m_sustain) {
     return;
   }
@@ -165,6 +182,7 @@ void Synthesizer::noteOff(std::uint8_t note) {
 }
 
 void Synthesizer::allNotesOff() {
+  assert(pimpl != nullptr);
   if (pimpl->m_sustain) {
     return;
   }
@@ -175,6 +193,7 @@ void Synthesizer::allNotesOff() {
 }
 
 void Synthesizer::allSoundOff() {
+  assert(pimpl != nullptr);
   for (auto &voice : pimpl->m_voices) {
     voice.soundOff();
   }
@@ -183,6 +202,7 @@ void Synthesizer::allSoundOff() {
 void Synthesizer::render_fill(float *beginLeft, float *endLeft,
                               float *beginRight, float *endRight,
                               std::size_t bufferSkip, float gain) {
+  assert(pimpl != nullptr);
   bool isFirst = true;
   for (auto &voice : pimpl->m_voices) {
     if (isFirst) {
@@ -199,6 +219,7 @@ void Synthesizer::render_fill(float *beginLeft, float *endLeft,
 void Synthesizer::render_mix(float *beginLeft, float *endLeft,
                              float *beginRight, float *endRight,
                              std::size_t bufferSkip, float gain) {
+  assert(pimpl != nullptr);
   for (auto &voice : pimpl->m_voices) {
     voice.render_mix(beginLeft, endLeft, beginRight, endRight, bufferSkip,
                      gain);

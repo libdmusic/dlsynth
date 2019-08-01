@@ -14,6 +14,7 @@ namespace Synth {
 
   public:
     virtual ~SignalObserver();
+    SignalObserver &operator=(SignalObserver &) = delete;
 
   protected:
     /// Called when the value of one of the \ref ObservableSignal s to which
@@ -29,7 +30,10 @@ namespace Synth {
 
   public:
     ObservableSignal();
+    ObservableSignal(ObservableSignal &&);
     virtual ~ObservableSignal();
+
+    ObservableSignal &operator=(ObservableSignal &) = delete;
     void subscribe(SignalObserver *observer);
     void unsubscribe(SignalObserver *observer);
     void resetSubscribers();
