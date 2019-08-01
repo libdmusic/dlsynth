@@ -2,9 +2,10 @@ var searchData=
 [
   ['a',['a',['../struct_d_l_synth_1_1_uuid.html#a1951577fe817845e23c1862425e28ae3',1,'DLSynth::Uuid']]],
   ['absolutepitchtocents',['absolutePitchToCents',['../namespace_d_l_synth.html#a75347ecc05803d0136ee15960505235d',1,'DLSynth']]],
-  ['accept',['accept',['../class_d_l_synth_1_1_synth_1_1_voice_message.html#a775d9f8b644a761d3be59baccb73289b',1,'DLSynth::Synth::VoiceMessage::accept()'],['../class_d_l_synth_1_1_synth_1_1_note_on_message.html#ae8adf6f777f0757393cb095b7718e7bd',1,'DLSynth::Synth::NoteOnMessage::accept()'],['../class_d_l_synth_1_1_synth_1_1_note_off_message.html#a1807f13e6b76f87dd63a1cc2144a31e4',1,'DLSynth::Synth::NoteOffMessage::accept()'],['../class_d_l_synth_1_1_synth_1_1_sound_off_message.html#aa130ac2867647308c485bb823d48efa8',1,'DLSynth::Synth::SoundOffMessage::accept()'],['../class_d_l_synth_1_1_synth_1_1_poly_pressure_message.html#abb89920cb4ec36ada5fe7b757aa5d658',1,'DLSynth::Synth::PolyPressureMessage::accept()']]],
+  ['accept',['accept',['../class_d_l_synth_1_1_synth_1_1_voice_message.html#a775d9f8b644a761d3be59baccb73289b',1,'DLSynth::Synth::VoiceMessage::accept()'],['../class_d_l_synth_1_1_synth_1_1_note_on_message.html#ae8adf6f777f0757393cb095b7718e7bd',1,'DLSynth::Synth::NoteOnMessage::accept()'],['../class_d_l_synth_1_1_synth_1_1_note_off_message.html#a1807f13e6b76f87dd63a1cc2144a31e4',1,'DLSynth::Synth::NoteOffMessage::accept()'],['../class_d_l_synth_1_1_synth_1_1_sound_off_message.html#aa130ac2867647308c485bb823d48efa8',1,'DLSynth::Synth::SoundOffMessage::accept()'],['../class_d_l_synth_1_1_synth_1_1_control_change_message.html#a6cce396c4f32dacdd001fbdd0211fe5f',1,'DLSynth::Synth::ControlChangeMessage::accept()'],['../class_d_l_synth_1_1_synth_1_1_reset_controllers_message.html#aeec58efb65af61c3bfa5611ac7f659f8',1,'DLSynth::Synth::ResetControllersMessage::accept()']]],
   ['adaptationtable',['AdaptationTable',['../_ms_adpcm_decoder_8cpp.html#adad0467fc93be85d4596616ec4124449',1,'MsAdpcmDecoder.cpp']]],
   ['add',['Add',['../_expression_parser_8cpp.html#a751f5463d98870f136ae2a46f6e76017aec211f7c20af43e742bf2570c3cb84f9',1,'ExpressionParser.cpp']]],
+  ['addconnection',['addConnection',['../class_d_l_synth_1_1_synth_1_1_signal_destination.html#a9a6fe2664b5611926c76b84d2fad0564',1,'DLSynth::Synth::SignalDestination']]],
   ['adpcmcoeffs',['AdpcmCoeffs',['../struct_adpcm_coeffs.html',1,'']]],
   ['adpcmformat',['AdpcmFormat',['../struct_adpcm_format.html',1,'']]],
   ['adpcmheader',['AdpcmHeader',['../struct_adpcm_header.html',1,'']]],
@@ -19,5 +20,8 @@ var searchData=
   ['articulator',['Articulator',['../class_d_l_synth_1_1_articulator.html',1,'DLSynth::Articulator'],['../class_d_l_synth_1_1_articulator.html#a9505cae82affa1777d2a0d565263ba1e',1,'DLSynth::Articulator::Articulator()']]],
   ['articulator_2ecpp',['Articulator.cpp',['../_articulator_8cpp.html',1,'']]],
   ['articulator_2ehpp',['Articulator.hpp',['../_articulator_8hpp.html',1,'']]],
+  ['asfreq',['asFreq',['../class_d_l_synth_1_1_synth_1_1_signal_destination.html#a9f25ae1459e0f8f21e7549fcf8a76752',1,'DLSynth::Synth::SignalDestination']]],
+  ['asgain',['asGain',['../class_d_l_synth_1_1_synth_1_1_signal_destination.html#a7bda59a469f1d8297347457648be6d9c',1,'DLSynth::Synth::SignalDestination']]],
+  ['assecs',['asSecs',['../class_d_l_synth_1_1_synth_1_1_signal_destination.html#ad6ae882e6fbddcb3dcff02bbdb3e8b7a',1,'DLSynth::Synth::SignalDestination']]],
   ['avgbytespersec',['AvgBytesPerSec',['../struct_d_l_synth_1_1_wave_format.html#ac65369cc7991f3cbf2a73a61ff6505a9',1,'DLSynth::WaveFormat::AvgBytesPerSec()'],['../struct_d_l_synth_1_1_wave_format_ex.html#a69f57db42acfaefa77138e41adaadcb6',1,'DLSynth::WaveFormatEx::AvgBytesPerSec()']]]
 ];

@@ -109,7 +109,7 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_sound.html">Sound</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A DLS Collection of instruments.  <a href="class_d_l_synth_1_1_sound.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_transform.html">Transform</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_transform_params.html">TransformParams</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_d_l_synth_1_1_uuid.html">Uuid</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -250,6 +250,14 @@ Functions</h2></td></tr>
 <tr class="memitem:a63e85e113f5699c6c7f13ac9523a3d78"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#a63e85e113f5699c6c7f13ac9523a3d78">percentUnitsToRatio</a> (std::int32_t value)</td></tr>
 <tr class="memdesc:a63e85e113f5699c6c7f13ac9523a3d78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a percentage expressed in percent units to a ratio.  <a href="#a63e85e113f5699c6c7f13ac9523a3d78">More...</a><br /></td></tr>
 <tr class="separator:a63e85e113f5699c6c7f13ac9523a3d78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a796a5473a6cf20fecbc2c8a660c67360"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#a796a5473a6cf20fecbc2c8a660c67360">centsToRatio</a> (float cents)</td></tr>
+<tr class="separator:a796a5473a6cf20fecbc2c8a660c67360"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45d8059ac858e6c3bdaa5720f28903ff"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#a45d8059ac858e6c3bdaa5720f28903ff">centsToFreq</a> (float cents)</td></tr>
+<tr class="separator:a45d8059ac858e6c3bdaa5720f28903ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7953473296955861b6ea2d19c20f119"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#ab7953473296955861b6ea2d19c20f119">belsToGain</a> (float bels)</td></tr>
+<tr class="separator:ab7953473296955861b6ea2d19c20f119"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a449285780f8352a2edb44d79826342"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#a8a449285780f8352a2edb44d79826342">centsToSecs</a> (float cents)</td></tr>
+<tr class="separator:a8a449285780f8352a2edb44d79826342"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -472,6 +480,110 @@ Variables</h2></td></tr>
 
 <p>Converts a frequency expressed in absolute pitch units to cents. </p>
 <p>A value of 6900 means 440hz (A4) </p>
+
+</div>
+</div>
+<a id="ab7953473296955861b6ea2d19c20f119"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7953473296955861b6ea2d19c20f119">&#9670;&nbsp;</a></span>belsToGain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DLSynth::belsToGain </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>bels</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a45d8059ac858e6c3bdaa5720f28903ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45d8059ac858e6c3bdaa5720f28903ff">&#9670;&nbsp;</a></span>centsToFreq()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DLSynth::centsToFreq </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>cents</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a796a5473a6cf20fecbc2c8a660c67360"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a796a5473a6cf20fecbc2c8a660c67360">&#9670;&nbsp;</a></span>centsToRatio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DLSynth::centsToRatio </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>cents</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8a449285780f8352a2edb44d79826342"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a449285780f8352a2edb44d79826342">&#9670;&nbsp;</a></span>centsToSecs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DLSynth::centsToSecs </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>cents</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

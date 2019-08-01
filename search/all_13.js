@@ -9,6 +9,7 @@ var searchData=
   ['ultableindex',['ulTableIndex',['../structwlnk.html#aa9785d90e429f70cd53ef0ca93ba8df4',1,'wlnk']]],
   ['unitynote',['unityNote',['../class_d_l_synth_1_1_wavesample.html#abdea42a5f2b28599eabdaab5dcb7060b',1,'DLSynth::Wavesample']]],
   ['unknown',['Unknown',['../struct_d_l_synth_1_1_wave_format.html#ae0ff552d4182ce25fe87509507802544',1,'DLSynth::WaveFormat']]],
+  ['unsubscribe',['unsubscribe',['../class_d_l_synth_1_1_synth_1_1_observable_signal.html#a38b7961220eae7447e4cecbe0bda704f',1,'DLSynth::Synth::ObservableSignal']]],
   ['updatefilteg',['updateFiltEg',['../struct_voice_1_1impl.html#aed8552eb76f8e7637f8527accb1ca522',1,'Voice::impl']]],
   ['updatemodlfo',['updateModLfo',['../struct_voice_1_1impl.html#a3c170a33038937e604264b099aa68bf0',1,'Voice::impl']]],
   ['updateviblfo',['updateVibLfo',['../struct_voice_1_1impl.html#a6775479f95afe9d8e65ea43c1d78ecd5',1,'Voice::impl']]],

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['querymap',['QueryMap',['../class_query_map.html',1,'']]]
+  ['pcmdecoder',['PcmDecoder',['../class_pcm_decoder.html',1,'']]],
+  ['pitchnode',['PitchNode',['../class_pitch_node.html',1,'']]]
 ];

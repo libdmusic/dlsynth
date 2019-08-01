@@ -116,6 +116,12 @@ $(function() {
 <li>cSampleLoops
 : <a class="el" href="structwsmp.html#a0250c4a0b29af30ea85b4b2e5cb88294">wsmp</a>
 </li>
+<li>ctrl
+: <a class="el" href="struct_connection.html#a468f17019f2e1eae0d7775e0b61fd8c7">Connection</a>
+</li>
+<li>ctrlTransform
+: <a class="el" href="struct_connection.html#a76197c2ef696e6d78f02976e467d052f">Connection</a>
+</li>
 </ul>
 
 
@@ -214,7 +220,8 @@ $(function() {
 : <a class="el" href="struct_synthesizer_1_1impl.html#af67d85ad987bd92e1d2fc52edd7c959a">DLSynth::Synth::Synthesizer::impl</a>
 </li>
 <li>m_connections
-: <a class="el" href="struct_voice_1_1impl.html#a5f07787313c869cf4da9e829a5cf3297">DLSynth::Synth::Voice::impl</a>
+: <a class="el" href="struct_signal_destination_1_1impl.html#af3b558f7b311ced8dba7a147ab574636">DLSynth::Synth::SignalDestination::impl</a>
+, <a class="el" href="struct_voice_1_1impl.html#a5f07787313c869cf4da9e829a5cf3297">DLSynth::Synth::Voice::impl</a>
 </li>
 <li>m_destinations
 : <a class="el" href="struct_voice_1_1impl.html#a84d07795c2bb5af528d4fce1952977f9">DLSynth::Synth::Voice::impl</a>
@@ -229,11 +236,23 @@ $(function() {
 <li>m_filtEg
 : <a class="el" href="struct_voice_1_1impl.html#aa9d743eabb7eafee8ba3de547c58d799">DLSynth::Synth::Voice::impl</a>
 </li>
+<li>m_freq
+: <a class="el" href="struct_signal_destination_1_1impl.html#ab42ad4bd0db1830753ea393ac8d259e2">DLSynth::Synth::SignalDestination::impl</a>
+</li>
+<li>m_freqUpToDate
+: <a class="el" href="struct_signal_destination_1_1impl.html#add0b61c056ca0bae75e47a51072db30d">DLSynth::Synth::SignalDestination::impl</a>
+</li>
+<li>m_gain
+: <a class="el" href="struct_signal_destination_1_1impl.html#af4b24866afb36f629b34b568b3f92bc0">DLSynth::Synth::SignalDestination::impl</a>
+</li>
+<li>m_gainNode
+: <a class="el" href="struct_voice_1_1impl.html#a8732941bacee1719738c558c91e022cc">DLSynth::Synth::Voice::impl</a>
+</li>
+<li>m_gainUpToDate
+: <a class="el" href="struct_signal_destination_1_1impl.html#a1837c65a986116a25de9140001f21922">DLSynth::Synth::SignalDestination::impl</a>
+</li>
 <li>m_guid
 : <a class="el" href="struct_wave_1_1impl.html#a95c13e020c06e16ffeae8a9256424b58">DLSynth::Wave::impl</a>
-</li>
-<li>m_instrSources
-: <a class="el" href="struct_voice_1_1impl.html#ad444a4b985cdf17b07756f80ef4ede83">DLSynth::Synth::Voice::impl</a>
 </li>
 <li>m_instrument
 : <a class="el" href="struct_synthesizer_1_1impl.html#af73612b5f1fdccdd33705cd7992f226b">DLSynth::Synth::Synthesizer::impl</a>
@@ -260,6 +279,9 @@ $(function() {
 <li>m_note
 : <a class="el" href="struct_voice_1_1impl.html#a8886bf3fcef380be38ad095b6bbfb35f">DLSynth::Synth::Voice::impl</a>
 </li>
+<li>m_pitchNode
+: <a class="el" href="struct_voice_1_1impl.html#a2956bf7ce5f526f4c7dbfe9f7d862d58">DLSynth::Synth::Voice::impl</a>
+</li>
 <li>m_playing
 : <a class="el" href="struct_voice_1_1impl.html#a4bb728f517f02078b9cc84fa148eeb18">DLSynth::Synth::Voice::impl</a>
 </li>
@@ -279,18 +301,30 @@ $(function() {
 : <a class="el" href="struct_voice_1_1impl.html#af1b6b8f13fca213b300cc4c7fec6d8c2">DLSynth::Synth::Voice::impl</a>
 , <a class="el" href="struct_wave_1_1impl.html#a2467f4f17d746295570a3e5670aea5ba">DLSynth::Wave::impl</a>
 </li>
-<li>m_sourceMap
-: <a class="el" href="struct_voice_1_1impl.html#ad38fca193cbbb5d56eb548b7643652f1">DLSynth::Synth::Voice::impl</a>
+<li>m_secs
+: <a class="el" href="struct_signal_destination_1_1impl.html#a7ad99206cc83309faf6c9bc488d3dec7">DLSynth::Synth::SignalDestination::impl</a>
+</li>
+<li>m_secsUpToDate
+: <a class="el" href="struct_signal_destination_1_1impl.html#a6801697e5aee8f69cbccd128c4b69ae6">DLSynth::Synth::SignalDestination::impl</a>
 </li>
 <li>m_sources
-: <a class="el" href="struct_synthesizer_1_1impl.html#aaa2ff83bb91993594c83991760b9e6e4">DLSynth::Synth::Synthesizer::impl</a>
-, <a class="el" href="struct_voice_1_1impl.html#acadf5e38aabad2b3be771f1283f366ed">DLSynth::Synth::Voice::impl</a>
+: <a class="el" href="struct_voice_1_1impl.html#acadf5e38aabad2b3be771f1283f366ed">DLSynth::Synth::Voice::impl</a>
 </li>
 <li>m_startTime
 : <a class="el" href="struct_voice_1_1impl.html#a459f02798c3c432e699d9fb3b34000ae">DLSynth::Synth::Voice::impl</a>
 </li>
+<li>m_subscribers
+: <a class="el" href="struct_observable_signal_1_1impl.html#a8ed10fb743fb209f723fc46467669bac">DLSynth::Synth::ObservableSignal::impl</a>
+</li>
 <li>m_sustain
 : <a class="el" href="struct_synthesizer_1_1impl.html#ab5359e11db46bd58602844e6b08a7920">DLSynth::Synth::Synthesizer::impl</a>
+</li>
+<li>m_upToDate
+: <a class="el" href="struct_signal_destination_1_1impl.html#a73df8b7ae476b7a2bb50b703544002c6">DLSynth::Synth::SignalDestination::impl</a>
+</li>
+<li>m_value
+: <a class="el" href="struct_signal_destination_1_1impl.html#a0d63ea4aef480f823c3ab02e838c3d36">DLSynth::Synth::SignalDestination::impl</a>
+, <a class="el" href="struct_signal_source_1_1impl.html#aee33a988afb65bdc8c81f9e47fb69b7f">DLSynth::Synth::SignalSource::impl</a>
 </li>
 <li>m_velocity
 : <a class="el" href="struct_voice_1_1impl.html#a71c3d699fa28dd3f5d7cf830e2080753">DLSynth::Synth::Voice::impl</a>
@@ -384,12 +418,21 @@ $(function() {
 : <a class="el" href="struct_d_l_synth_1_1_wave_format.html#ae2300ebff25786c05d8304af631b73e0">DLSynth::WaveFormat</a>
 , <a class="el" href="struct_d_l_synth_1_1_wave_format_ex.html#af43681d9156e7d1f4026aba086b8e49c">DLSynth::WaveFormatEx</a>
 </li>
+<li>scale
+: <a class="el" href="struct_connection.html#a5437fe363069819be54a241d196cd2fe">Connection</a>
+</li>
 <li>sFineTune
 : <a class="el" href="structwsmp.html#aef8b02aeaace3eb1148e62f1fb89baae">wsmp</a>
 </li>
 <li>sound
 : <a class="el" href="structdlsynth__instr.html#ad157c53202f490d4fa2c440bac5adc5c">dlsynth_instr</a>
 , <a class="el" href="structdlsynth__sound.html#af3537258e0a0329b227cf07087290571">dlsynth_sound</a>
+</li>
+<li>src
+: <a class="el" href="struct_connection.html#a199d3ea5927f73ad90cbf341707b625e">Connection</a>
+</li>
+<li>srcTransform
+: <a class="el" href="struct_connection.html#acb70922fbaa41dc650508e686ce0e0b0">Connection</a>
 </li>
 <li>synth
 : <a class="el" href="structdlsynth.html#a90fa1c47d2004833cdd53afd85c500af">dlsynth</a>

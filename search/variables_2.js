@@ -7,5 +7,7 @@ var searchData=
   ['coeffs',['coeffs',['../struct_adpcm_format.html#a50f3a2d49a28b6b952943a550fc75501',1,'AdpcmFormat']]],
   ['connectionblocks',['connectionBlocks',['../structart.html#ac9de5ce3d92bdc5f7795713bd16b96b9',1,'art']]],
   ['cregions',['cRegions',['../structinsh.html#ae70f16b61606b75ada4f8f1a19089c2f',1,'insh']]],
-  ['csampleloops',['cSampleLoops',['../structwsmp.html#a0250c4a0b29af30ea85b4b2e5cb88294',1,'wsmp']]]
+  ['csampleloops',['cSampleLoops',['../structwsmp.html#a0250c4a0b29af30ea85b4b2e5cb88294',1,'wsmp']]],
+  ['ctrl',['ctrl',['../struct_connection.html#a468f17019f2e1eae0d7775e0b61fd8c7',1,'Connection']]],
+  ['ctrltransform',['ctrlTransform',['../struct_connection.html#a76197c2ef696e6d78f02976e467d052f',1,'Connection']]]
 ];
