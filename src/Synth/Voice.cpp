@@ -502,12 +502,14 @@ struct Voice::impl : public VoiceMessageExecutor {
           float loopEnd = loopStart + loopLength;
 
           if (loop->type() == LoopType::Forward) {
-            if (m_samplePos >= loopEnd) {
+            if (m_samplePos >= loopEnd ||
+                m_samplePos >= m_sample->leftData().size()) {
               m_samplePos -= loopLength;
             }
           } else {
             if (m_playing) {
-              if (m_samplePos >= loopEnd) {
+              if (m_samplePos >= loopEnd ||
+                  m_samplePos >= m_sample->leftData().size()) {
                 m_samplePos -= loopLength;
               }
             } else {
