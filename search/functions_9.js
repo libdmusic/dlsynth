@@ -3,7 +3,7 @@ var searchData=
   ['leftdata',['leftData',['../class_d_l_synth_1_1_wave.html#a983fa6715c2ba104199dec8dab886a68',1,'DLSynth::Wave']]],
   ['leftgain',['leftGain',['../class_stereo_gain_node.html#ae9636887b54fd7d1aa78311979039152',1,'StereoGainNode']]],
   ['length',['length',['../class_d_l_synth_1_1_wavesample_loop.html#adfc7a7f747f22b76cc600a0f51fcbff2',1,'DLSynth::WavesampleLoop']]],
-  ['lerp',['lerp',['../_voice_8cpp.html#a1a02eed278c6ca5bf43e23897eddf05a',1,'Voice.cpp']]],
+  ['lerp',['lerp',['../namespace_d_l_synth.html#a3a322b6ae46143a579ac4caea1c0144b',1,'DLSynth']]],
   ['lfo',['LFO',['../class_d_l_synth_1_1_synth_1_1_l_f_o.html#a57a9dc1ec36220f6a3a6dde99e2abf09',1,'DLSynth::Synth::LFO']]],
   ['lineartransform',['LinearTransform',['../class_linear_transform.html#a350e10188842c8d7e5134d0934af0645',1,'LinearTransform']]],
   ['load_5farticulators',['load_articulators',['../struct_instrument_1_1impl.html#a48080c500bfa29f9a9cfb637d92700e8',1,'Instrument::impl']]],

@@ -15,6 +15,7 @@ var searchData=
   ['m_5fguid',['m_guid',['../struct_wave_1_1impl.html#a95c13e020c06e16ffeae8a9256424b58',1,'Wave::impl']]],
   ['m_5finstrument',['m_instrument',['../struct_synthesizer_1_1impl.html#af73612b5f1fdccdd33705cd7992f226b',1,'DLSynth::Synth::Synthesizer::impl::m_instrument()'],['../struct_voice_1_1impl.html#ad0bc2d97617b575e0c58e684d757657f',1,'DLSynth::Synth::Voice::impl::m_instrument()']]],
   ['m_5finstruments',['m_instruments',['../struct_sound_1_1impl.html#aa6e996cfa819bea0a7d1bed476e8db70',1,'Sound::impl']]],
+  ['m_5flastupdatedvalue',['m_lastUpdatedValue',['../struct_signal_source_1_1impl.html#a9e9790af562d5cb109c83f2ce488a1aa',1,'SignalSource::impl']]],
   ['m_5fleftdata',['m_leftData',['../struct_wave_1_1impl.html#ac139bd32e376a85beb6b4e2d00a4d593',1,'Wave::impl']]],
   ['m_5fmessagequeue',['m_messageQueue',['../struct_voice_1_1impl.html#add1ffab74e16120107510a45fe7c2de6',1,'Voice::impl']]],
   ['m_5fmidibank',['m_midiBank',['../struct_instrument_1_1impl.html#a6cbd1eff27a0feac11cb85ef7b1f40fd',1,'Instrument::impl']]],

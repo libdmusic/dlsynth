@@ -3,6 +3,7 @@ var searchData=
   ['range',['Range',['../struct_d_l_synth_1_1_range.html',1,'DLSynth']]],
   ['rangekey',['RangeKey',['../structrgnh.html#a82f929a406f57ed46f28e4cd1f05b29e',1,'rgnh']]],
   ['rangevelocity',['RangeVelocity',['../structrgnh.html#aec2c54e28ccb284bbe87b85428ac3187',1,'rgnh']]],
+  ['rcoef',['rcoef',['../struct_voice_1_1impl.html#abcd2d48361e2b73080fc18d2df801a1e',1,'Voice::impl']]],
   ['readme_2emd',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
   ['region',['Region',['../class_d_l_synth_1_1_region.html',1,'DLSynth::Region'],['../class_d_l_synth_1_1_region.html#afcc0b378cae8127c0a25df8eb356b405',1,'DLSynth::Region::Region()']]],
   ['region_2ecpp',['Region.cpp',['../_region_8cpp.html',1,'']]],

@@ -66,6 +66,5 @@ var searchData=
   ['dlsynth_5fvolume',['dlsynth_volume',['../dlsynth_8h.html#a70e84be65bb9fcc9cac0665a36bad969',1,'dlsynth_volume(struct dlsynth *synth, uint8_t value):&#160;dlsynth.cpp'],['../dlsynth_8cpp.html#a68d3dcf5768be23f761f90209371607e',1,'dlsynth_volume(struct dlsynth *synth, uint8_t value):&#160;dlsynth.cpp']]],
   ['dlsynth_5fwav',['dlsynth_wav',['../structdlsynth__wav.html',1,'']]],
   ['dviadpcm',['DviAdpcm',['../struct_d_l_synth_1_1_wave_format.html#aea110d9a629dd45ac6da42350c0a7f50',1,'DLSynth::WaveFormat']]],
-  ['dlsynth',['dlsynth',['../index.html',1,'']]],
   ['synth',['Synth',['../namespace_d_l_synth_1_1_synth.html',1,'DLSynth']]]
 ];
