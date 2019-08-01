@@ -454,6 +454,10 @@ struct Voice::impl : public VoiceMessageExecutor {
     resetControllers();
   }
 
+  float lcoef = 0.f;
+  float rcoef = 0.f;
+  static constexpr float lowpass_b = 0.01f;
+
   void render(float *beginLeft, float *endLeft, float *beginRight,
               float *endRight, float outGain, bool fill,
               std::size_t bufferSkip) {
@@ -484,8 +488,8 @@ struct Voice::impl : public VoiceMessageExecutor {
 
         float freqRatio = m_pitchNode.frequencyRatio();
 
-        float lcoef = m_gainNode.leftGain();
-        float rcoef = m_gainNode.rightGain();
+        lcoef += lowpass_b * (m_gainNode.leftGain() - lcoef);
+        rcoef += lowpass_b * (m_gainNode.rightGain() - lcoef);
         float lsample =
          interpolateSample(m_samplePos, m_sample->leftData()) * lcoef;
         float rsample =
