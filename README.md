@@ -1,4 +1,6 @@
-# dlsynth
+# Introduction
+
+[![Build Status](https://dev.azure.com/libdmusic/dlsynth/_apis/build/status/libdmusic.dlsynth?branchName=master)](https://dev.azure.com/libdmusic/dlsynth/_build/latest?definitionId=2&branchName=master)
 
 `dlsynth` is a software synthesizer library that parses DLS files (as used by
 DirectMusic) and outputs audio data.

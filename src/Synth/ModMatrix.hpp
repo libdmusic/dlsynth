@@ -35,7 +35,6 @@ namespace Synth {
 
     ObservableSignal &operator=(ObservableSignal &) = delete;
     void subscribe(SignalObserver *observer);
-    void unsubscribe(SignalObserver *observer);
     void resetSubscribers();
 
   protected:
