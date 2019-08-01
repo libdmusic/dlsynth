@@ -34,8 +34,6 @@ template <> struct equal_to<ConnectionBlock> {
                   TransformParams(inv, bip, TransformType::type),              \
                   TransformParams(false, false, TransformType::None))
 
-inline float lerp(float v0, float v1, float t) { return (1 - t) * v0 + t * v1; }
-
 static float interpolateSample(float pos, const std::vector<float> &samples) {
   std::size_t floor = static_cast<std::size_t>(std::floor(pos));
   std::size_t ceil = static_cast<std::size_t>(std::ceil(pos));

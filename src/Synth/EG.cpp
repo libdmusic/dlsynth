@@ -1,4 +1,5 @@
 #include "EG.hpp"
+#include "../NumericUtils.hpp"
 
 using namespace DLSynth::Synth;
 
@@ -27,8 +28,7 @@ float EG::nextSample(float delayTime, float attackTime, float holdTime,
 
     time -= delayTime;
     if (time < attackTime) {
-      float diff = 1.f - m_lastValue;
-      m_lastValue += (diff / (attackTime - time)) / m_sampleRate;
+      m_lastValue = time / attackTime;
       return m_lastValue;
     }
 
@@ -40,8 +40,7 @@ float EG::nextSample(float delayTime, float attackTime, float holdTime,
 
     time -= holdTime;
     if (time < decayTime) {
-      float diff = m_lastValue - sustainLevel;
-      m_lastValue -= (diff / (decayTime - time)) / m_sampleRate;
+      m_lastValue = lerp(1, sustainLevel, time / decayTime);
       return m_lastValue;
     }
 

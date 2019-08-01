@@ -98,6 +98,7 @@ inline float belsToGain(float bels) { return std::pow(10.f, bels); }
 
 inline float centsToSecs(float cents) { return std::exp2(cents / 1200.f); }
 
+inline float lerp(float v0, float v1, float t) { return (1 - t) * v0 + t * v1; }
 constexpr float PI = 3.14159f;
 
 } // namespace DLSynth
