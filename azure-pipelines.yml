@@ -6,9 +6,11 @@ jobs:
   - script: git clone --depth=1 https://github.com/libdmusic/vcpkg
   - script: ./vcpkg/bootstrap-vcpkg.sh
   - script: ./vcpkg/vcpkg install riffcpp
-  - script: mkdir build; cd build
-  - script: cmake -DCMAKE_TOOLCHAIN_PATH=../vcpkg/scripts/buildsystems/vcpkg.cmake ..
-  - script: cmake --build .
+  - script: |
+      mkdir build
+      cd build
+      cmake -DCMAKE_TOOLCHAIN_PATH=../vcpkg/scripts/buildsystems/vcpkg.cmake ..
+      cmake --build .
 - job: Windows
   pool:
     vmImage: 'windows-latest'
@@ -16,6 +18,8 @@ jobs:
   - script: git clone --depth=1 https://github.com/libdmusic/vcpkg
   - script: .\vcpkg\bootstrap-vcpkg.bat
   - script: .\vcpkg\vcpkg.exe install riffcpp:x64-windows riffcpp:x64-windows-static
-  - script: mkdir build; cd build
-  - script: cmake -G "Visual Studio 15 2017 Win64" -DCMAKE_TOOLCHAIN_PATH=../vcpkg/scripts/buildsystems/vcpkg.cmake ..
-  - script: cmake --build .
+  - script: |
+      mkdir build
+      cd build
+      cmake -G "Visual Studio 15 2017 Win64" -DCMAKE_TOOLCHAIN_PATH=../vcpkg/scripts/buildsystems/vcpkg.cmake ..
+      cmake --build .
