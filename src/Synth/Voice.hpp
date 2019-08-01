@@ -6,22 +6,18 @@
 #include "../Region.hpp"
 #include "../Wave.hpp"
 #include "../Wavesample.hpp"
-#include <array>
 #include <chrono>
 #include <cstdint>
-#include <map>
 #include <vector>
 
 namespace DLSynth {
 namespace Synth {
-  class Voice {
+  class Voice final {
     struct impl;
     impl *pimpl;
 
   public:
-    Voice(const Instrument &instrument,
-          const std::array<float, max_source + 1> &sources,
-          std::uint32_t sampleRate);
+    Voice(const Instrument &instrument, std::uint32_t sampleRate);
     Voice(Voice &&voice);
     ~Voice();
 
@@ -33,7 +29,9 @@ namespace Synth {
     void noteOff();
     void soundOff();
 
-    void polyPressure(std::uint8_t value);
+    void controlChange(Source source, float value);
+
+    void resetControllers();
 
     bool playing() const;
     std::uint8_t note() const;

@@ -46,15 +46,23 @@ void SoundOffMessage::accept(VoiceMessageExecutor *executor) {
   executor->execute(*this);
 }
 
-PolyPressureMessage::PolyPressureMessage(std::uint8_t value) : m_value(value) {}
+ControlChangeMessage::ControlChangeMessage(Source source, float value)
+  : m_source(source), m_value(value) {}
+ControlChangeMessage::~ControlChangeMessage() = default;
 
-PolyPressureMessage::~PolyPressureMessage() = default;
-
-void PolyPressureMessage::accept(VoiceMessageExecutor *executor) {
+void ControlChangeMessage::accept(VoiceMessageExecutor *executor) {
   executor->execute(*this);
 }
 
-std::uint8_t PolyPressureMessage::value() const { return m_value; }
+Source ControlChangeMessage::source() const { return m_source; }
+float ControlChangeMessage::value() const { return m_value; }
+
+ResetControllersMessage::ResetControllersMessage() = default;
+ResetControllersMessage::~ResetControllersMessage() = default;
+
+void ResetControllersMessage::accept(VoiceMessageExecutor *executor) {
+  executor->execute(*this);
+}
 
 VoiceMessage::~VoiceMessage() = default;
 VoiceMessageExecutor::~VoiceMessageExecutor() = default;

@@ -11,31 +11,19 @@ using namespace DLSynth;
 using namespace DLSynth::Synth;
 
 struct Synthesizer::impl {
-  std::array<float, max_source + 1> m_sources{0.f};
   bool m_sustain = false;
   std::vector<Voice> m_voices;
   const Instrument &m_instrument;
   const Sound &m_collection;
 
-  inline float &getSource(Source src) {
-    return m_sources[static_cast<std::uint16_t>(src)];
+  void controlChange(Source source, float value) {
+    for (auto &voice : m_voices) {
+      voice.controlChange(source, value);
+    }
   }
 
   impl(const Sound &collection, const Instrument &instr)
-    : m_instrument(instr), m_collection(collection) {
-
-    getSource(Source::CC7) = 100.f / 128.f;
-    getSource(Source::CC10) = 64.f / 128.f;
-    getSource(Source::CC91) = 40.f / 128.f;
-    getSource(Source::ChannelPressure) = 0.f;
-    getSource(Source::RPN1) = 0.f;
-    getSource(Source::CC11) = 127.f / 128.f;
-    getSource(Source::CC1) = 0.f;
-    getSource(Source::CC93) = 0.f;
-    getSource(Source::RPN0) = 2.f / 128.f;
-    getSource(Source::RPN2) = 0.f;
-    getSource(Source::None) = 1.f;
-  }
+    : m_instrument(instr), m_collection(collection) {}
 };
 
 Synthesizer::Synthesizer(const Sound &collection, std::size_t instrumentIndex,
@@ -44,8 +32,7 @@ Synthesizer::Synthesizer(const Sound &collection, std::size_t instrumentIndex,
   assert(instrumentIndex < collection.instruments().size());
 
   for (std::size_t i = 0; i < voiceCount; i++) {
-    pimpl->m_voices.emplace_back(pimpl->m_instrument, pimpl->m_sources,
-                                 sampleRate);
+    pimpl->m_voices.emplace_back(pimpl->m_instrument, sampleRate);
   }
 }
 
@@ -60,63 +47,61 @@ Synthesizer::~Synthesizer() {
 }
 
 void Synthesizer::pressure(std::uint8_t value) {
-  pimpl->getSource(Source::ChannelPressure) = static_cast<float>(value) / 128.f;
+  pimpl->controlChange(Source::ChannelPressure,
+                       static_cast<float>(value) / 128.f);
 }
 
 void Synthesizer::pressure(std::uint8_t note, std::uint8_t value) {
-  // TODO: Not implemented
+  for (auto &voice : pimpl->m_voices) {
+    if (voice.playing() && voice.note() == note) {
+      voice.controlChange(Source::PolyPressure,
+                          static_cast<float>(value) / 128.f);
+    }
+  }
 }
 
 void Synthesizer::pitchBend(std::uint16_t value) {
-  pimpl->getSource(Source::PitchWheel) = static_cast<float>(value) / 16384.f;
+  pimpl->controlChange(Source::PitchWheel, static_cast<float>(value) / 16384.f);
 }
 
 void Synthesizer::volume(std::uint8_t value) {
-  pimpl->getSource(Source::CC7) = static_cast<float>(value) / 128.f;
+  pimpl->controlChange(Source::CC7, static_cast<float>(value) / 128.f);
 }
 
 void Synthesizer::pan(std::uint8_t value) {
-  pimpl->getSource(Source::CC10) = static_cast<float>(value) / 128.f;
+  pimpl->controlChange(Source::CC10, static_cast<float>(value) / 128.f);
 }
 
 void Synthesizer::modulation(std::uint8_t value) {
-  pimpl->getSource(Source::CC1) = static_cast<float>(value) / 128.f;
+  pimpl->controlChange(Source::CC1, static_cast<float>(value) / 128.f);
 }
 
 void Synthesizer::sustain(bool status) { pimpl->m_sustain = status; }
 
 void Synthesizer::reverb(std::uint8_t value) {
-  pimpl->getSource(Source::CC91) = static_cast<float>(value) / 128.f;
+  pimpl->controlChange(Source::CC91, static_cast<float>(value) / 128.f);
 }
 
 void Synthesizer::chorus(std::uint8_t value) {
-  pimpl->getSource(Source::CC93) = static_cast<float>(value) / 128.f;
+  pimpl->controlChange(Source::CC93, static_cast<float>(value) / 128.f);
 }
 
 void Synthesizer::pitchBendRange(std::uint16_t value) {
-  pimpl->getSource(Source::RPN0) = static_cast<float>(value) / 16384.f;
+  pimpl->controlChange(Source::RPN0, static_cast<float>(value) / 16384.f);
 }
 
 void Synthesizer::fineTuning(std::uint16_t value) {
-  pimpl->getSource(Source::RPN1) = static_cast<float>(value) / 16384.f;
+  pimpl->controlChange(Source::RPN1, static_cast<float>(value) / 16384.f);
 }
 
 void Synthesizer::coarseTuning(std::uint16_t value) {
-  pimpl->getSource(Source::RPN2) = static_cast<float>(value) / 16384.f;
+  pimpl->controlChange(Source::RPN2, static_cast<float>(value) / 16384.f);
 }
 
 void Synthesizer::resetControllers() {
-  pimpl->getSource(Source::CC7) = 100.f / 128.f;
-  pimpl->getSource(Source::CC10) = 64.f / 128.f;
-  pimpl->getSource(Source::CC91) = 40.f / 128.f;
-  pimpl->getSource(Source::ChannelPressure) = 0.f;
-  pimpl->getSource(Source::RPN1) = 0.f;
-  pimpl->getSource(Source::CC11) = 127.f / 128.f;
-  pimpl->getSource(Source::CC1) = 0.f;
-  pimpl->getSource(Source::CC93) = 0.f;
-  pimpl->getSource(Source::RPN0) = 2.f / 128.f;
-  pimpl->getSource(Source::RPN2) = 0.f;
-  pimpl->getSource(Source::None) = 1.f;
+  for (auto &voice : pimpl->m_voices) {
+    voice.resetControllers();
+  }
   pimpl->m_sustain = false;
 }
 

@@ -16,7 +16,7 @@ namespace Synth {
     virtual void accept(VoiceMessageExecutor *executor) = 0;
   };
 
-  class NoteOnMessage : public VoiceMessage {
+  class NoteOnMessage final : public VoiceMessage {
     std::uint8_t m_note, m_velocity;
     const Wavesample *m_wavesample;
     const Wave &m_sample;
@@ -37,7 +37,7 @@ namespace Synth {
     const std::vector<ConnectionBlock> &connectionBlocks() const;
   };
 
-  class NoteOffMessage : public VoiceMessage {
+  class NoteOffMessage final : public VoiceMessage {
 
   public:
     NoteOffMessage();
@@ -45,21 +45,33 @@ namespace Synth {
     void accept(VoiceMessageExecutor *executor) override;
   };
 
-  class SoundOffMessage : public VoiceMessage {
+  class SoundOffMessage final : public VoiceMessage {
   public:
     SoundOffMessage();
     ~SoundOffMessage() override;
     void accept(VoiceMessageExecutor *executor) override;
   };
 
-  class PolyPressureMessage : public VoiceMessage {
-    std::uint8_t m_value;
+  class ControlChangeMessage final : public VoiceMessage {
+    Source m_source;
+    float m_value;
 
   public:
-    PolyPressureMessage(std::uint8_t value);
-    ~PolyPressureMessage() override;
+    ControlChangeMessage(Source source, float value);
+    ~ControlChangeMessage() override;
+
     void accept(VoiceMessageExecutor *executor) override;
-    std::uint8_t value() const;
+
+    Source source() const;
+    float value() const;
+  };
+
+  class ResetControllersMessage final : public VoiceMessage {
+  public:
+    ResetControllersMessage();
+    ~ResetControllersMessage() override;
+
+    void accept(VoiceMessageExecutor *executor) override;
   };
 
   class VoiceMessageExecutor {
@@ -68,7 +80,8 @@ namespace Synth {
     virtual void execute(const NoteOnMessage &message) = 0;
     virtual void execute(const NoteOffMessage &message) = 0;
     virtual void execute(const SoundOffMessage &message) = 0;
-    virtual void execute(const PolyPressureMessage &message) = 0;
+    virtual void execute(const ControlChangeMessage &message) = 0;
+    virtual void execute(const ResetControllersMessage &message) = 0;
   };
 } // namespace Synth
 } // namespace DLSynth

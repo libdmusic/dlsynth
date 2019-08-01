@@ -87,13 +87,13 @@ enum class TransformType : std::uint16_t {
   Switch = 0x0003
 };
 
-class Transform {
+class TransformParams final {
   bool m_invert;
   bool m_bipolar;
   TransformType m_type;
 
 public:
-  constexpr Transform(bool invert, bool bipolar, TransformType type)
+  constexpr TransformParams(bool invert, bool bipolar, TransformType type)
     : m_invert(invert), m_bipolar(bipolar), m_type(type) {}
   constexpr bool invert() const { return m_invert; }
   constexpr bool bipolar() const { return m_bipolar; }
@@ -106,13 +106,13 @@ class ConnectionBlock {
   Source m_control;
   Destination m_destination;
   std::int32_t m_scale;
-  Transform m_sourceTransform;
-  Transform m_controlTransform;
+  TransformParams m_sourceTransform;
+  TransformParams m_controlTransform;
 
 public:
   constexpr ConnectionBlock(Source src, Source ctrl, Destination dest,
-                            std::int32_t scale, const Transform &srcTrans,
-                            const Transform &ctrlTrans)
+                            std::int32_t scale, const TransformParams &srcTrans,
+                            const TransformParams &ctrlTrans)
     : m_source(src)
     , m_control(ctrl)
     , m_destination(dest)
@@ -124,10 +124,10 @@ public:
   constexpr Source control() const { return m_control; }
   constexpr Destination destination() const { return m_destination; }
   constexpr std::int32_t scale() const { return m_scale; }
-  constexpr const Transform &sourceTransform() const {
+  constexpr const TransformParams &sourceTransform() const {
     return m_sourceTransform;
   }
-  constexpr const Transform &controlTransform() const {
+  constexpr const TransformParams &controlTransform() const {
     return m_controlTransform;
   }
 };

@@ -88,6 +88,16 @@ inline float percentUnitsToRatio(std::int32_t value) {
   return (float)value / (1000.f * 65536.f);
 }
 
+inline float centsToRatio(float cents) { return std::exp2(cents / 1200.f); }
+
+inline float centsToFreq(float cents) {
+  return centsToRatio(cents - 6900) * 440.f;
+}
+
+inline float belsToGain(float bels) { return std::pow(10.f, bels); }
+
+inline float centsToSecs(float cents) { return std::exp2(cents / 1200.f); }
+
 constexpr float PI = 3.14159f;
 
 } // namespace DLSynth

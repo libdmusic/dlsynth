@@ -52,10 +52,11 @@ void Articulator::load_art2(riffcpp::Chunk &chunk) {
     bool srcBipolar = connectionBlock.usTransform & (1 << 14);
     bool srcInvert = connectionBlock.usTransform & (1 << 15);
 
-    m_blocks.emplace_back(connectionBlock.usSource, connectionBlock.usControl,
-                          connectionBlock.usDestination, connectionBlock.lScale,
-                          Transform(srcInvert, srcBipolar, srcTransType),
-                          Transform(ctrlInvert, ctrlBipolar, ctrlTransType));
+    m_blocks.emplace_back(
+     connectionBlock.usSource, connectionBlock.usControl,
+     connectionBlock.usDestination, connectionBlock.lScale,
+     TransformParams(srcInvert, srcBipolar, srcTransType),
+     TransformParams(ctrlInvert, ctrlBipolar, ctrlTransType));
   }
 }
 
@@ -80,8 +81,9 @@ void Articulator::load_art1(riffcpp::Chunk &chunk) {
 
     m_blocks.emplace_back(
      src, ctrl, dst, connectionBlock.lScale,
-     Transform(invertedSources.find(src) != invertedSources.end(),
-               bipolarSources.find(src) != bipolarSources.end(), transType),
-     Transform(false, false, transType));
+     TransformParams(invertedSources.find(src) != invertedSources.end(),
+                     bipolarSources.find(src) != bipolarSources.end(),
+                     transType),
+     TransformParams(false, false, transType));
   }
 }

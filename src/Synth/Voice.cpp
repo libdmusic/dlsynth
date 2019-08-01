@@ -2,6 +2,7 @@
 #include "../NumericUtils.hpp"
 #include "EG.hpp"
 #include "LFO.hpp"
+#include "ModMatrix.hpp"
 #include "SPSCQueue.hpp"
 #include "VoiceMessage.hpp"
 #include <unordered_set>
@@ -30,78 +31,26 @@ template <> struct equal_to<ConnectionBlock> {
 
 #define DLSYNTH_DEFAULT_CONN(src, ctrl, dst, scale, bip, inv, type)            \
   ConnectionBlock(Source::src, Source::ctrl, Destination::dst, scale,          \
-                  Transform(inv, bip, TransformType::type),                    \
-                  Transform(false, false, TransformType::None))
+                  TransformParams(inv, bip, TransformType::type),              \
+                  TransformParams(false, false, TransformType::None))
 
-static float concaveTransform(float value) {
-  static float threshold = 1.f - std::pow(10.f, -12.f / 5.f);
-  if (value > threshold) {
-    return 1.f;
-  } else {
-    return -(5.f / 12.f) * std::log10(1.f - value);
-  }
+inline float lerp(float v0, float v1, float t) { return (1 - t) * v0 + t * v1; }
+
+static float interpolateSample(float pos, const std::vector<float> &samples) {
+  std::size_t floor = static_cast<std::size_t>(std::floor(pos));
+  std::size_t ceil = static_cast<std::size_t>(std::ceil(pos));
+
+  float sample1 = samples[floor];
+  float sample2 = samples[ceil % samples.size()];
+
+  float t = pos - floor;
+  return lerp(sample1, sample2, t);
 }
 
-static float convexTransform(float value) {
-  static float threshold = std::pow(10.f, -12.f / 5.f);
-  if (value < threshold) {
-    return 0;
-  } else {
-    return 1.f + (5.f / 12.f) * std::log10(value);
-  }
-}
-
-static float switchTransform(float value) {
-  if (value < .5f) {
-    return 0;
-  } else {
-    return 1;
-  }
-}
-
-inline float sgn(float x) {
-  if (x < 0)
-    return -1;
-  else
-    return 1;
-}
-
-static float applyTransform(float input, const Transform &trans) {
-  if (trans.invert()) {
-    input = 1.f - input;
-  }
-  switch (trans.type()) {
-  case TransformType::None:
-    if (trans.bipolar()) {
-      return 2.f * input - 1.f;
-    } else {
-      return input;
-    }
-  case TransformType::Switch:
-    if (trans.bipolar()) {
-      float value = switchTransform(input);
-      return 2.f * input - 1.f;
-    } else {
-      return switchTransform(input);
-    }
-  case TransformType::Concave:
-    if (trans.bipolar()) {
-      float value = 2.f * input - 1.f;
-      return sgn(value) * concaveTransform(std::abs(value));
-    } else {
-      return concaveTransform(input);
-    }
-  case TransformType::Convex:
-    if (trans.bipolar()) {
-      float value = 2.f * input - 1.f;
-      return sgn(value) * convexTransform(std::abs(value));
-    } else {
-      return convexTransform(input);
-    }
-  default:
-    return input;
-  }
-}
+using SourceArray = std::array<SignalSource, DLSynth::max_source + 1>;
+using DestinationArray =
+ std::array<SignalDestination, DLSynth::max_destination + 1>;
+constexpr std::size_t messageQueueSize = 128;
 
 static float getScaleValue(Destination dest, std::int32_t scale) {
   switch (dest) {
@@ -139,86 +88,133 @@ static float getScaleValue(Destination dest, std::int32_t scale) {
   }
 }
 
-inline float lerp(float v0, float v1, float t) { return (1 - t) * v0 + t * v1; }
+class StereoGainNode : public ObservableSignal, public SignalObserver {
+  SignalDestination *m_panNode;
+  SignalDestination *m_gainNode;
 
-static float interpolateSample(float pos, const std::vector<float> &samples) {
-  std::size_t floor = static_cast<std::size_t>(std::floor(pos));
-  std::size_t ceil = static_cast<std::size_t>(std::ceil(pos));
+  float m_leftGainAsRatio;
+  float m_rightGainAsRatio;
 
-  float sample1 = samples[floor];
-  float sample2 = samples[ceil % samples.size()];
+  float m_sampleGain = 0.f;
+  bool m_upToDate = false;
 
-  float t = pos - floor;
-  return lerp(sample1, sample2, t);
-}
+  void calc() {
+    float pan = m_panNode->value();
+    float gain = m_gainNode->value() + m_sampleGain;
 
-inline float centsToRatio(float cents) { return std::exp2(cents / 1200.f); }
+    float panParameter = (PI / 2.f) * (pan + 0.5f);
+    float leftGain = std::log10(std::cos(panParameter)) + gain;
+    float rightGain = std::log10(std::sin(panParameter)) + gain;
 
-inline float centsToFreq(float cents) {
-  return centsToRatio(cents - 6900) * 440.f;
-}
+    m_leftGainAsRatio = belsToGain(leftGain);
+    m_rightGainAsRatio = belsToGain(rightGain);
 
-inline float belsToGain(float bels) { return std::pow(10.f, bels); }
+    m_upToDate = true;
+  }
 
-inline float centsToSecs(float cents) { return std::exp2(cents / 1200); }
+public:
+  StereoGainNode(SignalDestination *pan, SignalDestination *gain)
+    : m_panNode(pan), m_gainNode(gain) {
+    pan->subscribe(this);
+    gain->subscribe(this);
+  }
 
-using SourceArray = std::array<float, DLSynth::max_source + 1>;
-using DestinationArray = std::array<float, DLSynth::max_destination + 1>;
+  void sampleGain(float value) {
+    m_sampleGain = value;
+    m_upToDate = false;
+    valueChanged();
+  }
 
-constexpr auto globalSources = {Source::CC1,
-                                Source::CC10,
-                                Source::CC11,
-                                Source::CC7,
-                                Source::CC91,
-                                Source::CC93,
-                                Source::ChannelPressure,
-                                Source::None,
-                                Source::PitchWheel,
-                                Source::RPN0,
-                                Source::RPN1,
-                                Source::RPN2};
+  float leftGain() {
+    if (!m_upToDate) {
+      calc();
+    }
 
-constexpr std::size_t messageQueueSize = 128;
+    return m_leftGainAsRatio;
+  }
+
+  float rightGain() {
+    if (!m_upToDate) {
+      calc();
+    }
+
+    return m_rightGainAsRatio;
+  }
+
+protected:
+  void sourceChanged() override { m_upToDate = false; }
+};
+
+class PitchNode : public ObservableSignal, public SignalObserver {
+  SignalDestination *m_pitchNode;
+  float m_samplePitch = 0.f;
+  float m_sampleFineTune = 0.f;
+  bool m_upToDate = false;
+
+  float m_freqRatio;
+
+public:
+  PitchNode(SignalDestination *pitch) : m_pitchNode(pitch) {
+    pitch->subscribe(this);
+  }
+
+  void samplePitch(float value) {
+    m_samplePitch = value;
+    m_upToDate = false;
+    valueChanged();
+  }
+
+  void sampleFineTune(float value) {
+    m_sampleFineTune = value;
+    m_upToDate = false;
+    valueChanged();
+  }
+
+  float frequencyRatio() {
+    if (!m_upToDate) {
+      m_freqRatio =
+       centsToRatio(m_pitchNode->value() - (m_samplePitch + m_sampleFineTune));
+      m_upToDate = true;
+    }
+
+    return m_freqRatio;
+  }
+
+protected:
+  void sourceChanged() override { m_upToDate = false; }
+};
 
 struct Voice::impl : public VoiceMessageExecutor {
-  impl(const Instrument &instr, const SourceArray &sources,
-       std::uint32_t sampleRate)
+  impl(const Instrument &instr, std::uint32_t sampleRate)
     : m_instrument(instr)
-    , m_instrSources(sources)
     , m_sampleRate(sampleRate)
+    , m_messageQueue(messageQueueSize)
+    , m_gainNode(&getDestination(Destination::Pan),
+                 &getDestination(Destination::Gain))
+    , m_pitchNode(&getDestination(Destination::Pitch))
     , m_modLfo(static_cast<float>(sampleRate))
     , m_vibLfo(static_cast<float>(sampleRate))
     , m_volEg(static_cast<float>(sampleRate))
-    , m_filtEg(static_cast<float>(sampleRate))
-    , m_messageQueue(messageQueueSize) {
-    for (std::uint16_t i = 0; i < max_source + 1; i++) {
-      m_sourceMap[i] = &(m_sources[i]);
-    }
+    , m_filtEg(static_cast<float>(sampleRate)) {
 
-    for (Source src : globalSources) {
-      m_sourceMap[static_cast<std::uint16_t>(src)] = &getGlobalSource(src);
-    }
-
-    resetConnections();
-    resetDestinations();
-
-    getInternalSource(Source::EG1) = 0.f;
-    getInternalSource(Source::EG2) = 0.f;
-    getInternalSource(Source::LFO) = 0.5f;
-    getInternalSource(Source::Vibrato) = 0.5f;
+    resetControllers();
+    getSource(Source::EG1) = 0.f;
+    getSource(Source::EG2) = 0.f;
+    getSource(Source::LFO) = 0.5f;
+    getSource(Source::Vibrato) = 0.5f;
   }
 
   ~impl() override = default;
 
   const Instrument &m_instrument;
-  const SourceArray &m_instrSources;
   std::uint32_t m_sampleRate;
   rigtorp::SPSCQueue<std::unique_ptr<VoiceMessage>> m_messageQueue;
 
   std::unordered_set<ConnectionBlock> m_connections;
-  SourceArray m_sources{0};
+  SourceArray m_sources;
   DestinationArray m_destinations;
-  std::array<const float *, DLSynth::max_source + 1> m_sourceMap;
+  StereoGainNode m_gainNode;
+  PitchNode m_pitchNode;
   bool m_playing;
   std::uint8_t m_note;
   std::uint8_t m_velocity;
@@ -231,38 +227,12 @@ struct Voice::impl : public VoiceMessageExecutor {
   LFO m_modLfo, m_vibLfo;
   EG m_volEg, m_filtEg;
 
-  inline float getSource(Source source) {
-    return *(m_sourceMap[static_cast<std::uint16_t>(source)]);
-  }
-
-  inline const float &getGlobalSource(Source source) {
-    return m_instrSources[static_cast<std::uint16_t>(source)];
-  }
-
-  inline float &getInternalSource(Source source) {
+  inline SignalSource &getSource(Source source) {
     return m_sources[static_cast<std::uint16_t>(source)];
   }
 
-  inline float &getDestination(Destination dest) {
+  inline SignalDestination &getDestination(Destination dest) {
     return m_destinations[static_cast<std::uint16_t>(dest)];
-  }
-
-  void calcDestinations() {
-    for (const auto &connection : m_connections) {
-      Source src = connection.source();
-      Source ctrl = connection.control();
-      Destination dst = connection.destination();
-
-      const auto &srcTrans = connection.sourceTransform();
-      const auto &ctrlTrans = connection.controlTransform();
-
-      float source = applyTransform(getSource(src), srcTrans);
-      float control = applyTransform(getSource(ctrl), ctrlTrans);
-      float scaleValue = getScaleValue(dst, connection.scale());
-
-      getDestination(dst) += source * control * scaleValue;
-      continue;
-    }
   }
 
   void resetConnections() {
@@ -354,7 +324,29 @@ struct Voice::impl : public VoiceMessageExecutor {
     };
   }
 
+  void resetControllers() {
+    getSource(Source::CC7) = 100.f / 128.f;
+    getSource(Source::CC10) = 64.f / 128.f;
+    getSource(Source::CC91) = 40.f / 128.f;
+    getSource(Source::ChannelPressure) = 0.f;
+    getSource(Source::RPN1) = 0.f;
+    getSource(Source::CC11) = 127.f / 128.f;
+    getSource(Source::CC1) = 0.f;
+    getSource(Source::CC93) = 0.f;
+    getSource(Source::RPN0) = 2.f / 128.f;
+    getSource(Source::RPN2) = 0.f;
+    getSource(Source::None) = 1.f;
+  }
+
   void loadConnections(const std::vector<ConnectionBlock> &cblocks) {
+    for (auto &source : m_sources) {
+      source.resetSubscribers();
+    }
+
+    for (auto &destination : m_destinations) {
+      destination.resetConnections();
+    }
+
     for (const auto &block : cblocks) {
       auto old_elem = m_connections.find(block);
       if (old_elem == m_connections.end()) {
@@ -364,38 +356,40 @@ struct Voice::impl : public VoiceMessageExecutor {
         m_connections.insert(block);
       }
     }
-  }
 
-  void resetDestinations() {
-    std::fill(std::begin(m_destinations), std::end(m_destinations), 0.f);
+    for (const auto &conn : m_connections) {
+      getDestination(conn.destination())
+       .addConnection(getSource(conn.source()), conn.sourceTransform(),
+                      getSource(conn.control()), conn.controlTransform(),
+                      getScaleValue(conn.destination(), conn.scale()));
+    }
   }
 
   void updateModLfo() {
-    float freq = centsToFreq(getDestination(Destination::LfoFrequency));
-    float startDelay = centsToSecs(getDestination(Destination::LfoStartDelay));
+    float freq = getDestination(Destination::LfoFrequency).asFreq();
+    float startDelay = getDestination(Destination::LfoStartDelay).asSecs();
 
     float output = m_modLfo.nextSample(freq, startDelay);
 
-    getInternalSource(Source::LFO) = output;
+    getSource(Source::LFO) = output;
   }
 
   void updateVibLfo() {
-    float freq = centsToFreq(getDestination(Destination::VibratoFrequency));
-    float startDelay =
-     centsToSecs(getDestination(Destination::VibratoStartDelay));
+    float freq = getDestination(Destination::VibratoFrequency).asFreq();
+    float startDelay = getDestination(Destination::VibratoStartDelay).asSecs();
 
     float output = m_vibLfo.nextSample(freq, startDelay);
 
-    getInternalSource(Source::Vibrato) = output;
+    getSource(Source::Vibrato) = output;
   }
 
   void updateVolEg() {
-    float delay = centsToSecs(getDestination(Destination::EG1DelayTime));
-    float attack = centsToSecs(getDestination(Destination::EG1AttackTime));
-    float hold = centsToSecs(getDestination(Destination::EG1HoldTime));
-    float decay = centsToSecs(getDestination(Destination::EG1DecayTime));
+    float delay = getDestination(Destination::EG1DelayTime).asSecs();
+    float attack = getDestination(Destination::EG1AttackTime).asSecs();
+    float hold = getDestination(Destination::EG1HoldTime).asSecs();
+    float decay = getDestination(Destination::EG1DecayTime).asSecs();
     float sustain = getDestination(Destination::EG1SustainLevel);
-    float release = centsToSecs(getDestination(Destination::EG1ReleaseTime));
+    float release = getDestination(Destination::EG1ReleaseTime).asSecs();
 
     float output =
      m_volEg.nextSample(delay, attack, hold, decay, sustain, release);
@@ -405,37 +399,38 @@ struct Voice::impl : public VoiceMessageExecutor {
       m_playing = false;
     }
 
-    getInternalSource(Source::EG1) = output;
+    getSource(Source::EG1) = output;
   }
 
   void updateFiltEg() {
-    float delay = centsToSecs(getDestination(Destination::EG2DelayTime));
-    float attack = centsToSecs(getDestination(Destination::EG2AttackTime));
-    float hold = centsToSecs(getDestination(Destination::EG2HoldTime));
-    float decay = centsToSecs(getDestination(Destination::EG2DecayTime));
+    float delay = getDestination(Destination::EG2DelayTime).asSecs();
+    float attack = getDestination(Destination::EG2AttackTime).asSecs();
+    float hold = getDestination(Destination::EG2HoldTime).asSecs();
+    float decay = getDestination(Destination::EG2DecayTime).asSecs();
     float sustain = getDestination(Destination::EG2SustainLevel);
-    float release = centsToSecs(getDestination(Destination::EG2ReleaseTime));
+    float release = getDestination(Destination::EG2ReleaseTime).asSecs();
 
     float output =
      m_filtEg.nextSample(delay, attack, hold, decay, sustain, release);
 
-    getInternalSource(Source::EG2) = output;
+    getSource(Source::EG2) = output;
   }
 
   void execute(const NoteOnMessage &message) override {
     m_playing = true;
     resetConnections();
-    resetDestinations();
     loadConnections(message.connectionBlocks());
     m_wavesample = message.wavesample();
     m_sample = &message.sample();
+    m_pitchNode.samplePitch(m_wavesample->unityNote() * 100.f);
+    m_pitchNode.sampleFineTune(m_wavesample->fineTune());
     m_samplePos = 0;
+    m_gainNode.sampleGain(m_wavesample->gain());
     m_note = message.note();
     m_velocity = message.velocity();
     m_startTime = std::chrono::steady_clock::now();
-    getInternalSource(Source::KeyNumber) = static_cast<float>(m_note) / 128.f;
-    getInternalSource(Source::KeyOnVelocity) =
-     static_cast<float>(m_velocity) / 128.f;
+    getSource(Source::KeyNumber) = static_cast<float>(m_note) / 128.f;
+    getSource(Source::KeyOnVelocity) = static_cast<float>(m_velocity) / 128.f;
     m_filtEg.noteOn();
     m_modLfo.reset();
     m_vibLfo.reset();
@@ -453,9 +448,12 @@ struct Voice::impl : public VoiceMessageExecutor {
     m_playing = false;
   }
 
-  void execute(const PolyPressureMessage &message) override {
-    getInternalSource(Source::PolyPressure) =
-     static_cast<float>(message.value()) / 128.f;
+  void execute(const ControlChangeMessage &message) override {
+    getSource(message.source()) = message.value();
+  }
+
+  void execute(const ResetControllersMessage &message) override {
+    resetControllers();
   }
 
   void render(float *beginLeft, float *endLeft, float *beginRight,
@@ -463,14 +461,6 @@ struct Voice::impl : public VoiceMessageExecutor {
               std::size_t bufferSkip) {
     float *lp = beginLeft;
     float *rp = beginRight;
-
-    /*
-    Calculating destinations is expensive, so it cannot be done for every
-    sample. Instead, `destinationCalcInterval` specifies how many samples are
-    generated using the same destination values, to reduce CPU load.
-     */
-    int count = 0;
-    constexpr int destinationCalcInterval = 16;
 
     while (lp < endLeft || rp < endRight) {
       if (lp < endLeft && fill) {
@@ -486,35 +476,18 @@ struct Voice::impl : public VoiceMessageExecutor {
         m_messageQueue.pop();
 
         msg->accept(this);
-        count = 0;
       }
 
       if (m_sample != nullptr && m_wavesample != nullptr && m_playing) {
-        if (count == 0) {
-          resetDestinations();
-          calcDestinations();
-        }
-
-        count = (count + 1) % destinationCalcInterval;
-
         updateVolEg();
         updateFiltEg();
         updateModLfo();
         updateVibLfo();
 
-        float pan = getDestination(Destination::Pan);
-        float gain = getDestination(Destination::Gain) + m_wavesample->gain();
+        float freqRatio = m_pitchNode.frequencyRatio();
 
-        float panParameter = (PI / 2.f) * (pan + 0.5f);
-        float leftGain = std::log10(std::cos(panParameter)) + gain;
-        float rightGain = std::log10(std::sin(panParameter)) + gain;
-
-        float pitch = getDestination(Destination::Pitch);
-        float samplePitch = m_wavesample->unityNote() * 100.f;
-        float freqRatio = centsToRatio(pitch - samplePitch);
-
-        float lcoef = belsToGain(leftGain);
-        float rcoef = belsToGain(rightGain);
+        float lcoef = m_gainNode.leftGain();
+        float rcoef = m_gainNode.rightGain();
         float lsample =
          interpolateSample(m_samplePos, m_sample->leftData()) * lcoef;
         float rsample =
@@ -573,9 +546,8 @@ struct Voice::impl : public VoiceMessageExecutor {
   }
 };
 
-Voice::Voice(const Instrument &instrument, const SourceArray &sources,
-             std::uint32_t sampleRate)
-  : pimpl(new impl(instrument, sources, sampleRate)) {}
+Voice::Voice(const Instrument &instrument, std::uint32_t sampleRate)
+  : pimpl(new impl(instrument, sampleRate)) {}
 
 Voice::Voice(Voice &&voice) : pimpl(voice.pimpl) { voice.pimpl = nullptr; }
 
@@ -598,8 +570,13 @@ void Voice::soundOff() {
   pimpl->m_messageQueue.push(std::make_unique<SoundOffMessage>());
 }
 
-void Voice::polyPressure(std::uint8_t value) {
-  pimpl->m_messageQueue.push(std::make_unique<PolyPressureMessage>(value));
+void Voice::controlChange(Source source, float value) {
+  pimpl->m_messageQueue.push(
+   std::make_unique<ControlChangeMessage>(source, value));
+}
+
+void Voice::resetControllers() {
+  pimpl->m_messageQueue.push(std::make_unique<ResetControllersMessage>());
 }
 
 bool Voice::playing() const { return pimpl->m_playing; }
