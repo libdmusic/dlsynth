@@ -1,8 +1,9 @@
 trigger:
   branches:
+    include:
+    - '*'
     exclude:
     - gh-pages
-
 jobs:
 - job: Linux
   pool:
