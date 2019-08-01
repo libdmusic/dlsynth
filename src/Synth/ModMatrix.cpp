@@ -23,12 +23,6 @@ void ObservableSignal::subscribe(SignalObserver *subscriber) {
   pimpl->m_subscribers.push_back(subscriber);
 }
 
-void ObservableSignal::unsubscribe(SignalObserver *subscriber) {
-  assert(pimpl != nullptr);
-  auto &vector = pimpl->m_subscribers;
-  vector.erase(std::find(std::begin(vector), std::end(vector), subscriber));
-}
-
 void ObservableSignal::resetSubscribers() {
   assert(pimpl != nullptr);
   auto &vector = pimpl->m_subscribers;

@@ -14,10 +14,12 @@ jobs:
 - job: Windows_x64_static
   pool:
     vmImage: 'vs2017-win2016'
+  variables:
+    VCPKG_DEFAULT_TRIPLET: x64-windows
   steps:
   - script: git clone --depth=1 https://github.com/libdmusic/vcpkg
   - script: .\vcpkg\bootstrap-vcpkg.bat
-  - script: .\vcpkg\vcpkg.exe install riffcpp:x64-windows-static
+  - script: .\vcpkg\vcpkg.exe install riffcpp
   - script: |
       mkdir build
       cd build
@@ -26,10 +28,12 @@ jobs:
 - job: Windows_x64
   pool:
     vmImage: 'vs2017-win2016'
+  variables:
+    VCPKG_DEFAULT_TRIPLET: x64-windows-static
   steps:
   - script: git clone --depth=1 https://github.com/libdmusic/vcpkg
   - script: .\vcpkg\bootstrap-vcpkg.bat
-  - script: .\vcpkg\vcpkg.exe install riffcpp:x64-windows
+  - script: .\vcpkg\vcpkg.exe install riffcpp
   - script: |
       mkdir build
       cd build
