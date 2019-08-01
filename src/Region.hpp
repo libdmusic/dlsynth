@@ -15,7 +15,7 @@ struct Range {
 
   /// Returns `true` if \p value falls within the range
   constexpr bool inRange(std::uint16_t value) const {
-    return value <= high && value >= low;
+    return (value <= high && value >= low) || (low == 0 && high == 0);
   }
 };
 
