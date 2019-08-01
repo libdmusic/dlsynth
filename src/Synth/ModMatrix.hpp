@@ -6,6 +6,9 @@
 namespace DLSynth {
 namespace Synth {
   class ObservableSignal;
+
+  /// An object that can subscribe to value change events of other \ref
+  /// ObservableSignal s
   class SignalObserver {
     friend ObservableSignal;
 
@@ -13,9 +16,12 @@ namespace Synth {
     virtual ~SignalObserver();
 
   protected:
+    /// Called when the value of one of the \ref ObservableSignal s to which
+    /// this object is subscribed has changed value.
     virtual void sourceChanged() = 0;
   };
 
+  /// An object whose change in value can be listened by \ref SignalObserver s
   class ObservableSignal {
     struct impl;
 
@@ -29,6 +35,8 @@ namespace Synth {
     void resetSubscribers();
 
   protected:
+    /// Signals to all the subscribed listeners that the value of this object
+    /// changed.
     void valueChanged();
   };
 
@@ -63,9 +71,9 @@ namespace Synth {
 
     SignalDestination &operator=(const SignalDestination &) = delete;
 
-    void addConnection(const SignalSource &source,
+    void addConnection(SignalSource &source,
                        const TransformParams &srcTransform,
-                       const SignalSource &control,
+                       SignalSource &control,
                        const TransformParams &ctrlTransform, float scale);
     void resetConnections();
     float value();

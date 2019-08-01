@@ -88,8 +88,8 @@ SignalDestination::SignalDestination(SignalDestination &&dst)
 SignalDestination::~SignalDestination() { delete pimpl; }
 
 void SignalDestination::addConnection(
- const SignalSource &source, const DLSynth::TransformParams &srcTransform,
- const SignalSource &control, const DLSynth::TransformParams &ctrlTransform,
+ SignalSource &source, const DLSynth::TransformParams &srcTransform,
+ SignalSource &control, const DLSynth::TransformParams &ctrlTransform,
  float scale) {
 
   Connection conn{&source, &control,
@@ -104,6 +104,8 @@ void SignalDestination::addConnection(
   pimpl->m_freqUpToDate = false;
   pimpl->m_gainUpToDate = false;
   pimpl->m_secsUpToDate = false;
+  source.subscribe(this);
+  control.subscribe(this);
   valueChanged();
 }
 
