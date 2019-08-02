@@ -219,12 +219,12 @@ public:
     if (!m_upToDate) {
       // https://creatingsound.com/2014/02/dsp-audio-programming-series-part-2/
       float theta = 2.f * PI * (m_frequency->asFreq() / m_sampleRate);
-      float d = 0.5 * (1. / m_resonance->asGain()) * std::sin(theta);
-      float beta = 0.5 * ((1. - d) / (1. + d));
-      float gamma = (0.5 + beta) * cos(theta);
+      float d = .5f * (1.f / m_resonance->asGain()) * std::sin(theta);
+      float beta = .5f * ((1.f - d) / (1.f + d));
+      float gamma = (.5f + beta) * cos(theta);
 
-      m_coeffs.a0 = 0.5f * (0.5f + beta - gamma);
-      m_coeffs.a1 = 0.5f + beta - gamma;
+      m_coeffs.a0 = .5f * (.5f + beta - gamma);
+      m_coeffs.a1 = .5f + beta - gamma;
 
       m_coeffs.a2 = m_coeffs.a0;
       m_coeffs.b1 = -2.f * gamma;
@@ -248,7 +248,8 @@ struct Voice::impl : public VoiceMessageExecutor {
     , m_gainNode(&getDestination(Destination::Pan),
                  &getDestination(Destination::Gain))
     , m_pitchNode(&getDestination(Destination::Pitch))
-    , m_filterNode(sampleRate, &getDestination(Destination::FilterCutoff),
+    , m_filterNode(static_cast<float>(sampleRate),
+                   &getDestination(Destination::FilterCutoff),
                    &getDestination(Destination::FilterQ))
     , m_modLfo(static_cast<float>(sampleRate))
     , m_vibLfo(static_cast<float>(sampleRate))
