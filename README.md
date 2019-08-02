@@ -51,7 +51,46 @@ int main() {
 }
 ```
 
+## Including `dlsynth` in an application
+
+A fork of the vcpkg package manager is available [here](https://github.com/libdmusic/vcpkg)
+that includes a portfile for `dlsynth`. You can install it by requesting the
+`HEAD` version:
+
+```sh
+vcpkg install dlsynth --head
+```
+
+You can then use `dlsynth` as any other CMake-available library:
+
+```cmake
+find_package(dlsynth CONFIG REQUIRED)
+target_link_libraries(my_app PRIVATE dlsynth::dlsynth)
+```
+
 ## Building
+
+### Using [vckg](https://github.com/Microsoft/vcpkg)
+
+After having cloned and build vcpkg, install `riffcpp`:
+
+```sh
+vcpkg install riffcpp
+```
+
+You will then be able to build dlsynth:
+
+```sh
+mkdir build
+cd build
+cmake -DCMAKE_TOOLCHAIN_FILE=path/to/vcpkg/scripts/buildsystems/vcpkg.cmake ..
+cmake --build .
+```
+
+`dlsynth` can be built to use either static or dynamic linking for its
+dependencies, and itself is able to be built a dynamic or static library
+
+### Without vcpkg
 
 You will need to obtain a binary copy of [riffcpp](https://github.com/libdmusic/riffcpp)
 and install it somewhere CMake can find it.
