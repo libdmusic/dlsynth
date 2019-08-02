@@ -17,7 +17,7 @@ namespace Synth {
     impl *pimpl;
 
   public:
-    Voice(const Instrument &instrument, std::uint32_t sampleRate);
+    Voice(std::uint32_t sampleRate);
     Voice(Voice &&voice);
     ~Voice();
 

@@ -86,6 +86,8 @@ static float getScaleValue(Destination dest, std::int32_t scale) {
   }
 }
 
+/// Provides the left and right channel coefficients given global gain and pan
+/// values
 class StereoGainNode : public ObservableSignal, public SignalObserver {
   SignalDestination *m_panNode;
   SignalDestination *m_gainNode;
@@ -183,9 +185,8 @@ protected:
 };
 
 struct Voice::impl : public VoiceMessageExecutor {
-  impl(const Instrument &instr, std::uint32_t sampleRate)
-    : m_instrument(instr)
-    , m_sampleRate(sampleRate)
+  impl(std::uint32_t sampleRate)
+    : m_sampleRate(sampleRate)
     , m_messageQueue(messageQueueSize)
     , m_gainNode(&getDestination(Destination::Pan),
                  &getDestination(Destination::Gain))
@@ -203,8 +204,6 @@ struct Voice::impl : public VoiceMessageExecutor {
   }
 
   ~impl() override = default;
-
-  const Instrument &m_instrument;
   std::uint32_t m_sampleRate;
   rigtorp::SPSCQueue<std::unique_ptr<VoiceMessage>> m_messageQueue;
 
@@ -550,8 +549,7 @@ struct Voice::impl : public VoiceMessageExecutor {
   }
 };
 
-Voice::Voice(const Instrument &instrument, std::uint32_t sampleRate)
-  : pimpl(new impl(instrument, sampleRate)) {}
+Voice::Voice(std::uint32_t sampleRate) : pimpl(new impl(sampleRate)) {}
 
 Voice::Voice(Voice &&voice) : pimpl(voice.pimpl) { voice.pimpl = nullptr; }
 

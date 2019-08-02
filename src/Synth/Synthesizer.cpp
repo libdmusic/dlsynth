@@ -32,7 +32,7 @@ Synthesizer::Synthesizer(const Sound &collection, std::size_t instrumentIndex,
   assert(instrumentIndex < collection.instruments().size());
 
   for (std::size_t i = 0; i < voiceCount; i++) {
-    pimpl->m_voices.emplace_back(pimpl->m_instrument, sampleRate);
+    pimpl->m_voices.emplace_back(sampleRate);
   }
 }
 
