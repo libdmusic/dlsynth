@@ -7,7 +7,7 @@ var searchData=
   ['vibrato',['Vibrato',['../namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196a3dd28adc822a97ff429a9edd9b95cda3',1,'DLSynth']]],
   ['vibratofrequency',['VibratoFrequency',['../namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a9eb24cd1daad2aaf073cf0cdc83b16b4',1,'DLSynth']]],
   ['vibratostartdelay',['VibratoStartDelay',['../namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981afa0994f2b3129ad00840f17c23402db2',1,'DLSynth']]],
-  ['voice',['Voice',['../class_d_l_synth_1_1_synth_1_1_voice.html',1,'DLSynth::Synth::Voice'],['../class_d_l_synth_1_1_synth_1_1_voice.html#a2578ae0326dd411ef98401ebbf4278d1',1,'DLSynth::Synth::Voice::Voice(const Instrument &amp;instrument, std::uint32_t sampleRate)'],['../class_d_l_synth_1_1_synth_1_1_voice.html#ae043ddeba27ae2cd929794cbdd0bffa6',1,'DLSynth::Synth::Voice::Voice(Voice &amp;&amp;voice)']]],
+  ['voice',['Voice',['../class_d_l_synth_1_1_synth_1_1_voice.html',1,'DLSynth::Synth::Voice'],['../class_d_l_synth_1_1_synth_1_1_voice.html#a0492163d16d485389d1727c6d69e5b6a',1,'DLSynth::Synth::Voice::Voice(std::uint32_t sampleRate)'],['../class_d_l_synth_1_1_synth_1_1_voice.html#ae043ddeba27ae2cd929794cbdd0bffa6',1,'DLSynth::Synth::Voice::Voice(Voice &amp;&amp;voice)']]],
   ['voice_2ecpp',['Voice.cpp',['../_voice_8cpp.html',1,'']]],
   ['voice_2ehpp',['Voice.hpp',['../_voice_8hpp.html',1,'']]],
   ['voicemessage',['VoiceMessage',['../class_d_l_synth_1_1_synth_1_1_voice_message.html',1,'DLSynth::Synth']]],

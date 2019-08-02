@@ -9,6 +9,7 @@ var searchData=
   ['clamp_5fconvert',['clamp_convert',['../namespace_d_l_synth.html#a08d1e6124add9fea414d2df0f95de374',1,'DLSynth']]],
   ['coarsetuning',['coarseTuning',['../class_d_l_synth_1_1_synth_1_1_synthesizer.html#a5ca81d528a58717ad6fb9e9bf6f81406',1,'DLSynth::Synth::Synthesizer']]],
   ['code',['code',['../class_d_l_synth_1_1_error.html#a2304cac83da7275e59b4048c4746f77b',1,'DLSynth::Error']]],
+  ['coeffs',['coeffs',['../class_filter_node.html#a52e0c98314deebd601dd2eea7f58cf0b',1,'FilterNode']]],
   ['concavetransform',['ConcaveTransform',['../class_concave_transform.html#a39524d0aa7ec32ec319de681b1ae8db3',1,'ConcaveTransform']]],
   ['connectionblock',['ConnectionBlock',['../class_d_l_synth_1_1_connection_block.html#a10a0e89ce01bd4f856641d58b9efeb11',1,'DLSynth::ConnectionBlock']]],
   ['connectionblocks',['connectionBlocks',['../class_d_l_synth_1_1_articulator.html#a3170145a1cbfb5278e0fcfec6c61d254',1,'DLSynth::Articulator::connectionBlocks()'],['../class_d_l_synth_1_1_instrument.html#a88f96b49091701e4434fe0c5c3e2e397',1,'DLSynth::Instrument::connectionBlocks()'],['../class_d_l_synth_1_1_region.html#a2bb01f98994ca0303a1bdcc7a6ea27cc',1,'DLSynth::Region::connectionBlocks()'],['../class_d_l_synth_1_1_synth_1_1_note_on_message.html#a5dbf5dd804146d6ffddd72678a8d3c26',1,'DLSynth::Synth::NoteOnMessage::connectionBlocks()']]],

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>dlsynth: PitchNode Class Reference</title>
+<title>dlsynth: FilterNode Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -65,20 +65,20 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="class_pitch_node-members.html">List of all members</a>  </div>
+<a href="class_filter_node-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">PitchNode Class Reference<span class="mlabels"><span class="mlabel">final</span></span></div>  </div>
+<div class="title">FilterNode Class Reference<span class="mlabels"><span class="mlabel">final</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Calculates the ratio between the target note frequency and unity sample frequency.  
- <a href="class_pitch_node.html#details">More...</a></p>
+<p>Calculates the low-pass filter coefficients from the cutoff frequency and Q values.  
+ <a href="class_filter_node.html#details">More...</a></p>
 <div class="dynheader">
-Inheritance diagram for PitchNode:</div>
+Inheritance diagram for FilterNode:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="class_pitch_node.png" usemap="#PitchNode_map" alt=""/>
-  <map id="PitchNode_map" name="PitchNode_map">
+  <img src="class_filter_node.png" usemap="#FilterNode_map" alt=""/>
+  <map id="FilterNode_map" name="FilterNode_map">
 <area href="class_d_l_synth_1_1_synth_1_1_observable_signal.html" title="An object whose change in value can be listened by SignalObserver s." alt="DLSynth::Synth::ObservableSignal" shape="rect" coords="0,0,205,24"/>
 <area href="class_d_l_synth_1_1_synth_1_1_signal_observer.html" title="An object that can subscribe to value change events of other ObservableSignal s." alt="DLSynth::Synth::SignalObserver" shape="rect" coords="215,0,420,24"/>
   </map>
@@ -86,14 +86,10 @@ Inheritance diagram for PitchNode:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a96a0e8a739a367d1180fc967efe2a3d7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pitch_node.html#a96a0e8a739a367d1180fc967efe2a3d7">PitchNode</a> (<a class="el" href="class_d_l_synth_1_1_synth_1_1_signal_destination.html">SignalDestination</a> *pitch)</td></tr>
-<tr class="separator:a96a0e8a739a367d1180fc967efe2a3d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe602ad62c555835ae450114352a699c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pitch_node.html#afe602ad62c555835ae450114352a699c">samplePitch</a> (float value)</td></tr>
-<tr class="separator:afe602ad62c555835ae450114352a699c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a043e54be5041b3f38dd7aa16d63e4977"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pitch_node.html#a043e54be5041b3f38dd7aa16d63e4977">sampleFineTune</a> (float value)</td></tr>
-<tr class="separator:a043e54be5041b3f38dd7aa16d63e4977"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9c7d26cace63f5a152397a6cb1aaf0e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pitch_node.html#af9c7d26cace63f5a152397a6cb1aaf0e">frequencyRatio</a> ()</td></tr>
-<tr class="separator:af9c7d26cace63f5a152397a6cb1aaf0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33d4a191b17b470d94e8c2f3196b56dc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_node.html#a33d4a191b17b470d94e8c2f3196b56dc">FilterNode</a> (float sampleRate, <a class="el" href="class_d_l_synth_1_1_synth_1_1_signal_destination.html">SignalDestination</a> *frequency, <a class="el" href="class_d_l_synth_1_1_synth_1_1_signal_destination.html">SignalDestination</a> *resonance)</td></tr>
+<tr class="separator:a33d4a191b17b470d94e8c2f3196b56dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52e0c98314deebd601dd2eea7f58cf0b"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="struct_filter_coeffs.html">FilterCoeffs</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_node.html#a52e0c98314deebd601dd2eea7f58cf0b">coeffs</a> ()</td></tr>
+<tr class="separator:a52e0c98314deebd601dd2eea7f58cf0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_d_l_synth_1_1_synth_1_1_observable_signal"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_d_l_synth_1_1_synth_1_1_observable_signal')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_d_l_synth_1_1_synth_1_1_observable_signal.html">DLSynth::Synth::ObservableSignal</a></td></tr>
 <tr class="memitem:a5e37e260dc865aa15a8d282a11086f01 inherit pub_methods_class_d_l_synth_1_1_synth_1_1_observable_signal"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_synth_1_1_observable_signal.html#a5e37e260dc865aa15a8d282a11086f01">ObservableSignal</a> ()</td></tr>
 <tr class="separator:a5e37e260dc865aa15a8d282a11086f01 inherit pub_methods_class_d_l_synth_1_1_synth_1_1_observable_signal"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -115,19 +111,19 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a169108f298dbc152540c99f14525fd63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pitch_node.html#a169108f298dbc152540c99f14525fd63">sourceChanged</a> () override</td></tr>
-<tr class="memdesc:a169108f298dbc152540c99f14525fd63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the value of one of the ObservableSignal s to which this object is subscribed has changed value.  <a href="#a169108f298dbc152540c99f14525fd63">More...</a><br /></td></tr>
-<tr class="separator:a169108f298dbc152540c99f14525fd63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93b80629dfdb50cae304afa55e24ccbc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_node.html#a93b80629dfdb50cae304afa55e24ccbc">sourceChanged</a> () override</td></tr>
+<tr class="memdesc:a93b80629dfdb50cae304afa55e24ccbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the value of one of the ObservableSignal s to which this object is subscribed has changed value.  <a href="#a93b80629dfdb50cae304afa55e24ccbc">More...</a><br /></td></tr>
+<tr class="separator:a93b80629dfdb50cae304afa55e24ccbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_class_d_l_synth_1_1_synth_1_1_observable_signal"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_d_l_synth_1_1_synth_1_1_observable_signal')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_d_l_synth_1_1_synth_1_1_observable_signal.html">DLSynth::Synth::ObservableSignal</a></td></tr>
 <tr class="memitem:aa3370360562834d43e62334c5a755763 inherit pro_methods_class_d_l_synth_1_1_synth_1_1_observable_signal"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_synth_1_1_observable_signal.html#aa3370360562834d43e62334c5a755763">valueChanged</a> ()</td></tr>
 <tr class="memdesc:aa3370360562834d43e62334c5a755763 inherit pro_methods_class_d_l_synth_1_1_synth_1_1_observable_signal"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signals to all the subscribed listeners that the value of this object changed.  <a href="class_d_l_synth_1_1_synth_1_1_observable_signal.html#aa3370360562834d43e62334c5a755763">More...</a><br /></td></tr>
 <tr class="separator:aa3370360562834d43e62334c5a755763 inherit pro_methods_class_d_l_synth_1_1_synth_1_1_observable_signal"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Calculates the ratio between the target note frequency and unity sample frequency. </p>
+<div class="textblock"><p>Calculates the low-pass filter coefficients from the cutoff frequency and Q values. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a96a0e8a739a367d1180fc967efe2a3d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a96a0e8a739a367d1180fc967efe2a3d7">&#9670;&nbsp;</a></span>PitchNode()</h2>
+<a id="a33d4a191b17b470d94e8c2f3196b56dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33d4a191b17b470d94e8c2f3196b56dc">&#9670;&nbsp;</a></span>FilterNode()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -136,11 +132,27 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">PitchNode::PitchNode </td>
+          <td class="memname">FilterNode::FilterNode </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_d_l_synth_1_1_synth_1_1_signal_destination.html">SignalDestination</a> *&#160;</td>
-          <td class="paramname"><em>pitch</em></td><td>)</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>sampleRate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="class_d_l_synth_1_1_synth_1_1_signal_destination.html">SignalDestination</a> *&#160;</td>
+          <td class="paramname"><em>frequency</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_d_l_synth_1_1_synth_1_1_signal_destination.html">SignalDestination</a> *&#160;</td>
+          <td class="paramname"><em>resonance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -153,8 +165,8 @@ Protected Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="af9c7d26cace63f5a152397a6cb1aaf0e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af9c7d26cace63f5a152397a6cb1aaf0e">&#9670;&nbsp;</a></span>frequencyRatio()</h2>
+<a id="a52e0c98314deebd601dd2eea7f58cf0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52e0c98314deebd601dd2eea7f58cf0b">&#9670;&nbsp;</a></span>coeffs()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -163,7 +175,7 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">float PitchNode::frequencyRatio </td>
+          <td class="memname">const <a class="el" href="struct_filter_coeffs.html">FilterCoeffs</a>&amp; FilterNode::coeffs </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -178,8 +190,8 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a043e54be5041b3f38dd7aa16d63e4977"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a043e54be5041b3f38dd7aa16d63e4977">&#9670;&nbsp;</a></span>sampleFineTune()</h2>
+<a id="a93b80629dfdb50cae304afa55e24ccbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93b80629dfdb50cae304afa55e24ccbc">&#9670;&nbsp;</a></span>sourceChanged()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -188,59 +200,7 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void PitchNode::sampleFineTune </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="afe602ad62c555835ae450114352a699c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe602ad62c555835ae450114352a699c">&#9670;&nbsp;</a></span>samplePitch()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void PitchNode::samplePitch </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a169108f298dbc152540c99f14525fd63"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a169108f298dbc152540c99f14525fd63">&#9670;&nbsp;</a></span>sourceChanged()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void PitchNode::sourceChanged </td>
+          <td class="memname">void FilterNode::sourceChanged </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>

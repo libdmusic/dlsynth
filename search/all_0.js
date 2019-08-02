@@ -1,6 +1,9 @@
 var searchData=
 [
   ['a',['a',['../struct_d_l_synth_1_1_uuid.html#a1951577fe817845e23c1862425e28ae3',1,'DLSynth::Uuid']]],
+  ['a0',['a0',['../struct_filter_coeffs.html#a5af6e58baf16b3cf79cef925ef27c1ae',1,'FilterCoeffs']]],
+  ['a1',['a1',['../struct_filter_coeffs.html#a8f79b9d9c3759ae14a984179af0637e1',1,'FilterCoeffs']]],
+  ['a2',['a2',['../struct_filter_coeffs.html#a0b04d8a4ff737d8efad28652bf1a8ad0',1,'FilterCoeffs']]],
   ['absolutepitchtocents',['absolutePitchToCents',['../namespace_d_l_synth.html#a75347ecc05803d0136ee15960505235d',1,'DLSynth']]],
   ['accept',['accept',['../class_d_l_synth_1_1_synth_1_1_voice_message.html#a775d9f8b644a761d3be59baccb73289b',1,'DLSynth::Synth::VoiceMessage::accept()'],['../class_d_l_synth_1_1_synth_1_1_note_on_message.html#ae8adf6f777f0757393cb095b7718e7bd',1,'DLSynth::Synth::NoteOnMessage::accept()'],['../class_d_l_synth_1_1_synth_1_1_note_off_message.html#a1807f13e6b76f87dd63a1cc2144a31e4',1,'DLSynth::Synth::NoteOffMessage::accept()'],['../class_d_l_synth_1_1_synth_1_1_sound_off_message.html#aa130ac2867647308c485bb823d48efa8',1,'DLSynth::Synth::SoundOffMessage::accept()'],['../class_d_l_synth_1_1_synth_1_1_control_change_message.html#a6cce396c4f32dacdd001fbdd0211fe5f',1,'DLSynth::Synth::ControlChangeMessage::accept()'],['../class_d_l_synth_1_1_synth_1_1_reset_controllers_message.html#aeec58efb65af61c3bfa5611ac7f659f8',1,'DLSynth::Synth::ResetControllersMessage::accept()']]],
   ['adaptationtable',['AdaptationTable',['../_ms_adpcm_decoder_8cpp.html#adad0467fc93be85d4596616ec4124449',1,'MsAdpcmDecoder.cpp']]],

@@ -22,7 +22,7 @@ var searchData=
   ['clamp_5fconvert',['clamp_convert',['../namespace_d_l_synth.html#a08d1e6124add9fea414d2df0f95de374',1,'DLSynth']]],
   ['coarsetuning',['coarseTuning',['../class_d_l_synth_1_1_synth_1_1_synthesizer.html#a5ca81d528a58717ad6fb9e9bf6f81406',1,'DLSynth::Synth::Synthesizer']]],
   ['code',['code',['../class_d_l_synth_1_1_error.html#a2304cac83da7275e59b4048c4746f77b',1,'DLSynth::Error']]],
-  ['coeffs',['coeffs',['../struct_adpcm_format.html#a50f3a2d49a28b6b952943a550fc75501',1,'AdpcmFormat']]],
+  ['coeffs',['coeffs',['../struct_adpcm_format.html#a50f3a2d49a28b6b952943a550fc75501',1,'AdpcmFormat::coeffs()'],['../class_filter_node.html#a52e0c98314deebd601dd2eea7f58cf0b',1,'FilterNode::coeffs()']]],
   ['commonfourccs_2ehpp',['CommonFourCCs.hpp',['../_common_four_c_cs_8hpp.html',1,'']]],
   ['concave',['Concave',['../namespace_d_l_synth.html#a25a6d41585e95b5e72cad1f65e4684ada1cb290ed5917afdbf2532bb2bf6f0192',1,'DLSynth']]],
   ['concavetransform',['ConcaveTransform',['../class_concave_transform.html',1,'ConcaveTransform'],['../class_concave_transform.html#a39524d0aa7ec32ec319de681b1ae8db3',1,'ConcaveTransform::ConcaveTransform()']]],

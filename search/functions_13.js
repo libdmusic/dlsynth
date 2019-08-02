@@ -4,6 +4,6 @@ var searchData=
   ['valuechanged',['valueChanged',['../class_d_l_synth_1_1_synth_1_1_observable_signal.html#aa3370360562834d43e62334c5a755763',1,'DLSynth::Synth::ObservableSignal']]],
   ['velocity',['velocity',['../class_d_l_synth_1_1_synth_1_1_note_on_message.html#a08190736bbcd0b1f1d63cf2301168fd0',1,'DLSynth::Synth::NoteOnMessage']]],
   ['velocityrange',['velocityRange',['../class_d_l_synth_1_1_region.html#ada11ec793b3059006cccb324c5e2bc0d',1,'DLSynth::Region']]],
-  ['voice',['Voice',['../class_d_l_synth_1_1_synth_1_1_voice.html#a2578ae0326dd411ef98401ebbf4278d1',1,'DLSynth::Synth::Voice::Voice(const Instrument &amp;instrument, std::uint32_t sampleRate)'],['../class_d_l_synth_1_1_synth_1_1_voice.html#ae043ddeba27ae2cd929794cbdd0bffa6',1,'DLSynth::Synth::Voice::Voice(Voice &amp;&amp;voice)']]],
+  ['voice',['Voice',['../class_d_l_synth_1_1_synth_1_1_voice.html#a0492163d16d485389d1727c6d69e5b6a',1,'DLSynth::Synth::Voice::Voice(std::uint32_t sampleRate)'],['../class_d_l_synth_1_1_synth_1_1_voice.html#ae043ddeba27ae2cd929794cbdd0bffa6',1,'DLSynth::Synth::Voice::Voice(Voice &amp;&amp;voice)']]],
   ['volume',['volume',['../class_d_l_synth_1_1_synth_1_1_synthesizer.html#a1fdabb79db20c39160a2e220298ccd50',1,'DLSynth::Synth::Synthesizer']]]
 ];

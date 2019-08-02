@@ -1,7 +1,9 @@
 var searchData=
 [
   ['fact_5fid',['fact_id',['../_common_four_c_cs_8hpp.html#a0b3c11fcdca5fe89d00492f591d87f44',1,'CommonFourCCs.hpp']]],
+  ['filtercoeffs',['FilterCoeffs',['../struct_filter_coeffs.html',1,'']]],
   ['filtercutoff',['FilterCutoff',['../namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981add8e70ca37d678d16e2e6de929615973',1,'DLSynth']]],
+  ['filternode',['FilterNode',['../class_filter_node.html',1,'FilterNode'],['../class_filter_node.html#a33d4a191b17b470d94e8c2f3196b56dc',1,'FilterNode::FilterNode()']]],
   ['filterq',['FilterQ',['../namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981acb2ad97e1ec5f14eaa3beca44db40126',1,'DLSynth']]],
   ['finetune',['fineTune',['../class_d_l_synth_1_1_wavesample.html#a7d22fe222d3e93dc629194632333a997',1,'DLSynth::Wavesample']]],
   ['finetuning',['fineTuning',['../class_d_l_synth_1_1_synth_1_1_synthesizer.html#a0958849abea26479df17be6074db4610',1,'DLSynth::Synth::Synthesizer']]],
