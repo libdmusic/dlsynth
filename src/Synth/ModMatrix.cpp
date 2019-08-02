@@ -61,7 +61,7 @@ void SignalSource::value(float v) {
   assert(pimpl != nullptr);
   pimpl->m_value = v;
 
-  constexpr float valueUpdateThreshold = 0.1f;
+  constexpr float valueUpdateThreshold = 0.01f;
   if (std::abs(pimpl->m_lastUpdatedValue - pimpl->m_value) >
       valueUpdateThreshold) {
     pimpl->m_lastUpdatedValue = v;
