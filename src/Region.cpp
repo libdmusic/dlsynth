@@ -1,6 +1,7 @@
 #include "Region.hpp"
 #include "CommonFourCCs.hpp"
 #include "Error.hpp"
+#include "StructUtils.hpp"
 
 using namespace DLSynth;
 
@@ -58,8 +59,7 @@ struct rgnh {
 };
 
 void Region::load_header(riffcpp::Chunk &chunk) {
-  rgnh header;
-  chunk.read_data(reinterpret_cast<char *>(&header), sizeof(header));
+  rgnh header = readStruct<rgnh>(chunk);
   m_keyGroup = header.usKeyGroup;
   m_keyRange = header.RangeKey;
   m_velRange = header.RangeVelocity;
@@ -73,8 +73,7 @@ struct wlnk {
   std::uint32_t ulTableIndex;
 };
 void Region::load_wavelink(riffcpp::Chunk &chunk) {
-  wlnk wavelink;
-  chunk.read_data(reinterpret_cast<char *>(&wavelink), sizeof(wavelink));
+  wlnk wavelink = readStruct<wlnk>(chunk);
   m_waveIndex = wavelink.ulTableIndex;
 }
 

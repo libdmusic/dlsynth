@@ -1,5 +1,6 @@
 #include "Wavesample.hpp"
 #include "NumericUtils.hpp"
+#include "StructUtils.hpp"
 #include <algorithm>
 
 using namespace DLSynth;
@@ -18,19 +19,22 @@ struct wsmp {
   std::int32_t lGain;
   std::uint32_t fulOptions;
   std::uint32_t cSampleLoops;
-  wsmp_loop loops[0];
 };
 
 Wavesample::Wavesample(riffcpp::Chunk &chunk) {
   std::vector<char> data(chunk.size());
   chunk.read_data(data.data(), data.size());
 
-  wsmp *wavesample = reinterpret_cast<wsmp *>(data.data());
+  char *data_begin = data.data();
+  char *data_end = data_begin + data.size();
+
+  const wsmp *wavesample = readStruct<wsmp>(data_begin, data_end);
   m_gain = wavesample->lGain;
   m_fineTune = wavesample->sFineTune;
   m_unityNote = wavesample->usUnityNote;
   if (wavesample->cSampleLoops) {
-    wsmp_loop *loopData = wavesample->loops;
+    const wsmp_loop *loopData =
+     readStruct<wsmp_loop>(data_begin + wavesample->cbSize, data_end);
     m_loop = std::make_unique<WavesampleLoop>(
      loopData->ulLoopType, loopData->ulLoopStart, loopData->ulLoopLength);
   }

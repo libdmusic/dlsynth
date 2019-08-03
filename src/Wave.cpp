@@ -2,6 +2,7 @@
 #include "CommonFourCCs.hpp"
 #include "DecoderTable.hpp"
 #include "Error.hpp"
+#include "StructUtils.hpp"
 #include "Uuid.hpp"
 #include "WaveDecoder.hpp"
 #include "Wavesample.hpp"
@@ -41,7 +42,7 @@ struct Wave::impl {
         if (fact_found)
           throw Error("Duplicate fact chunk", ErrorCode::INVALID_FILE);
 
-        child.read_data(reinterpret_cast<char *>(&fact), sizeof(fact));
+        fact = readStruct<std::uint32_t>(child);
         fact_found = true;
       } else if (child.id() == data_id) {
         if (data_found)
@@ -54,9 +55,7 @@ struct Wave::impl {
         if (m_guid != nullptr)
           throw Error("Duplicate GUID", ErrorCode::INVALID_FILE);
 
-        m_guid = std::make_unique<Uuid>();
-        child.read_data(reinterpret_cast<char *>(m_guid.get()),
-                        sizeof(*m_guid));
+        m_guid = std::make_unique<Uuid>(readStruct<Uuid>(child));
       } else if (child.id() == wsmp_id) {
         if (m_wavesample != nullptr)
           throw Error("Duplicate Wavesample", ErrorCode::INVALID_FILE);

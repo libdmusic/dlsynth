@@ -1,6 +1,7 @@
 #include "Instrument.hpp"
 #include "CommonFourCCs.hpp"
 #include "Error.hpp"
+#include "StructUtils.hpp"
 #include "Uuid.hpp"
 #include <cassert>
 #include <memory>
@@ -57,8 +58,7 @@ struct Instrument::impl {
           throw Error("Duplicate instrument header", ErrorCode::INVALID_FILE);
         }
 
-        insh header;
-        child.read_data(reinterpret_cast<char *>(&header), sizeof(header));
+        insh header = readStruct<insh>(child);
 
         m_midiBank = header.ulBank;
         m_midiInstrument = header.ulInstrument;

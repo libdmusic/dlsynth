@@ -1,4 +1,5 @@
 #include "ExpressionParser.hpp"
+#include "StructUtils.hpp"
 #include "Uuid.hpp"
 #include <array>
 #include <functional>
@@ -101,7 +102,7 @@ bool ExpressionParser::execute(const std::vector<std::uint8_t> &data) const {
   const uint8_t *buf = data.data();
   std::size_t pos = 0;
   while (pos < data.size()) {
-    OpCode op = *((const OpCode *)(buf + pos));
+    OpCode op = *readStruct<OpCode>(buf + pos, buf + data.size());
     pos += sizeof(op);
     switch (op) {
     case OpCode::Add:
@@ -111,7 +112,7 @@ bool ExpressionParser::execute(const std::vector<std::uint8_t> &data) const {
       operation(stack, [](auto x, auto y) { return x & y; });
       break;
     case OpCode::Const: {
-      uint32_t c = *((const uint32_t *)(buf + pos));
+      uint32_t c = *readStruct<std::uint32_t>(buf + pos, buf + data.size());
       pos += sizeof(c);
       stack.push(c);
     } break;
@@ -155,12 +156,13 @@ bool ExpressionParser::execute(const std::vector<std::uint8_t> &data) const {
       operation(stack, [](auto x, auto y) { return x ^ y; });
       break;
     case OpCode::Query: {
-      Uuid query = *((const Uuid *)(buf + pos));
+      Uuid query = *readStruct<Uuid>(buf + pos, buf + data.size());
+      ;
       pos += sizeof(query);
       stack.push(m_queryMap->query(query));
     } break;
     case OpCode::Supported: {
-      Uuid query = *((const Uuid *)(buf + pos));
+      Uuid query = *readStruct<Uuid>(buf + pos, buf + data.size());
       pos += sizeof(query);
       stack.push(m_queryMap->supports(query));
     } break;

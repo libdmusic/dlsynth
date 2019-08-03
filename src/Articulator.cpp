@@ -1,6 +1,7 @@
 #include "Articulator.hpp"
 #include "CommonFourCCs.hpp"
 #include "Error.hpp"
+#include "StructUtils.hpp"
 #include <set>
 
 using namespace DLSynth;
@@ -34,15 +35,21 @@ struct cblock {
 struct art {
   std::uint32_t cbSize;
   std::uint32_t cConnectionBlocks;
-  cblock connectionBlocks[0];
 };
 
 void Articulator::load_art2(riffcpp::Chunk &chunk) {
   std::vector<char> data(chunk.size());
   chunk.read_data(data.data(), data.size());
-  art *articulator = reinterpret_cast<art *>(data.data());
-  for (std::uint32_t i = 0; i < articulator->cConnectionBlocks; i++) {
-    cblock connectionBlock = articulator->connectionBlocks[i];
+
+  char *data_begin = data.data();
+  char *data_end = data_begin + data.size();
+
+  const art *articulator = readStruct<art>(data_begin, data_end);
+  std::vector<cblock> cblocks;
+  readStructArray(data_begin + articulator->cbSize, data_end,
+                  articulator->cConnectionBlocks, cblocks);
+
+  for (const auto &connectionBlock : cblocks) {
     TransformType ctrlTransType =
      static_cast<TransformType>((connectionBlock.usTransform & 0x00F0) >> 4);
     bool ctrlBipolar = connectionBlock.usTransform & (1 << 8);
@@ -69,10 +76,16 @@ void Articulator::load_art1(riffcpp::Chunk &chunk) {
 
   std::vector<char> data(chunk.size());
   chunk.read_data(data.data(), data.size());
-  art *articulator = reinterpret_cast<art *>(data.data());
 
-  for (std::uint32_t i = 0; i < articulator->cConnectionBlocks; i++) {
-    cblock connectionBlock = articulator->connectionBlocks[i];
+  char *data_begin = data.data();
+  char *data_end = data_begin + data.size();
+
+  const art *articulator = readStruct<art>(data_begin, data_end);
+  std::vector<cblock> cblocks;
+  readStructArray(data_begin + articulator->cbSize, data_end,
+                  articulator->cConnectionBlocks, cblocks);
+
+  for (const auto &connectionBlock : cblocks) {
     TransformType transType = (TransformType)connectionBlock.usTransform;
 
     Source src = connectionBlock.usSource;
