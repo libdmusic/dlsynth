@@ -391,7 +391,7 @@ int dlsynth_render_float_mix(dlsynth *synth, float *buffer, size_t frames,
 }
 
 #define DLSYNTH_CHECK_SYNTH_NOT_NULL                                           \
-  if (synth == nullptr) {                                                      \
+  if (synth == nullptr || synth->synth == nullptr) {                           \
     dlsynth_error = DLSYNTH_INVALID_ARGS;                                      \
     return 0;                                                                  \
   }
