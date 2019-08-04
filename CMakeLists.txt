@@ -47,9 +47,6 @@ find_package(riffcpp CONFIG REQUIRED)
 
 target_link_libraries(dlsynth PRIVATE riffcpp::riffcpp)
 
-add_executable(test test.cpp)
-target_link_libraries(test PRIVATE dlsynth)
-
 include(GNUInstallDirs)
 
 # install library files needed for linking
