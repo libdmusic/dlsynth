@@ -8,34 +8,82 @@ jobs:
 - job: Linux
   pool:
     vmImage: 'ubuntu-latest'
+  variables:
+    VCPKG_ROOT: $(Build.SourcesDirectory)/vcpkg
+    VCPKG_PACKAGES: riffcpp
+    VCPKG_TRIPLET: x64-linux
+    BUILD_SHARED: OFF
+  strategy:
+    matrix:
+      debug:
+        variables:
+          BUILD_CONFIG: Debug
+      release:
+        variables:
+          BUILD_CONFIG: Debug
   steps:
-  - script: vcpkg install riffcpp
+  - script: git clone --depth=1 https://github.com/Microsoft/vcpkg $(VCPKG_ROOT)
+  - script: $(VCPKG_ROOT)/bootstrap-vcpkg.sh
+  - script: $(VCPKG_ROOT)/vcpkg install --triplet $(VCPKG_TRIPLET) $(VCPKG_PACKAGES)
   - script: |
       mkdir build
       cd build
-      cmake -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake ..
+      cmake -DCMAKE_TOOLCHAIN_FILE=$(VCPKG_ROOT)/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=$(BUILD_CONFIG) -DBUILD_SHARED_LIBS=$(BUILD_SHARED) -DVCPKG_TARGET_TRIPLET=$(VCPKG_TRIPLET) ..
       cmake --build .
-- job: Windows_x64_static
+- job: Windows
   pool:
     vmImage: 'vs2017-win2016'
   variables:
-    VCPKG_DEFAULT_TRIPLET: x64-windows-static
+    VCPKG_ROOT: $(Build.SourcesDirectory)\vcpkg
+    VCPKG_PACKAGES: riffcpp
+  strategy:
+    matrix:
+      x64-static-debug:
+        CMAKE_GENERATOR: Visual Studio 15 2017 Win64
+        VCPKG_TRIPLET: x64-windows-static
+        BUILD_SHARED: OFF
+        BUILD_CONFIG: Debug
+      x64-static-release:
+        CMAKE_GENERATOR: Visual Studio 15 2017 Win64
+        VCPKG_TRIPLET: x64-windows-static
+        BUILD_SHARED: OFF
+        BUILD_CONFIG: Release
+      x64-shared-debug:
+        CMAKE_GENERATOR: Visual Studio 15 2017 Win64
+        VCPKG_TRIPLET: x64-windows
+        BUILD_SHARED: ON
+        BUILD_CONFIG: Debug
+      x64-shared-release:
+        CMAKE_GENERATOR: Visual Studio 15 2017 Win64
+        VCPKG_TRIPLET: x64-windows
+        BUILD_SHARED: ON
+        BUILD_CONFIG: Release
+      x86-static-debug:
+        CMAKE_GENERATOR: Visual Studio 15 2017
+        VCPKG_TRIPLET: x86-windows-static
+        BUILD_SHARED: OFF
+        BUILD_CONFIG: Debug
+      x86-static-release:
+        CMAKE_GENERATOR: Visual Studio 15 2017
+        VCPKG_TRIPLET: x86-windows-static
+        BUILD_SHARED: OFF
+        BUILD_CONFIG: Release
+      x86-shared-debug:
+        CMAKE_GENERATOR: Visual Studio 15 2017
+        VCPKG_TRIPLET: x86-windows
+        BUILD_SHARED: ON
+        BUILD_CONFIG: Debug
+      x86-shared-release:
+        CMAKE_GENERATOR: Visual Studio 15 2017
+        VCPKG_TRIPLET: x86-windows
+        BUILD_SHARED: ON
+        BUILD_CONFIG: Release
   steps:
-  - script: vcpkg install riffcpp
+  - script: git clone --depth=1 https://github.com/Microsoft/vcpkg $(VCPKG_ROOT)
+  - script: $(VCPKG_ROOT)\bootstrap-vcpkg.bat
+  - script: $(VCPKG_ROOT)\vcpkg.exe install --triplet $(VCPKG_TRIPLET) $(VCPKG_PACKAGES)
   - script: |
       mkdir build
       cd build
-      cmake -G "Visual Studio 15 2017 Win64" -DBUILD_SHARED_LIBS=OFF -DVCPKG_TARGET_TRIPLET=x64-windows-static -DCMAKE_TOOLCHAIN_FILE=$env:VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake ..
-      cmake --build .
-- job: Windows_x64
-  pool:
-    vmImage: 'vs2017-win2016'
-  variables:
-    VCPKG_DEFAULT_TRIPLET: x64-windows
-  steps:
-  - script: vcpkg install riffcpp
-  - script: |
-      mkdir build
-      cd build
-      cmake -G "Visual Studio 15 2017 Win64" -DBUILD_SHARED_LIBS=OFF -DVCPKG_TARGET_TRIPLET=x64-windows-static -DCMAKE_TOOLCHAIN_FILE=$env:VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake ..
-      cmake --build .
+      cmake -G $(CMAKE_GENERATOR) -DBUILD_SHARED_LIBS=$(BUILD_SHARED) -DVCPKG_TARGET_TRIPLET=$(VCPKG_TRIPLET) -DCMAKE_TOOLCHAIN_FILE=$(VCPKG_ROOT)\scripts\buildsystems\vcpkg.cmake ..
+      cmake --build . --config $(BUILD_CONFIG)
