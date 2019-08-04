@@ -4,7 +4,8 @@
 
 using namespace DLSynth::Synth;
 
-LFO::LFO(float sampleRate) : m_sampleRate(sampleRate) {}
+LFO::LFO(float sampleRate)
+  : m_sampleRate(sampleRate), m_sampleInterval(1.f / sampleRate) {}
 
 void LFO::reset() {
   m_phase = 0;
@@ -23,7 +24,7 @@ float LFO::nextSample(float freq, float startDelay) {
     out = (sample + 1.f) / 2.f;
   }
 
-  m_currentTime += 1.f / m_sampleRate;
+  m_currentTime += m_sampleInterval;
 
   return out;
 }

@@ -8,6 +8,7 @@ namespace Synth {
     float m_currentTime = 0;
     float m_lastValue = 0;
     float m_sampleRate;
+    float m_sampleInterval;
     bool m_gate = false;
 
   public:

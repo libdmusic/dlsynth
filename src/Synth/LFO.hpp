@@ -8,6 +8,7 @@ namespace Synth {
     float m_phase = 0;
     float m_currentTime = 0;
     float m_sampleRate;
+    float m_sampleInterval;
 
   public:
     LFO(float sampleRate);

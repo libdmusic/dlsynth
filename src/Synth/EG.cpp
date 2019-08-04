@@ -3,7 +3,8 @@
 
 using namespace DLSynth::Synth;
 
-EG::EG(float sampleRate) : m_sampleRate(sampleRate) {}
+EG::EG(float sampleRate)
+  : m_sampleRate(sampleRate), m_sampleInterval(1.f / sampleRate) {}
 
 void EG::noteOn() {
   m_gate = true;
@@ -19,7 +20,7 @@ void EG::noteOff() {
 float EG::nextSample(float delayTime, float attackTime, float holdTime,
                      float decayTime, float sustainLevel, float releaseTime) {
   float time = m_currentTime;
-  m_currentTime += 1 / m_sampleRate;
+  m_currentTime += m_sampleInterval;
   if (m_gate) {
     if (time < delayTime) {
       m_lastValue = 0;
