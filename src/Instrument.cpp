@@ -20,6 +20,7 @@ struct Instrument::impl {
   std::uint32_t m_midiInstrument;
   std::vector<ConnectionBlock> m_blocks;
   std::vector<Region> m_regions;
+  bool m_isDrum;
   void load_regions(riffcpp::Chunk &chunk, const ExpressionParser &exprParser) {
     for (auto child : chunk) {
       if (child.id() == riffcpp::list_id) {
@@ -60,8 +61,9 @@ struct Instrument::impl {
 
         insh header = readStruct<insh>(child);
 
-        m_midiBank = header.ulBank;
+        m_midiBank = header.ulBank & ~(1 << 31);
         m_midiInstrument = header.ulInstrument;
+        m_isDrum = (header.ulBank & (1 << 31)) != 0;
 
         insh_found = true;
       } else if (child.id() == riffcpp::list_id) {

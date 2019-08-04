@@ -29,6 +29,9 @@ public:
   /// Returns the MIDI Program Change of this instrument
   std::uint32_t midiInstrument() const;
 
+  /// Returns whether this is a drum or melodic instrument
+  bool isDrumInstrument() const;
+
   /// Returns the connection blocks defined for this instrument
   const std::vector<ConnectionBlock> &connectionBlocks() const;
 
