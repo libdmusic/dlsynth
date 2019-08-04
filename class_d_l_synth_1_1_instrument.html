@@ -104,12 +104,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af3120787f20832758d905be1c043294d"><td class="memItemLeft" align="right" valign="top">std::uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_instrument.html#af3120787f20832758d905be1c043294d">midiInstrument</a> () const</td></tr>
 <tr class="memdesc:af3120787f20832758d905be1c043294d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the MIDI Program Change of this instrument.  <a href="#af3120787f20832758d905be1c043294d">More...</a><br /></td></tr>
 <tr class="separator:af3120787f20832758d905be1c043294d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18a17c1c3fb241cd13f9b847668b9ef6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_instrument.html#a18a17c1c3fb241cd13f9b847668b9ef6">isDrumInstrument</a> () const</td></tr>
+<tr class="memdesc:a18a17c1c3fb241cd13f9b847668b9ef6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether this is a drum or melodic instrument.  <a href="#a18a17c1c3fb241cd13f9b847668b9ef6">More...</a><br /></td></tr>
+<tr class="separator:a18a17c1c3fb241cd13f9b847668b9ef6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a88f96b49091701e4434fe0c5c3e2e397"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="class_d_l_synth_1_1_connection_block.html">ConnectionBlock</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_instrument.html#a88f96b49091701e4434fe0c5c3e2e397">connectionBlocks</a> () const</td></tr>
 <tr class="memdesc:a88f96b49091701e4434fe0c5c3e2e397"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the connection blocks defined for this instrument.  <a href="#a88f96b49091701e4434fe0c5c3e2e397">More...</a><br /></td></tr>
 <tr class="separator:a88f96b49091701e4434fe0c5c3e2e397"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6275d1dce0deb9f6d703b77b3e035ae7"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="class_d_l_synth_1_1_region.html">Region</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_instrument.html#a6275d1dce0deb9f6d703b77b3e035ae7">regions</a> () const</td></tr>
 <tr class="memdesc:a6275d1dce0deb9f6d703b77b3e035ae7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the regions defined for this instrument.  <a href="#a6275d1dce0deb9f6d703b77b3e035ae7">More...</a><br /></td></tr>
 <tr class="separator:a6275d1dce0deb9f6d703b77b3e035ae7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b87a678162a558e0091ac99817abe23"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_d_l_synth_1_1_info.html">Info</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_instrument.html#a3b87a678162a558e0091ac99817abe23">info</a> () const</td></tr>
+<tr class="memdesc:a3b87a678162a558e0091ac99817abe23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the contents of the INFO chunk, if it exists.  <a href="#a3b87a678162a558e0091ac99817abe23">More...</a><br /></td></tr>
+<tr class="separator:a3b87a678162a558e0091ac99817abe23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A DLS instrument, part of a DLS Collection. </p>
@@ -213,6 +219,44 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns the <a class="el" href="struct_d_l_synth_1_1_uuid.html">Uuid</a> of this instrument, if it exists. </p>
+
+</div>
+</div>
+<a id="a3b87a678162a558e0091ac99817abe23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b87a678162a558e0091ac99817abe23">&#9670;&nbsp;</a></span>info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_d_l_synth_1_1_info.html">Info</a> * Instrument::info </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the contents of the INFO chunk, if it exists. </p>
+
+</div>
+</div>
+<a id="a18a17c1c3fb241cd13f9b847668b9ef6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18a17c1c3fb241cd13f9b847668b9ef6">&#9670;&nbsp;</a></span>isDrumInstrument()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Instrument::isDrumInstrument </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns whether this is a drum or melodic instrument. </p>
 
 </div>
 </div>

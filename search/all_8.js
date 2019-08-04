@@ -1,11 +1,20 @@
 var searchData=
 [
+  ['icmt_5fid',['ICMT_id',['../_common_four_c_cs_8hpp.html#ae676d93f06b5ecbf5bd043587908430f',1,'CommonFourCCs.hpp']]],
   ['icoef1',['iCoef1',['../struct_adpcm_coeffs.html#a0b473c3f5e40a20b82098633dfa8f376',1,'AdpcmCoeffs']]],
   ['icoef2',['iCoef2',['../struct_adpcm_coeffs.html#a92103982a81670992ea55c26bd1e641b',1,'AdpcmCoeffs']]],
+  ['icop_5fid',['ICOP_id',['../_common_four_c_cs_8hpp.html#a21ca770e6479e8f743e204544a4f7535',1,'CommonFourCCs.hpp']]],
   ['idelta',['iDelta',['../struct_adpcm_header.html#ad5807c962eb44fbce5125d8f0ad586f1',1,'AdpcmHeader']]],
+  ['ieng_5fid',['IENG_id',['../_common_four_c_cs_8hpp.html#a55f857257b12f4a6348bbc6163eb5149',1,'CommonFourCCs.hpp']]],
   ['imaadpcm',['ImaAdpcm',['../struct_d_l_synth_1_1_wave_format.html#a691548877ffd1d1cd592792bc3d66b84',1,'DLSynth::WaveFormat']]],
-  ['impl',['impl',['../struct_wave_1_1impl.html',1,'DLSynth::Wave::impl'],['../struct_observable_signal_1_1impl.html',1,'DLSynth::Synth::ObservableSignal::impl'],['../struct_signal_source_1_1impl.html',1,'DLSynth::Synth::SignalSource::impl'],['../struct_signal_destination_1_1impl.html',1,'DLSynth::Synth::SignalDestination::impl'],['../struct_synthesizer_1_1impl.html',1,'DLSynth::Synth::Synthesizer::impl'],['../struct_instrument_1_1impl.html',1,'DLSynth::Instrument::impl'],['../struct_voice_1_1impl.html',1,'DLSynth::Synth::Voice::impl'],['../struct_sound_1_1impl.html',1,'DLSynth::Sound::impl'],['../struct_instrument_1_1impl.html#a9b83f7c7647086a196bf68714cf1bb6e',1,'DLSynth::Instrument::impl::impl()'],['../struct_sound_1_1impl.html#a8c9eec991885631a2278fe4d3711364e',1,'DLSynth::Sound::impl::impl()'],['../struct_synthesizer_1_1impl.html#ac96407a4e02a6e2dfd6ddc44a23fd3fb',1,'DLSynth::Synth::Synthesizer::impl::impl()'],['../struct_voice_1_1impl.html#af87b703a0c887b64c82fce774ebec183',1,'DLSynth::Synth::Voice::impl::impl()'],['../struct_wave_1_1impl.html#aa3aca2240826fc217c96e7affffd85dc',1,'DLSynth::Wave::impl::impl()']]],
+  ['impl',['impl',['../struct_sound_1_1impl.html',1,'DLSynth::Sound::impl'],['../struct_wave_1_1impl.html',1,'DLSynth::Wave::impl'],['../struct_observable_signal_1_1impl.html',1,'DLSynth::Synth::ObservableSignal::impl'],['../struct_signal_source_1_1impl.html',1,'DLSynth::Synth::SignalSource::impl'],['../struct_signal_destination_1_1impl.html',1,'DLSynth::Synth::SignalDestination::impl'],['../struct_synthesizer_1_1impl.html',1,'DLSynth::Synth::Synthesizer::impl'],['../struct_instrument_1_1impl.html',1,'DLSynth::Instrument::impl'],['../struct_voice_1_1impl.html',1,'DLSynth::Synth::Voice::impl'],['../struct_instrument_1_1impl.html#a9b83f7c7647086a196bf68714cf1bb6e',1,'DLSynth::Instrument::impl::impl()'],['../struct_sound_1_1impl.html#a8c9eec991885631a2278fe4d3711364e',1,'DLSynth::Sound::impl::impl()'],['../struct_synthesizer_1_1impl.html#ac96407a4e02a6e2dfd6ddc44a23fd3fb',1,'DLSynth::Synth::Synthesizer::impl::impl()'],['../struct_voice_1_1impl.html#af87b703a0c887b64c82fce774ebec183',1,'DLSynth::Synth::Voice::impl::impl()'],['../struct_wave_1_1impl.html#aa3aca2240826fc217c96e7affffd85dc',1,'DLSynth::Wave::impl::impl()']]],
+  ['inam_5fid',['INAM_id',['../_common_four_c_cs_8hpp.html#a8ea24bd2a168765ac28abf049667a23a',1,'CommonFourCCs.hpp']]],
   ['index',['index',['../structdlsynth__instr.html#a3a286611c6653c33b7b606317d4af6a4',1,'dlsynth_instr::index()'],['../index.html',1,'(Global Namespace)']]],
+  ['info',['Info',['../class_d_l_synth_1_1_info.html',1,'DLSynth::Info'],['../class_d_l_synth_1_1_info.html#aeaf353fda43c30154c077a7fca5fd519',1,'DLSynth::Info::Info()'],['../class_d_l_synth_1_1_instrument.html#a3b87a678162a558e0091ac99817abe23',1,'DLSynth::Instrument::info()'],['../class_d_l_synth_1_1_sound.html#a3e1d3c647e0d525c1ee91d70568df44c',1,'DLSynth::Sound::info()']]],
+  ['info_2ecpp',['Info.cpp',['../_info_8cpp.html',1,'']]],
+  ['info_2ehpp',['Info.hpp',['../_info_8hpp.html',1,'']]],
+  ['info_5fid',['INFO_id',['../_common_four_c_cs_8hpp.html#a4de010cad55d50795ec35d7d9cfe02dc',1,'CommonFourCCs.hpp']]],
+  ['information',['information',['../class_d_l_synth_1_1_info.html#ae84ee4530a2fc7cb01440b5490752a2c',1,'DLSynth::Info']]],
   ['inrange',['inRange',['../struct_d_l_synth_1_1_range.html#a2369aa849110eef1253d50d1b2db22ab',1,'DLSynth::Range']]],
   ['ins_5fid',['ins_id',['../_common_four_c_cs_8hpp.html#af1f7614479e7ac808886a4c15cbc2f4e',1,'CommonFourCCs.hpp']]],
   ['insh',['insh',['../structinsh.html',1,'']]],
@@ -17,5 +26,7 @@ var searchData=
   ['int24_5ft',['int24_t',['../struct_d_l_synth_1_1int24__t.html',1,'DLSynth']]],
   ['interleaved',['interleaved',['../structdlsynth__settings.html#a84c0694f0e83c994bf0169ba5a99cb22',1,'dlsynth_settings::interleaved()'],['../structdlsynth.html#a42eefbbe426c687ff058d7ef7f532546',1,'dlsynth::interleaved()']]],
   ['inverse_5fnormalize',['inverse_normalize',['../namespace_d_l_synth.html#af1ce1dc73ec4c3b2e6a5fda29f3ec862',1,'DLSynth']]],
-  ['invert',['invert',['../class_d_l_synth_1_1_transform_params.html#ace4247303c5e61da291f6ffdc1d1d2c7',1,'DLSynth::TransformParams::invert()'],['../class_d_l_synth_1_1_synth_1_1_transform.html#a0e7e41e88ebc64cca430da61240f7b8c',1,'DLSynth::Synth::Transform::invert()']]]
+  ['invert',['invert',['../class_d_l_synth_1_1_transform_params.html#ace4247303c5e61da291f6ffdc1d1d2c7',1,'DLSynth::TransformParams::invert()'],['../class_d_l_synth_1_1_synth_1_1_transform.html#a0e7e41e88ebc64cca430da61240f7b8c',1,'DLSynth::Synth::Transform::invert()']]],
+  ['isbj_5fid',['ISBJ_id',['../_common_four_c_cs_8hpp.html#a998916c7ff2f82720ae7a7da5b74ce95',1,'CommonFourCCs.hpp']]],
+  ['isdruminstrument',['isDrumInstrument',['../class_d_l_synth_1_1_instrument.html#a18a17c1c3fb241cd13f9b847668b9ef6',1,'DLSynth::Instrument']]]
 ];

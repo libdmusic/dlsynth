@@ -1,5 +1,8 @@
 var searchData=
 [
+  ['read',['read',['../class_d_l_synth_1_1_info.html#a8559c50043afd5a4b71fcdbe80ef9474',1,'DLSynth::Info']]],
+  ['readstruct',['readStruct',['../namespace_d_l_synth.html#a6b17cf7f08e48d7955cd2a4200e2bb6f',1,'DLSynth::readStruct(const char *begin, const char *end)'],['../namespace_d_l_synth.html#a51ad44e7100694297fe2da335aa1edaa',1,'DLSynth::readStruct(const unsigned char *begin, const unsigned char *end)'],['../namespace_d_l_synth.html#ac13125f96cee87e04468245155640bae',1,'DLSynth::readStruct(riffcpp::Chunk &amp;chunk)']]],
+  ['readstructarray',['readStructArray',['../namespace_d_l_synth.html#a0c784a6e26e476984c91cae6ccd484a9',1,'DLSynth']]],
   ['region',['Region',['../class_d_l_synth_1_1_region.html#afcc0b378cae8127c0a25df8eb356b405',1,'DLSynth::Region']]],
   ['regions',['regions',['../class_d_l_synth_1_1_instrument.html#a6275d1dce0deb9f6d703b77b3e035ae7',1,'DLSynth::Instrument']]],
   ['relativegainunitstobels',['relativeGainUnitsToBels',['../namespace_d_l_synth.html#ac36eba82ad888dad35beef10d6afd036',1,'DLSynth']]],

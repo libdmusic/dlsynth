@@ -206,7 +206,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">if</span> (synth == <span class="keyword">nullptr</span>) {                                                      \</div><div class="line">    dlsynth_error = DLSYNTH_INVALID_ARGS;                                      \</div><div class="line">    return 0;                                                                  \</div><div class="line">  }</div></div><!-- fragment -->
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">if</span> (synth == <span class="keyword">nullptr</span> || synth-&gt;synth == <span class="keyword">nullptr</span>) {                           \</div><div class="line">    dlsynth_error = DLSYNTH_INVALID_ARGS;                                      \</div><div class="line">    return 0;                                                                  \</div><div class="line">  }</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>

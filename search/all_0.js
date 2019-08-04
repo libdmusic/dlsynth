@@ -26,5 +26,6 @@ var searchData=
   ['asfreq',['asFreq',['../class_d_l_synth_1_1_synth_1_1_signal_destination.html#a9f25ae1459e0f8f21e7549fcf8a76752',1,'DLSynth::Synth::SignalDestination']]],
   ['asgain',['asGain',['../class_d_l_synth_1_1_synth_1_1_signal_destination.html#a7bda59a469f1d8297347457648be6d9c',1,'DLSynth::Synth::SignalDestination']]],
   ['assecs',['asSecs',['../class_d_l_synth_1_1_synth_1_1_signal_destination.html#ad6ae882e6fbddcb3dcff02bbdb3e8b7a',1,'DLSynth::Synth::SignalDestination']]],
+  ['author',['author',['../class_d_l_synth_1_1_info.html#a1c95487c2c34f3c36d45b4129e955f91',1,'DLSynth::Info']]],
   ['avgbytespersec',['AvgBytesPerSec',['../struct_d_l_synth_1_1_wave_format.html#ac65369cc7991f3cbf2a73a61ff6505a9',1,'DLSynth::WaveFormat::AvgBytesPerSec()'],['../struct_d_l_synth_1_1_wave_format_ex.html#a69f57db42acfaefa77138e41adaadcb6',1,'DLSynth::WaveFormatEx::AvgBytesPerSec()']]]
 ];

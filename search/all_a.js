@@ -28,7 +28,6 @@ var searchData=
   ['logarithmicdecoder',['LogarithmicDecoder',['../class_logarithmic_decoder.html',1,'LogarithmicDecoder'],['../class_logarithmic_decoder.html#adeac46ba41bd8f2577458151d8bad821',1,'LogarithmicDecoder::LogarithmicDecoder(const WaveFormat &amp;format, const std::vector&lt; char &gt; &amp;data, const std::array&lt; std::int16_t, 256 &gt; &amp;table)'],['../class_logarithmic_decoder.html#ab8b49370aa750a944ac596e84a9b92ef',1,'LogarithmicDecoder::LogarithmicDecoder(const WaveFormat &amp;format, std::uint32_t fact, const std::vector&lt; char &gt; &amp;data, const std::array&lt; std::int16_t, 256 &gt; &amp;table)']]],
   ['logarithmicdecoder_2ecpp',['LogarithmicDecoder.cpp',['../_logarithmic_decoder_8cpp.html',1,'']]],
   ['loop',['loop',['../class_d_l_synth_1_1_wavesample.html#a689112a700b5656231f4791d8d56a5ec',1,'DLSynth::Wavesample']]],
-  ['loops',['loops',['../structwsmp.html#a93c2afff7fcf8b9d51868d030a51f50e',1,'wsmp']]],
   ['looptype',['LoopType',['../namespace_d_l_synth.html#ac19ebe34ed1eb9f1a213d24de6e340ff',1,'DLSynth']]],
   ['lor',['LOr',['../_expression_parser_8cpp.html#a751f5463d98870f136ae2a46f6e76017ae02dc30ef38a2f4cdaf9357ae6afcaa6',1,'ExpressionParser.cpp']]],
   ['low',['low',['../struct_d_l_synth_1_1_range.html#ac057a15b467d740e44b17b77ceac9f78',1,'DLSynth::Range']]],

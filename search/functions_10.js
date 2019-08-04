@@ -21,6 +21,7 @@ var searchData=
   ['start',['start',['../class_d_l_synth_1_1_wavesample_loop.html#a93ebd8c620ba937313fc70cf86a988d7',1,'DLSynth::WavesampleLoop']]],
   ['starttime',['startTime',['../class_d_l_synth_1_1_synth_1_1_voice.html#a13a98b411361cd56a225843509b87414',1,'DLSynth::Synth::Voice']]],
   ['stereogainnode',['StereoGainNode',['../class_stereo_gain_node.html#aa0bab156a3e82e55811583c521805701',1,'StereoGainNode']]],
+  ['subject',['subject',['../class_d_l_synth_1_1_info.html#a4ee8ef1ade87d1467462c71f133e9814',1,'DLSynth::Info']]],
   ['subscribe',['subscribe',['../class_d_l_synth_1_1_synth_1_1_observable_signal.html#a1a594a951a8ebc00b0b81e5c40e6a052',1,'DLSynth::Synth::ObservableSignal']]],
   ['supports',['supports',['../class_query_map.html#ac5ee5da3b3b06b76a2cd1a4a7928012f',1,'QueryMap']]],
   ['sustain',['sustain',['../class_d_l_synth_1_1_synth_1_1_synthesizer.html#ad52c6dd6b446f43ae1b0ba4985f4976b',1,'DLSynth::Synth::Synthesizer']]],

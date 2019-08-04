@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['name',['name',['../class_d_l_synth_1_1_info.html#a213eec0f71bb8edfcbad7086bfcd0630',1,'DLSynth::Info']]],
   ['nextsample',['nextSample',['../class_d_l_synth_1_1_synth_1_1_e_g.html#aaaf94405aba9846b688ccf9565d1f20c',1,'DLSynth::Synth::EG::nextSample()'],['../class_d_l_synth_1_1_synth_1_1_l_f_o.html#a45ed69ca1bf62e659b0b4541df6a57c3',1,'DLSynth::Synth::LFO::nextSample()']]],
   ['none',['None',['../namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196a6adf97f83acf6453d4a6a4b1070f3754',1,'DLSynth::None()'],['../namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981a6adf97f83acf6453d4a6a4b1070f3754',1,'DLSynth::None()'],['../namespace_d_l_synth.html#a25a6d41585e95b5e72cad1f65e4684ada6adf97f83acf6453d4a6a4b1070f3754',1,'DLSynth::None()']]],
   ['normalize',['normalize',['../namespace_d_l_synth.html#a9fa755510741453c9dc9acc90a98fc1f',1,'DLSynth::normalize(T value)'],['../namespace_d_l_synth.html#a6900327bb60c19bccb00ca9f274fa7f8',1,'DLSynth::normalize(std::uint8_t value)']]],

@@ -82,7 +82,8 @@ $(function() {
 <h3>Without vcpkg</h3>
 <p>You will need to obtain a binary copy of <a href="https://github.com/libdmusic/riffcpp">riffcpp</a> and install it somewhere CMake can find it.</p>
 <p>After cloning the repo, run the following commands:</p>
-<div class="fragment"><div class="line">mkdir build</div><div class="line">cd build</div><div class="line">cmake .. # -DCMAKE_PREFIX_PATH=/path/to/riffcpp if riffcpp was not installed in the $PATH</div><div class="line">cmake --build .</div></div><!-- fragment --><p>If you also want to install it: </p><div class="fragment"><div class="line">cmake --build . --target install</div></div><!-- fragment --><p>You can change the path where the library is installed by changing the <code>CMAKE_INSTALL_PREFIX</code> value during configuration. </p>
+<div class="fragment"><div class="line">mkdir build</div><div class="line">cd build</div><div class="line">cmake .. # -DCMAKE_PREFIX_PATH=/path/to/riffcpp if riffcpp was not installed in the $PATH</div><div class="line">cmake --build .</div></div><!-- fragment --><p>If you also want to install it:</p>
+<div class="fragment"><div class="line">cmake --build . --target install</div></div><!-- fragment --><p>You can change the path where the library is installed by changing the <code>CMAKE_INSTALL_PREFIX</code> value during configuration. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
