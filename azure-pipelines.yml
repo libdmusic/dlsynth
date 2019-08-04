@@ -9,13 +9,11 @@ jobs:
   pool:
     vmImage: 'ubuntu-latest'
   steps:
-  - script: git clone --depth=1 https://github.com/libdmusic/vcpkg
-  - script: ./vcpkg/bootstrap-vcpkg.sh
-  - script: ./vcpkg/vcpkg install riffcpp --head
+  - script: vcpkg install riffcpp
   - script: |
       mkdir build
       cd build
-      cmake -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake ..
+      cmake -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake ..
       cmake --build .
 - job: Windows_x64_static
   pool:
@@ -23,13 +21,11 @@ jobs:
   variables:
     VCPKG_DEFAULT_TRIPLET: x64-windows-static
   steps:
-  - script: git clone --depth=1 https://github.com/libdmusic/vcpkg
-  - script: .\vcpkg\bootstrap-vcpkg.bat
-  - script: .\vcpkg\vcpkg.exe install riffcpp --head
+  - script: vcpkg install riffcpp
   - script: |
       mkdir build
       cd build
-      cmake -G "Visual Studio 15 2017 Win64" -DBUILD_SHARED_LIBS=OFF -DVCPKG_TARGET_TRIPLET=x64-windows-static -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake ..
+      cmake -G "Visual Studio 15 2017 Win64" -DBUILD_SHARED_LIBS=OFF -DVCPKG_TARGET_TRIPLET=x64-windows-static -DCMAKE_TOOLCHAIN_FILE=$env:VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake ..
       cmake --build .
 - job: Windows_x64
   pool:
@@ -37,11 +33,9 @@ jobs:
   variables:
     VCPKG_DEFAULT_TRIPLET: x64-windows
   steps:
-  - script: git clone --depth=1 https://github.com/libdmusic/vcpkg
-  - script: .\vcpkg\bootstrap-vcpkg.bat
-  - script: .\vcpkg\vcpkg.exe install riffcpp --head
+  - script: vcpkg install riffcpp
   - script: |
       mkdir build
       cd build
-      cmake -G "Visual Studio 15 2017 Win64" -DBUILD_SHARED_LIBS=ON -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake ..
+      cmake -G "Visual Studio 15 2017 Win64" -DBUILD_SHARED_LIBS=OFF -DVCPKG_TARGET_TRIPLET=x64-windows-static -DCMAKE_TOOLCHAIN_FILE=$env:VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake ..
       cmake --build .

@@ -27,6 +27,7 @@ target_sources(dlsynth
         ${CMAKE_CURRENT_LIST_DIR}/src/dlsynth.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/Error.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/ExpressionParser.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/src/Info.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/Instrument.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/Region.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/Sound.cpp
@@ -45,6 +46,9 @@ target_include_directories(dlsynth
 find_package(riffcpp CONFIG REQUIRED)
 
 target_link_libraries(dlsynth PRIVATE riffcpp::riffcpp)
+
+add_executable(test test.cpp)
+target_link_libraries(test PRIVATE dlsynth)
 
 include(GNUInstallDirs)
 
