@@ -16,11 +16,9 @@ jobs:
   strategy:
     matrix:
       debug:
-        variables:
-          BUILD_CONFIG: Debug
+        BUILD_CONFIG: Debug
       release:
-        variables:
-          BUILD_CONFIG: Debug
+        BUILD_CONFIG: Debug
   steps:
   - script: git clone --depth=1 https://github.com/Microsoft/vcpkg $(VCPKG_ROOT)
   - script: $(VCPKG_ROOT)/bootstrap-vcpkg.sh
