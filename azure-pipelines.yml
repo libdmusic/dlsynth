@@ -37,42 +37,42 @@ jobs:
   strategy:
     matrix:
       x64-static-debug:
-        CMAKE_GENERATOR: Visual Studio 15 2017 Win64
+        CMAKE_GENERATOR: "Visual Studio 15 2017 Win64"
         VCPKG_TRIPLET: x64-windows-static
         BUILD_SHARED: OFF
         BUILD_CONFIG: Debug
       x64-static-release:
-        CMAKE_GENERATOR: Visual Studio 15 2017 Win64
+        CMAKE_GENERATOR: "Visual Studio 15 2017 Win64"
         VCPKG_TRIPLET: x64-windows-static
         BUILD_SHARED: OFF
         BUILD_CONFIG: Release
       x64-shared-debug:
-        CMAKE_GENERATOR: Visual Studio 15 2017 Win64
+        CMAKE_GENERATOR: "Visual Studio 15 2017 Win64"
         VCPKG_TRIPLET: x64-windows
         BUILD_SHARED: ON
         BUILD_CONFIG: Debug
       x64-shared-release:
-        CMAKE_GENERATOR: Visual Studio 15 2017 Win64
+        CMAKE_GENERATOR: "Visual Studio 15 2017 Win64"
         VCPKG_TRIPLET: x64-windows
         BUILD_SHARED: ON
         BUILD_CONFIG: Release
       x86-static-debug:
-        CMAKE_GENERATOR: Visual Studio 15 2017
+        CMAKE_GENERATOR: "Visual Studio 15 2017"
         VCPKG_TRIPLET: x86-windows-static
         BUILD_SHARED: OFF
         BUILD_CONFIG: Debug
       x86-static-release:
-        CMAKE_GENERATOR: Visual Studio 15 2017
+        CMAKE_GENERATOR: "Visual Studio 15 2017"
         VCPKG_TRIPLET: x86-windows-static
         BUILD_SHARED: OFF
         BUILD_CONFIG: Release
       x86-shared-debug:
-        CMAKE_GENERATOR: Visual Studio 15 2017
+        CMAKE_GENERATOR: "Visual Studio 15 2017"
         VCPKG_TRIPLET: x86-windows
         BUILD_SHARED: ON
         BUILD_CONFIG: Debug
       x86-shared-release:
-        CMAKE_GENERATOR: Visual Studio 15 2017
+        CMAKE_GENERATOR: "Visual Studio 15 2017"
         VCPKG_TRIPLET: x86-windows
         BUILD_SHARED: ON
         BUILD_CONFIG: Release
