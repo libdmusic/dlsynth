@@ -83,5 +83,5 @@ jobs:
   - script: |
       mkdir build
       cd build
-      cmake -G $(CMAKE_GENERATOR) -DBUILD_SHARED_LIBS=$(BUILD_SHARED) -DVCPKG_TARGET_TRIPLET=$(VCPKG_TRIPLET) -DCMAKE_TOOLCHAIN_FILE=$(VCPKG_ROOT)\scripts\buildsystems\vcpkg.cmake ..
+      cmake -G "$(CMAKE_GENERATOR)" -DBUILD_SHARED_LIBS=$(BUILD_SHARED) -DVCPKG_TARGET_TRIPLET=$(VCPKG_TRIPLET) -DCMAKE_TOOLCHAIN_FILE=$(VCPKG_ROOT)\scripts\buildsystems\vcpkg.cmake ..
       cmake --build . --config $(BUILD_CONFIG)
