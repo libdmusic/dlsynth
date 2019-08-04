@@ -8,6 +8,7 @@
 
 namespace DLSynth {
 struct Uuid;
+class Info;
 /// A DLS Collection of instruments
 class Sound final {
   struct impl;
@@ -29,6 +30,9 @@ public:
 
   /// Returns the wavepool of this collection
   const std::vector<Wave> &wavepool() const;
+
+  /// Returns the contents of the INFO chunk, if it exists
+  const Info *info() const;
 };
 } // namespace DLSynth
 

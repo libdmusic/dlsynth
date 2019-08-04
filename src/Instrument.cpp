@@ -1,6 +1,7 @@
 #include "Instrument.hpp"
 #include "CommonFourCCs.hpp"
 #include "Error.hpp"
+#include "Info.hpp"
 #include "StructUtils.hpp"
 #include "Uuid.hpp"
 #include <cassert>
@@ -20,6 +21,7 @@ struct Instrument::impl {
   std::uint32_t m_midiInstrument;
   std::vector<ConnectionBlock> m_blocks;
   std::vector<Region> m_regions;
+  std::unique_ptr<Info> m_info;
   bool m_isDrum;
   void load_regions(riffcpp::Chunk &chunk, const ExpressionParser &exprParser) {
     for (auto child : chunk) {
@@ -77,6 +79,8 @@ struct Instrument::impl {
           lrgn_found = true;
         } else if (child.type() == lart_id || child.type() == lar2_id) {
           load_articulators(child, exprParser);
+        } else if (child.type() == INFO_id) {
+          m_info = std::make_unique<Info>(Info::read(child));
         }
       }
     }
@@ -123,4 +127,14 @@ const std::vector<Region> &Instrument::regions() const {
 const std::vector<ConnectionBlock> &Instrument::connectionBlocks() const {
   assert(m_pimpl != nullptr);
   return m_pimpl->m_blocks;
+}
+
+const Info *Instrument::info() const {
+  assert(m_pimpl != nullptr);
+  return m_pimpl->m_info.get();
+}
+
+bool Instrument::isDrumInstrument() const {
+  assert(m_pimpl != nullptr);
+  return m_pimpl->m_isDrum;
 }

@@ -1,6 +1,7 @@
 #include "Sound.hpp"
 #include "CommonFourCCs.hpp"
 #include "Error.hpp"
+#include "Info.hpp"
 #include "Uuid.hpp"
 #include <cassert>
 
@@ -9,6 +10,7 @@ using namespace DLSynth;
 struct Sound::impl {
   ExpressionParser m_exprParser;
   std::unique_ptr<Uuid> m_dlid;
+  std::unique_ptr<Info> m_info;
   std::vector<Wave> m_wavepool;
   std::vector<Instrument> m_instruments;
 
@@ -64,6 +66,12 @@ struct Sound::impl {
 
           load_instruments(child);
           lins_found = true;
+        } else if (child.type() == INFO_id) {
+          if (m_info != nullptr) {
+            throw Error("Duplicate INFO chunk", ErrorCode::INVALID_FILE);
+          }
+
+          m_info = std::make_unique<Info>(Info::read(child));
         }
       }
     }
@@ -99,4 +107,9 @@ const std::vector<Instrument> &Sound::instruments() const {
 const std::vector<Wave> &Sound::wavepool() const {
   assert(m_pimpl != nullptr);
   return m_pimpl->m_wavepool;
+}
+
+const Info *Sound::info() const {
+  assert(m_pimpl != nullptr);
+  return m_pimpl->m_info.get();
 }

@@ -8,6 +8,8 @@
 
 namespace DLSynth {
 struct Uuid;
+class Info;
+
 /// A DLS instrument, part of a DLS Collection
 class Instrument final {
   struct impl;
@@ -37,6 +39,9 @@ public:
 
   /// Returns the regions defined for this instrument
   const std::vector<Region> &regions() const;
+
+  /// Returns the contents of the INFO chunk, if it exists
+  const Info *info() const;
 };
 } // namespace DLSynth
 

@@ -26,5 +26,11 @@ constexpr riffcpp::FourCC rgnh_id = {'r', 'g', 'n', 'h'};
 constexpr riffcpp::FourCC wlnk_id = {'w', 'l', 'n', 'k'};
 constexpr riffcpp::FourCC rgn_id = {'r', 'g', 'n', ' '};
 constexpr riffcpp::FourCC rgn2_id = {'r', 'g', 'n', '2'};
+constexpr riffcpp::FourCC INFO_id = {'I', 'N', 'F', 'O'};
+constexpr riffcpp::FourCC INAM_id = {'I', 'N', 'A', 'M'};
+constexpr riffcpp::FourCC ICOP_id = {'I', 'C', 'O', 'P'};
+constexpr riffcpp::FourCC IENG_id = {'I', 'E', 'N', 'G'};
+constexpr riffcpp::FourCC ISBJ_id = {'I', 'S', 'B', 'J'};
+constexpr riffcpp::FourCC ICMT_id = {'I', 'C', 'M', 'T'};
 
 #endif
