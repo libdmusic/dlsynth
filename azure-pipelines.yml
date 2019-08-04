@@ -11,7 +11,7 @@ jobs:
   steps:
   - script: git clone --depth=1 https://github.com/libdmusic/vcpkg
   - script: ./vcpkg/bootstrap-vcpkg.sh
-  - script: ./vcpkg/vcpkg install riffcpp
+  - script: ./vcpkg/vcpkg install riffcpp --head
   - script: |
       mkdir build
       cd build
@@ -25,7 +25,7 @@ jobs:
   steps:
   - script: git clone --depth=1 https://github.com/libdmusic/vcpkg
   - script: .\vcpkg\bootstrap-vcpkg.bat
-  - script: .\vcpkg\vcpkg.exe install riffcpp
+  - script: .\vcpkg\vcpkg.exe install riffcpp --head
   - script: |
       mkdir build
       cd build
@@ -39,7 +39,7 @@ jobs:
   steps:
   - script: git clone --depth=1 https://github.com/libdmusic/vcpkg
   - script: .\vcpkg\bootstrap-vcpkg.bat
-  - script: .\vcpkg\vcpkg.exe install riffcpp
+  - script: .\vcpkg\vcpkg.exe install riffcpp --head
   - script: |
       mkdir build
       cd build
