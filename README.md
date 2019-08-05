@@ -70,7 +70,7 @@ target_link_libraries(my_app PRIVATE dlsynth::dlsynth)
 
 ## Building
 
-### Using [vckg](https://github.com/Microsoft/vcpkg)
+### Using [vcpkg](https://github.com/Microsoft/vcpkg)
 
 After having cloned and build vcpkg, install `riffcpp`:
 
