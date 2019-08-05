@@ -1,7 +1,7 @@
 #include "Region.hpp"
 #include "CommonFourCCs.hpp"
 #include "Error.hpp"
-#include "StructUtils.hpp"
+#include "Structs.hpp"
 
 using namespace DLSynth;
 
@@ -51,29 +51,16 @@ Region::Region(riffcpp::Chunk &chunk, const ExpressionParser &exprParser) {
   }
 }
 
-struct rgnh {
-  Range RangeKey;
-  Range RangeVelocity;
-  std::uint16_t fusOptions;
-  std::uint16_t usKeyGroup;
-};
-
 void Region::load_header(riffcpp::Chunk &chunk) {
-  rgnh header = readStruct<rgnh>(chunk);
+  rgnh header = readChunk<rgnh>(chunk);
   m_keyGroup = header.usKeyGroup;
   m_keyRange = header.RangeKey;
   m_velRange = header.RangeVelocity;
   m_selfNonExclusive = (header.fusOptions & 0x0001);
 }
 
-struct wlnk {
-  std::uint16_t fusOptions;
-  std::uint16_t usPhaseGroup;
-  std::uint32_t ulChannel;
-  std::uint32_t ulTableIndex;
-};
 void Region::load_wavelink(riffcpp::Chunk &chunk) {
-  wlnk wavelink = readStruct<wlnk>(chunk);
+  wlnk wavelink = readChunk<wlnk>(chunk);
   m_waveIndex = wavelink.ulTableIndex;
 }
 

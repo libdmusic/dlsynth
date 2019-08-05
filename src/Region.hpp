@@ -3,21 +3,11 @@
 
 #include "Articulator.hpp"
 #include "ExpressionParser.hpp"
+#include "Structs.hpp"
 #include "Wavesample.hpp"
 #include <memory>
 
 namespace DLSynth {
-
-/// Represents a range of values
-struct Range {
-  std::uint16_t low;  ///< Lower bound
-  std::uint16_t high; ///< Higher bound
-
-  /// Returns `true` if \p value falls within the range
-  constexpr bool inRange(std::uint16_t value) const {
-    return (value <= high && value >= low) || (low == 0 && high == 0);
-  }
-};
 
 class Region final {
   Range m_keyRange;

@@ -1,0 +1,5 @@
+STRUCT_BEGIN(AdpcmFormat)
+FIELD(std::uint16_t, samplesPerBlock)
+FIELD(std::uint16_t, numCoeffs)
+VARARR(AdpcmCoeffs, coeffs, numCoeffs)
+STRUCT_END(AdpcmFormat)

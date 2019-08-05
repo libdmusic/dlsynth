@@ -2,18 +2,12 @@
 #include "CommonFourCCs.hpp"
 #include "Error.hpp"
 #include "Info.hpp"
-#include "StructUtils.hpp"
+#include "Structs.hpp"
 #include "Uuid.hpp"
 #include <cassert>
 #include <memory>
 
 using namespace DLSynth;
-
-struct insh {
-  std::uint32_t cRegions;
-  std::uint32_t ulBank;
-  std::uint32_t ulInstrument;
-};
 
 struct Instrument::impl {
   std::unique_ptr<Uuid> m_dlid;
@@ -61,7 +55,7 @@ struct Instrument::impl {
           throw Error("Duplicate instrument header", ErrorCode::INVALID_FILE);
         }
 
-        insh header = readStruct<insh>(child);
+        insh header = readChunk<insh>(child);
 
         m_midiBank = header.ulBank & ~(1 << 31);
         m_midiInstrument = header.ulInstrument;

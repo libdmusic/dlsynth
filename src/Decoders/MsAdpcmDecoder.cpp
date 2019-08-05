@@ -9,17 +9,6 @@
 using namespace DLSynth;
 using namespace DLSynth::Decoders;
 
-struct AdpcmCoeffs {
-  std::int16_t iCoef1;
-  std::int16_t iCoef2;
-};
-
-struct AdpcmFormat {
-  std::uint16_t samplesPerBlock;
-  std::uint16_t numCoeffs;
-  AdpcmCoeffs coeffs[];
-};
-
 template <typename TIn, typename TOut> constexpr TOut clamp(TIn value) {
   if (value > std::numeric_limits<TOut>::max())
     return std::numeric_limits<TOut>::max();
@@ -43,7 +32,7 @@ constexpr int AdaptationTable[] = {230, 230, 230, 230, 307, 409, 512, 614,
 
 class MsAdpcmDecoder : public WaveDecoder {
   std::vector<std::int16_t> m_leftData, m_rightData;
-  std::vector<AdpcmCoeffs> m_coeffs;
+  AdpcmFormat m_format;
 
   template <int NumChannels>
   void decodeBlock(const char *data, std::size_t blockSize) {
@@ -81,7 +70,12 @@ class MsAdpcmDecoder : public WaveDecoder {
           std::int8_t errorDelta = nibbles[j + i];
           std::uint8_t uErrorDelta = unibbles[j + i];
 
-          const auto &coeffs = m_coeffs[header.predictor[i]];
+          auto predictor = header.predictor[i];
+          if (predictor >= m_format.coeffs.size()) {
+            throw Error("Invalid ADPCM predictor index",
+                        ErrorCode::INVALID_FILE);
+          }
+          const auto &coeffs = m_format.coeffs[predictor];
 
           std::int32_t predSamp =
            ((samp1[i] * coeffs.iCoef1) + (samp2[i] * coeffs.iCoef2)) >> 8;
@@ -125,11 +119,7 @@ public:
     m_leftData.reserve(fact);
     m_rightData.reserve(fact);
 
-    const AdpcmFormat *formatData =
-     reinterpret_cast<const AdpcmFormat *>(format.ExtraData);
-    m_coeffs.resize(formatData->numCoeffs);
-    std::copy(formatData->coeffs, formatData->coeffs + formatData->numCoeffs,
-              m_coeffs.begin());
+    m_format = readVector<AdpcmFormat>(format.ExtraData);
 
     std::size_t numBlocks = data.size() / format.BlockAlign;
     if (data.size() % format.BlockAlign)
@@ -175,18 +165,14 @@ public:
       throw Error("Invalid MS ADPCM predictor data", ErrorCode::INVALID_FILE);
     }
 
-    const AdpcmFormat *formatData =
-     reinterpret_cast<const AdpcmFormat *>(format.ExtraData);
-    m_coeffs.resize(formatData->numCoeffs);
-    std::copy(formatData->coeffs, formatData->coeffs + formatData->numCoeffs,
-              m_coeffs.begin());
+    m_format = readVector<AdpcmFormat>(format.ExtraData);
 
     std::size_t numBlocks = data.size() / format.BlockAlign;
     if (data.size() % format.BlockAlign)
       numBlocks++;
 
-    m_leftData.reserve(numBlocks * formatData->samplesPerBlock);
-    m_rightData.reserve(numBlocks * formatData->samplesPerBlock);
+    m_leftData.reserve(numBlocks * m_format.samplesPerBlock);
+    m_rightData.reserve(numBlocks * m_format.samplesPerBlock);
 
     const char *blockData = data.data();
     const char *blockDataEnd = blockData + data.size();

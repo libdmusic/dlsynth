@@ -1,5 +1,5 @@
 #include "ExpressionParser.hpp"
-#include "StructUtils.hpp"
+#include "Structs.hpp"
 #include "Uuid.hpp"
 #include <array>
 #include <functional>
@@ -97,13 +97,14 @@ ExpressionParser::ExpressionParser(std::uint32_t sampleRate,
                                    std::uint32_t memorySize)
   : m_queryMap(std::make_unique<QueryMap>(sampleRate, memorySize)) {}
 
-bool ExpressionParser::execute(const std::vector<std::uint8_t> &data) const {
+bool ExpressionParser::execute(const std::vector<char> &data) const {
   std::stack<uint32_t> stack;
-  const uint8_t *buf = data.data();
-  std::size_t pos = 0;
-  while (pos < data.size()) {
-    OpCode op = *readStruct<OpCode>(buf + pos, buf + data.size());
-    pos += sizeof(op);
+  const char *buf = data.data();
+  const char *end = buf + data.size();
+  const char *pos = buf;
+  while (pos < end) {
+    OpCode op;
+    pos = StructLoader<OpCode>::readBuffer(buf, end, op);
     switch (op) {
     case OpCode::Add:
       operation(stack, [](auto x, auto y) { return x + y; });
@@ -112,8 +113,8 @@ bool ExpressionParser::execute(const std::vector<std::uint8_t> &data) const {
       operation(stack, [](auto x, auto y) { return x & y; });
       break;
     case OpCode::Const: {
-      uint32_t c = *readStruct<std::uint32_t>(buf + pos, buf + data.size());
-      pos += sizeof(c);
+      std::uint32_t c;
+      pos = StructLoader<std::uint32_t>::readBuffer(buf, end, c);
       stack.push(c);
     } break;
     case OpCode::Div:
@@ -156,14 +157,13 @@ bool ExpressionParser::execute(const std::vector<std::uint8_t> &data) const {
       operation(stack, [](auto x, auto y) { return x ^ y; });
       break;
     case OpCode::Query: {
-      Uuid query = *readStruct<Uuid>(buf + pos, buf + data.size());
-      ;
-      pos += sizeof(query);
+      Uuid query;
+      pos = StructLoader<Uuid>::readBuffer(pos, end, query);
       stack.push(m_queryMap->query(query));
     } break;
     case OpCode::Supported: {
-      Uuid query = *readStruct<Uuid>(buf + pos, buf + data.size());
-      pos += sizeof(query);
+      Uuid query;
+      pos = StructLoader<Uuid>::readBuffer(pos, end, query);
       stack.push(m_queryMap->supports(query));
     } break;
     }
@@ -173,8 +173,8 @@ bool ExpressionParser::execute(const std::vector<std::uint8_t> &data) const {
 }
 
 bool ExpressionParser::execute(riffcpp::Chunk &chunk) const {
-  std::vector<std::uint8_t> data(chunk.size());
-  chunk.read_data(reinterpret_cast<char *>(data.data()), data.size());
+  std::vector<char> data(chunk.size());
+  chunk.read_data(data.data(), data.size());
   return execute(data);
 }
 

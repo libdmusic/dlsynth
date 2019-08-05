@@ -1,0 +1,6 @@
+STRUCT_BEGIN(wsmp_loop)
+FIELD(std::uint32_t, cbSize)
+FIELD(std::uint32_t, ulLoopType)
+FIELD(std::uint32_t, ulLoopStart)
+FIELD(std::uint32_t, ulLoopLength)
+STRUCT_END(wsmp_loop)

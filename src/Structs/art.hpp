@@ -1,0 +1,5 @@
+STRUCT_BEGIN(art)
+FIELD(std::uint32_t, cbSize)
+FIELD(std::uint32_t, cConnectionBlocks)
+VARARR_OFF(cblock, blocks, cConnectionBlocks, cbSize)
+STRUCT_END(art)

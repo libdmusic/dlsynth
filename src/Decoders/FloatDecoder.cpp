@@ -33,7 +33,15 @@ public:
     if (format.NumChannels < 1 || format.NumChannels > 2)
       throw Error("Invalid number of channels", ErrorCode::UNSUPPORTED_CODEC);
 
-    const T *samples = reinterpret_cast<const T *>(data.data());
+#ifndef DLSYNTH_BIGENDIAN
+    auto samples = reinterpret_cast<const T *>(data.data());
+#else
+    std::vector<T> sample_buffer;
+    sample_buffer.resize(data.size() / sizeof(T));
+    readArray(data.data(), data.data() + data.size(), sample_buffer.size(),
+              sample_buffer);
+    auto samples = sample_buffer.data();
+#endif
     if (format.NumChannels == 1) {
       std::size_t size = data.size() / sizeof(T);
       transferMono(samples, size);
@@ -50,7 +58,15 @@ public:
     if (format.NumChannels < 1 || format.NumChannels > 2)
       throw Error("Invalid number of channels", ErrorCode::UNSUPPORTED_CODEC);
 
-    const T *samples = reinterpret_cast<const T *>(data.data());
+#ifndef DLSYNTH_BIGENDIAN
+    auto samples = reinterpret_cast<const T *>(data.data());
+#else
+    std::vector<T> sample_buffer;
+    sample_buffer.resize(fact * format.NumChannels);
+    readArray(data.data(), data.data() + data.size(), sample_buffer.size(),
+              sample_buffer);
+    auto samples = sample_buffer.data();
+#endif
     if (format.NumChannels == 1) {
       transferMono(samples, fact);
     } else if (format.NumChannels == 2) {

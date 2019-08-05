@@ -1,25 +1,19 @@
 #ifndef UUID_HPP
 #define UUID_HPP
+#include "Structs.hpp"
 #include <array>
 #include <cstdint>
 
 namespace DLSynth {
-struct Uuid {
-  std::uint32_t a;
-  std::uint16_t b;
-  std::uint16_t c;
-  std::array<std::uint8_t, 8> d;
-
-  constexpr bool operator==(const Uuid &rhs) const {
-    return a == rhs.a && b == rhs.b && c == rhs.c && d == rhs.d;
-  }
-
-  constexpr bool operator!=(const Uuid &rhs) const { return !(*this == rhs); }
-};
-
-static_assert(sizeof(Uuid) == 16, "Uuid needs to be 16-byte");
+constexpr bool operator==(const Uuid &lhs, const Uuid &rhs) {
+  return lhs.a == rhs.a && lhs.b == rhs.b && lhs.c == rhs.c && lhs.d == rhs.d;
+}
+constexpr bool operator!=(const Uuid &lhs, const Uuid &rhs) {
+  return !(lhs == rhs);
+}
 } // namespace DLSynth
 
+static_assert(sizeof(DLSynth::Uuid) == 16, "Uuid needs to be 16-byte");
 namespace std {
 template <> struct hash<DLSynth::Uuid> {
   constexpr std::size_t operator()(const DLSynth::Uuid &id) const noexcept {

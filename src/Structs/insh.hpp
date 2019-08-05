@@ -1,0 +1,5 @@
+STRUCT_BEGIN(insh)
+FIELD(std::uint32_t, cRegions)
+FIELD(std::uint32_t, ulBank)
+FIELD(std::uint32_t, ulInstrument)
+STRUCT_END(insh)

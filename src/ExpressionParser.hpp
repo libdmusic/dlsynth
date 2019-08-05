@@ -18,7 +18,7 @@ public:
   ~ExpressionParser();
 
   /// Executes an expression and returns its result
-  bool execute(const std::vector<std::uint8_t> &data) const;
+  bool execute(const std::vector<char> &data) const;
 
   /// Executes the expression contained in the chunk and returns its result
   bool execute(riffcpp::Chunk &chunk) const;

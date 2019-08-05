@@ -1,0 +1,7 @@
+STRUCT_BEGIN(cblock)
+FIELD(std::uint16_t, usSource)
+FIELD(std::uint16_t, usControl)
+FIELD(std::uint16_t, usDestination)
+FIELD(std::uint16_t, usTransform)
+FIELD(std::int32_t, lScale)
+STRUCT_END(cblock)

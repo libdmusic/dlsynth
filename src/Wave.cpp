@@ -2,7 +2,7 @@
 #include "CommonFourCCs.hpp"
 #include "DecoderTable.hpp"
 #include "Error.hpp"
-#include "StructUtils.hpp"
+#include "Structs.hpp"
 #include "Uuid.hpp"
 #include "WaveDecoder.hpp"
 #include "Wavesample.hpp"
@@ -42,7 +42,7 @@ struct Wave::impl {
         if (fact_found)
           throw Error("Duplicate fact chunk", ErrorCode::INVALID_FILE);
 
-        fact = readStruct<std::uint32_t>(child);
+        fact = readChunk<std::uint32_t>(child);
         fact_found = true;
       } else if (child.id() == data_id) {
         if (data_found)
@@ -55,7 +55,7 @@ struct Wave::impl {
         if (m_guid != nullptr)
           throw Error("Duplicate GUID", ErrorCode::INVALID_FILE);
 
-        m_guid = std::make_unique<Uuid>(readStruct<Uuid>(child));
+        m_guid = std::make_unique<Uuid>(readChunk<Uuid>(child));
       } else if (child.id() == wsmp_id) {
         if (m_wavesample != nullptr)
           throw Error("Duplicate Wavesample", ErrorCode::INVALID_FILE);
@@ -72,34 +72,38 @@ struct Wave::impl {
     const auto &decoderTable = DecoderTable::getInstance();
 
     if (fmt.size() == sizeof(WaveFormat)) {
-      WaveFormat *format = reinterpret_cast<WaveFormat *>(fmt.data());
+      WaveFormat format;
+      StructLoader<WaveFormat>::readBuffer(fmt.data(), fmt.data() + fmt.size(),
+                                           format);
 
-      if (format->NumChannels == 0 || format->SamplesPerSec == 0 ||
-          format->BlockAlign == 0) {
+      if (format.NumChannels == 0 || format.SamplesPerSec == 0 ||
+          format.BlockAlign == 0) {
         throw Error("Invalid file", ErrorCode::INVALID_FILE);
       }
 
-      m_sampleRate = format->SamplesPerSec;
+      m_sampleRate = format.SamplesPerSec;
 
       if (fact_found) {
-        decoder = decoderTable.getDecoder(*format, fact, data);
+        decoder = decoderTable.getDecoder(format, fact, data);
       } else {
-        decoder = decoderTable.getDecoder(*format, data);
+        decoder = decoderTable.getDecoder(format, data);
       }
     } else if (fmt.size() > sizeof(WaveFormat)) {
-      WaveFormatEx *format = reinterpret_cast<WaveFormatEx *>(fmt.data());
+      WaveFormatEx format;
+      StructLoader<WaveFormatEx>::readBuffer(fmt.data(),
+                                             fmt.data() + fmt.size(), format);
 
-      if (format->NumChannels == 0 || format->SamplesPerSec == 0 ||
-          format->BlockAlign == 0) {
+      if (format.NumChannels == 0 || format.SamplesPerSec == 0 ||
+          format.BlockAlign == 0) {
         throw Error("Invalid file", ErrorCode::INVALID_FILE);
       }
 
-      m_sampleRate = format->SamplesPerSec;
+      m_sampleRate = format.SamplesPerSec;
 
       if (fact_found) {
-        decoder = decoderTable.getDecoder(*format, fact, data);
+        decoder = decoderTable.getDecoder(format, fact, data);
       } else {
-        decoder = decoderTable.getDecoder(*format, data);
+        decoder = decoderTable.getDecoder(format, data);
       }
     } else {
       throw Error("Invalid format chunk", ErrorCode::INVALID_FILE);

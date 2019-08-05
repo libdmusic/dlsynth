@@ -33,7 +33,15 @@ public:
   PcmDecoder(const WaveFormat &format, const std::vector<char> &data) {
     assert(format.FormatTag == WaveFormat::Pcm);
 
+#ifndef DLSYNTH_BIGENDIAN
     auto samples = reinterpret_cast<const T *>(data.data());
+#else
+    std::vector<T> sample_buffer;
+    sample_buffer.resize(data.size() / sizeof(T));
+    readArray(data.data(), data.data() + data.size(), sample_buffer.size(),
+              sample_buffer);
+    auto samples = sample_buffer.data();
+#endif
     if (format.NumChannels == 1) {
       loadMono(samples, data.size() / sizeof(T));
     } else if (format.NumChannels == 2) {
@@ -48,7 +56,15 @@ public:
              const std::vector<char> &data) {
     assert(format.FormatTag == WaveFormat::Pcm);
 
+#ifndef DLSYNTH_BIGENDIAN
     auto samples = reinterpret_cast<const T *>(data.data());
+#else
+    std::vector<T> sample_buffer;
+    sample_buffer.resize(fact * format.NumChannels);
+    readArray(data.data(), data.data() + data.size(), sample_buffer.size(),
+              sample_buffer);
+    auto samples = sample_buffer.data();
+#endif
     if (format.NumChannels == 1) {
       loadMono(samples, fact);
     } else if (format.NumChannels == 2) {

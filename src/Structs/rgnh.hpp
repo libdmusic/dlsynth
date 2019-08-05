@@ -1,0 +1,6 @@
+STRUCT_BEGIN(rgnh)
+FIELD(Range, RangeKey)
+FIELD(Range, RangeVelocity)
+FIELD(std::uint16_t, fusOptions)
+FIELD(std::uint16_t, usKeyGroup)
+STRUCT_END(rgnh)

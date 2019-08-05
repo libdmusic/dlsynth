@@ -50,9 +50,7 @@ struct Sound::impl {
           throw Error("Condition failed", ErrorCode::CONDITION_FAILED);
         }
       } else if (child.id() == dlid_id) {
-        m_dlid = std::make_unique<Uuid>();
-        child.read_data(reinterpret_cast<char *>(m_dlid.get()),
-                        sizeof(*m_dlid));
+        m_dlid = std::make_unique<Uuid>(readChunk<Uuid>(child));
       } else if (child.id() == riffcpp::list_id) {
         if (child.type() == wvpl_id) {
           if (wvpl_found)

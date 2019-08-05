@@ -1,7 +1,7 @@
 #include "Articulator.hpp"
 #include "CommonFourCCs.hpp"
 #include "Error.hpp"
-#include "StructUtils.hpp"
+#include "Structs.hpp"
 #include <set>
 
 using namespace DLSynth;
@@ -24,32 +24,10 @@ const std::vector<ConnectionBlock> &Articulator::connectionBlocks() const {
   return m_blocks;
 }
 
-struct cblock {
-  Source usSource;
-  Source usControl;
-  Destination usDestination;
-  std::uint16_t usTransform;
-  std::int32_t lScale;
-};
-
-struct art {
-  std::uint32_t cbSize;
-  std::uint32_t cConnectionBlocks;
-};
-
 void Articulator::load_art2(riffcpp::Chunk &chunk) {
-  std::vector<char> data(chunk.size());
-  chunk.read_data(data.data(), data.size());
+  art articulator = readChunk<art>(chunk);
 
-  char *data_begin = data.data();
-  char *data_end = data_begin + data.size();
-
-  const art *articulator = readStruct<art>(data_begin, data_end);
-  std::vector<cblock> cblocks;
-  readStructArray(data_begin + articulator->cbSize, data_end,
-                  articulator->cConnectionBlocks, cblocks);
-
-  for (const auto &connectionBlock : cblocks) {
+  for (const auto &connectionBlock : articulator.blocks) {
     TransformType ctrlTransType =
      static_cast<TransformType>((connectionBlock.usTransform & 0x00F0) >> 4);
     bool ctrlBipolar = connectionBlock.usTransform & (1 << 8);
@@ -60,8 +38,10 @@ void Articulator::load_art2(riffcpp::Chunk &chunk) {
     bool srcInvert = connectionBlock.usTransform & (1 << 15);
 
     m_blocks.emplace_back(
-     connectionBlock.usSource, connectionBlock.usControl,
-     connectionBlock.usDestination, connectionBlock.lScale,
+     static_cast<Source>(connectionBlock.usSource),
+     static_cast<Source>(connectionBlock.usControl),
+     static_cast<Destination>(connectionBlock.usDestination),
+     connectionBlock.lScale,
      TransformParams(srcInvert, srcBipolar, srcTransType),
      TransformParams(ctrlInvert, ctrlBipolar, ctrlTransType));
   }
@@ -73,24 +53,14 @@ void Articulator::load_art1(riffcpp::Chunk &chunk) {
                                          Source::RPN2,       Source::Vibrato};
   static std::set<Source> invertedSources{Source::KeyOnVelocity, Source::CC7,
                                           Source::CC11};
+  art articulator = readChunk<art>(chunk);
 
-  std::vector<char> data(chunk.size());
-  chunk.read_data(data.data(), data.size());
-
-  char *data_begin = data.data();
-  char *data_end = data_begin + data.size();
-
-  const art *articulator = readStruct<art>(data_begin, data_end);
-  std::vector<cblock> cblocks;
-  readStructArray(data_begin + articulator->cbSize, data_end,
-                  articulator->cConnectionBlocks, cblocks);
-
-  for (const auto &connectionBlock : cblocks) {
+  for (const auto &connectionBlock : articulator.blocks) {
     TransformType transType = (TransformType)connectionBlock.usTransform;
 
-    Source src = connectionBlock.usSource;
-    Source ctrl = connectionBlock.usControl;
-    Destination dst = connectionBlock.usDestination;
+    Source src = static_cast<Source>(connectionBlock.usSource);
+    Source ctrl = static_cast<Source>(connectionBlock.usControl);
+    Destination dst = static_cast<Destination>(connectionBlock.usDestination);
 
     m_blocks.emplace_back(
      src, ctrl, dst, connectionBlock.lScale,

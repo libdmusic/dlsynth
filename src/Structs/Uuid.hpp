@@ -1,0 +1,6 @@
+STRUCT_BEGIN(Uuid)
+FIELD(std::uint32_t, a)
+FIELD(std::uint16_t, b)
+FIELD(std::uint16_t, c)
+FIXARR(std::uint8_t, d, 8)
+STRUCT_END(Uuid)
