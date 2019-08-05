@@ -34,6 +34,27 @@ namespace DLSynth {
 
 #include "Structs/StructList.hpp"
 
+template <typename T> struct StructLoader {
+  static const char *readBuffer(const char *begin, const char *end, T &output) {
+    if (begin > end || (end - begin) < sizeof(T)) {
+      throw Error("Wrong data size", ErrorCode::INVALID_FILE);
+    }
+
+    const char *data_end = begin + sizeof(T);
+
+    std::array<char, sizeof(T)> buffer;
+    std::copy(begin, data_end, buffer.begin());
+
+#ifdef DLSYNTH_BIGENDIAN
+    std::reverse(buffer.begin(), buffer.end());
+#endif
+
+    output = *reinterpret_cast<const T *>(buffer.data());
+
+    return data_end;
+  }
+};
+
 template <typename T> T readVector(const std::vector<char> &buffer) {
   const char *begin = buffer.data();
   const char *end = begin + buffer.size();
@@ -68,27 +89,6 @@ const char *readArray(const char *begin, const char *end,
   }
   return pos;
 }
-
-template <typename T> struct StructLoader {
-  static const char *readBuffer(const char *begin, const char *end, T &output) {
-    if (begin > end || (end - begin) < sizeof(T)) {
-      throw Error("Wrong data size", ErrorCode::INVALID_FILE);
-    }
-
-    const char *data_end = begin + sizeof(T);
-
-    std::array<char, sizeof(T)> buffer;
-    std::copy(begin, data_end, buffer.begin());
-
-#ifdef DLSYNTH_BIGENDIAN
-    std::reverse(buffer.begin(), buffer.end());
-#endif
-
-    output = *reinterpret_cast<const T *>(buffer.data());
-
-    return data_end;
-  }
-};
 
 #undef STRUCT_BEGIN
 #define STRUCT_BEGIN(NAME)                                                     \
