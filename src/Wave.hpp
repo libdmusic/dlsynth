@@ -10,6 +10,7 @@
 namespace DLSynth {
 class Wavesample;
 struct Uuid;
+class Info;
 
 class Wave final {
   struct impl;
@@ -37,6 +38,9 @@ public:
 
   /// Returns the sample rate of the WAV file
   int sampleRate() const;
+
+  /// Returns the contents of the INFO chunk, if it exists
+  const Info *info() const;
 };
 } // namespace DLSynth
 

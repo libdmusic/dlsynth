@@ -2,6 +2,7 @@
 #include "CommonFourCCs.hpp"
 #include "DecoderTable.hpp"
 #include "Error.hpp"
+#include "Info.hpp"
 #include "Structs.hpp"
 #include "Uuid.hpp"
 #include "WaveDecoder.hpp"
@@ -18,6 +19,7 @@ struct Wave::impl {
   std::vector<float> m_leftData, m_rightData;
   std::unique_ptr<Uuid> m_guid = nullptr;
   std::unique_ptr<Wavesample> m_wavesample = nullptr;
+  std::unique_ptr<Info> m_info = nullptr;
   int m_sampleRate;
 
   impl(riffcpp::Chunk &chunk) {
@@ -61,6 +63,14 @@ struct Wave::impl {
           throw Error("Duplicate Wavesample", ErrorCode::INVALID_FILE);
 
         m_wavesample = std::make_unique<Wavesample>(child);
+      } else if (child.id() == riffcpp::list_id) {
+        if (child.type() == INFO_id) {
+          if (m_info != nullptr) {
+            throw Error("Duplicate INFO chunk", ErrorCode::INVALID_FILE);
+          }
+
+          m_info = std::make_unique<Info>(Info::read(child));
+        }
       }
     }
 
@@ -142,6 +152,11 @@ const Wavesample *Wave::wavesample() const {
 int Wave::sampleRate() const {
   assert(m_pimpl != nullptr);
   return m_pimpl->m_sampleRate;
+}
+
+const Info *Wave::info() const {
+  assert(m_pimpl != nullptr);
+  return m_pimpl->m_info.get();
 }
 
 Wave::~Wave() {
