@@ -102,7 +102,7 @@ class StereoGainNode final : public ObservableSignal, public SignalObserver {
     float pan = m_panNode->value();
     float gain = m_gainNode->value() + m_sampleGain;
 
-    float panParameter = (PI / 2.f) * (pan + 0.5f);
+    float panParameter = (PI / 2.f) * pan;
     float leftGain = std::log10(std::cos(panParameter)) + gain;
     float rightGain = std::log10(std::sin(panParameter)) + gain;
 
@@ -336,7 +336,7 @@ struct Voice::impl : public VoiceMessageExecutor {
      DEFAULT_CONN(KeyOnVelocity, None,            Gain,              -62914560,  false, true,  Concave),
      DEFAULT_CONN(CC7,           None,            Gain,              -62914560,  false, true,  Concave),
      DEFAULT_CONN(CC11,          None,            Gain,              -62914560,  false, true,  Concave),
-     DEFAULT_CONN(None,          None,            Pan,               0,          false, false, None),
+     DEFAULT_CONN(None,          None,            Pan,               33292288,   false, false, None),
      DEFAULT_CONN(CC10,          None,            Pan,               33292288,   true,  false, None),
      DEFAULT_CONN(CC91,          None,            Reverb,            65536000,   false, false, None),
      DEFAULT_CONN(None,          None,            Reverb,            0,          false, false, None),
