@@ -542,7 +542,8 @@ struct Voice::impl : public VoiceMessageExecutor {
         updateModLfo();
         updateVibLfo();
 
-        float freqRatio = m_pitchNode.frequencyRatio();
+        float freqRatio =
+         m_pitchNode.frequencyRatio() * m_sample->sampleRate() / m_sampleRate;
 
         lcoef += lowpass_b * (m_gainNode.leftGain() - lcoef);
         rcoef += lowpass_b * (m_gainNode.rightGain() - rcoef);
