@@ -496,6 +496,24 @@ struct Voice::impl : public VoiceMessageExecutor {
 
   std::array<std::array<float, 2>, 2> m_inDelay{};
   std::array<std::array<float, 2>, 2> m_outDelay{};
+
+  float computeFilter(int channel, float input) {
+
+    const auto &mCoeffs = m_filterNode.coeffs();
+
+    float output = (mCoeffs.a0 * input) + (mCoeffs.a1 * m_inDelay[channel][0]) +
+                   (mCoeffs.a2 * m_inDelay[channel][1]) -
+                   (mCoeffs.b1 * m_outDelay[channel][0]) -
+                   (mCoeffs.b2 * m_outDelay[channel][1]);
+
+    m_inDelay[channel][1] = m_inDelay[channel][0];
+    m_inDelay[channel][0] = input;
+    m_outDelay[channel][1] = m_outDelay[channel][0];
+    m_outDelay[channel][0] = output;
+
+    return output;
+  }
+
   void render(float *beginLeft, float *endLeft, float *beginRight,
               float *endRight, float outGain, bool fill,
               std::size_t bufferSkip) {
@@ -536,25 +554,8 @@ struct Voice::impl : public VoiceMessageExecutor {
 
         const auto &mCoeffs = m_filterNode.coeffs();
 
-        float lout = (mCoeffs.a0 * lsample) + (mCoeffs.a1 * m_inDelay[0][0]) +
-                     (mCoeffs.a2 * m_inDelay[0][1]) -
-                     (mCoeffs.b1 * m_outDelay[0][0]) -
-                     (mCoeffs.b2 * m_outDelay[0][1]);
-
-        float rout = (mCoeffs.a0 * rsample) + (mCoeffs.a1 * m_inDelay[1][0]) +
-                     (mCoeffs.a2 * m_inDelay[1][1]) -
-                     (mCoeffs.b1 * m_outDelay[1][0]) -
-                     (mCoeffs.b2 * m_outDelay[1][1]);
-
-        m_inDelay[0][1] = m_inDelay[0][0];
-        m_inDelay[0][0] = lsample;
-        m_outDelay[0][1] = m_outDelay[0][0];
-        m_outDelay[0][0] = lout;
-
-        m_inDelay[1][1] = m_inDelay[1][0];
-        m_inDelay[1][0] = rsample;
-        m_outDelay[1][1] = m_outDelay[1][0];
-        m_outDelay[1][0] = rout;
+        float lout = computeFilter(0, lsample);
+        float rout = computeFilter(1, rsample);
 
         m_samplePos += freqRatio;
         const WavesampleLoop *loop = m_wavesample->loop();
