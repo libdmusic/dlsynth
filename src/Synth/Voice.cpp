@@ -527,7 +527,8 @@ struct Voice::impl : public VoiceMessageExecutor {
         float freqRatio = m_pitchNode.frequencyRatio();
 
         lcoef += lowpass_b * (m_gainNode.leftGain() - lcoef);
-        rcoef += lowpass_b * (m_gainNode.rightGain() - lcoef);
+        rcoef += lowpass_b * (m_gainNode.rightGain() - rcoef);
+
         float lsample =
          interpolateSample(m_samplePos, m_sample->leftData()) * lcoef;
         float rsample =
