@@ -42,7 +42,7 @@ template <typename T> struct StructLoader {
 
     const char *data_end = begin + sizeof(T);
 
-    std::array<char, sizeof(T)> buffer;
+    alignas(T) std::array<char, sizeof(T)> buffer;
     std::copy(begin, data_end, buffer.begin());
 
 #ifdef DLSYNTH_BIGENDIAN
