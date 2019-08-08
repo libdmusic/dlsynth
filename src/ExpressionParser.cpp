@@ -94,8 +94,20 @@ public:
 };
 
 ExpressionParser::ExpressionParser(std::uint32_t sampleRate,
-                                   std::uint32_t memorySize)
+                                   std::uint32_t memorySize) noexcept
   : m_queryMap(std::make_unique<QueryMap>(sampleRate, memorySize)) {}
+
+ExpressionParser::ExpressionParser(ExpressionParser &&exprParser) noexcept
+  : m_queryMap(std::move(exprParser.m_queryMap)) {}
+
+ExpressionParser::ExpressionParser(const ExpressionParser &exprParser) noexcept
+  : m_queryMap(std::make_unique<QueryMap>(*exprParser.m_queryMap)) {}
+
+ExpressionParser &ExpressionParser::
+operator=(const ExpressionParser &exprParser) noexcept {
+  m_queryMap = std::make_unique<QueryMap>(*exprParser.m_queryMap);
+  return *this;
+}
 
 bool ExpressionParser::execute(const std::vector<char> &data) const {
   std::stack<uint32_t> stack;

@@ -93,11 +93,12 @@ class TransformParams final {
   TransformType m_type;
 
 public:
-  constexpr TransformParams(bool invert, bool bipolar, TransformType type)
+  constexpr TransformParams(bool invert, bool bipolar,
+                            TransformType type) noexcept
     : m_invert(invert), m_bipolar(bipolar), m_type(type) {}
-  constexpr bool invert() const { return m_invert; }
-  constexpr bool bipolar() const { return m_bipolar; }
-  constexpr TransformType type() const { return m_type; }
+  constexpr bool invert() const noexcept { return m_invert; }
+  constexpr bool bipolar() const noexcept { return m_bipolar; }
+  constexpr TransformType type() const noexcept { return m_type; }
 };
 
 /// Defines how an input signal affects an instrument parameter
@@ -136,15 +137,17 @@ public:
 class Articulator final {
   std::vector<ConnectionBlock> m_blocks;
 
-  void load_art1(riffcpp::Chunk &chunk);
-
-  void load_art2(riffcpp::Chunk &chunk);
-
 public:
-  Articulator(riffcpp::Chunk &chunk, const ExpressionParser &exprParser);
+  Articulator(const std::vector<ConnectionBlock> &blocks) noexcept;
 
   /// List of connection blocks defined for this articulator
-  const std::vector<ConnectionBlock> &connectionBlocks() const;
+  constexpr const std::vector<ConnectionBlock> &connectionBlocks() const
+   noexcept {
+    return m_blocks;
+  }
+
+  static Articulator readChunk(riffcpp::Chunk &chunk,
+                               const ExpressionParser &exprParser);
 };
 } // namespace DLSynth
 

@@ -16,23 +16,34 @@ class Sound final {
   impl *m_pimpl;
 
 public:
-  Sound(riffcpp::Chunk &chunk, std::uint32_t sampleRate);
-  Sound(Sound &&snd);
+  Sound(const std::vector<Instrument> &instruments,
+        const std::vector<Wave> &wavepool) noexcept;
+  Sound(const std::vector<Instrument> &instruments,
+        const std::vector<Wave> &wavepool, const Uuid &dlid) noexcept;
+  Sound(const std::vector<Instrument> &instruments,
+        const std::vector<Wave> &wavepool, const Info &info) noexcept;
+  Sound(const std::vector<Instrument> &instruments,
+        const std::vector<Wave> &wavepool, const Uuid &dlid,
+        const Info &info) noexcept;
+  Sound(Sound &&snd) noexcept;
+  Sound(const Sound &snd) noexcept;
   ~Sound();
 
-  Sound &operator=(const Sound &) = delete;
+  Sound &operator=(const Sound &) noexcept;
 
   /// Returns the \ref Uuid of the sound, if it exists
-  const Uuid *dlid() const;
+  const Uuid *dlid() const noexcept;
 
   /// Returns the instruments contained in this collection
-  const std::vector<Instrument> &instruments() const;
+  const std::vector<Instrument> &instruments() const noexcept;
 
   /// Returns the wavepool of this collection
-  const std::vector<Wave> &wavepool() const;
+  const std::vector<Wave> &wavepool() const noexcept;
 
   /// Returns the contents of the INFO chunk, if it exists
-  const Info *info() const;
+  const Info *info() const noexcept;
+
+  static Sound readChunk(riffcpp::Chunk &chunk, std::uint32_t sampleRate);
 };
 } // namespace DLSynth
 

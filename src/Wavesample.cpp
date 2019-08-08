@@ -5,20 +5,54 @@
 
 using namespace DLSynth;
 
-Wavesample::Wavesample(riffcpp::Chunk &chunk) {
-  wsmp wavesample = readChunk<wsmp>(chunk);
-  m_gain = wavesample.lGain;
-  m_fineTune = wavesample.sFineTune;
-  m_unityNote = wavesample.usUnityNote;
-  if (wavesample.cSampleLoops) {
-    const auto &loopData = wavesample.loops[0];
-    m_loop = std::make_unique<WavesampleLoop>(
-     static_cast<LoopType>(loopData.ulLoopType), loopData.ulLoopStart,
-     loopData.ulLoopLength);
-  }
+Wavesample::Wavesample(std::uint16_t unityNode, std::int16_t fineTune,
+                       std::int32_t gain) noexcept
+  : m_unityNote(unityNode), m_fineTune(fineTune), m_gain(gain) {}
+
+Wavesample::Wavesample(std::uint16_t unityNode, std::int16_t fineTune,
+                       std::int32_t gain, const WavesampleLoop &loop) noexcept
+  : m_unityNote(unityNode)
+  , m_fineTune(fineTune)
+  , m_gain(gain)
+  , m_loop(std::make_unique<WavesampleLoop>(loop)) {}
+
+Wavesample::Wavesample(Wavesample &&wavesample) noexcept
+  : m_unityNote(wavesample.m_unityNote)
+  , m_fineTune(wavesample.m_fineTune)
+  , m_gain(wavesample.m_gain)
+  , m_loop(std::move(wavesample.m_loop)) {}
+Wavesample::Wavesample(const Wavesample &wavesample) noexcept
+  : m_unityNote(wavesample.m_unityNote)
+  , m_fineTune(wavesample.m_fineTune)
+  , m_gain(wavesample.m_gain)
+  , m_loop(wavesample.m_loop
+            ? std::make_unique<WavesampleLoop>(*wavesample.m_loop)
+            : nullptr) {}
+
+Wavesample &Wavesample::operator=(const Wavesample &wavesample) noexcept {
+  m_unityNote = wavesample.m_unityNote;
+  m_fineTune = wavesample.m_fineTune;
+  m_gain = wavesample.m_gain;
+  m_loop = wavesample.m_loop
+            ? std::make_unique<WavesampleLoop>(*wavesample.m_loop)
+            : nullptr;
+
+  return *this;
 }
 
-float Wavesample::gain() const { return relativeGainUnitsToBels(m_gain); }
-float Wavesample::fineTune() const { return m_fineTune; }
-std::uint16_t Wavesample::unityNote() const { return m_unityNote; }
-const WavesampleLoop *Wavesample::loop() const { return m_loop.get(); }
+const WavesampleLoop *Wavesample::loop() const noexcept { return m_loop.get(); }
+
+Wavesample Wavesample::readChunk(riffcpp::Chunk &chunk) {
+  wsmp wavesample = ::DLSynth::readChunk<wsmp>(chunk);
+  if (wavesample.cSampleLoops) {
+    const auto &loopData = wavesample.loops[0];
+
+    return Wavesample(
+     wavesample.usUnityNote, wavesample.sFineTune, wavesample.lGain,
+     WavesampleLoop(static_cast<LoopType>(loopData.ulLoopType),
+                    loopData.ulLoopStart, loopData.ulLoopLength));
+  } else {
+    return Wavesample(wavesample.usUnityNote, wavesample.sFineTune,
+                      wavesample.lGain);
+  }
+}

@@ -32,23 +32,34 @@ class Wavesample final {
   std::unique_ptr<WavesampleLoop> m_loop = nullptr;
 
 public:
-  Wavesample(riffcpp::Chunk &chunk);
+  Wavesample(std::uint16_t unityNode, std::int16_t fineTune,
+             std::int32_t gain) noexcept;
+  Wavesample(std::uint16_t unityNode, std::int16_t fineTune, std::int32_t gain,
+             const WavesampleLoop &loop) noexcept;
+
+  Wavesample(Wavesample &&wavesample) noexcept;
+  Wavesample(const Wavesample &wavesample) noexcept;
+  ~Wavesample() = default;
+
+  Wavesample &operator=(const Wavesample &wavesample) noexcept;
 
   /// Returns the MIDI note at which the sample will be played at its original
   /// pitch
-  std::uint16_t unityNote() const;
+  constexpr std::uint16_t unityNote() const noexcept { return m_unityNote; }
 
   /// Returns the tuning offset from \ref unityNote in cents
-  float fineTune() const;
+  constexpr float fineTune() const noexcept { return m_fineTune; }
 
   /// Returns the gain to be applied to the sample in bels
-  float gain() const;
+  constexpr float gain() const noexcept { return static_cast<float>(m_gain); }
 
   /// Returns the loop of the sample, if it exists
   /**
    * If this returns null, then this Wavesample is one-shot.
    */
-  const WavesampleLoop *loop() const;
+  const WavesampleLoop *loop() const noexcept;
+
+  static Wavesample readChunk(riffcpp::Chunk &chunk);
 };
 } // namespace DLSynth
 

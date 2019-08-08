@@ -5,26 +5,12 @@
 #include <set>
 
 using namespace DLSynth;
-Articulator::Articulator(riffcpp::Chunk &chunk,
-                         const ExpressionParser &exprParser) {
-  for (auto child : chunk) {
-    if (child.id() == cdl_id) {
-      if (!exprParser.execute(child)) {
-        throw Error("Condition failed", ErrorCode::CONDITION_FAILED);
-      }
-    } else if (child.id() == art1_id) {
-      load_art1(child);
-    } else if (child.id() == art2_id) {
-      load_art2(child);
-    }
-  }
-}
 
-const std::vector<ConnectionBlock> &Articulator::connectionBlocks() const {
-  return m_blocks;
-}
+Articulator::Articulator(const std::vector<ConnectionBlock> &blocks) noexcept
+  : m_blocks(blocks) {}
 
-void Articulator::load_art2(riffcpp::Chunk &chunk) {
+static void load_art2(riffcpp::Chunk &chunk,
+                      std::vector<ConnectionBlock> &m_blocks) {
   art articulator = readChunk<art>(chunk);
 
   for (const auto &connectionBlock : articulator.blocks) {
@@ -47,7 +33,8 @@ void Articulator::load_art2(riffcpp::Chunk &chunk) {
   }
 }
 
-void Articulator::load_art1(riffcpp::Chunk &chunk) {
+static void load_art1(riffcpp::Chunk &chunk,
+                      std::vector<ConnectionBlock> &m_blocks) {
   static std::set<Source> bipolarSources{Source::LFO,        Source::CC10,
                                          Source::PitchWheel, Source::RPN1,
                                          Source::RPN2,       Source::Vibrato};
@@ -69,4 +56,22 @@ void Articulator::load_art1(riffcpp::Chunk &chunk) {
                      transType),
      TransformParams(false, false, transType));
   }
+}
+
+Articulator Articulator::readChunk(riffcpp::Chunk &chunk,
+                                   const ExpressionParser &exprParser) {
+  std::vector<ConnectionBlock> blocks;
+  for (auto child : chunk) {
+    if (child.id() == cdl_id) {
+      if (!exprParser.execute(child)) {
+        throw Error("Condition failed", ErrorCode::CONDITION_FAILED);
+      }
+    } else if (child.id() == art1_id) {
+      load_art1(child, blocks);
+    } else if (child.id() == art2_id) {
+      load_art2(child, blocks);
+    }
+  }
+
+  return Articulator(blocks);
 }

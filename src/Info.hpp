@@ -11,14 +11,18 @@ class Info {
 public:
   Info(const std::string &name, const std::string &subject,
        const std::string &author, const std::string &copyright,
-       const std::string &information);
-  const std::string &name() const;
-  const std::string &subject() const;
-  const std::string &author() const;
-  const std::string &copyright() const;
-  const std::string &information() const;
+       const std::string &information) noexcept;
+  constexpr const std::string &name() const noexcept { return m_name; }
+  constexpr const std::string &subject() const noexcept { return m_subject; }
+  constexpr const std::string &author() const noexcept { return m_author; }
+  constexpr const std::string &copyright() const noexcept {
+    return m_copyright;
+  }
+  constexpr const std::string &information() const noexcept {
+    return m_information;
+  }
 
-  static Info read(riffcpp::Chunk &chunk);
+  static Info readChunk(riffcpp::Chunk &chunk);
 };
 } // namespace DLSynth
 

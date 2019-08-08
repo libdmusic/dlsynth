@@ -7,18 +7,12 @@ using namespace DLSynth;
 
 Info::Info(const std::string &name, const std::string &subject,
            const std::string &author, const std::string &copyright,
-           const std::string &information)
+           const std::string &information) noexcept
   : m_name(name)
   , m_subject(subject)
   , m_author(author)
   , m_copyright(copyright)
   , m_information(information) {}
-
-const std::string &Info::name() const { return m_name; }
-const std::string &Info::subject() const { return m_subject; }
-const std::string &Info::author() const { return m_author; }
-const std::string &Info::copyright() const { return m_copyright; }
-const std::string &Info::information() const { return m_information; }
 
 static std::string readString(riffcpp::Chunk &c) {
   std::vector<char> data;
@@ -27,7 +21,7 @@ static std::string readString(riffcpp::Chunk &c) {
   return std::string(data.data(), data.size());
 }
 
-Info Info::read(riffcpp::Chunk &chunk) {
+Info Info::readChunk(riffcpp::Chunk &chunk) {
   assert(chunk.id() == riffcpp::list_id && chunk.type() == INFO_id);
 
   std::string name, subject, author, copyright, information;

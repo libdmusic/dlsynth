@@ -18,11 +18,14 @@ class Wave final {
   impl *m_pimpl;
 
 public:
-  Wave(riffcpp::Chunk &chunk);
-  Wave(Wave &&wave);
+  Wave(const std::vector<float> &leftData, const std::vector<float> &rightData,
+       int sampleRate, const Wavesample *wavesample, const Info *info,
+       const Uuid *guid) noexcept;
+  Wave(Wave &&wave) noexcept;
+  Wave(const Wave &wave) noexcept;
   ~Wave();
 
-  Wave &operator=(const Wave &) = delete;
+  Wave &operator=(const Wave &) noexcept;
 
   /// Returns the left channel audio data of this file
   const std::vector<float> &leftData() const;
@@ -41,6 +44,8 @@ public:
 
   /// Returns the contents of the INFO chunk, if it exists
   const Info *info() const;
+
+  static Wave readChunk(riffcpp::Chunk &chunk);
 };
 } // namespace DLSynth
 

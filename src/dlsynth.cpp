@@ -47,9 +47,7 @@ struct dlsynth {
 };
 
 struct dlsynth_sound {
-  std::unique_ptr<DLSynth::Sound> sound;
-
-  ~dlsynth_sound() { sound = nullptr; }
+  DLSynth::Sound sound;
 };
 struct dlsynth_instr {
   const dlsynth_sound *sound;
@@ -57,9 +55,7 @@ struct dlsynth_instr {
 };
 
 struct dlsynth_wav {
-  std::unique_ptr<DLSynth::Wave> wave;
-
-  ~dlsynth_wav() { wave = nullptr; }
+  DLSynth::Wave wave;
 };
 int dlsynth_load_sound_file(const char *path, uint32_t sampleRate,
                             dlsynth_sound **sound) {
@@ -70,8 +66,7 @@ int dlsynth_load_sound_file(const char *path, uint32_t sampleRate,
 
   try {
     riffcpp::Chunk chunk(path);
-    *sound = new dlsynth_sound();
-    (*sound)->sound = std::make_unique<DLSynth::Sound>(chunk, sampleRate);
+    *sound = new dlsynth_sound{DLSynth::Sound::readChunk(chunk, sampleRate)};
 
     return 1;
   } catch (riffcpp::Error &e) {
@@ -95,8 +90,7 @@ int dlsynth_load_sound_buf(const void *buf, size_t buf_size,
 
   try {
     riffcpp::Chunk chunk(buf, buf_size);
-    *sound = new dlsynth_sound();
-    (*sound)->sound = std::make_unique<DLSynth::Sound>(chunk, sampleRate);
+    *sound = new dlsynth_sound{DLSynth::Sound::readChunk(chunk, sampleRate)};
 
     return 1;
   } catch (riffcpp::Error &e) {
@@ -120,12 +114,12 @@ int dlsynth_free_sound(dlsynth_sound *sound) {
 }
 
 int dlsynth_sound_instr_count(const dlsynth_sound *sound, std::size_t *count) {
-  if (sound == nullptr || count == nullptr || sound->sound == nullptr) {
+  if (sound == nullptr || count == nullptr) {
     dlsynth_error = DLSYNTH_INVALID_ARGS;
     return 0;
   }
 
-  *count = sound->sound->instruments().size();
+  *count = sound->sound.instruments().size();
   return 1;
 }
 
@@ -137,7 +131,7 @@ int dlsynth_sound_instr_info(const dlsynth_instr *instr, uint32_t *bank,
     return 0;
   }
 
-  const auto &i = instr->sound->sound->instruments()[instr->index];
+  const auto &i = instr->sound->sound.instruments()[instr->index];
   *bank = i.midiBank();
   *patch = i.midiInstrument();
 
@@ -146,12 +140,12 @@ int dlsynth_sound_instr_info(const dlsynth_instr *instr, uint32_t *bank,
 
 int dlsynth_get_instr_patch(std::uint32_t bank, std::uint32_t patch,
                             const dlsynth_sound *sound, dlsynth_instr **instr) {
-  if (sound == nullptr || instr == nullptr || sound->sound == nullptr) {
+  if (sound == nullptr || instr == nullptr) {
     dlsynth_error = DLSYNTH_INVALID_ARGS;
     return 0;
   }
 
-  const auto &instruments = sound->sound->instruments();
+  const auto &instruments = sound->sound.instruments();
   for (std::size_t i = 0; i < instruments.size(); i++) {
     const auto &instrument = instruments[i];
     if (instrument.midiBank() == bank && instrument.midiInstrument() == patch) {
@@ -169,12 +163,12 @@ int dlsynth_get_instr_patch(std::uint32_t bank, std::uint32_t patch,
 
 int dlsynth_get_instr_num(std::size_t instr_num, const dlsynth_sound *sound,
                           dlsynth_instr **instr) {
-  if (sound == nullptr || instr == nullptr || sound->sound == nullptr) {
+  if (sound == nullptr || instr == nullptr) {
     dlsynth_error = DLSYNTH_INVALID_ARGS;
     return 0;
   }
 
-  if (instr_num >= sound->sound->instruments().size()) {
+  if (instr_num >= sound->sound.instruments().size()) {
     dlsynth_error = DLSYNTH_INVALID_INSTR;
     return 0;
   }
@@ -202,8 +196,7 @@ int dlsynth_load_wav_file(const char *path, dlsynth_wav **wav) {
 
   try {
     riffcpp::Chunk chunk(path);
-    *wav = new dlsynth_wav();
-    (*wav)->wave = std::make_unique<DLSynth::Wave>(chunk);
+    *wav = new dlsynth_wav{DLSynth::Wave::readChunk(chunk)};
 
     return 1;
   } catch (riffcpp::Error &e) {
@@ -227,8 +220,7 @@ int dlsynth_load_wav_buffer(const void *buf, size_t buf_size,
 
   try {
     riffcpp::Chunk chunk(buf, buf_size);
-    *wav = new dlsynth_wav();
-    (*wav)->wave = std::make_unique<DLSynth::Wave>(chunk);
+    *wav = new dlsynth_wav{DLSynth::Wave::readChunk(chunk)};
 
     return 1;
   } catch (riffcpp::Error &e) {
@@ -245,28 +237,26 @@ int dlsynth_load_wav_buffer(const void *buf, size_t buf_size,
 
 int dlsynth_get_wav_info(const dlsynth_wav *wav, int *sample_rate,
                          size_t *n_frames) {
-  if (wav == nullptr || sample_rate == nullptr || n_frames == nullptr ||
-      wav->wave == nullptr) {
+  if (wav == nullptr || sample_rate == nullptr || n_frames == nullptr) {
     dlsynth_error = DLSYNTH_INVALID_ARGS;
     return 0;
   }
 
-  *sample_rate = wav->wave->sampleRate();
-  *n_frames = wav->wave->leftData().size();
+  *sample_rate = wav->wave.sampleRate();
+  *n_frames = wav->wave.leftData().size();
 
   return 1;
 }
 
 int dlsynth_get_wav_data(const dlsynth_wav *wav, const float **left_buf,
                          const float **right_buf) {
-  if (wav == nullptr || left_buf == nullptr || right_buf == nullptr ||
-      wav->wave == nullptr) {
+  if (wav == nullptr || left_buf == nullptr || right_buf == nullptr) {
     dlsynth_error = DLSYNTH_INVALID_ARGS;
     return 0;
   }
 
-  *left_buf = wav->wave->leftData().data();
-  *right_buf = wav->wave->rightData().data();
+  *left_buf = wav->wave.leftData().data();
+  *right_buf = wav->wave.rightData().data();
 
   return 1;
 }
@@ -287,7 +277,7 @@ int dlsynth_init(const dlsynth_settings *settings, dlsynth **synth) {
     return 0;
   }
 
-  const DLSynth::Sound &sound = *(settings->instrument->sound->sound);
+  const DLSynth::Sound &sound = settings->instrument->sound->sound;
 
   *synth = new dlsynth();
   (*synth)->synth = std::make_unique<DLSynth::Synth::Synthesizer>(
@@ -325,9 +315,10 @@ int dlsynth_render_float(dlsynth *synth, float *buffer, size_t frames,
       synth->synth->render_fill(lbuf, lbuf_end, rbuf, rbuf_end, 2, gain);
     } else {
       float *lbuf = buffer;
-      float *rbuf = buffer + frames;
+      float *lbuf_end = buffer + frames;
+      float *rbuf = lbuf_end;
       float *rbuf_end = rbuf + frames;
-      synth->synth->render_fill(lbuf, rbuf, rbuf, rbuf_end, 1, gain);
+      synth->synth->render_fill(lbuf, lbuf_end, rbuf, rbuf_end, 1, gain);
     }
   } else {
     synth->synth->render_fill(buffer, buffer + frames, nullptr, nullptr, 1,

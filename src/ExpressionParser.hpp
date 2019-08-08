@@ -14,8 +14,12 @@ class ExpressionParser final {
   std::unique_ptr<QueryMap> m_queryMap;
 
 public:
-  ExpressionParser(std::uint32_t sampleRate, std::uint32_t memorySize);
+  ExpressionParser(std::uint32_t sampleRate, std::uint32_t memorySize) noexcept;
+  ExpressionParser(const ExpressionParser &exprParser) noexcept;
+  ExpressionParser(ExpressionParser &&exprParser) noexcept;
   ~ExpressionParser();
+
+  ExpressionParser &operator=(const ExpressionParser &exprParser) noexcept;
 
   /// Executes an expression and returns its result
   bool execute(const std::vector<char> &data) const;

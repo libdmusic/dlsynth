@@ -5,10 +5,10 @@
 #include <cstdint>
 
 namespace DLSynth {
-constexpr bool operator==(const Uuid &lhs, const Uuid &rhs) {
+constexpr bool operator==(const Uuid &lhs, const Uuid &rhs) noexcept {
   return lhs.a == rhs.a && lhs.b == rhs.b && lhs.c == rhs.c && lhs.d == rhs.d;
 }
-constexpr bool operator!=(const Uuid &lhs, const Uuid &rhs) {
+constexpr bool operator!=(const Uuid &lhs, const Uuid &rhs) noexcept {
   return !(lhs == rhs);
 }
 } // namespace DLSynth
