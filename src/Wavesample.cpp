@@ -40,6 +40,12 @@ Wavesample &Wavesample::operator=(const Wavesample &wavesample) noexcept {
   return *this;
 }
 
+std::uint16_t Wavesample::unityNote() const noexcept { return m_unityNote; }
+
+float Wavesample::fineTune() const noexcept { return m_fineTune; }
+
+float Wavesample::gain() const noexcept { return static_cast<float>(m_gain); }
+
 const WavesampleLoop *Wavesample::loop() const noexcept { return m_loop.get(); }
 
 Wavesample Wavesample::readChunk(riffcpp::Chunk &chunk) {

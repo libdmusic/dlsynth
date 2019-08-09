@@ -45,13 +45,13 @@ public:
 
   /// Returns the MIDI note at which the sample will be played at its original
   /// pitch
-  constexpr std::uint16_t unityNote() const noexcept { return m_unityNote; }
+  std::uint16_t unityNote() const noexcept;
 
   /// Returns the tuning offset from \ref unityNote in cents
-  constexpr float fineTune() const noexcept { return m_fineTune; }
+  float fineTune() const noexcept;
 
   /// Returns the gain to be applied to the sample in bels
-  constexpr float gain() const noexcept { return static_cast<float>(m_gain); }
+  float gain() const noexcept;
 
   /// Returns the loop of the sample, if it exists
   /**
