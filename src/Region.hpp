@@ -35,25 +35,22 @@ public:
   Region &operator=(const Region &region) noexcept;
 
   /// Returns the range of notes for which this region is valid
-  constexpr const Range &keyRange() const noexcept { return m_keyRange; }
+  const Range &keyRange() const noexcept;
 
   /// Returns the range of velocities for which this region is valid
-  constexpr const Range &velocityRange() const noexcept { return m_velRange; }
+  const Range &velocityRange() const noexcept;
 
   /// Returns the key group to which this region is assigned.
   /**
    * @remarks Only valid if the instrument is a drum instrument
    */
-  constexpr std::uint16_t keyGroup() const noexcept { return m_keyGroup; }
+  std::uint16_t keyGroup() const noexcept;
 
   /// Returns the connection blocks defined for this region
-  constexpr const std::vector<ConnectionBlock> &connectionBlocks() const
-   noexcept {
-    return m_blocks;
-  }
+  const std::vector<ConnectionBlock> &connectionBlocks() const noexcept;
 
   /// Returns the index of the wave associated with this region in the wavepool
-  constexpr std::uint32_t waveIndex() const noexcept { return m_waveIndex; }
+  std::uint32_t waveIndex() const noexcept;
 
   /// Returns wavesample data that overrides the one specified in the wave, if
   /// it exists
@@ -61,9 +58,7 @@ public:
 
   /// If true, playing a note while a voice is already playing the same note
   /// spawns a new voice instead of restarting the preexisting one
-  constexpr bool selfNonExclusive() const noexcept {
-    return m_selfNonExclusive;
-  }
+  bool selfNonExclusive() const noexcept;
 
   static Region readChunk(riffcpp::Chunk &chunk,
                           const ExpressionParser &exprParser);

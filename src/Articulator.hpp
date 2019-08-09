@@ -141,10 +141,7 @@ public:
   Articulator(const std::vector<ConnectionBlock> &blocks) noexcept;
 
   /// List of connection blocks defined for this articulator
-  constexpr const std::vector<ConnectionBlock> &connectionBlocks() const
-   noexcept {
-    return m_blocks;
-  }
+  const std::vector<ConnectionBlock> &connectionBlocks() const noexcept;
 
   static Articulator readChunk(riffcpp::Chunk &chunk,
                                const ExpressionParser &exprParser);

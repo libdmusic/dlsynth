@@ -58,6 +58,11 @@ static void load_art1(riffcpp::Chunk &chunk,
   }
 }
 
+const std::vector<ConnectionBlock> &Articulator::connectionBlocks() const
+ noexcept {
+  return m_blocks;
+}
+
 Articulator Articulator::readChunk(riffcpp::Chunk &chunk,
                                    const ExpressionParser &exprParser) {
   std::vector<ConnectionBlock> blocks;

@@ -14,6 +14,12 @@ Info::Info(const std::string &name, const std::string &subject,
   , m_copyright(copyright)
   , m_information(information) {}
 
+const std::string &Info::name() const noexcept { return m_name; }
+const std::string &Info::subject() const noexcept { return m_subject; }
+const std::string &Info::author() const noexcept { return m_author; }
+const std::string &Info::copyright() const noexcept { return m_copyright; }
+const std::string &Info::information() const noexcept { return m_information; }
+
 static std::string readString(riffcpp::Chunk &c) {
   std::vector<char> data;
   data.resize(c.size());

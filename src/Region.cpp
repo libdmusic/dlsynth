@@ -60,6 +60,20 @@ const Wavesample *Region::wavesample() const noexcept {
   return m_wavesample.get();
 }
 
+const Range &Region::keyRange() const noexcept { return m_keyRange; }
+
+const Range &Region::velocityRange() const noexcept { return m_velRange; }
+
+std::uint16_t Region::keyGroup() const noexcept { return m_keyGroup; }
+
+const std::vector<ConnectionBlock> &Region::connectionBlocks() const noexcept {
+  return m_blocks;
+}
+
+std::uint32_t Region::waveIndex() const noexcept { return m_waveIndex; }
+
+bool Region::selfNonExclusive() const noexcept { return m_selfNonExclusive; }
+
 Region Region::readChunk(riffcpp::Chunk &chunk,
                          const ExpressionParser &exprParser) {
   bool rgnh_found = false;
