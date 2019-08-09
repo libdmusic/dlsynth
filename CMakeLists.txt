@@ -35,7 +35,7 @@ target_sources(dlsynth
         ${CMAKE_CURRENT_LIST_DIR}/src/Wavesample.cpp
 )
 
-target_compile_features(dlsynth PUBLIC cxx_std_14)
+target_compile_features(dlsynth PRIVATE cxx_std_17)
 target_include_directories(dlsynth
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>
