@@ -48,10 +48,31 @@ target_include_directories(dlsynth
 
 if(DLSYNTH_ENABLE_SIMD STREQUAL "SSE")
     target_compile_definitions(dlsynth PRIVATE DLSYNTH_USE_SSE=1)
+    if(MSVC AND CMAKE_SIZEOF_VOID_P EQUAL "4")
+        target_compile_options(dlsynth PUBLIC /arch:SSE)
+    endif()
+
+    if(NOT MSVC)
+        target_compile_options(dlsynth PUBLIC -msse)
+    endif()
 elseif(DLSYNTH_ENABLE_SIMD STREQUAL "SSE2")
     target_compile_definitions(dlsynth PRIVATE DLSYNTH_USE_SSE=2)
+    if(MSVC AND CMAKE_SIZEOF_VOID_P EQUAL "4")
+        target_compile_options(dlsynth PUBLIC /arch:SSE2)
+    endif()
+
+    if(NOT MSVC)
+        target_compile_options(dlsynth PUBLIC -msse2)
+    endif()
 elseif(DLSYNTH_ENABLE_SIMD STREQUAL "SSE3")
     target_compile_definitions(dlsynth PRIVATE DLSYNTH_USE_SSE=3)
+    if(MSVC)
+        target_compile_options(dlsynth PUBLIC /arch:SSE3)
+    endif()
+
+    if(NOT MSVC)
+        target_compile_options(dlsynth PUBLIC -msse3)
+    endif()
 endif()
 
 find_package(riffcpp CONFIG REQUIRED)
