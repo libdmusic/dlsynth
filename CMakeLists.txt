@@ -9,12 +9,15 @@ add_library(DLSynth::dlsynth ALIAS dlsynth)
 include(GenerateExportHeader)
 generate_export_header(dlsynth)
 
+set(DLSYNTH_ENABLE_SIMD "OFF" CACHE STRING "The SIMD instruction set to use")
+
 target_sources(dlsynth
     PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}/src/Decoders/FloatDecoder.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/Decoders/LogarithmicDecoder.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/Decoders/MsAdpcmDecoder.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/Decoders/PcmDecoder.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/src/Synth/DisableDenormals.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/Synth/EG.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/Synth/LFO.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/Synth/ModMatrix.cpp
@@ -42,6 +45,14 @@ target_include_directories(dlsynth
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
         $<INSTALL_INTERFACE:include>
 )
+
+if(DLSYNTH_ENABLE_SIMD STREQUAL "SSE")
+    target_compile_definitions(dlsynth PRIVATE DLSYNTH_USE_SSE=1)
+elseif(DLSYNTH_ENABLE_SIMD STREQUAL "SSE2")
+    target_compile_definitions(dlsynth PRIVATE DLSYNTH_USE_SSE=2)
+elseif(DLSYNTH_ENABLE_SIMD STREQUAL "SSE3")
+    target_compile_definitions(dlsynth PRIVATE DLSYNTH_USE_SSE=3)
+endif()
 
 find_package(riffcpp CONFIG REQUIRED)
 
