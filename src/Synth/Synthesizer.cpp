@@ -1,5 +1,6 @@
 #include "Synthesizer.hpp"
 #include "../Articulator.hpp"
+#include "DisableDenormals.hpp"
 #include "Voice.hpp"
 #include <algorithm>
 #include <array>
@@ -203,6 +204,7 @@ void Synthesizer::render_fill(float *beginLeft, float *endLeft,
                               float *beginRight, float *endRight,
                               std::size_t bufferSkip, float gain) {
   assert(pimpl != nullptr);
+  DisableDenormals no_denormals;
   bool isFirst = true;
   for (auto &voice : pimpl->m_voices) {
     if (isFirst) {
@@ -220,6 +222,7 @@ void Synthesizer::render_mix(float *beginLeft, float *endLeft,
                              float *beginRight, float *endRight,
                              std::size_t bufferSkip, float gain) {
   assert(pimpl != nullptr);
+  DisableDenormals no_denormals;
   for (auto &voice : pimpl->m_voices) {
     voice.render_mix(beginLeft, endLeft, beginRight, endRight, bufferSkip,
                      gain);

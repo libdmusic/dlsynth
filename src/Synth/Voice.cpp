@@ -7,6 +7,13 @@
 #include "VoiceMessage.hpp"
 #include <unordered_set>
 
+#if DLSYNTH_USE_SSE >= 3
+#include <pmmintrin.h>
+using FilterState = __m128;
+#else
+using FilterState = std::array<float, 4>;
+#endif
+
 using namespace DLSynth;
 using namespace DLSynth::Synth;
 
@@ -196,6 +203,10 @@ protected:
 struct FilterCoeffs {
   float a0, a1, a2;
   float b1, b2;
+
+#if DLSYNTH_USE_SSE >= 3
+  __m128 coeffs;
+#endif
 };
 
 /// Calculates the low-pass filter coefficients from the cutoff frequency and Q
@@ -225,10 +236,15 @@ public:
 
       m_coeffs.a0 = .5f * (.5f + beta - gamma);
       m_coeffs.a1 = .5f + beta - gamma;
-
       m_coeffs.a2 = m_coeffs.a0;
+
       m_coeffs.b1 = -2.f * gamma;
       m_coeffs.b2 = 2.f * beta;
+
+#if DLSYNTH_USE_SSE >= 3
+      m_coeffs.coeffs =
+       _mm_set_ps(m_coeffs.a1, m_coeffs.a2, m_coeffs.b1, m_coeffs.b2);
+#endif
     }
 
     return m_coeffs;
@@ -494,22 +510,49 @@ struct Voice::impl : public VoiceMessageExecutor {
   float rcoef = 0.f;
   static constexpr float lowpass_b = 0.01f;
 
-  std::array<std::array<float, 2>, 2> m_inDelay{};
-  std::array<std::array<float, 2>, 2> m_outDelay{};
+  std::array<FilterState, 2> m_filterState{};
 
   float computeFilter(int channel, float input) {
 
     const auto &mCoeffs = m_filterNode.coeffs();
 
-    float output = (mCoeffs.a0 * input) + (mCoeffs.a1 * m_inDelay[channel][0]) +
-                   (mCoeffs.a2 * m_inDelay[channel][1]) -
-                   (mCoeffs.b1 * m_outDelay[channel][0]) -
-                   (mCoeffs.b2 * m_outDelay[channel][1]);
+#if DLSYNTH_USE_SSE >= 3
+    __m128 zero = _mm_setzero_ps();
 
-    m_inDelay[channel][1] = m_inDelay[channel][0];
-    m_inDelay[channel][0] = input;
-    m_outDelay[channel][1] = m_outDelay[channel][0];
-    m_outDelay[channel][0] = output;
+    // a = (i0, i1, o0, o1)
+    __m128 a = m_filterState[0];
+
+    // b = (a1, a2, b1, b2)
+    __m128 b = mCoeffs.coeffs;
+
+    // c = (a1 * i0, a2 * i1, b1 * o0, b2 * o1)
+    __m128 c = _mm_mul_ps(a, b);
+
+    // d = (a1 * i0 + a2 * i1, b1 * o0 + b2 * o1, 0, 0)
+    __m128 d = _mm_hadd_ps(c, zero);
+
+    // e = (a1 * i0 + a2 * i1 - b1 * o0 - b2 * o1, 0, 0, 0)
+    __m128 e = _mm_hsub_ps(d, zero);
+
+    alignas(16) std::array<float, 4> values;
+    _mm_store_ps(values.data(), e);
+
+    float output = (mCoeffs.a0 * input) + values[0];
+    _mm_store_ps(values.data(), a);
+
+    m_filterState[0] = _mm_set_ps(input, values[0], output, values[2]);
+#else
+    float output = (mCoeffs.a0 * input) +
+                   (mCoeffs.a1 * m_filterState[channel][0]) +
+                   (mCoeffs.a2 * m_filterState[channel][1]) -
+                   (mCoeffs.b1 * m_filterState[channel][2]) -
+                   (mCoeffs.b2 * m_filterState[channel][3]);
+
+    m_filterState[channel][1] = m_filterState[channel][0];
+    m_filterState[channel][0] = input;
+    m_filterState[channel][3] = m_filterState[channel][2];
+    m_filterState[channel][2] = output;
+#endif
 
     return output;
   }
