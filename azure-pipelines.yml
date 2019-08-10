@@ -17,8 +17,16 @@ jobs:
     matrix:
       debug:
         BUILD_CONFIG: Debug
+        SIMD_VALUE: OFF
       release:
         BUILD_CONFIG: Debug
+        SIMD_VALUE: OFF
+      sse-debug:
+        BUILD_CONFIG: Debug
+        SIMD_VALUE: SSE3
+      sse-release:
+        BUILD_CONFIG: Release
+        SIMD_VALUE: SSE3
   steps:
   - script: git clone --depth=1 https://github.com/Microsoft/vcpkg $(VCPKG_ROOT)
   - script: $(VCPKG_ROOT)/bootstrap-vcpkg.sh
@@ -26,7 +34,7 @@ jobs:
   - script: |
       mkdir build
       cd build
-      cmake -DCMAKE_TOOLCHAIN_FILE=$(VCPKG_ROOT)/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=$(BUILD_CONFIG) -DBUILD_SHARED_LIBS=$(BUILD_SHARED) -DVCPKG_TARGET_TRIPLET=$(VCPKG_TRIPLET) ..
+      cmake -DCMAKE_TOOLCHAIN_FILE=$(VCPKG_ROOT)/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=$(BUILD_CONFIG) -DBUILD_SHARED_LIBS=$(BUILD_SHARED) -DVCPKG_TARGET_TRIPLET=$(VCPKG_TRIPLET) -DDLSYNTH_ENABLE_SIMD=$(SIMD_VALUE) ..
       cmake --build .
 - job: Windows
   pool:
@@ -41,41 +49,61 @@ jobs:
         VCPKG_TRIPLET: x64-windows-static
         BUILD_SHARED: OFF
         BUILD_CONFIG: Debug
+        SIMD_VALUE: OFF
       x64-static-release:
         CMAKE_GENERATOR: "Visual Studio 15 2017 Win64"
         VCPKG_TRIPLET: x64-windows-static
         BUILD_SHARED: OFF
         BUILD_CONFIG: Release
+        SIMD_VALUE: OFF
       x64-shared-debug:
         CMAKE_GENERATOR: "Visual Studio 15 2017 Win64"
         VCPKG_TRIPLET: x64-windows
         BUILD_SHARED: ON
         BUILD_CONFIG: Debug
+        SIMD_VALUE: OFF
       x64-shared-release:
         CMAKE_GENERATOR: "Visual Studio 15 2017 Win64"
         VCPKG_TRIPLET: x64-windows
         BUILD_SHARED: ON
         BUILD_CONFIG: Release
+        SIMD_VALUE: OFF
       x86-static-debug:
         CMAKE_GENERATOR: "Visual Studio 15 2017"
         VCPKG_TRIPLET: x86-windows-static
         BUILD_SHARED: OFF
         BUILD_CONFIG: Debug
+        SIMD_VALUE: OFF
       x86-static-release:
         CMAKE_GENERATOR: "Visual Studio 15 2017"
         VCPKG_TRIPLET: x86-windows-static
         BUILD_SHARED: OFF
         BUILD_CONFIG: Release
+        SIMD_VALUE: OFF
       x86-shared-debug:
         CMAKE_GENERATOR: "Visual Studio 15 2017"
         VCPKG_TRIPLET: x86-windows
         BUILD_SHARED: ON
         BUILD_CONFIG: Debug
+        SIMD_VALUE: OFF
       x86-shared-release:
         CMAKE_GENERATOR: "Visual Studio 15 2017"
         VCPKG_TRIPLET: x86-windows
         BUILD_SHARED: ON
         BUILD_CONFIG: Release
+        SIMD_VALUE: OFF
+      x64-shared-debug-sse:
+        CMAKE_GENERATOR: "Visual Studio 15 2017"
+        VCPKG_TRIPLET: x86-windows
+        BUILD_SHARED: ON
+        BUILD_CONFIG: Debug
+        SIMD_VALUE: SSE3
+      x64-shared-release-sse:
+        CMAKE_GENERATOR: "Visual Studio 15 2017"
+        VCPKG_TRIPLET: x86-windows
+        BUILD_SHARED: ON
+        BUILD_CONFIG: Release
+        SIMD_VALUE: SSE3
   steps:
   - script: git clone --depth=1 https://github.com/Microsoft/vcpkg $(VCPKG_ROOT)
   - script: $(VCPKG_ROOT)\bootstrap-vcpkg.bat
@@ -83,5 +111,5 @@ jobs:
   - script: |
       mkdir build
       cd build
-      cmake -G "$(CMAKE_GENERATOR)" -DBUILD_SHARED_LIBS=$(BUILD_SHARED) -DVCPKG_TARGET_TRIPLET=$(VCPKG_TRIPLET) -DCMAKE_TOOLCHAIN_FILE=$(VCPKG_ROOT)\scripts\buildsystems\vcpkg.cmake ..
+      cmake -G "$(CMAKE_GENERATOR)" -DBUILD_SHARED_LIBS=$(BUILD_SHARED) -DVCPKG_TARGET_TRIPLET=$(VCPKG_TRIPLET) -DCMAKE_TOOLCHAIN_FILE=$(VCPKG_ROOT)\scripts\buildsystems\vcpkg.cmake -DDLSYNTH_ENABLE_SIMD=$(SIMD_VALUE) ..
       cmake --build . --config $(BUILD_CONFIG)
