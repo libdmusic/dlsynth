@@ -108,5 +108,7 @@ std::unique_ptr<Transform> Transform::create(DLSynth::TransformType type,
     return std::make_unique<ConcaveTransform>(invert, bipolar);
   case TransformType::Convex:
     return std::make_unique<ConvexTransform>(invert, bipolar);
+  default:
+    return nullptr;
   }
 }
