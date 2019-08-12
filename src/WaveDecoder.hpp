@@ -26,26 +26,26 @@ public:
   virtual ~WaveDecoder();
 };
 
-/// Creates a \ref WaveDecoder according to the WAV file parameters
+/// Creates a @ref WaveDecoder according to the WAV file parameters
 class WaveDecoderFactory {
 public:
   using WaveDecoderPtr = std::unique_ptr<WaveDecoder>;
 
-  /// \see DecoderTable::getDecoder
+  /// @see DecoderTable::getDecoder
   virtual WaveDecoderPtr createDecoder(const WaveFormat &format,
                                        std::uint32_t fact,
                                        const std::vector<char> &data) = 0;
 
-  /// \see DecoderTable::getDecoder
+  /// @see DecoderTable::getDecoder
   virtual WaveDecoderPtr createDecoder(const WaveFormat &format,
                                        const std::vector<char> &data) = 0;
 
-  /// \see DecoderTable::getDecoder
+  /// @see DecoderTable::getDecoder
   virtual WaveDecoderPtr createDecoder(const WaveFormatEx &format,
                                        std::uint32_t fact,
                                        const std::vector<char> &data) = 0;
 
-  /// \see DecoderTable::getDecoder
+  /// @see DecoderTable::getDecoder
   virtual WaveDecoderPtr createDecoder(const WaveFormatEx &format,
                                        const std::vector<char> &data) = 0;
 

@@ -133,7 +133,7 @@ public:
   }
 };
 
-/// A set of \ref ConnectionBlock s that defines the parameters of an instrument
+/// A set of @ref ConnectionBlock s that defines the parameters of an instrument
 class Articulator final {
   std::vector<ConnectionBlock> m_blocks;
 

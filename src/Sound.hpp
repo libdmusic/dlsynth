@@ -31,7 +31,7 @@ public:
 
   Sound &operator=(const Sound &) noexcept;
 
-  /// Returns the \ref Uuid of the sound, if it exists
+  /// Returns the @ref Uuid of the sound, if it exists
   const Uuid *dlid() const noexcept;
 
   /// Returns the instruments contained in this collection

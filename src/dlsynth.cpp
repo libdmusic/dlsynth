@@ -407,8 +407,7 @@ int dlsynth_poly_pressure(struct dlsynth *synth, uint8_t note,
   synth->synth->pressure(note, velocity);
   return 1;
 }
-int dlsynth_channel_pressure(struct dlsynth *synth, uint8_t note,
-                             uint8_t velocity) {
+int dlsynth_channel_pressure(struct dlsynth *synth, uint8_t velocity) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
   synth->synth->pressure(velocity);

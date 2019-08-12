@@ -47,7 +47,7 @@ public:
   /// pitch
   std::uint16_t unityNote() const noexcept;
 
-  /// Returns the tuning offset from \ref unityNote in cents
+  /// Returns the tuning offset from @ref unityNote in cents
   float fineTune() const noexcept;
 
   /// Returns the gain to be applied to the sample in bels
