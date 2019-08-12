@@ -491,3 +491,40 @@ int dlsynth_all_sound_off(struct dlsynth *synth) {
   synth->synth->allSoundOff();
   return 1;
 }
+
+struct dlsynth_wavesample {
+  DLSynth::Wavesample wavesample;
+};
+
+int dlsynth_new_wavesample_oneshot(uint16_t unityNote, int16_t fineTune,
+                                   int32_t gain,
+                                   struct dlsynth_wavesample **wavesample) {
+  if (wavesample == nullptr) {
+    dlsynth_error = DLSYNTH_INVALID_ARGS;
+    return 0;
+  }
+  *wavesample =
+   new dlsynth_wavesample{DLSynth::Wavesample(unityNote, fineTune, gain)};
+  return 1;
+}
+int dlsynth_new_wavesample_looped(uint16_t unityNote, int16_t fineTune,
+                                  int32_t gain, enum dlsynth_loop_type type,
+                                  uint32_t loopStart, uint32_t loopLength,
+                                  struct dlsynth_wavesample **wavesample) {
+  if (wavesample == nullptr) {
+    dlsynth_error = DLSYNTH_INVALID_ARGS;
+    return 0;
+  }
+  *wavesample = new dlsynth_wavesample{DLSynth::Wavesample(
+   unityNote, fineTune, gain,
+   DLSynth::WavesampleLoop(static_cast<DLSynth::LoopType>(type), loopStart,
+                           loopLength))};
+  return 1;
+}
+int dlsynth_free_wavesample(struct dlsynth_wavesample *wavesample) {
+  if (wavesample != nullptr) {
+    delete wavesample;
+  }
+
+  return 1;
+}

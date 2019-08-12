@@ -5,13 +5,13 @@
 
 using namespace DLSynth;
 
-Wavesample::Wavesample(std::uint16_t unityNode, std::int16_t fineTune,
+Wavesample::Wavesample(std::uint16_t unityNote, std::int16_t fineTune,
                        std::int32_t gain) noexcept
-  : m_unityNote(unityNode), m_fineTune(fineTune), m_gain(gain) {}
+  : m_unityNote(unityNote), m_fineTune(fineTune), m_gain(gain) {}
 
-Wavesample::Wavesample(std::uint16_t unityNode, std::int16_t fineTune,
+Wavesample::Wavesample(std::uint16_t unityNote, std::int16_t fineTune,
                        std::int32_t gain, const WavesampleLoop &loop) noexcept
-  : m_unityNote(unityNode)
+  : m_unityNote(unityNote)
   , m_fineTune(fineTune)
   , m_gain(gain)
   , m_loop(std::make_unique<WavesampleLoop>(loop)) {}

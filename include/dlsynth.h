@@ -381,6 +381,20 @@ int DLSYNTH_EXPORT dlsynth_get_last_error(void);
 /// Resets the last generated error to \ref DLSYNTH_NO_ERROR
 void DLSYNTH_EXPORT dlsynth_reset_last_error(void);
 
+struct dlsynth_wavesample;
+
+enum dlsynth_loop_type { DLSYNTH_LOOP_FORWARD = 0, DLSYNTH_LOOP_RELEASE = 1 };
+
+int DLSYNTH_EXPORT dlsynth_new_wavesample_oneshot(
+ uint16_t unityNote, int16_t fineTune, int32_t gain,
+ struct dlsynth_wavesample **wavesample);
+int DLSYNTH_EXPORT dlsynth_new_wavesample_looped(
+ uint16_t unityNote, int16_t fineTune, int32_t gain,
+ enum dlsynth_loop_type type, uint32_t loopStart, uint32_t loopLength,
+ struct dlsynth_wavesample **wavesample);
+int DLSYNTH_EXPORT
+dlsynth_free_wavesample(struct dlsynth_wavesample *wavesample);
+
 #ifdef __cplusplus
 }
 #endif

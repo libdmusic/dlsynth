@@ -32,9 +32,9 @@ class Wavesample final {
   std::unique_ptr<WavesampleLoop> m_loop = nullptr;
 
 public:
-  Wavesample(std::uint16_t unityNode, std::int16_t fineTune,
+  Wavesample(std::uint16_t unityNote, std::int16_t fineTune,
              std::int32_t gain) noexcept;
-  Wavesample(std::uint16_t unityNode, std::int16_t fineTune, std::int32_t gain,
+  Wavesample(std::uint16_t unityNote, std::int16_t fineTune, std::int32_t gain,
              const WavesampleLoop &loop) noexcept;
 
   Wavesample(Wavesample &&wavesample) noexcept;
