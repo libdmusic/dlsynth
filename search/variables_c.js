@@ -1,7 +1,10 @@
 var searchData=
 [
-  ['pcm',['Pcm',['../struct_d_l_synth_1_1_wave_format.html#add3b349f97ff20e63b978c83cb2509d2',1,'DLSynth::WaveFormat']]],
-  ['pi',['PI',['../namespace_d_l_synth.html#a2bc19f31ad62078f441ac0013d6f2f6e',1,'DLSynth']]],
-  ['predictor',['predictor',['../struct_adpcm_header.html#a22b9de28335df065e08b967ff9e82222',1,'AdpcmHeader']]],
-  ['ptbl_5fid',['ptbl_id',['../_common_four_c_cs_8hpp.html#a8291733c7bdf9d0237b2efb48ee4030b',1,'CommonFourCCs.hpp']]]
+  ['rcoef',['rcoef',['../struct_voice_1_1impl.html#abcd2d48361e2b73080fc18d2df801a1e',1,'Voice::impl']]],
+  ['renderbuffer',['renderBuffer',['../structdlsynth.html#aafcaac85d213412da5f359c0c72325c0',1,'dlsynth']]],
+  ['renderbuffersize',['renderBufferSize',['../structdlsynth.html#a33ae82c14782b4151d5e3093ede03ad1',1,'dlsynth']]],
+  ['renderbuffersizeframes',['renderBufferSizeFrames',['../structdlsynth.html#ac00ad1582e83294821296d5158737190',1,'dlsynth']]],
+  ['rgn2_5fid',['rgn2_id',['../_common_four_c_cs_8hpp.html#a856fccaf8838f7ed16546f5e3380d7b3',1,'CommonFourCCs.hpp']]],
+  ['rgn_5fid',['rgn_id',['../_common_four_c_cs_8hpp.html#a621a10925a97eb6eec2410a14a2cb66e',1,'CommonFourCCs.hpp']]],
+  ['rgnh_5fid',['rgnh_id',['../_common_four_c_cs_8hpp.html#a2e4e4b4070a95411736a4743e43fb371',1,'CommonFourCCs.hpp']]]
 ];

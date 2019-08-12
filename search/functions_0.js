@@ -5,9 +5,9 @@ var searchData=
   ['addconnection',['addConnection',['../class_d_l_synth_1_1_synth_1_1_signal_destination.html#a9a6fe2664b5611926c76b84d2fad0564',1,'DLSynth::Synth::SignalDestination']]],
   ['allnotesoff',['allNotesOff',['../class_d_l_synth_1_1_synth_1_1_synthesizer.html#ad0b3f1ea6dd0c51be9f214df83407641',1,'DLSynth::Synth::Synthesizer']]],
   ['allsoundoff',['allSoundOff',['../class_d_l_synth_1_1_synth_1_1_synthesizer.html#a939f36e6b55d3d1adbbe33d131480cfe',1,'DLSynth::Synth::Synthesizer']]],
-  ['articulator',['Articulator',['../class_d_l_synth_1_1_articulator.html#a9505cae82affa1777d2a0d565263ba1e',1,'DLSynth::Articulator']]],
+  ['articulator',['Articulator',['../class_d_l_synth_1_1_articulator.html#adcad56400b0676bce7bb163d89d1f281',1,'DLSynth::Articulator']]],
   ['asfreq',['asFreq',['../class_d_l_synth_1_1_synth_1_1_signal_destination.html#a9f25ae1459e0f8f21e7549fcf8a76752',1,'DLSynth::Synth::SignalDestination']]],
   ['asgain',['asGain',['../class_d_l_synth_1_1_synth_1_1_signal_destination.html#a7bda59a469f1d8297347457648be6d9c',1,'DLSynth::Synth::SignalDestination']]],
   ['assecs',['asSecs',['../class_d_l_synth_1_1_synth_1_1_signal_destination.html#ad6ae882e6fbddcb3dcff02bbdb3e8b7a',1,'DLSynth::Synth::SignalDestination']]],
-  ['author',['author',['../class_d_l_synth_1_1_info.html#a1c95487c2c34f3c36d45b4129e955f91',1,'DLSynth::Info']]]
+  ['author',['author',['../class_d_l_synth_1_1_info.html#a75ffab6deecaa597285e68fd57da3b7b',1,'DLSynth::Info']]]
 ];

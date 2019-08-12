@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['name',['name',['../class_d_l_synth_1_1_info.html#a213eec0f71bb8edfcbad7086bfcd0630',1,'DLSynth::Info']]],
+  ['name',['name',['../class_d_l_synth_1_1_info.html#afb8be18f52a763538582903b48417a1e',1,'DLSynth::Info']]],
   ['nextsample',['nextSample',['../class_d_l_synth_1_1_synth_1_1_e_g.html#aaaf94405aba9846b688ccf9565d1f20c',1,'DLSynth::Synth::EG::nextSample()'],['../class_d_l_synth_1_1_synth_1_1_l_f_o.html#a45ed69ca1bf62e659b0b4541df6a57c3',1,'DLSynth::Synth::LFO::nextSample()']]],
   ['normalize',['normalize',['../namespace_d_l_synth.html#a9fa755510741453c9dc9acc90a98fc1f',1,'DLSynth::normalize(T value)'],['../namespace_d_l_synth.html#a6900327bb60c19bccb00ca9f274fa7f8',1,'DLSynth::normalize(std::uint8_t value)']]],
   ['note',['note',['../class_d_l_synth_1_1_synth_1_1_voice.html#ac8fa36c32b5beef8188a5111a62f87b0',1,'DLSynth::Synth::Voice::note()'],['../class_d_l_synth_1_1_synth_1_1_note_on_message.html#ad5d4c339598e4fe80f4269dc0807e557',1,'DLSynth::Synth::NoteOnMessage::note()']]],

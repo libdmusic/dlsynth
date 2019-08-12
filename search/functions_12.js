@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['unitynote',['unityNote',['../class_d_l_synth_1_1_wavesample.html#abdea42a5f2b28599eabdaab5dcb7060b',1,'DLSynth::Wavesample']]],
+  ['unitynote',['unityNote',['../class_d_l_synth_1_1_wavesample.html#a9318c982b7c2af4eaaa5b41b5ad41504',1,'DLSynth::Wavesample']]],
   ['updatefilteg',['updateFiltEg',['../struct_voice_1_1impl.html#aed8552eb76f8e7637f8527accb1ca522',1,'Voice::impl']]],
   ['updatemodlfo',['updateModLfo',['../struct_voice_1_1impl.html#a3c170a33038937e604264b099aa68bf0',1,'Voice::impl']]],
   ['updateviblfo',['updateVibLfo',['../struct_voice_1_1impl.html#a6775479f95afe9d8e65ea43c1d78ecd5',1,'Voice::impl']]],

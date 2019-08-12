@@ -4,12 +4,11 @@ var searchData=
   ['_7econtrolchangemessage',['~ControlChangeMessage',['../class_d_l_synth_1_1_synth_1_1_control_change_message.html#a5a9b1dfc90273c8d5d30fd0b3b17e201',1,'DLSynth::Synth::ControlChangeMessage']]],
   ['_7econvextransform',['~ConvexTransform',['../class_convex_transform.html#a4f34f8f30f3bd1a9656836f53fb4bb50',1,'ConvexTransform']]],
   ['_7edecodertable',['~DecoderTable',['../class_d_l_synth_1_1_decoder_table.html#a3645ae9cf5f476c78d9036998e4c7c94',1,'DLSynth::DecoderTable']]],
+  ['_7edisabledenormals',['~DisableDenormals',['../class_d_l_synth_1_1_synth_1_1_disable_denormals.html#a9c758e4d9610c47d6b24e6237c96d4f9',1,'DLSynth::Synth::DisableDenormals']]],
   ['_7edlsynth',['~dlsynth',['../structdlsynth.html#adb69a3c9aa513731b6d474623860f406',1,'dlsynth']]],
-  ['_7edlsynth_5fsound',['~dlsynth_sound',['../structdlsynth__sound.html#a602faf77f51af5fe4062ab64c56f0e30',1,'dlsynth_sound']]],
-  ['_7edlsynth_5fwav',['~dlsynth_wav',['../structdlsynth__wav.html#a20c969dc0ca3339c474d277bbec24752',1,'dlsynth_wav']]],
   ['_7eexpressionparser',['~ExpressionParser',['../class_d_l_synth_1_1_expression_parser.html#a12a5380920220c77bc102728625bc64f',1,'DLSynth::ExpressionParser']]],
   ['_7efloatdecoder',['~FloatDecoder',['../class_float_decoder.html#a03c5d5e3f91fd669ad14fcfa865c2675',1,'FloatDecoder']]],
-  ['_7eimpl',['~impl',['../struct_sound_1_1impl.html#a487fe8bc6ddb226529734f8f8e4da912',1,'DLSynth::Sound::impl::~impl()'],['../struct_voice_1_1impl.html#ad2587cb4758ca9549bf36d9cd67001d1',1,'DLSynth::Synth::Voice::impl::~impl()']]],
+  ['_7eimpl',['~impl',['../struct_voice_1_1impl.html#ad2587cb4758ca9549bf36d9cd67001d1',1,'Voice::impl']]],
   ['_7einstrument',['~Instrument',['../class_d_l_synth_1_1_instrument.html#a4d7d6e5a2b05597c049a9e0ca3be3d5f',1,'DLSynth::Instrument']]],
   ['_7elineartransform',['~LinearTransform',['../class_linear_transform.html#a0ea0c18ce5ebf89abdd2850d755073f0',1,'LinearTransform']]],
   ['_7elogarithmicdecoder',['~LogarithmicDecoder',['../class_logarithmic_decoder.html#a5dcc6516371b67a532ae8df6d6738ffd',1,'LogarithmicDecoder']]],
@@ -18,6 +17,7 @@ var searchData=
   ['_7enoteonmessage',['~NoteOnMessage',['../class_d_l_synth_1_1_synth_1_1_note_on_message.html#a6a7c2aff473137d208bfa62128b09670',1,'DLSynth::Synth::NoteOnMessage']]],
   ['_7eobservablesignal',['~ObservableSignal',['../class_d_l_synth_1_1_synth_1_1_observable_signal.html#a10fab45ec23be5a9e53b2662a3ea2d14',1,'DLSynth::Synth::ObservableSignal']]],
   ['_7epcmdecoder',['~PcmDecoder',['../class_pcm_decoder.html#a269f2bf125c2c6c60e9122c35c533be4',1,'PcmDecoder']]],
+  ['_7eregion',['~Region',['../class_d_l_synth_1_1_region.html#a267846c8b993c286277152b876de99e9',1,'DLSynth::Region']]],
   ['_7eresetcontrollersmessage',['~ResetControllersMessage',['../class_d_l_synth_1_1_synth_1_1_reset_controllers_message.html#ad0a256a7364c74980a35f44787882c2c',1,'DLSynth::Synth::ResetControllersMessage']]],
   ['_7esignaldestination',['~SignalDestination',['../class_d_l_synth_1_1_synth_1_1_signal_destination.html#ab615bc5fa370ea18b50d41dd42d7fb73',1,'DLSynth::Synth::SignalDestination']]],
   ['_7esignalobserver',['~SignalObserver',['../class_d_l_synth_1_1_synth_1_1_signal_observer.html#ae91820b31b4b6e276b69b7d81cbb8ecd',1,'DLSynth::Synth::SignalObserver']]],
@@ -33,5 +33,6 @@ var searchData=
   ['_7evoicemessageexecutor',['~VoiceMessageExecutor',['../class_d_l_synth_1_1_synth_1_1_voice_message_executor.html#ac1b621270fa43ce81acfc5af1de3cf9c',1,'DLSynth::Synth::VoiceMessageExecutor']]],
   ['_7ewave',['~Wave',['../class_d_l_synth_1_1_wave.html#a1ee01745e8ec8fff53f1581f0bd3af1f',1,'DLSynth::Wave']]],
   ['_7ewavedecoder',['~WaveDecoder',['../class_d_l_synth_1_1_wave_decoder.html#a9a27a0599c5b8817750b02120baa612d',1,'DLSynth::WaveDecoder']]],
-  ['_7ewavedecoderfactory',['~WaveDecoderFactory',['../class_d_l_synth_1_1_wave_decoder_factory.html#a0d835e4c5fbfd71d26c1ce89965b963e',1,'DLSynth::WaveDecoderFactory']]]
+  ['_7ewavedecoderfactory',['~WaveDecoderFactory',['../class_d_l_synth_1_1_wave_decoder_factory.html#a0d835e4c5fbfd71d26c1ce89965b963e',1,'DLSynth::WaveDecoderFactory']]],
+  ['_7ewavesample',['~Wavesample',['../class_d_l_synth_1_1_wavesample.html#ac0ec6bf004fda2857116eb3d71328783',1,'DLSynth::Wavesample']]]
 ];

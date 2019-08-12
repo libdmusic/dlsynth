@@ -1,14 +1,8 @@
 var searchData=
 [
-  ['samp1',['samp1',['../struct_adpcm_header.html#aead982d7425c21123765f3bbc6bd44b9',1,'AdpcmHeader']]],
-  ['samp2',['samp2',['../struct_adpcm_header.html#ab971c0cc91d8636faf5cf79b5de623d1',1,'AdpcmHeader']]],
-  ['sample_5frate',['sample_rate',['../structdlsynth__settings.html#a12763999bfc9fca01648d1a6f2cf190e',1,'dlsynth_settings']]],
-  ['samplesperblock',['samplesPerBlock',['../struct_adpcm_format.html#ab9c637d25f80f36788eb3186b60830f9',1,'AdpcmFormat']]],
-  ['samplespersec',['SamplesPerSec',['../struct_d_l_synth_1_1_wave_format.html#ae2300ebff25786c05d8304af631b73e0',1,'DLSynth::WaveFormat::SamplesPerSec()'],['../struct_d_l_synth_1_1_wave_format_ex.html#af43681d9156e7d1f4026aba086b8e49c',1,'DLSynth::WaveFormatEx::SamplesPerSec()']]],
-  ['scale',['scale',['../struct_connection.html#a5437fe363069819be54a241d196cd2fe',1,'Connection']]],
-  ['sfinetune',['sFineTune',['../structwsmp.html#aef8b02aeaace3eb1148e62f1fb89baae',1,'wsmp']]],
-  ['sound',['sound',['../structdlsynth__sound.html#af3537258e0a0329b227cf07087290571',1,'dlsynth_sound::sound()'],['../structdlsynth__instr.html#ad157c53202f490d4fa2c440bac5adc5c',1,'dlsynth_instr::sound()']]],
-  ['src',['src',['../struct_connection.html#a199d3ea5927f73ad90cbf341707b625e',1,'Connection']]],
-  ['srctransform',['srcTransform',['../struct_connection.html#acb70922fbaa41dc650508e686ce0e0b0',1,'Connection']]],
-  ['synth',['synth',['../structdlsynth.html#a90fa1c47d2004833cdd53afd85c500af',1,'dlsynth']]]
+  ['wave',['wave',['../structdlsynth__wav.html#aa8f2976e7f221c7c2f19109d4915ee48',1,'dlsynth_wav']]],
+  ['wave_5fid',['wave_id',['../_common_four_c_cs_8hpp.html#a25ef3824b1504569e7ddd8d3a57e6c04',1,'wave_id():&#160;CommonFourCCs.hpp'],['../_common_four_c_cs_8hpp.html#a96953d83625fe81ebb13e531728cf280',1,'WAVE_id():&#160;CommonFourCCs.hpp']]],
+  ['wlnk_5fid',['wlnk_id',['../_common_four_c_cs_8hpp.html#a8b9f0fc1764f4932b1f0559b0126c617',1,'CommonFourCCs.hpp']]],
+  ['wsmp_5fid',['wsmp_id',['../_common_four_c_cs_8hpp.html#aa60c0480b5246df1ef7995db29f120b5',1,'CommonFourCCs.hpp']]],
+  ['wvpl_5fid',['wvpl_id',['../_common_four_c_cs_8hpp.html#a558ba79718fbf9e49478bcc91830347f',1,'CommonFourCCs.hpp']]]
 ];

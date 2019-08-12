@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['extradata',['ExtraData',['../struct_d_l_synth_1_1_wave_format_ex.html#a00d0d1200a014c98fae3e0cc2ea67d30',1,'DLSynth::WaveFormatEx']]],
-  ['extrainfosize',['ExtraInfoSize',['../struct_d_l_synth_1_1_wave_format_ex.html#a03a4f875bff114c705a9688b0a110f3b',1,'DLSynth::WaveFormatEx']]]
+  ['fact_5fid',['fact_id',['../_common_four_c_cs_8hpp.html#a0b3c11fcdca5fe89d00492f591d87f44',1,'CommonFourCCs.hpp']]],
+  ['fmt_5fid',['fmt_id',['../_common_four_c_cs_8hpp.html#aec914358db337104d4d5169bc6a66121',1,'CommonFourCCs.hpp']]]
 ];

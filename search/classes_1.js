@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['cblock',['cblock',['../structcblock.html',1,'']]],
   ['concavetransform',['ConcaveTransform',['../class_concave_transform.html',1,'']]],
   ['connection',['Connection',['../struct_connection.html',1,'']]],
   ['connectionblock',['ConnectionBlock',['../class_d_l_synth_1_1_connection_block.html',1,'DLSynth']]],
