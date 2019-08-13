@@ -385,15 +385,44 @@ struct dlsynth_wavesample;
 
 enum dlsynth_loop_type { DLSYNTH_LOOP_FORWARD = 0, DLSYNTH_LOOP_RELEASE = 1 };
 
+/// Creates a new one-shot wavesample
 int DLSYNTH_EXPORT dlsynth_new_wavesample_oneshot(
  uint16_t unityNote, int16_t fineTune, int32_t gain,
  struct dlsynth_wavesample **wavesample);
+
+/// Creates a new looped wavesample
 int DLSYNTH_EXPORT dlsynth_new_wavesample_looped(
  uint16_t unityNote, int16_t fineTune, int32_t gain,
  enum dlsynth_loop_type type, uint32_t loopStart, uint32_t loopLength,
  struct dlsynth_wavesample **wavesample);
+
+/// Frees the resources associated with a wavesample
 int DLSYNTH_EXPORT
 dlsynth_free_wavesample(struct dlsynth_wavesample *wavesample);
+
+/// Creates a new mono WAV
+int DLSYNTH_EXPORT dlsynth_new_wav_mono(
+ int sampleRate, const float *dataBegin, const float *dataEnd,
+ const struct dlsynth_wavesample *wavesample, struct dlsynth_wav **wav);
+
+/// Creates a new stereo WAV
+int DLSYNTH_EXPORT dlsynth_new_wav_stereo(
+ int sampleRate, const float *leftDataBegin, const float *leftDataEnd,
+ const float *rightDataBegin, const float *rightDataEnd,
+ const struct dlsynth_wavesample *wavesample, struct dlsynth_wav **wav);
+
+/// A list of WAVs
+struct dlsynth_wavepool;
+
+/// Creates a new empty wavepool
+int DLSYNTH_EXPORT dlsynth_new_wavepool(struct dlsynth_wavepool **wavepool);
+
+/// Adds a WAV to a wavepool
+int DLSYNTH_EXPORT dlsynth_wavepool_add(struct dlsynth_wavepool *wavepool,
+                                        const struct dlsynth_wav *wav);
+
+/// Frees the resources associated with a wavepool
+int DLSYNTH_EXPORT dlsynth_free_wavepool(struct dlsynth_wavepool *wavepool);
 
 #ifdef __cplusplus
 }

@@ -528,3 +528,104 @@ int dlsynth_free_wavesample(struct dlsynth_wavesample *wavesample) {
 
   return 1;
 }
+
+int dlsynth_new_wav_mono(int sampleRate, const float *dataBegin,
+                         const float *dataEnd,
+                         const struct dlsynth_wavesample *wavesample,
+                         struct dlsynth_wav **wav) {
+  if (wav == nullptr) {
+    dlsynth_error = DLSYNTH_INVALID_ARGS;
+    return 0;
+  }
+
+  std::vector<float> data(dataBegin, dataEnd);
+
+  std::size_t dataSize = data.size();
+  if (wavesample != nullptr) {
+    if (wavesample->wavesample.loop() != nullptr) {
+      auto loop = wavesample->wavesample.loop();
+      if (loop->start() > dataSize ||
+          loop->start() + loop->length() > dataSize) {
+        dlsynth_error = DLSYNTH_INVALID_ARGS;
+        return 0;
+      }
+    }
+    *wav = new dlsynth_wav{DLSynth::Wave(
+     data, data, sampleRate, &wavesample->wavesample, nullptr, nullptr)};
+    return 1;
+  } else {
+    *wav = new dlsynth_wav{DLSynth::Wave(
+     data, data, sampleRate, &wavesample->wavesample, nullptr, nullptr)};
+    return 1;
+  }
+}
+int dlsynth_new_wav_stereo(int sampleRate, const float *leftDataBegin,
+                           const float *leftDataEnd,
+                           const float *rightDataBegin,
+                           const float *rightDataEnd,
+                           const struct dlsynth_wavesample *wavesample,
+                           struct dlsynth_wav **wav) {
+  if (wav == nullptr) {
+    dlsynth_error = DLSYNTH_INVALID_ARGS;
+    return 0;
+  }
+
+  std::vector<float> ldata(leftDataBegin, leftDataEnd);
+  std::vector<float> rdata(rightDataBegin, rightDataEnd);
+
+  if (ldata.size() != rdata.size()) {
+    dlsynth_error = DLSYNTH_INVALID_ARGS;
+    return 0;
+  }
+
+  std::size_t dataSize = ldata.size();
+  if (wavesample != nullptr) {
+    if (wavesample->wavesample.loop() != nullptr) {
+      auto loop = wavesample->wavesample.loop();
+      if (loop->start() > dataSize ||
+          loop->start() + loop->length() > dataSize) {
+        dlsynth_error = DLSYNTH_INVALID_ARGS;
+        return 0;
+      }
+    }
+    *wav = new dlsynth_wav{DLSynth::Wave(
+     ldata, rdata, sampleRate, &wavesample->wavesample, nullptr, nullptr)};
+    return 1;
+  } else {
+    *wav = new dlsynth_wav{DLSynth::Wave(
+     ldata, rdata, sampleRate, &wavesample->wavesample, nullptr, nullptr)};
+    return 1;
+  }
+}
+
+struct dlsynth_wavepool {
+  std::vector<DLSynth::Wave> waves;
+};
+
+int dlsynth_new_wavepool(struct dlsynth_wavepool **wavepool) {
+  if (wavepool == nullptr) {
+    dlsynth_error = DLSYNTH_INVALID_ARGS;
+    return 0;
+  }
+
+  *wavepool = new dlsynth_wavepool();
+  return 1;
+}
+int dlsynth_wavepool_add(struct dlsynth_wavepool *wavepool,
+                         const struct dlsynth_wav *wav) {
+  if (wavepool == nullptr || wav == nullptr) {
+    dlsynth_error = DLSYNTH_INVALID_ARGS;
+    return 0;
+  }
+
+  wavepool->waves.push_back(wav->wave);
+  return 1;
+}
+
+int dlsynth_free_wavepool(struct dlsynth_wavepool *wavepool) {
+  if (wavepool != nullptr) {
+    delete wavepool;
+  }
+
+  return 1;
+}
