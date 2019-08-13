@@ -629,3 +629,48 @@ int dlsynth_free_wavepool(struct dlsynth_wavepool *wavepool) {
 
   return 1;
 }
+
+struct dlsynth_blocklist {
+  std::vector<DLSynth::ConnectionBlock> blocks;
+};
+
+int dlsynth_new_blocklist(struct dlsynth_blocklist **blocklist) {
+  if (blocklist == nullptr) {
+    dlsynth_error = DLSYNTH_INVALID_ARGS;
+    return 0;
+  }
+
+  *blocklist = new dlsynth_blocklist();
+  return 1;
+}
+
+int dlsynth_blocklist_add(
+ struct dlsynth_blocklist *blocklist, enum dlsynth_source source,
+ enum dlsynth_source control, enum dlsynth_dest destination, int32_t scale,
+ int sourceInvert, int sourceBipolar, enum dlsynth_transf sourceTransform,
+ int controlInvert, int controlBipolar, enum dlsynth_transf controlTransform) {
+  if (blocklist == nullptr) {
+    dlsynth_error = DLSYNTH_INVALID_ARGS;
+    return 0;
+  }
+
+  blocklist->blocks.emplace_back(
+   static_cast<DLSynth::Source>(source), static_cast<DLSynth::Source>(control),
+   static_cast<DLSynth::Destination>(destination), scale,
+   DLSynth::TransformParams(
+    sourceInvert, sourceBipolar,
+    static_cast<DLSynth::TransformType>(sourceTransform)),
+   DLSynth::TransformParams(
+    controlInvert, controlBipolar,
+    static_cast<DLSynth::TransformType>(controlTransform)));
+
+  return 1;
+}
+
+int dlsynth_free_blocklist(struct dlsynth_blocklist *blocklist) {
+  if (blocklist != nullptr) {
+    delete blocklist;
+  }
+
+  return 1;
+}

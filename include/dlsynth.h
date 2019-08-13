@@ -424,6 +424,75 @@ int DLSYNTH_EXPORT dlsynth_wavepool_add(struct dlsynth_wavepool *wavepool,
 /// Frees the resources associated with a wavepool
 int DLSYNTH_EXPORT dlsynth_free_wavepool(struct dlsynth_wavepool *wavepool);
 
+/// A list of connection blocks
+struct dlsynth_blocklist;
+
+enum dlsynth_source {
+  DLSYNTH_SRC_NONE = 0x0000,
+  DLSYNTH_SRC_LFO = 0x0001,
+  DLSYNTH_SRC_KEYONVELOCITY = 0x0002,
+  DLSYNTH_SRC_KEYNUMBER = 0x0003,
+  DLSYNTH_SRC_EG1 = 0x0004,
+  DLSYNTH_SRC_EG2 = 0x0005,
+  DLSYNTH_SRC_PITCHWHEEL = 0x0006,
+  DLSYNTH_SRC_POLYPRESSURE = 0x0007,
+  DLSYNTH_SRC_CHANNELPRESSURE = 0x0008,
+  DLSYNTH_SRC_VIBRATO = 0x0009,
+  DLSYNTH_SRC_CC1 = 0x0081,
+  DLSYNTH_SRC_CC7 = 0x0087,
+  DLSYNTH_SRC_CC10 = 0x008a,
+  DLSYNTH_SRC_CC11 = 0x008b,
+  DLSYNTH_SRC_CC91 = 0x00db,
+  DLSYNTH_SRC_CC93 = 0x00dd,
+  DLSYNTH_SRC_RPN0 = 0x0100,
+  DLSYNTH_SRC_RPN1 = 0x0101,
+  DLSYNTH_SRC_RPN2 = 0x0102
+};
+
+enum dlsynth_dest {
+  DLSYNTH_DST_NONE = 0x0000,
+  DLSYNTH_DST_GAIN = 0x0001,
+  DLSYNTH_DST_PITCH = 0x0003,
+  DLSYNTH_DST_PAN = 0x0004,
+  DLSYNTH_DST_KEYNUM = 0x0005,
+  DLSYNTH_DST_CHORUS = 0x0080,
+  DLSYNTH_DST_REVERB = 0x0081,
+  DLSYNTH_DST_LFOFREQUENCY = 0x0104,
+  DLSYNTH_DST_LFOSTARTDELAY = 0x0105,
+  DLSYNTH_DST_VIBRATOFREQUENCY = 0x0114,
+  DLSYNTH_DST_VIBRATOSTARTDELAY = 0x0115,
+  DLSYNTH_DST_EG1ATTACKTIME = 0x0206,
+  DLSYNTH_DST_EG1DECAYTIME = 0x0207,
+  DLSYNTH_DST_EG1RELEASETIME = 0x0209,
+  DLSYNTH_DST_EG1SUSTAINLEVEL = 0x020A,
+  DLSYNTH_DST_EG1DELAYTIME = 0x020B,
+  DLSYNTH_DST_EG1HOLDTIME = 0x020C,
+  DLSYNTH_DST_EG1SHUTDOWNTIME = 0x020D,
+  DLSYNTH_DST_EG2ATTACKTIME = 0x030A,
+  DLSYNTH_DST_EG2DECAYTIME = 0x030B,
+  DLSYNTH_DST_EG2RELEASETIME = 0x030D,
+  DLSYNTH_DST_EG2SUSTAINLEVEL = 0x030E,
+  DLSYNTH_DST_EG2DELAYTIME = 0x030F,
+  DLSYNTH_DST_EG2HOLDTIME = 0x0310,
+  DLSYNTH_DST_FILTERCUTOFF = 0x0500,
+  DLSYNTH_DST_FILTERQ = 0x0501
+};
+
+enum dlsynth_transf {
+  DLSYNTH_TRN_LINEAR = 0,
+  DLSYNTH_TRN_CONCAVE = 1,
+  DLSYNTH_TRN_CONVEX = 2,
+  DLSYNTH_TRN_SWITCH = 3
+};
+
+int DLSYNTH_EXPORT dlsynth_new_blocklist(struct dlsynth_blocklist **blocklist);
+int DLSYNTH_EXPORT dlsynth_blocklist_add(
+ struct dlsynth_blocklist *blocklist, enum dlsynth_source source,
+ enum dlsynth_source control, enum dlsynth_dest destination, int32_t scale,
+ int sourceInvert, int sourceBipolar, enum dlsynth_transf sourceTransform,
+ int controlInvert, int controlBipolar, enum dlsynth_transf controlTransform);
+int DLSYNTH_EXPORT dlsynth_free_blocklist(struct dlsynth_blocklist *blocklist);
+
 #ifdef __cplusplus
 }
 #endif
