@@ -731,3 +731,39 @@ int dlsynth_free_regionlist(struct dlsynth_regionlist *list) {
 
   return 1;
 }
+
+struct dlsynth_instrlist {
+  std::vector<DLSynth::Instrument> instruments;
+};
+
+int dlsynth_new_instrlist(struct dlsynth_instrlist **list) {
+  if (list == nullptr) {
+    dlsynth_error = DLSYNTH_INVALID_ARGS;
+    return 0;
+  }
+
+  *list = new dlsynth_instrlist();
+  return 1;
+}
+
+int dlsynth_add_instrument(struct dlsynth_instrlist *list, uint32_t midiBank,
+                           uint32_t midiInstrument, int isDrumInstrument,
+                           const struct dlsynth_blocklist *blocklist,
+                           const struct dlsynth_regionlist *regions) {
+  if (list == nullptr || blocklist == nullptr || regions == nullptr) {
+    dlsynth_error = DLSYNTH_INVALID_ARGS;
+    return 0;
+  }
+
+  list->instruments.emplace_back(midiBank, midiInstrument, isDrumInstrument,
+                                 blocklist->blocks, regions->regions);
+  return 1;
+}
+
+int dlsynth_free_instrlist(struct dlsynth_instrlist *list) {
+  if (list != nullptr) {
+    delete list;
+  }
+
+  return 1;
+}

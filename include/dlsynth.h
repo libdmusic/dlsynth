@@ -514,6 +514,17 @@ int DLSYNTH_EXPORT dlsynth_add_region_wavesample(
 int DLSYNTH_EXPORT
 dlsynth_free_regionlist(struct dlsynth_regionlist *regionlist);
 
+struct dlsynth_instrlist;
+
+int DLSYNTH_EXPORT dlsynth_new_instrlist(struct dlsynth_instrlist **list);
+
+int DLSYNTH_EXPORT dlsynth_add_instrument(
+ struct dlsynth_instrlist *list, uint32_t midiBank, uint32_t midiInstrument,
+ int isDrumInstrument, const struct dlsynth_blocklist *blocklist,
+ const struct dlsynth_regionlist *regions);
+
+int DLSYNTH_EXPORT dlsynth_free_instrlist(struct dlsynth_instrlist *list);
+
 #ifdef __cplusplus
 }
 #endif
