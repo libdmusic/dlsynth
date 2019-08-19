@@ -17,12 +17,12 @@ namespace Synth {
     SignalObserver &operator=(SignalObserver &) = delete;
 
   protected:
-    /// Called when the value of one of the @ref ObservableSignal s to which
+    /// Called when the value of one of the ObservableSignal s to which
     /// this object is subscribed has changed value.
     virtual void sourceChanged() = 0;
   };
 
-  /// An object whose change in value can be listened by @ref SignalObserver s
+  /// An object whose change in value can be listened by SignalObserver s
   class ObservableSignal {
     struct impl;
 

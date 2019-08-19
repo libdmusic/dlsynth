@@ -33,7 +33,7 @@ public:
   /// Returns the right channel audio data of this file
   const std::vector<float> &rightData() const;
 
-  /// Returns the @ref Uuid of this file, if it exists
+  /// Returns the Uuid of this file, if it exists
   const Uuid *guid() const;
 
   /// Returns the associated @ref Wavesample object, if it exists

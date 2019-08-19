@@ -39,7 +39,7 @@ public:
 
   Instrument &operator=(const Instrument &) noexcept;
 
-  /// Returns the @ref Uuid of this instrument, if it exists
+  /// Returns the Uuid of this instrument, if it exists
   const Uuid *dlid() const noexcept;
 
   /// Returns the MIDI bank location of this instrument
