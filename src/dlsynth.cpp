@@ -767,3 +767,45 @@ int dlsynth_free_instrlist(struct dlsynth_instrlist *list) {
 
   return 1;
 }
+
+int dlsynth_new_sound(struct dlsynth_sound **sound,
+                      const struct dlsynth_instrlist *instruments,
+                      const struct dlsynth_wavepool *wavepool) {
+  if (sound == nullptr || instruments == nullptr || wavepool == nullptr) {
+    dlsynth_error = DLSYNTH_INVALID_ARGS;
+    return 0;
+  }
+
+  auto wavepool_size = wavepool->waves.size();
+
+  for (const auto &instr : instruments->instruments) {
+    for (const auto &region : instr.regions()) {
+      if (region.waveIndex() >= wavepool_size) {
+        dlsynth_error = DLSYNTH_INVALID_WAVE_INDEX;
+        return 0;
+      }
+
+      auto wsmpl = region.wavesample();
+      const auto &wave = wavepool->waves[region.waveIndex()];
+      if (!wsmpl) {
+        wsmpl = wave.wavesample();
+      }
+
+      if (!wsmpl) {
+        dlsynth_error = DLSYNTH_NO_WAVESAMPLE;
+        return 0;
+      }
+
+      const DLSynth::WavesampleLoop *loop = wsmpl->loop();
+      if (loop && (loop->start() >= wave.leftData().size() ||
+                   loop->start() + loop->length() >= wave.leftData().size())) {
+        dlsynth_error = DLSYNTH_INVALID_WAVESAMPLE;
+        return 0;
+      }
+    }
+  }
+
+  *sound =
+   new dlsynth_sound{DLSynth::Sound(instruments->instruments, wavepool->waves)};
+  return 1;
+}

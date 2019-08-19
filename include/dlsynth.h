@@ -525,6 +525,10 @@ int DLSYNTH_EXPORT dlsynth_add_instrument(
 
 int DLSYNTH_EXPORT dlsynth_free_instrlist(struct dlsynth_instrlist *list);
 
+int DLSYNTH_EXPORT dlsynth_new_sound(
+ struct dlsynth_sound **sound, const struct dlsynth_instrlist *instruments,
+ const struct dlsynth_wavepool *wavepool);
+
 #ifdef __cplusplus
 }
 #endif

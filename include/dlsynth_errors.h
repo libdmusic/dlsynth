@@ -14,3 +14,9 @@ DLSYNTH_ERROR(INVALID_ARGS, 4)
 DLSYNTH_ERROR(UNSUPPORTED_CODEC, 5)
 /// A condition has failed while loading the file
 DLSYNTH_ERROR(CONDITION_FAILED, 6)
+/// A region uses an invalid wavepool index
+DLSYNTH_ERROR(INVALID_WAVE_INDEX, 7)
+/// A wavesample specifies an out-of-range region
+DLSYNTH_ERROR(INVALID_WAVESAMPLE, 8)
+/// A region has no wavesample
+DLSYNTH_ERROR(NO_WAVESAMPLE, 9)
