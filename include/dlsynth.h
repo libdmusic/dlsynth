@@ -493,6 +493,27 @@ int DLSYNTH_EXPORT dlsynth_blocklist_add(
  int controlInvert, int controlBipolar, enum dlsynth_transf controlTransform);
 int DLSYNTH_EXPORT dlsynth_free_blocklist(struct dlsynth_blocklist *blocklist);
 
+struct dlsynth_regionlist;
+
+int DLSYNTH_EXPORT
+dlsynth_new_regionlist(struct dlsynth_regionlist **regionlist);
+
+int DLSYNTH_EXPORT dlsynth_add_region(struct dlsynth_regionlist *regionlist,
+                                      uint16_t minKey, uint16_t maxKey,
+                                      uint16_t minVelocity,
+                                      uint16_t maxVelocity,
+                                      const struct dlsynth_blocklist *blocklist,
+                                      uint32_t waveIndex, int selfNonExclusive);
+
+int DLSYNTH_EXPORT dlsynth_add_region_wavesample(
+ struct dlsynth_regionlist *regionlist, uint16_t minKey, uint16_t maxKey,
+ uint16_t minVelocity, uint16_t maxVelocity,
+ const struct dlsynth_blocklist *blocklist, uint32_t waveIndex,
+ int selfNonExclusive, const struct dlsynth_wavesample *wavesample);
+
+int DLSYNTH_EXPORT
+dlsynth_free_regionlist(struct dlsynth_regionlist *regionlist);
+
 #ifdef __cplusplus
 }
 #endif

@@ -674,3 +674,60 @@ int dlsynth_free_blocklist(struct dlsynth_blocklist *blocklist) {
 
   return 1;
 }
+
+struct dlsynth_regionlist {
+  std::vector<DLSynth::Region> regions;
+};
+
+int dlsynth_new_regionlist(struct dlsynth_regionlist **regionlist) {
+  if (regionlist == nullptr) {
+    dlsynth_error = DLSYNTH_INVALID_ARGS;
+    return 0;
+  }
+
+  *regionlist = new dlsynth_regionlist();
+  return 1;
+}
+
+int dlsynth_add_region(struct dlsynth_regionlist *list, uint16_t minKey,
+                       uint16_t maxKey, uint16_t minVelocity,
+                       uint16_t maxVelocity,
+                       const struct dlsynth_blocklist *blocklist,
+                       uint32_t waveIndex, int selfNonExclusive) {
+  if (list == nullptr || minKey > maxKey || minVelocity > maxVelocity ||
+      blocklist == nullptr) {
+    dlsynth_error = DLSYNTH_INVALID_ARGS;
+    return 0;
+  }
+
+  list->regions.emplace_back(DLSynth::Range{minKey, maxKey},
+                             DLSynth::Range{minVelocity, maxVelocity},
+                             blocklist->blocks, waveIndex, selfNonExclusive);
+  return 1;
+}
+
+int dlsynth_add_region_wavesample(struct dlsynth_regionlist *list,
+                                  uint16_t minKey, uint16_t maxKey,
+                                  uint16_t minVelocity, uint16_t maxVelocity,
+                                  const struct dlsynth_blocklist *blocklist,
+                                  uint32_t waveIndex, int selfNonExclusive,
+                                  const struct dlsynth_wavesample *wavesample) {
+  if (list == nullptr || minKey > maxKey || minVelocity > maxVelocity ||
+      blocklist == nullptr) {
+    dlsynth_error = DLSYNTH_INVALID_ARGS;
+    return 0;
+  }
+
+  list->regions.emplace_back(
+   DLSynth::Range{minKey, maxKey}, DLSynth::Range{minVelocity, maxVelocity},
+   blocklist->blocks, waveIndex, selfNonExclusive, wavesample->wavesample);
+  return 1;
+}
+
+int dlsynth_free_regionlist(struct dlsynth_regionlist *list) {
+  if (list != nullptr) {
+    delete list;
+  }
+
+  return 1;
+}
