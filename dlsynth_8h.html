@@ -96,10 +96,84 @@ Enumerations</h2></td></tr>
 <a class="el" href="dlsynth_8h.html#a0d6089813141c0c58ced90eb211c969aaf3737be7b748d98aeef3201bb4f0adaf">DLSYNTH_SEQUENTIAL</a>
  }</td></tr>
 <tr class="separator:a0d6089813141c0c58ced90eb211c969a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf24e9ecadad58acffda48af229fe9bb"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> { <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bba6013bee0d4371b01251589ccba604997">DLSYNTH_ERROR</a> =(CONDITION_FAILED, 6)# 374 "C:/Users/berto/dlsynth/include/dlsynth.h" 2, 
-<a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bba6013bee0d4371b01251589ccba604997">DLSYNTH_ERROR</a> =(CONDITION_FAILED, 6)# 374 "C:/Users/berto/dlsynth/include/dlsynth.h" 2
+<tr class="memitem:aaf24e9ecadad58acffda48af229fe9bb"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> { <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bba6013bee0d4371b01251589ccba604997">DLSYNTH_ERROR</a> =(NO_WAVESAMPLE, 9)# 378 "C:/Users/berto/dlsynth/include/dlsynth.h" 2, 
+<a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bba6013bee0d4371b01251589ccba604997">DLSYNTH_ERROR</a> =(NO_WAVESAMPLE, 9)# 378 "C:/Users/berto/dlsynth/include/dlsynth.h" 2
  }</td></tr>
 <tr class="separator:aaf24e9ecadad58acffda48af229fe9bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafd743b42a46ce69f08553d124ec8952b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#gafd743b42a46ce69f08553d124ec8952b">dlsynth_loop_type</a> { <a class="el" href="group___sound_creation.html#ggafd743b42a46ce69f08553d124ec8952baf31c65afcec3906112ccd4b37ad67a20">DLSYNTH_LOOP_FORWARD</a> = 0, 
+<a class="el" href="group___sound_creation.html#ggafd743b42a46ce69f08553d124ec8952ba137560ab7195a6f770dcec62e5de47fb">DLSYNTH_LOOP_RELEASE</a> = 1
+ }<tr class="memdesc:gafd743b42a46ce69f08553d124ec8952b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of loop for a wavesample.  <a href="group___sound_creation.html#gafd743b42a46ce69f08553d124ec8952b">More...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:gafd743b42a46ce69f08553d124ec8952b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaced293522972e47670225bc2a691f205"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#gaced293522972e47670225bc2a691f205">dlsynth_source</a> { <br />
+&#160;&#160;<a class="el" href="group___sound_creation.html#ggaced293522972e47670225bc2a691f205aa10e0065a4b5409a3b4037d61d47441a">DLSYNTH_SRC_NONE</a> = 0x0000, 
+<a class="el" href="group___sound_creation.html#ggaced293522972e47670225bc2a691f205aa97192248e58efec9067893e1bd9ec4c">DLSYNTH_SRC_LFO</a> = 0x0001, 
+<a class="el" href="group___sound_creation.html#ggaced293522972e47670225bc2a691f205a688b4d15b9b2cbb77fbac926c1927296">DLSYNTH_SRC_KEYONVELOCITY</a> = 0x0002, 
+<a class="el" href="group___sound_creation.html#ggaced293522972e47670225bc2a691f205a9920785ec3918ae2c6d4ec9da5aa940f">DLSYNTH_SRC_KEYNUMBER</a> = 0x0003, 
+<br />
+&#160;&#160;<a class="el" href="group___sound_creation.html#ggaced293522972e47670225bc2a691f205a9db179eb42cef290a6cea0f535d844eb">DLSYNTH_SRC_EG1</a> = 0x0004, 
+<a class="el" href="group___sound_creation.html#ggaced293522972e47670225bc2a691f205a4bae2d98cea3d229d4f30f391f017598">DLSYNTH_SRC_EG2</a> = 0x0005, 
+<a class="el" href="group___sound_creation.html#ggaced293522972e47670225bc2a691f205a023582366d738e59142bd424bc0c0200">DLSYNTH_SRC_PITCHWHEEL</a> = 0x0006, 
+<a class="el" href="group___sound_creation.html#ggaced293522972e47670225bc2a691f205a2ced0092e21c85fdb8e7317e240000bb">DLSYNTH_SRC_POLYPRESSURE</a> = 0x0007, 
+<br />
+&#160;&#160;<a class="el" href="group___sound_creation.html#ggaced293522972e47670225bc2a691f205a593e93700e34297ac5f0909137fcd6a1">DLSYNTH_SRC_CHANNELPRESSURE</a> = 0x0008, 
+<a class="el" href="group___sound_creation.html#ggaced293522972e47670225bc2a691f205a6ef8c195c9911e8d58948b3a5e01b075">DLSYNTH_SRC_VIBRATO</a> = 0x0009, 
+<a class="el" href="group___sound_creation.html#ggaced293522972e47670225bc2a691f205a9d5b6e985ed2a98304bae9d6e588579c">DLSYNTH_SRC_CC1</a> = 0x0081, 
+<a class="el" href="group___sound_creation.html#ggaced293522972e47670225bc2a691f205a2ee1f7dffa41c4b6fdc20c24a29ee284">DLSYNTH_SRC_CC7</a> = 0x0087, 
+<br />
+&#160;&#160;<a class="el" href="group___sound_creation.html#ggaced293522972e47670225bc2a691f205a71d57dd102f597c3e2d70e3caa71a0d8">DLSYNTH_SRC_CC10</a> = 0x008a, 
+<a class="el" href="group___sound_creation.html#ggaced293522972e47670225bc2a691f205a4ba686f4df19b3ed497714cbc0e7a9cd">DLSYNTH_SRC_CC11</a> = 0x008b, 
+<a class="el" href="group___sound_creation.html#ggaced293522972e47670225bc2a691f205aa9885fd217e986ff63292395a24b83a4">DLSYNTH_SRC_CC91</a> = 0x00db, 
+<a class="el" href="group___sound_creation.html#ggaced293522972e47670225bc2a691f205ab5caf5949dafc46f661566fc1b69a965">DLSYNTH_SRC_CC93</a> = 0x00dd, 
+<br />
+&#160;&#160;<a class="el" href="group___sound_creation.html#ggaced293522972e47670225bc2a691f205a93836f2642dc0aa5eaea499ddb14b6ba">DLSYNTH_SRC_RPN0</a> = 0x0100, 
+<a class="el" href="group___sound_creation.html#ggaced293522972e47670225bc2a691f205a26a52482eefff97efbc398b205aae4c8">DLSYNTH_SRC_RPN1</a> = 0x0101, 
+<a class="el" href="group___sound_creation.html#ggaced293522972e47670225bc2a691f205ae50aea17b236e5935c04a91a61d66b25">DLSYNTH_SRC_RPN2</a> = 0x0102
+<br />
+ }</td></tr>
+<tr class="separator:gaced293522972e47670225bc2a691f205"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8dda4bc3b6ee9be4147246f929037240"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga8dda4bc3b6ee9be4147246f929037240">dlsynth_dest</a> { <br />
+&#160;&#160;<a class="el" href="group___sound_creation.html#gga8dda4bc3b6ee9be4147246f929037240ab55af80fffc228b2276ccad76b952132">DLSYNTH_DST_NONE</a> = 0x0000, 
+<a class="el" href="group___sound_creation.html#gga8dda4bc3b6ee9be4147246f929037240a0274bb7bdec969737636d7b6362291bd">DLSYNTH_DST_GAIN</a> = 0x0001, 
+<a class="el" href="group___sound_creation.html#gga8dda4bc3b6ee9be4147246f929037240ae2451293cc6b0876b884070a900f89a1">DLSYNTH_DST_PITCH</a> = 0x0003, 
+<a class="el" href="group___sound_creation.html#gga8dda4bc3b6ee9be4147246f929037240a8636f22a4be1a0746f0fde70c0470f69">DLSYNTH_DST_PAN</a> = 0x0004, 
+<br />
+&#160;&#160;<a class="el" href="group___sound_creation.html#gga8dda4bc3b6ee9be4147246f929037240a232aff30d0a6a917636bc7fc9ab40e89">DLSYNTH_DST_KEYNUM</a> = 0x0005, 
+<a class="el" href="group___sound_creation.html#gga8dda4bc3b6ee9be4147246f929037240a45dbe99e6d436cd0e8d0115fec97df7e">DLSYNTH_DST_CHORUS</a> = 0x0080, 
+<a class="el" href="group___sound_creation.html#gga8dda4bc3b6ee9be4147246f929037240a5e7f6629de0ac31efc4e570a1d748fe5">DLSYNTH_DST_REVERB</a> = 0x0081, 
+<a class="el" href="group___sound_creation.html#gga8dda4bc3b6ee9be4147246f929037240ae31071e6fe3c65dc8fe573e0207eb3cd">DLSYNTH_DST_LFOFREQUENCY</a> = 0x0104, 
+<br />
+&#160;&#160;<a class="el" href="group___sound_creation.html#gga8dda4bc3b6ee9be4147246f929037240a283d3c784a450c0a74269eea616de915">DLSYNTH_DST_LFOSTARTDELAY</a> = 0x0105, 
+<a class="el" href="group___sound_creation.html#gga8dda4bc3b6ee9be4147246f929037240a70060ff333badcc83a1fbb991f3316bd">DLSYNTH_DST_VIBRATOFREQUENCY</a> = 0x0114, 
+<a class="el" href="group___sound_creation.html#gga8dda4bc3b6ee9be4147246f929037240af528154c739915abff6045aa0a245062">DLSYNTH_DST_VIBRATOSTARTDELAY</a> = 0x0115, 
+<a class="el" href="group___sound_creation.html#gga8dda4bc3b6ee9be4147246f929037240a8934e9e911d13828edad469f37f57d23">DLSYNTH_DST_EG1ATTACKTIME</a> = 0x0206, 
+<br />
+&#160;&#160;<a class="el" href="group___sound_creation.html#gga8dda4bc3b6ee9be4147246f929037240aa5bbe96fc3d73eebd3e4ba634fe671f9">DLSYNTH_DST_EG1DECAYTIME</a> = 0x0207, 
+<a class="el" href="group___sound_creation.html#gga8dda4bc3b6ee9be4147246f929037240ae93fb2e14221e007dca5fd0914ac694e">DLSYNTH_DST_EG1RELEASETIME</a> = 0x0209, 
+<a class="el" href="group___sound_creation.html#gga8dda4bc3b6ee9be4147246f929037240aed6265a7d949828913b6ba4e237de9d3">DLSYNTH_DST_EG1SUSTAINLEVEL</a> = 0x020A, 
+<a class="el" href="group___sound_creation.html#gga8dda4bc3b6ee9be4147246f929037240a65444434656f5590c049cc8084066db4">DLSYNTH_DST_EG1DELAYTIME</a> = 0x020B, 
+<br />
+&#160;&#160;<a class="el" href="group___sound_creation.html#gga8dda4bc3b6ee9be4147246f929037240a771c61bbb6384827bf2ed5c042c310ea">DLSYNTH_DST_EG1HOLDTIME</a> = 0x020C, 
+<a class="el" href="group___sound_creation.html#gga8dda4bc3b6ee9be4147246f929037240ac7f21fd3c069db08cb0ac001b3d075ce">DLSYNTH_DST_EG1SHUTDOWNTIME</a> = 0x020D, 
+<a class="el" href="group___sound_creation.html#gga8dda4bc3b6ee9be4147246f929037240ae070f3af87790ed2fd92a659fede37bb">DLSYNTH_DST_EG2ATTACKTIME</a> = 0x030A, 
+<a class="el" href="group___sound_creation.html#gga8dda4bc3b6ee9be4147246f929037240aba73a114ecd4a7b346482a585c2e3317">DLSYNTH_DST_EG2DECAYTIME</a> = 0x030B, 
+<br />
+&#160;&#160;<a class="el" href="group___sound_creation.html#gga8dda4bc3b6ee9be4147246f929037240a585c52b2aca73eb9fba1bcbc0fd85b08">DLSYNTH_DST_EG2RELEASETIME</a> = 0x030D, 
+<a class="el" href="group___sound_creation.html#gga8dda4bc3b6ee9be4147246f929037240a2d501cd7f6029527390d155cdfebd321">DLSYNTH_DST_EG2SUSTAINLEVEL</a> = 0x030E, 
+<a class="el" href="group___sound_creation.html#gga8dda4bc3b6ee9be4147246f929037240a6f682c8b032631130dd41baea2f3dbab">DLSYNTH_DST_EG2DELAYTIME</a> = 0x030F, 
+<a class="el" href="group___sound_creation.html#gga8dda4bc3b6ee9be4147246f929037240a4dfcbc6edb4b6bd750afc34285d10e63">DLSYNTH_DST_EG2HOLDTIME</a> = 0x0310, 
+<br />
+&#160;&#160;<a class="el" href="group___sound_creation.html#gga8dda4bc3b6ee9be4147246f929037240aae2775f57a60faae5b5206407b58e543">DLSYNTH_DST_FILTERCUTOFF</a> = 0x0500, 
+<a class="el" href="group___sound_creation.html#gga8dda4bc3b6ee9be4147246f929037240a2cdacff4d4461b5b7e3f0c4d67738e1d">DLSYNTH_DST_FILTERQ</a> = 0x0501
+<br />
+ }</td></tr>
+<tr class="separator:ga8dda4bc3b6ee9be4147246f929037240"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6848b516f2b4bc6b84e32fc074380991"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga6848b516f2b4bc6b84e32fc074380991">dlsynth_transf</a> { <a class="el" href="group___sound_creation.html#gga6848b516f2b4bc6b84e32fc074380991a0a2535d95e2376506f78885b89243a65">DLSYNTH_TRN_LINEAR</a> = 0, 
+<a class="el" href="group___sound_creation.html#gga6848b516f2b4bc6b84e32fc074380991ae9dafd8e3810f0af92d8194eeb352087">DLSYNTH_TRN_CONCAVE</a> = 1, 
+<a class="el" href="group___sound_creation.html#gga6848b516f2b4bc6b84e32fc074380991a96578d14526b956379c378f8c6072f47">DLSYNTH_TRN_CONVEX</a> = 2, 
+<a class="el" href="group___sound_creation.html#gga6848b516f2b4bc6b84e32fc074380991a825d7505d04cfb0c18f5965a7f1aa61f">DLSYNTH_TRN_SWITCH</a> = 3
+ }</td></tr>
+<tr class="separator:ga6848b516f2b4bc6b84e32fc074380991"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -202,6 +276,63 @@ Functions</h2></td></tr>
 <tr class="memitem:a9a3cdd9cc5df85e9efb0db1551e332a8"><td class="memItemLeft" align="right" valign="top">void DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8h.html#a9a3cdd9cc5df85e9efb0db1551e332a8">dlsynth_reset_last_error</a> (void)</td></tr>
 <tr class="memdesc:a9a3cdd9cc5df85e9efb0db1551e332a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the last generated error to DLSYNTH_NO_ERROR.  <a href="#a9a3cdd9cc5df85e9efb0db1551e332a8">More...</a><br /></td></tr>
 <tr class="separator:a9a3cdd9cc5df85e9efb0db1551e332a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6df962b05b832cdc3ef3019b529edd88"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga6df962b05b832cdc3ef3019b529edd88">dlsynth_new_wavesample_oneshot</a> (uint16_t unityNote, int16_t fineTune, int32_t gain, struct <a class="el" href="structdlsynth__wavesample.html">dlsynth_wavesample</a> **wavesample)</td></tr>
+<tr class="memdesc:ga6df962b05b832cdc3ef3019b529edd88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new one-shot wavesample.  <a href="group___sound_creation.html#ga6df962b05b832cdc3ef3019b529edd88">More...</a><br /></td></tr>
+<tr class="separator:ga6df962b05b832cdc3ef3019b529edd88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga97952e49d0a5c775d5e7a22330948743"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga97952e49d0a5c775d5e7a22330948743">dlsynth_new_wavesample_looped</a> (uint16_t unityNote, int16_t fineTune, int32_t gain, enum <a class="el" href="group___sound_creation.html#gafd743b42a46ce69f08553d124ec8952b">dlsynth_loop_type</a> type, uint32_t loopStart, uint32_t loopLength, struct <a class="el" href="structdlsynth__wavesample.html">dlsynth_wavesample</a> **wavesample)</td></tr>
+<tr class="memdesc:ga97952e49d0a5c775d5e7a22330948743"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new looped wavesample.  <a href="group___sound_creation.html#ga97952e49d0a5c775d5e7a22330948743">More...</a><br /></td></tr>
+<tr class="separator:ga97952e49d0a5c775d5e7a22330948743"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac07010e8ed234c659787956f745c371d"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#gac07010e8ed234c659787956f745c371d">dlsynth_free_wavesample</a> (struct <a class="el" href="structdlsynth__wavesample.html">dlsynth_wavesample</a> *wavesample)</td></tr>
+<tr class="memdesc:gac07010e8ed234c659787956f745c371d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the resources associated with a wavesample.  <a href="group___sound_creation.html#gac07010e8ed234c659787956f745c371d">More...</a><br /></td></tr>
+<tr class="separator:gac07010e8ed234c659787956f745c371d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac382ad6c44a703b05dd90b7f8124f5e3"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#gac382ad6c44a703b05dd90b7f8124f5e3">dlsynth_new_wav_mono</a> (int sampleRate, const float *dataBegin, const float *dataEnd, const struct <a class="el" href="structdlsynth__wavesample.html">dlsynth_wavesample</a> *wavesample, struct <a class="el" href="structdlsynth__wav.html">dlsynth_wav</a> **wav)</td></tr>
+<tr class="memdesc:gac382ad6c44a703b05dd90b7f8124f5e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new mono WAV.  <a href="group___sound_creation.html#gac382ad6c44a703b05dd90b7f8124f5e3">More...</a><br /></td></tr>
+<tr class="separator:gac382ad6c44a703b05dd90b7f8124f5e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga528c661195329e5221b8b5862df836fc"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga528c661195329e5221b8b5862df836fc">dlsynth_new_wav_stereo</a> (int sampleRate, const float *leftDataBegin, const float *leftDataEnd, const float *rightDataBegin, const float *rightDataEnd, const struct <a class="el" href="structdlsynth__wavesample.html">dlsynth_wavesample</a> *wavesample, struct <a class="el" href="structdlsynth__wav.html">dlsynth_wav</a> **wav)</td></tr>
+<tr class="memdesc:ga528c661195329e5221b8b5862df836fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new stereo WAV.  <a href="group___sound_creation.html#ga528c661195329e5221b8b5862df836fc">More...</a><br /></td></tr>
+<tr class="separator:ga528c661195329e5221b8b5862df836fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa74b08927a50a2519dd41533c05fd473"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#gaa74b08927a50a2519dd41533c05fd473">dlsynth_new_wavepool</a> (struct <a class="el" href="structdlsynth__wavepool.html">dlsynth_wavepool</a> **wavepool)</td></tr>
+<tr class="memdesc:gaa74b08927a50a2519dd41533c05fd473"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new empty wavepool.  <a href="group___sound_creation.html#gaa74b08927a50a2519dd41533c05fd473">More...</a><br /></td></tr>
+<tr class="separator:gaa74b08927a50a2519dd41533c05fd473"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1a4e7024f5d6a92a1b1ccab57dea6236"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga1a4e7024f5d6a92a1b1ccab57dea6236">dlsynth_wavepool_add</a> (struct <a class="el" href="structdlsynth__wavepool.html">dlsynth_wavepool</a> *wavepool, const struct <a class="el" href="structdlsynth__wav.html">dlsynth_wav</a> *wav)</td></tr>
+<tr class="memdesc:ga1a4e7024f5d6a92a1b1ccab57dea6236"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a WAV to a wavepool.  <a href="group___sound_creation.html#ga1a4e7024f5d6a92a1b1ccab57dea6236">More...</a><br /></td></tr>
+<tr class="separator:ga1a4e7024f5d6a92a1b1ccab57dea6236"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0c7527766fa4b60d5688d43904082661"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga0c7527766fa4b60d5688d43904082661">dlsynth_free_wavepool</a> (struct <a class="el" href="structdlsynth__wavepool.html">dlsynth_wavepool</a> *wavepool)</td></tr>
+<tr class="memdesc:ga0c7527766fa4b60d5688d43904082661"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the resources associated with a wavepool.  <a href="group___sound_creation.html#ga0c7527766fa4b60d5688d43904082661">More...</a><br /></td></tr>
+<tr class="separator:ga0c7527766fa4b60d5688d43904082661"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8b6f66fcc7afcdece47a433c3a214e76"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga8b6f66fcc7afcdece47a433c3a214e76">dlsynth_new_blocklist</a> (struct <a class="el" href="structdlsynth__blocklist.html">dlsynth_blocklist</a> **blocklist)</td></tr>
+<tr class="memdesc:ga8b6f66fcc7afcdece47a433c3a214e76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new blocklist.  <a href="group___sound_creation.html#ga8b6f66fcc7afcdece47a433c3a214e76">More...</a><br /></td></tr>
+<tr class="separator:ga8b6f66fcc7afcdece47a433c3a214e76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga158e9bea23807e5b8a2fd26f82b29c15"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga158e9bea23807e5b8a2fd26f82b29c15">dlsynth_blocklist_add</a> (struct <a class="el" href="structdlsynth__blocklist.html">dlsynth_blocklist</a> *blocklist, enum <a class="el" href="group___sound_creation.html#gaced293522972e47670225bc2a691f205">dlsynth_source</a> source, enum <a class="el" href="group___sound_creation.html#gaced293522972e47670225bc2a691f205">dlsynth_source</a> control, enum <a class="el" href="group___sound_creation.html#ga8dda4bc3b6ee9be4147246f929037240">dlsynth_dest</a> destination, int32_t scale, int sourceInvert, int sourceBipolar, enum <a class="el" href="group___sound_creation.html#ga6848b516f2b4bc6b84e32fc074380991">dlsynth_transf</a> sourceTransform, int controlInvert, int controlBipolar, enum <a class="el" href="group___sound_creation.html#ga6848b516f2b4bc6b84e32fc074380991">dlsynth_transf</a> controlTransform)</td></tr>
+<tr class="memdesc:ga158e9bea23807e5b8a2fd26f82b29c15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a connection block to a blocklist.  <a href="group___sound_creation.html#ga158e9bea23807e5b8a2fd26f82b29c15">More...</a><br /></td></tr>
+<tr class="separator:ga158e9bea23807e5b8a2fd26f82b29c15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaa68d2a4f444689c5da019c8958c0e89"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#gaaa68d2a4f444689c5da019c8958c0e89">dlsynth_free_blocklist</a> (struct <a class="el" href="structdlsynth__blocklist.html">dlsynth_blocklist</a> *blocklist)</td></tr>
+<tr class="memdesc:gaaa68d2a4f444689c5da019c8958c0e89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases the resources associated with a blocklist.  <a href="group___sound_creation.html#gaaa68d2a4f444689c5da019c8958c0e89">More...</a><br /></td></tr>
+<tr class="separator:gaaa68d2a4f444689c5da019c8958c0e89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5534a50b01a484424c37a626f6abcf36"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga5534a50b01a484424c37a626f6abcf36">dlsynth_new_regionlist</a> (struct <a class="el" href="structdlsynth__regionlist.html">dlsynth_regionlist</a> **regionlist)</td></tr>
+<tr class="memdesc:ga5534a50b01a484424c37a626f6abcf36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new regionlist.  <a href="group___sound_creation.html#ga5534a50b01a484424c37a626f6abcf36">More...</a><br /></td></tr>
+<tr class="separator:ga5534a50b01a484424c37a626f6abcf36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga279e69b0a046da8a36f2950fa5462193"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga279e69b0a046da8a36f2950fa5462193">dlsynth_add_region</a> (struct <a class="el" href="structdlsynth__regionlist.html">dlsynth_regionlist</a> *regionlist, uint16_t minKey, uint16_t maxKey, uint16_t minVelocity, uint16_t maxVelocity, const struct <a class="el" href="structdlsynth__blocklist.html">dlsynth_blocklist</a> *blocklist, uint32_t waveIndex, int selfNonExclusive)</td></tr>
+<tr class="memdesc:ga279e69b0a046da8a36f2950fa5462193"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a region to a regionlist.  <a href="group___sound_creation.html#ga279e69b0a046da8a36f2950fa5462193">More...</a><br /></td></tr>
+<tr class="separator:ga279e69b0a046da8a36f2950fa5462193"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga146feba2705797bf955e1867e3ad4eb4"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga146feba2705797bf955e1867e3ad4eb4">dlsynth_add_region_wavesample</a> (struct <a class="el" href="structdlsynth__regionlist.html">dlsynth_regionlist</a> *regionlist, uint16_t minKey, uint16_t maxKey, uint16_t minVelocity, uint16_t maxVelocity, const struct <a class="el" href="structdlsynth__blocklist.html">dlsynth_blocklist</a> *blocklist, uint32_t waveIndex, int selfNonExclusive, const struct <a class="el" href="structdlsynth__wavesample.html">dlsynth_wavesample</a> *wavesample)</td></tr>
+<tr class="memdesc:ga146feba2705797bf955e1867e3ad4eb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a region to a regionlist with a wavesample that overrides the one specified in the WAV.  <a href="group___sound_creation.html#ga146feba2705797bf955e1867e3ad4eb4">More...</a><br /></td></tr>
+<tr class="separator:ga146feba2705797bf955e1867e3ad4eb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga233729692e523bd0cd73ae52558d5172"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga233729692e523bd0cd73ae52558d5172">dlsynth_free_regionlist</a> (struct <a class="el" href="structdlsynth__regionlist.html">dlsynth_regionlist</a> *regionlist)</td></tr>
+<tr class="memdesc:ga233729692e523bd0cd73ae52558d5172"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases the resources associated with a regionlist.  <a href="group___sound_creation.html#ga233729692e523bd0cd73ae52558d5172">More...</a><br /></td></tr>
+<tr class="separator:ga233729692e523bd0cd73ae52558d5172"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafe26afd92bd2d3ea11de69ed31a7810c"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#gafe26afd92bd2d3ea11de69ed31a7810c">dlsynth_new_instrlist</a> (struct <a class="el" href="structdlsynth__instrlist.html">dlsynth_instrlist</a> **list)</td></tr>
+<tr class="memdesc:gafe26afd92bd2d3ea11de69ed31a7810c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new list of instruments.  <a href="group___sound_creation.html#gafe26afd92bd2d3ea11de69ed31a7810c">More...</a><br /></td></tr>
+<tr class="separator:gafe26afd92bd2d3ea11de69ed31a7810c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5bbafca324d98daab447c3434c5bfe92"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga5bbafca324d98daab447c3434c5bfe92">dlsynth_add_instrument</a> (struct <a class="el" href="structdlsynth__instrlist.html">dlsynth_instrlist</a> *list, uint32_t midiBank, uint32_t midiInstrument, int isDrumInstrument, const struct <a class="el" href="structdlsynth__blocklist.html">dlsynth_blocklist</a> *blocklist, const struct <a class="el" href="structdlsynth__regionlist.html">dlsynth_regionlist</a> *regions)</td></tr>
+<tr class="memdesc:ga5bbafca324d98daab447c3434c5bfe92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an instrument to a list of instruments.  <a href="group___sound_creation.html#ga5bbafca324d98daab447c3434c5bfe92">More...</a><br /></td></tr>
+<tr class="separator:ga5bbafca324d98daab447c3434c5bfe92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga21d67691eea7b09bbce45a908241ed27"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga21d67691eea7b09bbce45a908241ed27">dlsynth_free_instrlist</a> (struct <a class="el" href="structdlsynth__instrlist.html">dlsynth_instrlist</a> *list)</td></tr>
+<tr class="memdesc:ga21d67691eea7b09bbce45a908241ed27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases the resources associated with a list of instruments.  <a href="group___sound_creation.html#ga21d67691eea7b09bbce45a908241ed27">More...</a><br /></td></tr>
+<tr class="separator:ga21d67691eea7b09bbce45a908241ed27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga00fddf0899ba6b8edb98c7d29bb300e7"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga00fddf0899ba6b8edb98c7d29bb300e7">dlsynth_new_sound</a> (struct <a class="el" href="structdlsynth__sound.html">dlsynth_sound</a> **sound, const struct <a class="el" href="structdlsynth__instrlist.html">dlsynth_instrlist</a> *instruments, const struct <a class="el" href="structdlsynth__wavepool.html">dlsynth_wavepool</a> *wavepool)</td></tr>
+<tr class="memdesc:ga00fddf0899ba6b8edb98c7d29bb300e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new sound collection.  <a href="group___sound_creation.html#ga00fddf0899ba6b8edb98c7d29bb300e7">More...</a><br /></td></tr>
+<tr class="separator:ga00fddf0899ba6b8edb98c7d29bb300e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a233dbe455fe794cec01945f7b01da666"></a>
@@ -246,10 +377,10 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aaf24e9ecadad58acffda48af229fe9bba6013bee0d4371b01251589ccba604997"></a>DLSYNTH_ERROR&#160;</td><td class="fielddoc"><p>An unknown error has been encountered while processing the request. </p>
-<p>No error has been encountered The file couldn't be opened The file was opened correctly, but contained invalid data The specified instrument doesn't exist The arguments that were passed were not valid The file uses an unsupported codec A condition has failed while loading the file </p>
+<p>No error has been encountered The file couldn't be opened The file was opened correctly, but contained invalid data The specified instrument doesn't exist The arguments that were passed were not valid The file uses an unsupported codec A condition has failed while loading the file A region uses an invalid wavepool index A wavesample specifies an out-of-range region A region has no wavesample </p>
 </td></tr>
 <tr><td class="fieldname"><a id="aaf24e9ecadad58acffda48af229fe9bba6013bee0d4371b01251589ccba604997"></a>DLSYNTH_ERROR&#160;</td><td class="fielddoc"><p>An unknown error has been encountered while processing the request. </p>
-<p>No error has been encountered The file couldn't be opened The file was opened correctly, but contained invalid data The specified instrument doesn't exist The arguments that were passed were not valid The file uses an unsupported codec A condition has failed while loading the file </p>
+<p>No error has been encountered The file couldn't be opened The file was opened correctly, but contained invalid data The specified instrument doesn't exist The arguments that were passed were not valid The file uses an unsupported codec A condition has failed while loading the file A region uses an invalid wavepool index A wavesample specifies an out-of-range region A region has no wavesample </p>
 </td></tr>
 </table>
 
@@ -312,6 +443,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns the last error generated by a function call. </p>
+<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
 
 </div>
 </div>
@@ -505,6 +637,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Resets the last generated error to DLSYNTH_NO_ERROR. </p>
+<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
 
 </div>
 </div>
