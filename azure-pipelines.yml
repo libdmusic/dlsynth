@@ -116,7 +116,7 @@ jobs:
 - job: MakeDebs
   condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
   pool:
-    vmImage: 'ubuntu-latest
+    vmImage: 'ubuntu-latest'
   steps:
   - script: sudo echo "deb [trusted=yes] https://repo.libdmusic.org/apt/ /" > /etc/apt/sources.list.d/libdmusic.list
   - script: sudo apt-get update
