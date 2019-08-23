@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.1)
-project(dlsynth VERSION 1.0.0
+project(dlsynth VERSION 0.1.0
                 DESCRIPTION "DLS Synth library"
                 LANGUAGES C CXX)
 
@@ -75,7 +75,7 @@ elseif(DLSYNTH_ENABLE_SIMD STREQUAL "SSE3")
     endif()
 endif()
 
-find_package(riffcpp CONFIG REQUIRED)
+find_package(riffcpp 2.2 CONFIG REQUIRED)
 
 target_link_libraries(dlsynth PRIVATE riffcpp::riffcpp)
 
@@ -85,6 +85,7 @@ include(GNUInstallDirs)
 install(
     TARGETS dlsynth
     EXPORT dlsynth-targets
+    COMPONENT runtime
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
@@ -94,11 +95,13 @@ install(
 install(
     DIRECTORY ${CMAKE_SOURCE_DIR}/include/
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+    COMPONENT devel
 )
 
 install(
     FILES ${PROJECT_BINARY_DIR}/dlsynth_export.h
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+    COMPONENT devel
 )
 
 # installs the *cmake files in share directory
@@ -107,6 +110,7 @@ install(
     FILE dlsynth-targets.cmake
     NAMESPACE dlsynth::
     DESTINATION share/dlsynth
+    COMPONENT devel
 )
 
 include(CMakePackageConfigHelpers)
@@ -128,6 +132,7 @@ install(
         ${CMAKE_BINARY_DIR}/cmake/dlsynth-config.cmake
         ${CMAKE_BINARY_DIR}/cmake/dlsynth-config-version.cmake
     DESTINATION share/dlsynth
+    COMPONENT devel
 )
 
 #Register package in user's package registry
@@ -140,10 +145,31 @@ set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "DLS Synth library")
 set(CPACK_PACKAGE_VERSION_MAJOR ${PROJECT_VERSION_MAJOR})
 set(CPACK_PACKAGE_VERSION_MINOR ${PROJECT_VERSION_MINOR})
 set(CPACK_PACKAGE_VERSION_PATCH ${PROJECT_VERSION_PATCH})
+set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH})
+set(CPACK_DEBIAN_RUNTIME_PACKAGE_NAME "libdlsynth")
+set(CPACK_DEBIAN_DEVEL_PACKAGE_NAME "libdlsynth-dev")
+set(CPACK_DEBIAN_RUNTIME_FILE_NAME libdlsynth_${CPACK_PACKAGE_VERSION}.deb)
+set(CPACK_DEBIAN_DEVEL_FILE_NAME libdlsynth-dev_${CPACK_PACKAGE_VERSION}.deb)
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6 (>= 2.14), libstdc++6 (>= 5.2), libgcc1 (>= 1:3.0), riffcpp (>= 2.2), riffcpp (<< 2.3)")
+set(CPACK_DEBIAN_DEVEL_PACKAGE_DEPENDS "${CPACK_DEBIAN_PACKAGE_DEPENDS}, libdlsynth (>= 0.1), libdlsynth (<< 0.2)")
+set(CPACK_DEB_COMPONENT_INSTALL ON)
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
 set(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
 
 include(CPack)
+
+cpack_add_component(
+    runtime
+    DISPLAY_NAME "Runtime library"
+    REQUIRED
+)
+
+cpack_add_component(
+    devel
+    DISPLAY_NAME "Header files"
+    DESCRIPTION "Required if you need to compile programs that depend on this library"
+    DEPENDS runtime
+)
 
 #include(CTest)
 #add_subdirectory(tests)

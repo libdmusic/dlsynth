@@ -28,9 +28,9 @@ jobs:
         BUILD_CONFIG: Release
         SIMD_VALUE: SSE3
   steps:
-  - script: git clone --depth=1 https://github.com/Microsoft/vcpkg $(VCPKG_ROOT)
-  - script: $(VCPKG_ROOT)/bootstrap-vcpkg.sh
-  - script: $(VCPKG_ROOT)/vcpkg install --triplet $(VCPKG_TRIPLET) $(VCPKG_PACKAGES)
+  - script: sudo echo "deb [trusted=yes] https://repo.libdmusic.org/apt/ /" > /etc/apt/sources.list.d/libdmusic.list
+  - script: sudo apt-get update
+  - script: sudo apt-get install riffcpp-dev
   - script: |
       mkdir build
       cd build
@@ -113,3 +113,16 @@ jobs:
       cd build
       cmake -G "$(CMAKE_GENERATOR)" -DBUILD_SHARED_LIBS=$(BUILD_SHARED) -DVCPKG_TARGET_TRIPLET=$(VCPKG_TRIPLET) -DCMAKE_TOOLCHAIN_FILE=$(VCPKG_ROOT)\scripts\buildsystems\vcpkg.cmake -DDLSYNTH_ENABLE_SIMD=$(SIMD_VALUE) ..
       cmake --build . --config $(BUILD_CONFIG)
+- job: MakeDebs
+  condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
+  pool:
+    vmImage: 'ubuntu-18.04'
+  steps:
+  - script: sudo echo "deb [trusted=yes] https://repo.libdmusic.org/apt/ /" > /etc/apt/sources.list.d/libdmusic.list
+  - script: sudo apt-get update
+  - script: sudo apt-get install riffcpp-dev
+  - script: |
+      mkdir build
+      cd build
+      cmake .. -DBUILD_SHARED_LIBS=ON
+      cpack -G DEB
