@@ -2,6 +2,7 @@ trigger:
   branches:
     include:
     - '*'
+    - refs/tags/*
     exclude:
     - gh-pages
 jobs:
