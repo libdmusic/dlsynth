@@ -134,7 +134,7 @@ jobs:
   - script: |
       for pkg in ./*.deb; do
         filename="$(basename "$pkg")"
-        curl -F package=@$filename https://$GEMFURY_TOKEN@push.fury.io/frabert/ || exit $?
+        curl -F package=@$filename https://$(GEMFURY_TOKEN)@push.fury.io/frabert/ || exit $?
       done
     displayName: Upload to GemFury
     condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
