@@ -28,7 +28,7 @@ jobs:
         BUILD_CONFIG: Release
         SIMD_VALUE: SSE3
   steps:
-  - script: sudo echo "deb [trusted=yes] https://repo.libdmusic.org/apt/ /" > /etc/apt/sources.list.d/libdmusic.list
+  - script: echo "deb [trusted=yes] https://repo.libdmusic.org/apt/ /" | sudo dd of=/etc/apt/sources.list.d/libdmusic.list
   - script: sudo apt-get update
   - script: sudo apt-get install riffcpp-dev
   - script: |
@@ -118,7 +118,7 @@ jobs:
   pool:
     vmImage: 'ubuntu-latest'
   steps:
-  - script: sudo echo "deb [trusted=yes] https://repo.libdmusic.org/apt/ /" > /etc/apt/sources.list.d/libdmusic.list
+  - script: echo "deb [trusted=yes] https://repo.libdmusic.org/apt/ /" | sudo dd of=/etc/apt/sources.list.d/libdmusic.list
   - script: sudo apt-get update
   - script: sudo apt-get install riffcpp-dev
   - script: |
