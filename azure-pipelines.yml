@@ -9,9 +9,6 @@ jobs:
   pool:
     vmImage: 'ubuntu-latest'
   variables:
-    VCPKG_ROOT: $(Build.SourcesDirectory)/vcpkg
-    VCPKG_PACKAGES: riffcpp
-    VCPKG_TRIPLET: x64-linux
     BUILD_SHARED: OFF
   strategy:
     matrix:
@@ -34,7 +31,7 @@ jobs:
   - script: |
       mkdir build
       cd build
-      cmake -DCMAKE_TOOLCHAIN_FILE=$(VCPKG_ROOT)/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=$(BUILD_CONFIG) -DBUILD_SHARED_LIBS=$(BUILD_SHARED) -DVCPKG_TARGET_TRIPLET=$(VCPKG_TRIPLET) -DDLSYNTH_ENABLE_SIMD=$(SIMD_VALUE) ..
+      cmake -DCMAKE_BUILD_TYPE=$(BUILD_CONFIG) -DBUILD_SHARED_LIBS=$(BUILD_SHARED) -DDLSYNTH_ENABLE_SIMD=$(SIMD_VALUE) ..
       cmake --build .
 - job: Windows
   pool:
