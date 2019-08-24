@@ -130,6 +130,8 @@ jobs:
       cd build
       cmake .. -DBUILD_SHARED_LIBS=ON
       cpack -G DEB
+      mkdir artifacts
+      mv *.deb artifacts/
     displayName: Build
-  - publish: '**/*.deb'
+  - publish: $(System.DefaultWorkingDirectory)/build/artifacts/
     displayName: Publish artifacts
