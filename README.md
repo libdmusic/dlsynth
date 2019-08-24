@@ -61,6 +61,15 @@ that includes a portfile for `dlsynth`. You can install it by requesting the
 vcpkg install dlsynth --head
 ```
 
+On Debian-based distros (like Ubuntu) you can add the following line to `/etc/apt/sources.list.d/libdmusic.list`:
+
+    deb [trusted=yes] https://repo.libdmusic.org/apt/ /
+
+then run
+
+    sudo apt update
+    sudo apt install dlsynth-dev
+
 You can then use `dlsynth` as any other CMake-available library:
 
 ```cmake
@@ -93,7 +102,16 @@ dependencies, and itself is able to be built a dynamic or static library
 ### Without vcpkg
 
 You will need to obtain a binary copy of [riffcpp](https://github.com/libdmusic/riffcpp)
-and install it somewhere CMake can find it.
+and its headers and install it somewhere CMake can find it.
+
+Under Debian-based distros (like Ubuntu) you can add the following line to `/etc/apt/sources.list.d/libdmusic.list`:
+
+    deb [trusted=yes] https://repo.libdmusic.org/apt/ /
+
+then run
+
+    sudo apt update
+    sudo apt install riffcpp-dev
 
 After cloning the repo, run the following commands:
 
