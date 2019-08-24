@@ -25,14 +25,17 @@ jobs:
         BUILD_CONFIG: Release
         SIMD_VALUE: SSE3
   steps:
-  - script: echo "deb [trusted=yes] https://repo.libdmusic.org/apt/ /" | sudo dd of=/etc/apt/sources.list.d/libdmusic.list
-  - script: sudo apt-get update
-  - script: sudo apt-get install riffcpp-dev
+  - script: |
+      echo "deb [trusted=yes] https://repo.libdmusic.org/apt/ /" | sudo dd of=/etc/apt/sources.list.d/libdmusic.list
+      sudo apt-get update
+      sudo apt-get install riffcpp-dev
+    displayName: Resolve dependencies
   - script: |
       mkdir build
       cd build
       cmake -DCMAKE_BUILD_TYPE=$(BUILD_CONFIG) -DBUILD_SHARED_LIBS=$(BUILD_SHARED) -DDLSYNTH_ENABLE_SIMD=$(SIMD_VALUE) ..
       cmake --build .
+    displayName: Build
 - job: Windows
   pool:
     vmImage: 'vs2017-win2016'
@@ -102,24 +105,36 @@ jobs:
         BUILD_CONFIG: Release
         SIMD_VALUE: SSE3
   steps:
-  - script: git clone --depth=1 https://github.com/Microsoft/vcpkg $(VCPKG_ROOT)
-  - script: $(VCPKG_ROOT)\bootstrap-vcpkg.bat
-  - script: $(VCPKG_ROOT)\vcpkg.exe install --triplet $(VCPKG_TRIPLET) $(VCPKG_PACKAGES)
+  - script: |
+      git clone --depth=1 https://github.com/Microsoft/vcpkg $(VCPKG_ROOT)
+      $(VCPKG_ROOT)\bootstrap-vcpkg.bat
+      $(VCPKG_ROOT)\vcpkg.exe install --triplet $(VCPKG_TRIPLET) $(VCPKG_PACKAGES)
+    displayName: Set-up vcpkg
   - script: |
       mkdir build
       cd build
       cmake -G "$(CMAKE_GENERATOR)" -DBUILD_SHARED_LIBS=$(BUILD_SHARED) -DVCPKG_TARGET_TRIPLET=$(VCPKG_TRIPLET) -DCMAKE_TOOLCHAIN_FILE=$(VCPKG_ROOT)\scripts\buildsystems\vcpkg.cmake -DDLSYNTH_ENABLE_SIMD=$(SIMD_VALUE) ..
       cmake --build . --config $(BUILD_CONFIG)
+    displayName: Build
 - job: MakeDebs
-  condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
   pool:
     vmImage: 'ubuntu-latest'
   steps:
-  - script: echo "deb [trusted=yes] https://repo.libdmusic.org/apt/ /" | sudo dd of=/etc/apt/sources.list.d/libdmusic.list
-  - script: sudo apt-get update
-  - script: sudo apt-get install riffcpp-dev
+  - script: |
+      echo "deb [trusted=yes] https://repo.libdmusic.org/apt/ /" | sudo dd of=/etc/apt/sources.list.d/libdmusic.list
+      sudo apt-get update
+      sudo apt-get install riffcpp-dev
+    displayName: Resolve dependencies
   - script: |
       mkdir build
       cd build
       cmake .. -DBUILD_SHARED_LIBS=ON
       cpack -G DEB
+    displayName: Build
+  - script: |
+      for pkg in ./*.deb; do
+        filename="$(basename "$pkg")"
+        curl -F package=@$filename https://$GEMFURY_TOKEN@push.fury.io/frabert/ || exit $?
+      done
+    displayName: Upload to GemFury
+    condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
