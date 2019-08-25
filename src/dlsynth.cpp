@@ -38,8 +38,6 @@ struct dlsynth {
   static constexpr std::size_t renderBufferSize = renderBufferSizeFrames * 2;
 
   std::unique_ptr<DLSynth::Synth::Synthesizer> synth;
-  int num_channels;
-  dlsynth_interleave interleaved;
 
   std::array<float, renderBufferSize> renderBuffer;
 
@@ -269,20 +267,15 @@ int dlsynth_free_wav(struct dlsynth_wav *wav) {
   return 1;
 }
 
-int dlsynth_init(const dlsynth_settings *settings, dlsynth **synth) {
-  if (settings == nullptr || settings->num_channels == 0 ||
-      settings->num_channels > 2 || settings->sample_rate == 0 ||
-      synth == nullptr) {
+int dlsynth_init(int sample_rate, int num_voices, dlsynth **synth) {
+  if (sample_rate <= 0 || num_voices <= 0 || synth == nullptr) {
     dlsynth_error = DLSYNTH_INVALID_ARGS;
     return 0;
   }
 
   *synth = new dlsynth();
-  (*synth)->synth = std::make_unique<DLSynth::Synth::Synthesizer>(
-   settings->num_voices, settings->sample_rate);
-
-  (*synth)->interleaved = settings->interleaved;
-  (*synth)->num_channels = settings->num_channels;
+  (*synth)->synth =
+   std::make_unique<DLSynth::Synth::Synthesizer>(num_voices, sample_rate);
 
   return 1;
 }
@@ -295,85 +288,71 @@ int dlsynth_free(dlsynth *synth) {
   return 1;
 }
 
-int dlsynth_render_float(dlsynth *synth, float *buffer, size_t frames,
-                         float gain) {
-  if (synth == nullptr || buffer == nullptr) {
+int dlsynth_render_float(dlsynth *synth, size_t frames, float *lout,
+                         float *rout, size_t incr, float gain) {
+  if (synth == nullptr || lout == nullptr || incr == 0) {
     dlsynth_error = DLSYNTH_INVALID_ARGS;
     return 0;
   }
 
-  if (synth->num_channels == 2) {
-    if (synth->interleaved == DLSYNTH_INTERLEAVED) {
-      float *lbuf = buffer;
-      float *lbuf_end = lbuf + (frames * 2);
-      float *rbuf = lbuf + 1;
-      float *rbuf_end = lbuf_end + 1;
+  float *lbuf = lout;
+  float *lbuf_end = lbuf + (frames * incr);
 
-      synth->synth->render_fill(lbuf, lbuf_end, rbuf, rbuf_end, 2, gain);
-    } else {
-      float *lbuf = buffer;
-      float *lbuf_end = buffer + frames;
-      float *rbuf = lbuf_end;
-      float *rbuf_end = rbuf + frames;
-      synth->synth->render_fill(lbuf, lbuf_end, rbuf, rbuf_end, 1, gain);
-    }
-  } else {
-    synth->synth->render_fill(buffer, buffer + frames, nullptr, nullptr, 1,
-                              gain);
-  }
+  float *rbuf = rout;
+  float *rbuf_end = rbuf + (frames * incr);
+
+  synth->synth->render_fill(lbuf, lbuf_end, rbuf, rbuf_end, incr, gain);
 
   return 1;
 }
 
-int dlsynth_render_int16(struct dlsynth *synth, int16_t *buffer, size_t frames,
-                         float gain) {
-  if (synth == nullptr || buffer == nullptr) {
+int dlsynth_render_int16(dlsynth *synth, size_t frames, int16_t *lout,
+                         int16_t *rout, size_t incr, float gain) {
+  if (synth == nullptr || lout == nullptr || incr == 0) {
     dlsynth_error = DLSYNTH_INVALID_ARGS;
     return 0;
   }
 
   std::size_t remainingFrames = frames;
-  const std::size_t framesInBuffer =
-   dlsynth::renderBufferSize / synth->num_channels;
-  int16_t *target = buffer;
+  const std::size_t framesInBuffer = dlsynth::renderBufferSize / 2;
+  int16_t *l = lout;
+  int16_t *r = rout;
   while (remainingFrames > 0) {
     std::size_t num_frames = std::min(remainingFrames, framesInBuffer);
-    dlsynth_render_float(synth, synth->renderBuffer.data(), num_frames, gain);
-    std::transform(
-     std::begin(synth->renderBuffer), std::end(synth->renderBuffer), target,
-     [](auto x) { return DLSynth::inverse_normalize<int16_t>(x); });
-    target += num_frames * synth->num_channels;
+    float *renderBuffer = synth->renderBuffer.data();
+    dlsynth_render_float(synth, num_frames, renderBuffer, renderBuffer + 1, 2,
+                         gain);
+
+    for (size_t i = 0; i < num_frames; i++) {
+      *l = DLSynth::inverse_normalize<std::int16_t>(renderBuffer[i * 2 + 0]);
+      l += incr;
+
+      if (r != nullptr) {
+        *r = DLSynth::inverse_normalize<std::int16_t>(renderBuffer[i * 2 + 1]);
+        r += incr;
+      }
+    }
+
     remainingFrames -= num_frames;
   }
 
   return 1;
 }
 
-int dlsynth_render_float_mix(dlsynth *synth, float *buffer, size_t frames,
-                             float gain) {
-  if (synth == nullptr || buffer == nullptr) {
+int dlsynth_render_float_mix(dlsynth *synth, size_t frames, float *lout,
+                             float *rout, size_t incr, float gain) {
+  if (synth == nullptr || lout == nullptr || incr == 0) {
     dlsynth_error = DLSYNTH_INVALID_ARGS;
     return 0;
   }
 
-  if (synth->num_channels == 2) {
-    if (synth->interleaved == DLSYNTH_INTERLEAVED) {
-      float *lbuf = buffer;
-      float *lbuf_end = lbuf + (frames * 2);
-      float *rbuf = lbuf + 1;
-      float *rbuf_end = lbuf_end + 1;
+  float *lbuf = lout;
+  float *lbuf_end = lbuf + (frames * incr);
 
-      synth->synth->render_mix(lbuf, lbuf_end, rbuf, rbuf_end, 2, gain);
-    } else {
-      float *lbuf = buffer;
-      float *rbuf = buffer + frames;
-      float *rbuf_end = rbuf + frames;
-      synth->synth->render_mix(lbuf, rbuf, rbuf, rbuf_end, 1, gain);
-    }
-  } else {
-    synth->synth->render_mix(buffer, buffer + frames, nullptr, nullptr, 1,
-                             gain);
-  }
+  float *rbuf = rout;
+  float *rbuf_end = rbuf + (frames * incr);
+
+  synth->synth->render_mix(lbuf, lbuf_end, rbuf, rbuf_end, incr, gain);
 
   return 1;
 }

@@ -19,23 +19,6 @@ struct dlsynth_instr;
 /// A WAV file
 struct dlsynth_wav;
 
-enum dlsynth_interleave { DLSYNTH_INTERLEAVED, DLSYNTH_SEQUENTIAL };
-
-/// Settings that should be used when rendering audio
-struct dlsynth_settings {
-  /// Sample rate at which to render the audio
-  uint32_t sample_rate;
-
-  /// Number of audio channels to render
-  int num_channels;
-
-  /// Wheter the audio channels should be interleaved or sequential
-  enum dlsynth_interleave interleaved;
-
-  /// Maximum number of voices to allocate for rendering
-  unsigned num_voices;
-};
-
 /**
  * @defgroup SynthManagement Synthesizer management
  *
@@ -65,8 +48,7 @@ struct dlsynth_settings {
  * @return Nonzero on success, zero on failure
  */
 int DLSYNTH_EXPORT dlsynth_init(
- const struct dlsynth_settings
-  *settings,            ///< [in] Settings to use when rendering audio
+ int sample_rate, int num_voices,
  struct dlsynth **synth ///< [out] The initialized synthesizer
 );
 
@@ -87,8 +69,10 @@ int DLSYNTH_EXPORT dlsynth_free(
  */
 int DLSYNTH_EXPORT dlsynth_render_float(
  struct dlsynth *synth, ///< [in] The synthesizer to use for rendering
- float *buffer,         ///< [in,out] The buffer to execute rendering in
- size_t frames,         ///< [in] The number of frames to render
+ size_t nframes,        ///< [in] Number of frames to render
+ float *lout,           ///< [in,out] Buffer to store left channel data in
+ float *rout,           ///< [in,out] Buffer to store right channel data in
+ size_t incr,           ///< [in] Increment between sample positions
  float gain ///< [in] Gain to apply while rendering (0 means silent, 1 means
             ///< unity gain)
 );
@@ -101,8 +85,10 @@ int DLSYNTH_EXPORT dlsynth_render_float(
  */
 int DLSYNTH_EXPORT dlsynth_render_int16(
  struct dlsynth *synth, ///< [in] The synthesizer to use for rendering
- int16_t *buffer,       ///< [in,out] The buffer to execute rendering in
- size_t frames,         ///< [in] The number of frames to render
+ size_t nframes,        ///< [in] Number of frames to render
+ int16_t *lout,         ///< [in,out] Buffer to store left channel data in
+ int16_t *rout,         ///< [in,out] Buffer to store right channel data in
+ size_t incr,           ///< [in] Increment between sample positions
  float gain ///< [in] Gain to apply while rendering (0 means silent, 1 means
             ///< unity gain)
 );
@@ -115,8 +101,10 @@ int DLSYNTH_EXPORT dlsynth_render_int16(
  */
 int DLSYNTH_EXPORT dlsynth_render_float_mix(
  struct dlsynth *synth, ///< [in] The synthesizer to use for rendering
- float *buffer,         ///< [in,out] The buffer to execute rendering in
- size_t frames,         ///< [in] The number of frames to render
+ size_t nframes,        ///< [in] Number of frames to render
+ float *lout,           ///< [in,out] Buffer to store left channel data in
+ float *rout,           ///< [in,out] Buffer to store right channel data in
+ size_t incr,           ///< [in] Increment between sample positions
  float gain ///< [in] Gain to apply while rendering (0 means silent, 1 means
             ///< unity gain)
 );
