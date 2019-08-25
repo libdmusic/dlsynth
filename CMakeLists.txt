@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.1)
-project(dlsynth VERSION 0.1.0
+project(dlsynth VERSION 0.2.0
                 DESCRIPTION "DLS Synth library"
+                HOMEPAGE_URL "https://dlsynth.libdmusic.org"
                 LANGUAGES C CXX)
 
 add_library(dlsynth "")

@@ -290,7 +290,10 @@ struct Voice::impl : public VoiceMessageExecutor {
   PitchNode m_pitchNode;
   FilterNode m_filterNode;
   bool m_playing;
+  bool m_sustain;
+  bool m_released;
   std::uint8_t m_note;
+  int m_channel;
   std::uint8_t m_velocity;
   std::chrono::steady_clock::time_point m_startTime;
 
@@ -466,8 +469,17 @@ struct Voice::impl : public VoiceMessageExecutor {
     getSource(Source::EG2) = output;
   }
 
+  void execute(const SustainChangeMessage &message) override {
+    m_sustain = message.value();
+    if (!m_sustain && m_released) {
+      m_volEg.noteOff();
+      m_filtEg.noteOff();
+    }
+  }
+
   void execute(const NoteOnMessage &message) override {
     m_playing = true;
+    m_released = false;
     resetConnections();
     loadConnections(message.connectionBlocks());
     m_wavesample = message.wavesample();
@@ -478,6 +490,7 @@ struct Voice::impl : public VoiceMessageExecutor {
     m_gainNode.sampleGain(m_wavesample->gain());
     m_note = message.note();
     m_velocity = message.velocity();
+    m_channel = message.channel();
     m_startTime = std::chrono::steady_clock::now();
     getSource(Source::KeyNumber) = static_cast<float>(m_note) / 128.f;
     getSource(Source::KeyOnVelocity) = static_cast<float>(m_velocity) / 128.f;
@@ -488,8 +501,12 @@ struct Voice::impl : public VoiceMessageExecutor {
   }
 
   void execute(const NoteOffMessage &message) override {
-    m_volEg.noteOff();
-    m_filtEg.noteOff();
+    if (m_sustain) {
+      m_released = true;
+    } else {
+      m_volEg.noteOff();
+      m_filtEg.noteOff();
+    }
   }
 
   void execute(const SoundOffMessage &message) override {
@@ -666,12 +683,12 @@ Voice::~Voice() {
   }
 }
 
-void Voice::noteOn(std::uint8_t note, std::uint8_t velocity,
+void Voice::noteOn(int channel, std::uint8_t note, std::uint8_t velocity,
                    const Wavesample *wavesample, const Wave &sample,
                    const std::vector<ConnectionBlock> &connectionBlocks) {
   assert(pimpl != nullptr);
   pimpl->m_messageQueue.push(std::make_unique<NoteOnMessage>(
-   note, velocity, wavesample, sample, connectionBlocks));
+   channel, note, velocity, wavesample, sample, connectionBlocks));
 }
 void Voice::noteOff() {
   assert(pimpl != nullptr);
@@ -698,6 +715,10 @@ bool Voice::playing() const {
   return pimpl->m_playing;
 }
 
+int Voice::channel() const {
+  assert(pimpl != nullptr);
+  return pimpl->m_channel;
+}
 std::uint8_t Voice::note() const {
   assert(pimpl != nullptr);
   return pimpl->m_note;

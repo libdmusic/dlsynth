@@ -51,7 +51,7 @@ Sound::Sound(Sound &&snd) noexcept : m_pimpl(snd.m_pimpl) {
 
 Sound::Sound(const Sound &snd) noexcept : m_pimpl(new impl(*snd.m_pimpl)) {}
 
-Sound &Sound::operator=(const Sound &snd) noexcept {
+const Sound &Sound::operator=(const Sound &snd) const noexcept {
   delete m_pimpl;
   m_pimpl = new impl(*snd.m_pimpl);
   return *this;

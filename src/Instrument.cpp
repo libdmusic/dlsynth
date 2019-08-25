@@ -75,7 +75,8 @@ Instrument::Instrument(Instrument &&instr) noexcept : m_pimpl(instr.m_pimpl) {
   instr.m_pimpl = nullptr;
 }
 
-Instrument &Instrument::operator=(const Instrument &instr) noexcept {
+const Instrument &Instrument::operator=(const Instrument &instr) const
+ noexcept {
   delete m_pimpl;
   m_pimpl = new impl(*instr.m_pimpl);
   return *this;

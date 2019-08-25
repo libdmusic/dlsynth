@@ -6,32 +6,30 @@
 #include <array>
 #include <cassert>
 #include <map>
+#include <mutex>
 #include <vector>
 
 using namespace DLSynth;
 using namespace DLSynth::Synth;
 
 struct Synthesizer::impl {
-  bool m_sustain = false;
+  std::mutex mutex;
   std::vector<Voice> m_voices;
-  const Instrument &m_instrument;
-  const Sound &m_collection;
 
-  void controlChange(Source source, float value) {
+  void controlChange(int channel, Source source, float value) {
     for (auto &voice : m_voices) {
+      if (voice.channel() != channel) {
+        continue;
+      }
       voice.controlChange(source, value);
     }
   }
 
-  impl(const Sound &collection, const Instrument &instr)
-    : m_instrument(instr), m_collection(collection) {}
+  impl() {}
 };
 
-Synthesizer::Synthesizer(const Sound &collection, std::size_t instrumentIndex,
-                         std::size_t voiceCount, std::uint32_t sampleRate)
-  : pimpl(new impl(collection, collection.instruments()[instrumentIndex])) {
-  assert(instrumentIndex < collection.instruments().size());
-
+Synthesizer::Synthesizer(std::size_t voiceCount, std::uint32_t sampleRate)
+  : pimpl(new impl()) {
   for (std::size_t i = 0; i < voiceCount; i++) {
     pimpl->m_voices.emplace_back(sampleRate);
   }
@@ -47,94 +45,128 @@ Synthesizer::~Synthesizer() {
   }
 }
 
-void Synthesizer::pressure(std::uint8_t value) {
+void Synthesizer::pressure(int channel, std::uint8_t value) {
   assert(pimpl != nullptr);
-  pimpl->controlChange(Source::ChannelPressure,
+  std::lock_guard<std::mutex> lock(pimpl->mutex);
+  pimpl->controlChange(channel, Source::ChannelPressure,
                        static_cast<float>(value) / 128.f);
 }
 
-void Synthesizer::pressure(std::uint8_t note, std::uint8_t value) {
+void Synthesizer::pressure(int channel, std::uint8_t note, std::uint8_t value) {
   assert(pimpl != nullptr);
+  std::lock_guard<std::mutex> lock(pimpl->mutex);
   for (auto &voice : pimpl->m_voices) {
-    if (voice.playing() && voice.note() == note) {
+    if (voice.playing() && voice.note() == note && voice.channel() == channel) {
       voice.controlChange(Source::PolyPressure,
                           static_cast<float>(value) / 128.f);
     }
   }
 }
 
-void Synthesizer::pitchBend(std::uint16_t value) {
+void Synthesizer::pitchBend(int channel, std::uint16_t value) {
   assert(pimpl != nullptr);
-  pimpl->controlChange(Source::PitchWheel, static_cast<float>(value) / 16384.f);
+  std::lock_guard<std::mutex> lock(pimpl->mutex);
+  pimpl->controlChange(channel, Source::PitchWheel,
+                       static_cast<float>(value) / 16384.f);
 }
 
-void Synthesizer::volume(std::uint8_t value) {
+void Synthesizer::volume(int channel, std::uint8_t value) {
   assert(pimpl != nullptr);
-  pimpl->controlChange(Source::CC7, static_cast<float>(value) / 128.f);
+  std::lock_guard<std::mutex> lock(pimpl->mutex);
+  pimpl->controlChange(channel, Source::CC7, static_cast<float>(value) / 128.f);
 }
 
-void Synthesizer::pan(std::uint8_t value) {
+void Synthesizer::pan(int channel, std::uint8_t value) {
   assert(pimpl != nullptr);
-  pimpl->controlChange(Source::CC10, static_cast<float>(value) / 128.f);
+  std::lock_guard<std::mutex> lock(pimpl->mutex);
+  pimpl->controlChange(channel, Source::CC10,
+                       static_cast<float>(value) / 128.f);
 }
 
-void Synthesizer::modulation(std::uint8_t value) {
+void Synthesizer::modulation(int channel, std::uint8_t value) {
   assert(pimpl != nullptr);
-  pimpl->controlChange(Source::CC1, static_cast<float>(value) / 128.f);
+  std::lock_guard<std::mutex> lock(pimpl->mutex);
+  pimpl->controlChange(channel, Source::CC1, static_cast<float>(value) / 128.f);
 }
 
-void Synthesizer::sustain(bool status) {
+void Synthesizer::sustain(int channel, bool status) {
   assert(pimpl != nullptr);
-  pimpl->m_sustain = status;
-}
-
-void Synthesizer::reverb(std::uint8_t value) {
-  assert(pimpl != nullptr);
-  pimpl->controlChange(Source::CC91, static_cast<float>(value) / 128.f);
-}
-
-void Synthesizer::chorus(std::uint8_t value) {
-  assert(pimpl != nullptr);
-  pimpl->controlChange(Source::CC93, static_cast<float>(value) / 128.f);
-}
-
-void Synthesizer::pitchBendRange(std::uint16_t value) {
-  assert(pimpl != nullptr);
-  pimpl->controlChange(Source::RPN0, static_cast<float>(value) / 16384.f);
-}
-
-void Synthesizer::fineTuning(std::uint16_t value) {
-  assert(pimpl != nullptr);
-  pimpl->controlChange(Source::RPN1, static_cast<float>(value) / 16384.f);
-}
-
-void Synthesizer::coarseTuning(std::uint16_t value) {
-  assert(pimpl != nullptr);
-  pimpl->controlChange(Source::RPN2, static_cast<float>(value) / 16384.f);
-}
-
-void Synthesizer::resetControllers() {
-  assert(pimpl != nullptr);
+  std::lock_guard<std::mutex> lock(pimpl->mutex);
   for (auto &voice : pimpl->m_voices) {
-    voice.resetControllers();
+    if (voice.channel() != channel) {
+      continue;
+    }
+    voice.sustain(status);
   }
-  pimpl->m_sustain = false;
 }
 
-void Synthesizer::noteOn(std::uint8_t note, std::uint8_t velocity) {
+void Synthesizer::reverb(int channel, std::uint8_t value) {
   assert(pimpl != nullptr);
+  std::lock_guard<std::mutex> lock(pimpl->mutex);
+  pimpl->controlChange(channel, Source::CC91,
+                       static_cast<float>(value) / 128.f);
+}
 
-  for (const auto &region : pimpl->m_instrument.regions()) {
+void Synthesizer::chorus(int channel, std::uint8_t value) {
+  assert(pimpl != nullptr);
+  std::lock_guard<std::mutex> lock(pimpl->mutex);
+  pimpl->controlChange(channel, Source::CC93,
+                       static_cast<float>(value) / 128.f);
+}
+
+void Synthesizer::pitchBendRange(int channel, std::uint16_t value) {
+  assert(pimpl != nullptr);
+  std::lock_guard<std::mutex> lock(pimpl->mutex);
+  pimpl->controlChange(channel, Source::RPN0,
+                       static_cast<float>(value) / 16384.f);
+}
+
+void Synthesizer::fineTuning(int channel, std::uint16_t value) {
+  assert(pimpl != nullptr);
+  std::lock_guard<std::mutex> lock(pimpl->mutex);
+  pimpl->controlChange(channel, Source::RPN1,
+                       static_cast<float>(value) / 16384.f);
+}
+
+void Synthesizer::coarseTuning(int channel, std::uint16_t value) {
+  assert(pimpl != nullptr);
+  std::lock_guard<std::mutex> lock(pimpl->mutex);
+  pimpl->controlChange(channel, Source::RPN2,
+                       static_cast<float>(value) / 16384.f);
+}
+
+void Synthesizer::resetControllers(int channel) {
+  assert(pimpl != nullptr);
+  std::lock_guard<std::mutex> lock(pimpl->mutex);
+  for (auto &voice : pimpl->m_voices) {
+    if (voice.channel() != channel) {
+      continue;
+    }
+    voice.resetControllers();
+    voice.sustain(false);
+  }
+}
+
+void Synthesizer::noteOn(const Sound &collection, std::size_t index,
+                         int channel, std::uint8_t note,
+                         std::uint8_t velocity) {
+  assert(pimpl != nullptr);
+  assert(index < collection.instruments().size());
+
+  const auto &instrument = collection.instruments()[index];
+
+  std::lock_guard<std::mutex> lock(pimpl->mutex);
+  for (const auto &region : instrument.regions()) {
     if (region.keyRange().inRange(note) &&
         region.velocityRange().inRange(velocity)) {
       std::vector<ConnectionBlock> connectionBlocks =
-       pimpl->m_instrument.connectionBlocks();
+       instrument.connectionBlocks();
 
       connectionBlocks.insert(std::end(connectionBlocks),
                               std::begin(region.connectionBlocks()),
                               std::end(region.connectionBlocks()));
 
-      const Wave &sample = pimpl->m_collection.wavepool()[region.waveIndex()];
+      const Wave &sample = collection.wavepool()[region.waveIndex()];
       const Wavesample *wavesample = region.wavesample() != nullptr
                                       ? region.wavesample()
                                       : sample.wavesample();
@@ -144,7 +176,8 @@ void Synthesizer::noteOn(std::uint8_t note, std::uint8_t velocity) {
       if (!region.selfNonExclusive()) {
         for (auto &voice : pimpl->m_voices) {
           if (voice.playing() && voice.note() == note) {
-            voice.noteOn(note, velocity, wavesample, sample, connectionBlocks);
+            voice.noteOn(channel, note, velocity, wavesample, sample,
+                         connectionBlocks);
             return;
           }
         }
@@ -153,7 +186,8 @@ void Synthesizer::noteOn(std::uint8_t note, std::uint8_t velocity) {
       // Otherwise, search for a free voice.
       for (auto &voice : pimpl->m_voices) {
         if (!voice.playing()) {
-          voice.noteOn(note, velocity, wavesample, sample, connectionBlocks);
+          voice.noteOn(channel, note, velocity, wavesample, sample,
+                       connectionBlocks);
           return;
         }
       }
@@ -164,19 +198,17 @@ void Synthesizer::noteOn(std::uint8_t note, std::uint8_t velocity) {
                         [](const auto &lhs, const auto &rhs) {
                           return lhs.startTime() < rhs.startTime();
                         });
-      oldestVoice->noteOn(note, velocity, wavesample, sample, connectionBlocks);
+      oldestVoice->noteOn(channel, note, velocity, wavesample, sample,
+                          connectionBlocks);
     }
   }
 }
 
-void Synthesizer::noteOff(std::uint8_t note) {
+void Synthesizer::noteOff(int channel, std::uint8_t note) {
   assert(pimpl != nullptr);
-  if (pimpl->m_sustain) {
-    return;
-  }
-
+  std::lock_guard<std::mutex> lock(pimpl->mutex);
   for (auto &voice : pimpl->m_voices) {
-    if (voice.playing() && voice.note() == note) {
+    if (voice.playing() && voice.note() == note && voice.channel() == channel) {
       voice.noteOff();
     }
   }
@@ -184,10 +216,7 @@ void Synthesizer::noteOff(std::uint8_t note) {
 
 void Synthesizer::allNotesOff() {
   assert(pimpl != nullptr);
-  if (pimpl->m_sustain) {
-    return;
-  }
-
+  std::lock_guard<std::mutex> lock(pimpl->mutex);
   for (auto &voice : pimpl->m_voices) {
     voice.noteOff();
   }
@@ -195,6 +224,7 @@ void Synthesizer::allNotesOff() {
 
 void Synthesizer::allSoundOff() {
   assert(pimpl != nullptr);
+  std::lock_guard<std::mutex> lock(pimpl->mutex);
   for (auto &voice : pimpl->m_voices) {
     voice.soundOff();
   }

@@ -31,7 +31,6 @@ int main() {
     2,                   /* Number of channels */
     DLSYNTH_INTERLEAVED, /* Interleaved output */
     16,                  /* Number of voices   */
-    instr                /* Instrument to use  */
   };
 
   struct dlsynth* synth;
@@ -40,7 +39,11 @@ int main() {
     return 1;
   }
 
-  dlsynth_note_on(synth, 43);
+  dlsynth_note_on(synth,
+    instr, /* Instrument to use   */
+    0,     /* Channel of the note */
+    43     /* MIDI note           */
+  );
   if(!dlsynth_render_int16(synth, someBuf, bufLen, 1.0f)) {
     fprintf(stderr, "Could not render buffer\n");
     return 1;

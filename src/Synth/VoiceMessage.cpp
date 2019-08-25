@@ -4,9 +4,11 @@ using namespace DLSynth;
 using namespace DLSynth::Synth;
 
 NoteOnMessage::NoteOnMessage(
- std::uint8_t note, std::uint8_t velocity, const Wavesample *wavesample,
- const Wave &sample, const std::vector<ConnectionBlock> &connectionBlocks)
-  : m_note(note)
+ int channel, std::uint8_t note, std::uint8_t velocity,
+ const Wavesample *wavesample, const Wave &sample,
+ const std::vector<ConnectionBlock> &connectionBlocks)
+  : m_channel(channel)
+  , m_note(note)
   , m_velocity(velocity)
   , m_wavesample(wavesample)
   , m_sample(sample)
@@ -21,6 +23,8 @@ void NoteOnMessage::accept(VoiceMessageExecutor *executor) {
 std::uint8_t NoteOnMessage::note() const { return m_note; }
 
 std::uint8_t NoteOnMessage::velocity() const { return m_velocity; }
+
+int NoteOnMessage::channel() const { return m_channel; }
 
 const Wavesample *NoteOnMessage::wavesample() const { return m_wavesample; }
 
@@ -61,6 +65,15 @@ ResetControllersMessage::ResetControllersMessage() = default;
 ResetControllersMessage::~ResetControllersMessage() = default;
 
 void ResetControllersMessage::accept(VoiceMessageExecutor *executor) {
+  executor->execute(*this);
+}
+
+SustainChangeMessage::SustainChangeMessage(bool value) : m_value(value) {}
+SustainChangeMessage::~SustainChangeMessage() = default;
+
+bool SustainChangeMessage::value() const { return m_value; }
+
+void SustainChangeMessage::accept(VoiceMessageExecutor *executor) {
   executor->execute(*this);
 }
 

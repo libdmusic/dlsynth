@@ -13,7 +13,7 @@ class Info;
 /// A DLS instrument, part of a DLS Collection
 class Instrument final {
   struct impl;
-  impl *m_pimpl;
+  mutable impl *m_pimpl;
 
 public:
   Instrument(std::uint32_t midiBank, std::uint32_t midiInstrument,
@@ -37,7 +37,7 @@ public:
   Instrument(const Instrument &instr) noexcept;
   ~Instrument();
 
-  Instrument &operator=(const Instrument &) noexcept;
+  const Instrument &operator=(const Instrument &) const noexcept;
 
   /// Returns the Uuid of this instrument, if it exists
   const Uuid *dlid() const noexcept;

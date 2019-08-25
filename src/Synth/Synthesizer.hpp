@@ -12,56 +12,56 @@ namespace Synth {
     impl *pimpl;
 
   public:
-    Synthesizer(const Sound &collection, std::size_t instrumentIndex,
-                std::size_t voiceCount, std::uint32_t sampleRate);
+    Synthesizer(std::size_t voiceCount, std::uint32_t sampleRate);
     Synthesizer(Synthesizer &&synth);
     ~Synthesizer();
     Synthesizer &operator=(const Synthesizer &) = delete;
 
     /// Sends a MIDI Note On event
-    void noteOn(std::uint8_t note, std::uint8_t velocity);
+    void noteOn(const Sound &collection, std::size_t instrumentIndex,
+                int channel, std::uint8_t note, std::uint8_t velocity);
 
     /// Sends a MIDI Note Off event
-    void noteOff(std::uint8_t note);
+    void noteOff(int channel, std::uint8_t note);
 
     /// Sends a MIDI Poly Pressure (Aftertouch) event
-    void pressure(std::uint8_t note, std::uint8_t value);
+    void pressure(int channel, std::uint8_t note, std::uint8_t value);
 
     /// Sends a MIDI Channel Pressure (Aftertouch) event
-    void pressure(std::uint8_t value);
+    void pressure(int channel, std::uint8_t value);
 
     /// Sends a MIDI Pitch Bend change event
-    void pitchBend(std::uint16_t value);
+    void pitchBend(int channel, std::uint16_t value);
 
     /// Sends a volume change event
-    void volume(std::uint8_t value);
+    void volume(int channel, std::uint8_t value);
 
     /// Sends a pan value change event
-    void pan(std::uint8_t value);
+    void pan(int channel, std::uint8_t value);
 
     /// Sends a modulation value change event
-    void modulation(std::uint8_t value);
+    void modulation(int channel, std::uint8_t value);
 
     /// Changes the value of the sustain
-    void sustain(bool status);
+    void sustain(int channel, bool status);
 
     /// Sends a reverb value change event
-    void reverb(std::uint8_t value);
+    void reverb(int channel, std::uint8_t value);
 
     /// Sends a chorus value change event
-    void chorus(std::uint8_t value);
+    void chorus(int channel, std::uint8_t value);
 
     /// Sends a pitch bend range change event
-    void pitchBendRange(std::uint16_t value);
+    void pitchBendRange(int channel, std::uint16_t value);
 
     /// Sends a fine tuning change event
-    void fineTuning(std::uint16_t value);
+    void fineTuning(int channel, std::uint16_t value);
 
     /// Sends a coarse tuning change event
-    void coarseTuning(std::uint16_t value);
+    void coarseTuning(int channel, std::uint16_t value);
 
     /// Resets all MIDI Control Change to their default values
-    void resetControllers();
+    void resetControllers(int channel);
 
     /// Sends a MIDI All Notes Off event
     void allNotesOff();

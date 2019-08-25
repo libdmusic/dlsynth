@@ -270,19 +270,16 @@ int dlsynth_free_wav(struct dlsynth_wav *wav) {
 }
 
 int dlsynth_init(const dlsynth_settings *settings, dlsynth **synth) {
-  if (settings == nullptr || settings->instrument == nullptr ||
-      settings->num_channels == 0 || settings->num_channels > 2 ||
-      settings->sample_rate == 0 || synth == nullptr) {
+  if (settings == nullptr || settings->num_channels == 0 ||
+      settings->num_channels > 2 || settings->sample_rate == 0 ||
+      synth == nullptr) {
     dlsynth_error = DLSYNTH_INVALID_ARGS;
     return 0;
   }
 
-  const DLSynth::Sound &sound = settings->instrument->sound->sound;
-
   *synth = new dlsynth();
   (*synth)->synth = std::make_unique<DLSynth::Synth::Synthesizer>(
-   sound, settings->instrument->index, settings->num_voices,
-   settings->sample_rate);
+   settings->num_voices, settings->sample_rate);
 
   (*synth)->interleaved = settings->interleaved;
   (*synth)->num_channels = settings->num_channels;
@@ -387,96 +384,100 @@ int dlsynth_render_float_mix(dlsynth *synth, float *buffer, size_t frames,
     return 0;                                                                  \
   }
 
-int dlsynth_note_on(struct dlsynth *synth, uint8_t note, uint8_t velocity) {
+int dlsynth_note_on(struct dlsynth *synth, const struct dlsynth_instr *instr,
+                    int channel, uint8_t note, uint8_t velocity) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
-  synth->synth->noteOn(note, velocity);
+  synth->synth->noteOn(instr->sound->sound, instr->index, channel, note,
+                       velocity);
   return 1;
 }
-int dlsynth_note_off(struct dlsynth *synth, uint8_t note) {
+int dlsynth_note_off(struct dlsynth *synth, int channel, uint8_t note) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
-  synth->synth->noteOff(note);
+  synth->synth->noteOff(channel, note);
   return 1;
 }
 
-int dlsynth_poly_pressure(struct dlsynth *synth, uint8_t note,
+int dlsynth_poly_pressure(struct dlsynth *synth, int channel, uint8_t note,
                           uint8_t velocity) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
-  synth->synth->pressure(note, velocity);
+  synth->synth->pressure(channel, note, velocity);
   return 1;
 }
-int dlsynth_channel_pressure(struct dlsynth *synth, uint8_t velocity) {
+int dlsynth_channel_pressure(struct dlsynth *synth, int channel,
+                             uint8_t velocity) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
-  synth->synth->pressure(velocity);
+  synth->synth->pressure(channel, velocity);
   return 1;
 }
-int dlsynth_pitch_bend(struct dlsynth *synth, uint16_t value) {
+int dlsynth_pitch_bend(struct dlsynth *synth, int channel, uint16_t value) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
-  synth->synth->pitchBend(value);
+  synth->synth->pitchBend(channel, value);
   return 1;
 }
-int dlsynth_volume(struct dlsynth *synth, uint8_t value) {
+int dlsynth_volume(struct dlsynth *synth, int channel, uint8_t value) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
-  synth->synth->volume(value);
+  synth->synth->volume(channel, value);
   return 1;
 }
-int dlsynth_pan(struct dlsynth *synth, uint8_t value) {
+int dlsynth_pan(struct dlsynth *synth, int channel, uint8_t value) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
-  synth->synth->pan(value);
+  synth->synth->pan(channel, value);
   return 1;
 }
-int dlsynth_modulation(struct dlsynth *synth, uint8_t value) {
+int dlsynth_modulation(struct dlsynth *synth, int channel, uint8_t value) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
-  synth->synth->modulation(value);
+  synth->synth->modulation(channel, value);
   return 1;
 }
-int dlsynth_sustain(struct dlsynth *synth, int status) {
+int dlsynth_sustain(struct dlsynth *synth, int channel, int status) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
-  synth->synth->sustain(status);
+  synth->synth->sustain(channel, status);
   return 1;
 }
-int dlsynth_reverb(struct dlsynth *synth, uint8_t value) {
+int dlsynth_reverb(struct dlsynth *synth, int channel, uint8_t value) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
-  synth->synth->reverb(value);
+  synth->synth->reverb(channel, value);
   return 1;
 }
-int dlsynth_chorus(struct dlsynth *synth, uint8_t value) {
+int dlsynth_chorus(struct dlsynth *synth, int channel, uint8_t value) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
-  synth->synth->chorus(value);
+  synth->synth->chorus(channel, value);
   return 1;
 }
-int dlsynth_pitch_bend_range(struct dlsynth *synth, uint16_t value) {
+int dlsynth_pitch_bend_range(struct dlsynth *synth, int channel,
+                             uint16_t value) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
-  synth->synth->pitchBendRange(value);
+  synth->synth->pitchBendRange(channel, value);
   return 1;
 }
-int dlsynth_fine_tuning(struct dlsynth *synth, uint16_t value) {
+int dlsynth_fine_tuning(struct dlsynth *synth, int channel, uint16_t value) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
-  synth->synth->fineTuning(value);
+  synth->synth->fineTuning(channel, value);
   return 1;
 }
-int dlsynth_coarse_tuning(struct dlsynth *synth, uint16_t value) {
+int dlsynth_coarse_tuning(struct dlsynth *synth, int channel, uint16_t value) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
-  synth->synth->coarseTuning(value);
+  synth->synth->coarseTuning(channel, value);
   return 1;
 }
-int dlsynth_reset_controllers(struct dlsynth *synth) {
+int dlsynth_reset_controllers(struct dlsynth *synth, int channel) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
-  synth->synth->resetControllers();
+  synth->synth->resetControllers(channel);
   return 1;
 }
 int dlsynth_all_notes_off(struct dlsynth *synth) {

@@ -34,9 +34,6 @@ struct dlsynth_settings {
 
   /// Maximum number of voices to allocate for rendering
   unsigned num_voices;
-
-  /// The instrument to use for rendering
-  const struct dlsynth_instr *instrument;
 };
 
 /**
@@ -131,8 +128,11 @@ int DLSYNTH_EXPORT dlsynth_render_float_mix(
  */
 int DLSYNTH_EXPORT dlsynth_note_on(
  struct dlsynth *synth, ///< [in] The synthesizer to send the message to
- uint8_t note,          ///< [in] The note which the event refers to
- uint8_t velocity       ///< [in] Velocity of the note
+ const struct dlsynth_instr
+  *instr,         ///< [in] Instrument to use for rendering the note
+ int channel,     ///< [in] Channel to associate the note to
+ uint8_t note,    ///< [in] The note which the event refers to
+ uint8_t velocity ///< [in] Velocity of the note
 );
 
 /// Sends a MIDI note off event to a synthesizer
@@ -142,6 +142,7 @@ int DLSYNTH_EXPORT dlsynth_note_on(
  */
 int DLSYNTH_EXPORT dlsynth_note_off(
  struct dlsynth *synth, ///< [in] The synthesizer to send the message to
+ int channel,           ///< [in] The channel which the event refers to
  uint8_t note           ///< [in] The note which the event refers to
 );
 
@@ -152,6 +153,7 @@ int DLSYNTH_EXPORT dlsynth_note_off(
  */
 int DLSYNTH_EXPORT dlsynth_poly_pressure(
  struct dlsynth *synth, ///< [in] The synthesizer to send the message to
+ int channel,           ///< [in] The channel which the event refers to
  uint8_t note,          ///< [in] The note which the event refers to
  uint8_t value          ///< [in] The pressure value of the event
 );
@@ -163,6 +165,7 @@ int DLSYNTH_EXPORT dlsynth_poly_pressure(
  */
 int DLSYNTH_EXPORT dlsynth_channel_pressure(
  struct dlsynth *synth, ///< [in] The synthesizer to send the message to
+ int channel,           ///< [in] The channel which the event refers to
  uint8_t value          ///< [in] The pressure value of the event
 );
 
@@ -173,59 +176,69 @@ int DLSYNTH_EXPORT dlsynth_channel_pressure(
  */
 int DLSYNTH_EXPORT dlsynth_pitch_bend(
  struct dlsynth *synth, ///< [in] The synthesizer to send the message to
+ int channel,           ///< [in] The channel which the event refers to
  uint16_t value         ///< [in] Value of the pitch bend event
 );
 
 /**
  * @ingroup SynthManagement
  */
-int DLSYNTH_EXPORT dlsynth_volume(struct dlsynth *synth, uint8_t value);
+int DLSYNTH_EXPORT dlsynth_volume(struct dlsynth *synth, int channel,
+                                  uint8_t value);
 
 /**
  * @ingroup SynthManagement
  */
-int DLSYNTH_EXPORT dlsynth_pan(struct dlsynth *synth, uint8_t value);
+int DLSYNTH_EXPORT dlsynth_pan(struct dlsynth *synth, int channel,
+                               uint8_t value);
 
 /**
  * @ingroup SynthManagement
  */
-int DLSYNTH_EXPORT dlsynth_modulation(struct dlsynth *synth, uint8_t value);
+int DLSYNTH_EXPORT dlsynth_modulation(struct dlsynth *synth, int channel,
+                                      uint8_t value);
 
 /**
  * @ingroup SynthManagement
  */
-int DLSYNTH_EXPORT dlsynth_sustain(struct dlsynth *synth, int status);
+int DLSYNTH_EXPORT dlsynth_sustain(struct dlsynth *synth, int channel,
+                                   int status);
 
 /**
  * @ingroup SynthManagement
  */
-int DLSYNTH_EXPORT dlsynth_reverb(struct dlsynth *synth, uint8_t value);
+int DLSYNTH_EXPORT dlsynth_reverb(struct dlsynth *synth, int channel,
+                                  uint8_t value);
 
 /**
  * @ingroup SynthManagement
  */
-int DLSYNTH_EXPORT dlsynth_chorus(struct dlsynth *synth, uint8_t value);
+int DLSYNTH_EXPORT dlsynth_chorus(struct dlsynth *synth, int channel,
+                                  uint8_t value);
 
 /**
  * @ingroup SynthManagement
  */
-int DLSYNTH_EXPORT dlsynth_pitch_bend_range(struct dlsynth *synth,
+int DLSYNTH_EXPORT dlsynth_pitch_bend_range(struct dlsynth *synth, int channel,
                                             uint16_t value);
 
 /**
  * @ingroup SynthManagement
  */
-int DLSYNTH_EXPORT dlsynth_fine_tuning(struct dlsynth *synth, uint16_t value);
+int DLSYNTH_EXPORT dlsynth_fine_tuning(struct dlsynth *synth, int channel,
+                                       uint16_t value);
 
 /**
  * @ingroup SynthManagement
  */
-int DLSYNTH_EXPORT dlsynth_coarse_tuning(struct dlsynth *synth, uint16_t value);
+int DLSYNTH_EXPORT dlsynth_coarse_tuning(struct dlsynth *synth, int channel,
+                                         uint16_t value);
 
 /**
  * @ingroup SynthManagement
  */
-int DLSYNTH_EXPORT dlsynth_reset_controllers(struct dlsynth *synth);
+int DLSYNTH_EXPORT dlsynth_reset_controllers(struct dlsynth *synth,
+                                             int channel);
 
 /**
  * @ingroup SynthManagement
