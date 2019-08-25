@@ -710,6 +710,11 @@ void Voice::resetControllers() {
   pimpl->m_messageQueue.push(std::make_unique<ResetControllersMessage>());
 }
 
+void Voice::sustain(bool value) {
+  assert(pimpl != nullptr);
+  pimpl->m_messageQueue.push(std::make_unique<SustainChangeMessage>(value));
+}
+
 bool Voice::playing() const {
   assert(pimpl != nullptr);
   return pimpl->m_playing;
