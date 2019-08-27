@@ -140,7 +140,7 @@ jobs:
   pool:
     vmImage: 'ubuntu-latest'
   steps:
-  - script: sudo apt-get install doxygen dot
+  - script: sudo apt-get install doxygen graphviz
     displayName: Install Doxygen
   - script: doxygen
     displayName: Generate documentation
