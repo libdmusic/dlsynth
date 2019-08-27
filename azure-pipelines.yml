@@ -136,3 +136,17 @@ jobs:
     displayName: Build
   - publish: $(System.DefaultWorkingDirectory)/build/artifacts/
     displayName: Publish artifacts
+- job: MakeDocs
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - script: sudo apt-get install doxygen dot
+    displayName: Install Doxygen
+  - script: doxygen
+    displayName: Generate documentation
+  - script: |
+      mkdir artifacts
+      tar -czvf artifacts/docs.tar.gz docs
+    displayName: Create tarball
+  - publish: $(System.DefaultWorkingDirectory)/artifacts/
+    displayName: Publish artifacts
