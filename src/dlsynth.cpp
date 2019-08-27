@@ -122,7 +122,7 @@ int dlsynth_sound_instr_count(const dlsynth_sound *sound, std::size_t *count) {
 }
 
 int dlsynth_sound_instr_info(const dlsynth_instr *instr, uint32_t *bank,
-                             uint32_t *patch) {
+                             uint32_t *patch, int *isDrum) {
   if (instr == nullptr || bank == nullptr || patch == nullptr ||
       instr->sound == nullptr) {
     dlsynth_error = DLSYNTH_INVALID_ARGS;
@@ -132,11 +132,12 @@ int dlsynth_sound_instr_info(const dlsynth_instr *instr, uint32_t *bank,
   const auto &i = instr->sound->sound.instruments()[instr->index];
   *bank = i.midiBank();
   *patch = i.midiInstrument();
+  *isDrum = i.isDrumInstrument() ? 1 : 0;
 
   return 1;
 }
 
-int dlsynth_get_instr_patch(std::uint32_t bank, std::uint32_t patch,
+int dlsynth_get_instr_patch(std::uint32_t bank, std::uint32_t patch, int drum,
                             const dlsynth_sound *sound, dlsynth_instr **instr) {
   if (sound == nullptr || instr == nullptr) {
     dlsynth_error = DLSYNTH_INVALID_ARGS;
@@ -144,9 +145,11 @@ int dlsynth_get_instr_patch(std::uint32_t bank, std::uint32_t patch,
   }
 
   const auto &instruments = sound->sound.instruments();
+  bool isDrum = drum ? true : false;
   for (std::size_t i = 0; i < instruments.size(); i++) {
     const auto &instrument = instruments[i];
-    if (instrument.midiBank() == bank && instrument.midiInstrument() == patch) {
+    if (instrument.midiBank() == bank && instrument.midiInstrument() == patch &&
+        instrument.isDrumInstrument() == isDrum) {
       *instr = new dlsynth_instr();
       (*instr)->index = i;
       (*instr)->sound = sound;
@@ -364,13 +367,14 @@ int dlsynth_render_float_mix(dlsynth *synth, size_t frames, float *lout,
   }
 
 int dlsynth_note_on(struct dlsynth *synth, const struct dlsynth_instr *instr,
-                    int channel, uint8_t note, uint8_t velocity) {
+                    int channel, int priority, uint8_t note, uint8_t velocity) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
-  synth->synth->noteOn(instr->sound->sound, instr->index, channel, note,
-                       velocity);
+  synth->synth->noteOn(instr->sound->sound, instr->index, channel, priority,
+                       note, velocity);
   return 1;
 }
+
 int dlsynth_note_off(struct dlsynth *synth, int channel, uint8_t note) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 

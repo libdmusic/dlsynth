@@ -119,6 +119,7 @@ int DLSYNTH_EXPORT dlsynth_note_on(
  const struct dlsynth_instr
   *instr,         ///< [in] Instrument to use for rendering the note
  int channel,     ///< [in] Channel to associate the note to
+ int priority,    ///< [in] Priority of the note to play
  uint8_t note,    ///< [in] The note which the event refers to
  uint8_t velocity ///< [in] Velocity of the note
 );
@@ -288,9 +289,10 @@ int DLSYNTH_EXPORT dlsynth_sound_instr_count(
  */
 int DLSYNTH_EXPORT dlsynth_sound_instr_info(
  const struct dlsynth_instr
-  *instr,        ///< [in] The instrument of which to obtain info
- uint32_t *bank, ///< [out] MIDI bank of the instrument
- uint32_t *patch ///< [out] MIDI Program Change of the instrument
+  *instr,         ///< [in] The instrument of which to obtain info
+ uint32_t *bank,  ///< [out] MIDI bank of the instrument
+ uint32_t *patch, ///< [out] MIDI Program Change of the instrument
+ int *isDrum      ///< [out] Whether the istrument is a drum sound or not
 );
 
 /// Obtains a reference to a DLS instrument from its MIDI parameters
@@ -303,6 +305,7 @@ int DLSYNTH_EXPORT dlsynth_sound_instr_info(
 int DLSYNTH_EXPORT dlsynth_get_instr_patch(
  uint32_t bank,  ///< [in] MIDI bank of the instrument
  uint32_t patch, ///< [in] MIDI Program Change of the instrument
+ int drum,       ///< [in] Whether to search for a drum sound or not
  const struct dlsynth_sound
   *sound, ///< [in] DLS sound where the instrument is contained
  struct dlsynth_instr **instr ///< [out] The instrument

@@ -148,12 +148,13 @@ void Synthesizer::resetControllers(int channel) {
 }
 
 void Synthesizer::noteOn(const Sound &collection, std::size_t index,
-                         int channel, std::uint8_t note,
+                         int channel, int priority, std::uint8_t note,
                          std::uint8_t velocity) {
   assert(pimpl != nullptr);
   assert(index < collection.instruments().size());
 
   const auto &instrument = collection.instruments()[index];
+  bool isDrum = instrument.isDrumInstrument();
 
   std::lock_guard<std::mutex> lock(pimpl->mutex);
   for (const auto &region : instrument.regions()) {
@@ -176,8 +177,8 @@ void Synthesizer::noteOn(const Sound &collection, std::size_t index,
       if (!region.selfNonExclusive()) {
         for (auto &voice : pimpl->m_voices) {
           if (voice.playing() && voice.note() == note) {
-            voice.noteOn(channel, note, velocity, wavesample, sample,
-                         connectionBlocks);
+            voice.noteOn(channel, priority, note, velocity, isDrum, wavesample,
+                         sample, connectionBlocks);
             return;
           }
         }
@@ -186,20 +187,27 @@ void Synthesizer::noteOn(const Sound &collection, std::size_t index,
       // Otherwise, search for a free voice.
       for (auto &voice : pimpl->m_voices) {
         if (!voice.playing()) {
-          voice.noteOn(channel, note, velocity, wavesample, sample,
-                       connectionBlocks);
+          voice.noteOn(channel, priority, note, velocity, isDrum, wavesample,
+                       sample, connectionBlocks);
           return;
         }
       }
 
-      // No free voices, steal the one playing the oldest note.
-      auto oldestVoice =
-       std::min_element(pimpl->m_voices.begin(), pimpl->m_voices.end(),
-                        [](const auto &lhs, const auto &rhs) {
-                          return lhs.startTime() < rhs.startTime();
-                        });
-      oldestVoice->noteOn(channel, note, velocity, wavesample, sample,
-                          connectionBlocks);
+      Voice *suitable_voice = nullptr;
+      for (auto &voice : pimpl->m_voices) {
+        if (voice.priority() <= priority &&
+            (suitable_voice == nullptr ||
+             suitable_voice->startTime() < voice.startTime())) {
+          suitable_voice = &voice;
+        }
+      }
+
+      if (suitable_voice == nullptr) {
+        return;
+      }
+
+      suitable_voice->noteOn(channel, priority, note, velocity, isDrum,
+                             wavesample, sample, connectionBlocks);
     }
   }
 }

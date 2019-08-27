@@ -19,7 +19,8 @@ namespace Synth {
 
     /// Sends a MIDI Note On event
     void noteOn(const Sound &collection, std::size_t instrumentIndex,
-                int channel, std::uint8_t note, std::uint8_t velocity);
+                int channel, int priority, std::uint8_t note,
+                std::uint8_t velocity);
 
     /// Sends a MIDI Note Off event
     void noteOff(int channel, std::uint8_t note);

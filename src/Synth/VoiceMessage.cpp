@@ -4,15 +4,17 @@ using namespace DLSynth;
 using namespace DLSynth::Synth;
 
 NoteOnMessage::NoteOnMessage(
- int channel, std::uint8_t note, std::uint8_t velocity,
- const Wavesample *wavesample, const Wave &sample,
+ int channel, int priority, std::uint8_t note, std::uint8_t velocity,
+ bool isDrum, const Wavesample *wavesample, const Wave &sample,
  const std::vector<ConnectionBlock> &connectionBlocks)
   : m_channel(channel)
   , m_note(note)
   , m_velocity(velocity)
   , m_wavesample(wavesample)
   , m_sample(sample)
-  , m_connectionBlocks(connectionBlocks) {}
+  , m_connectionBlocks(connectionBlocks)
+  , m_isDrum(isDrum)
+  , m_priority(priority) {}
 
 NoteOnMessage::~NoteOnMessage() = default;
 
@@ -33,6 +35,10 @@ const Wave &NoteOnMessage::sample() const { return m_sample; }
 const std::vector<ConnectionBlock> &NoteOnMessage::connectionBlocks() const {
   return m_connectionBlocks;
 }
+
+bool NoteOnMessage::isDrum() const { return m_isDrum; }
+
+int NoteOnMessage::priority() const { return m_priority; }
 
 NoteOffMessage::NoteOffMessage() {}
 
