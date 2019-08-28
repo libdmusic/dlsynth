@@ -38,10 +38,12 @@ struct dlsynth_wav;
  * @defgroup SoundCreation Sound collection creation
  *
  */
+
 /**
  * @defgroup Rendering Sound rendering
  *
  */
+
 /// Initializes a DLS synthesizer
 /**
  * @ingroup SynthManagement
@@ -169,75 +171,132 @@ int DLSYNTH_EXPORT dlsynth_pitch_bend(
  uint16_t value         ///< [in] Value of the pitch bend event
 );
 
+/// Sends a MIDI channel volume change event
 /**
  * @ingroup SynthManagement
+ * @return Nonzero on success, zero on failure
  */
-int DLSYNTH_EXPORT dlsynth_volume(struct dlsynth *synth, int channel,
-                                  uint8_t value);
+int DLSYNTH_EXPORT dlsynth_volume(
+ struct dlsynth *synth, ///< [in] The synthesizer to send the message to
+ int channel,           ///< [in] The channel which the event refers to
+ uint8_t value          ///< [in] New volume value
+);
 
+/// Sends a MIDI channel pan change event
 /**
  * @ingroup SynthManagement
+ * @return Nonzero on success, zero on failure
  */
-int DLSYNTH_EXPORT dlsynth_pan(struct dlsynth *synth, int channel,
-                               uint8_t value);
+int DLSYNTH_EXPORT dlsynth_pan(
+ struct dlsynth *synth, ///< [in] The synthesizer to send the message to
+ int channel,           ///< [in] The channel to which the event refers to
+ uint8_t value          ///< [in] New pan value
+);
 
+/// Sends a MIDI modulation change event
 /**
  * @ingroup SynthManagement
+ * @return Nonzero on success, zero on failure
  */
-int DLSYNTH_EXPORT dlsynth_modulation(struct dlsynth *synth, int channel,
-                                      uint8_t value);
+int DLSYNTH_EXPORT dlsynth_modulation(
+ struct dlsynth *synth, ///< [in] The synthesizer to send the message to
+ int channel,           ///< [in] The channel to which the event refers to
+ uint8_t value          ///< [in] New modulation value
+);
 
+/// Sends a MIDI sustain change event
 /**
  * @ingroup SynthManagement
+ * @return Nonzero on success, zero on failure
  */
-int DLSYNTH_EXPORT dlsynth_sustain(struct dlsynth *synth, int channel,
-                                   int status);
+int DLSYNTH_EXPORT dlsynth_sustain(
+ struct dlsynth *synth, ///< [in] The synthesizer to send the message to
+ int channel,           ///< [in] The channel to which the event refers to
+ int status             ///< [in] 1 for sustain on, 0 for sustain off
+);
 
+/// Sends a MIDI channel reverb change event
 /**
  * @ingroup SynthManagement
+ * @return Nonzero on success, zero on failure
  */
-int DLSYNTH_EXPORT dlsynth_reverb(struct dlsynth *synth, int channel,
-                                  uint8_t value);
+int DLSYNTH_EXPORT dlsynth_reverb(
+ struct dlsynth *synth, ///< [in] The synthesizer to send the message to
+ int channel,           ///< [in] The channel to which the event refers to
+ uint8_t value          ///< [in] New revern value
+);
 
+/// Sends a MIDI channel chorus change event
 /**
  * @ingroup SynthManagement
+ * @return Nonzero on success, zero on failure
  */
-int DLSYNTH_EXPORT dlsynth_chorus(struct dlsynth *synth, int channel,
-                                  uint8_t value);
+int DLSYNTH_EXPORT dlsynth_chorus(
+ struct dlsynth *synth, ///< [in] The synthesizer to send the message to
+ int channel,           ///< [in] The channel to which the event refers to
+ uint8_t value          ///< [in] New chorus value
+);
 
+/// Sends a MIDI pitch bend range change event
 /**
  * @ingroup SynthManagement
+ * @return Nonzero on success, zero on failure
  */
-int DLSYNTH_EXPORT dlsynth_pitch_bend_range(struct dlsynth *synth, int channel,
-                                            uint16_t value);
+int DLSYNTH_EXPORT dlsynth_pitch_bend_range(
+ struct dlsynth *synth, ///< [in] The synthesizer to send the message to
+ int channel,           ///< [in] The channel to which the event refers to
+ uint16_t value         ///< [in] New pitch bend range
+);
 
+/// Sends a MIDI fine tune event
 /**
  * @ingroup SynthManagement
+ * @return Nonzero on success, zero on failure
  */
-int DLSYNTH_EXPORT dlsynth_fine_tuning(struct dlsynth *synth, int channel,
-                                       uint16_t value);
+int DLSYNTH_EXPORT dlsynth_fine_tuning(
+ struct dlsynth *synth, ///< [in] The synthesizer to send the message to
+ int channel,           ///< [in] The channel to which the event refers to
+ uint16_t value         ///< [in] New fine tuning value
+);
 
+/// Sends a MIDI coarse tune event
 /**
  * @ingroup SynthManagement
+ * @return Nonzero on success, zero on failure
  */
-int DLSYNTH_EXPORT dlsynth_coarse_tuning(struct dlsynth *synth, int channel,
-                                         uint16_t value);
+int DLSYNTH_EXPORT dlsynth_coarse_tuning(
+ struct dlsynth *synth, ///< [in] The synthesizer to send the message to
+ int channel,           ///< [in] The channel to which the event refers to
+ uint16_t value         ///< [in] New coarse tuning value
+);
 
+/// Sends a MIDI reset all channel controllers event
 /**
  * @ingroup SynthManagement
+ * @return Nonzero on success, zero on failure
  */
-int DLSYNTH_EXPORT dlsynth_reset_controllers(struct dlsynth *synth,
-                                             int channel);
+int DLSYNTH_EXPORT dlsynth_reset_controllers(
+ struct dlsynth *synth, ///< [in] The synthesizer to send the message to
+ int channel            ///< [in] The channel to which the event refers to
+);
 
+/// Sends a MIDI All Notes Off event
 /**
  * @ingroup SynthManagement
+ * @return Nonzero on success, zero on failure
  */
-int DLSYNTH_EXPORT dlsynth_all_notes_off(struct dlsynth *synth);
+int DLSYNTH_EXPORT dlsynth_all_notes_off(
+ struct dlsynth *synth ///< [in] The synthesizer to send the message to
+);
 
+/// Sends a MIDI All Sound Off event
 /**
  * @ingroup SynthManagement
+ * @return Nonzero on success, zero on failure
  */
-int DLSYNTH_EXPORT dlsynth_all_sound_off(struct dlsynth *synth);
+int DLSYNTH_EXPORT dlsynth_all_sound_off(
+ struct dlsynth *synth ///< [in] The synthesizer to send the message to
+);
 
 /// Loads a DLS file from a path
 /**
