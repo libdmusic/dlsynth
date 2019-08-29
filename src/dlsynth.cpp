@@ -793,3 +793,13 @@ int dlsynth_new_sound(struct dlsynth_sound **sound,
    new dlsynth_sound{DLSynth::Sound(instruments->instruments, wavepool->waves)};
   return 1;
 }
+
+#ifdef DLSYNTH_COMMIT
+static dlsynth_version version = {DLSYNTH_MAJOR, DLSYNTH_MINOR, DLSYNTH_PATCH,
+                                  DLSYNTH_COMMIT};
+#else
+static dlsynth_version version = {DLSYNTH_MAJOR, DLSYNTH_MINOR, DLSYNTH_PATCH,
+                                  ""};
+#endif
+
+const dlsynth_version *dlsynth_get_version() { return &version; }

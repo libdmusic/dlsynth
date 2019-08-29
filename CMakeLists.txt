@@ -76,6 +76,17 @@ elseif(DLSYNTH_ENABLE_SIMD STREQUAL "SSE3")
     endif()
 endif()
 
+find_program(GIT_EXECUTABLE "git")
+if(NOT GIT_EXECUTABLE STREQUAL "GIT_NOTFOUND" AND EXISTS "${CMAKE_SOURCE_DIR}/.git")
+    execute_process(
+        COMMAND "${GIT_EXECUTABLE}" rev-parse -q HEAD
+        WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+        OUTPUT_VARIABLE GIT_COMMIT
+        ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE
+    )
+    target_compile_options(dlsynth PRIVATE -DDLSYNTH_COMMIT="${GIT_COMMIT}")
+endif()
+
 find_package(riffcpp 2.2 CONFIG REQUIRED)
 
 target_link_libraries(dlsynth PRIVATE riffcpp::riffcpp)

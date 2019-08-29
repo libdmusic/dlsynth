@@ -7,6 +7,23 @@ extern "C" {
 #include "dlsynth_export.h"
 #include <stddef.h>
 #include <stdint.h>
+
+#define DLSYNTH_MAJOR 0
+#define DLSYNTH_MINOR 2
+#define DLSYNTH_PATCH 0
+
+/// Version info for the linked library
+struct dlsynth_version {
+  int major; ///< Major version number
+  int minor; ///< Minor version number
+  int patch; ///< Patch version number
+
+  const char *commit; ///< Git commit hash
+};
+
+/// Obtains information about the version of the linked dlsynth library
+DLSYNTH_EXPORT const struct dlsynth_version *dlsynth_get_version(void);
+
 /// A DLS synthesizer
 struct dlsynth;
 
