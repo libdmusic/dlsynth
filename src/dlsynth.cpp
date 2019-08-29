@@ -262,7 +262,7 @@ int dlsynth_get_wav_data(const dlsynth_wav *wav, const float **left_buf,
   return 1;
 }
 
-int dlsynth_free_wav(struct dlsynth_wav *wav) {
+int dlsynth_free_wav(dlsynth_wav *wav) {
   if (wav != nullptr) {
     delete wav;
   }
@@ -366,8 +366,8 @@ int dlsynth_render_float_mix(dlsynth *synth, size_t frames, float *lout,
     return 0;                                                                  \
   }
 
-int dlsynth_note_on(struct dlsynth *synth, const struct dlsynth_instr *instr,
-                    int channel, int priority, uint8_t note, uint8_t velocity) {
+int dlsynth_note_on(dlsynth *synth, const dlsynth_instr *instr, int channel,
+                    int priority, uint8_t note, uint8_t velocity) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
   synth->synth->noteOn(instr->sound->sound, instr->index, channel, priority,
@@ -375,101 +375,99 @@ int dlsynth_note_on(struct dlsynth *synth, const struct dlsynth_instr *instr,
   return 1;
 }
 
-int dlsynth_note_off(struct dlsynth *synth, int channel, uint8_t note) {
+int dlsynth_note_off(dlsynth *synth, int channel, uint8_t note) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
   synth->synth->noteOff(channel, note);
   return 1;
 }
 
-int dlsynth_poly_pressure(struct dlsynth *synth, int channel, uint8_t note,
+int dlsynth_poly_pressure(dlsynth *synth, int channel, uint8_t note,
                           uint8_t velocity) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
   synth->synth->pressure(channel, note, velocity);
   return 1;
 }
-int dlsynth_channel_pressure(struct dlsynth *synth, int channel,
-                             uint8_t velocity) {
+int dlsynth_channel_pressure(dlsynth *synth, int channel, uint8_t velocity) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
   synth->synth->pressure(channel, velocity);
   return 1;
 }
-int dlsynth_pitch_bend(struct dlsynth *synth, int channel, uint16_t value) {
+int dlsynth_pitch_bend(dlsynth *synth, int channel, uint16_t value) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
   synth->synth->pitchBend(channel, value);
   return 1;
 }
-int dlsynth_volume(struct dlsynth *synth, int channel, uint8_t value) {
+int dlsynth_volume(dlsynth *synth, int channel, uint8_t value) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
   synth->synth->volume(channel, value);
   return 1;
 }
-int dlsynth_pan(struct dlsynth *synth, int channel, uint8_t value) {
+int dlsynth_pan(dlsynth *synth, int channel, uint8_t value) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
   synth->synth->pan(channel, value);
   return 1;
 }
-int dlsynth_modulation(struct dlsynth *synth, int channel, uint8_t value) {
+int dlsynth_modulation(dlsynth *synth, int channel, uint8_t value) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
   synth->synth->modulation(channel, value);
   return 1;
 }
-int dlsynth_sustain(struct dlsynth *synth, int channel, int status) {
+int dlsynth_sustain(dlsynth *synth, int channel, int status) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
   synth->synth->sustain(channel, status);
   return 1;
 }
-int dlsynth_reverb(struct dlsynth *synth, int channel, uint8_t value) {
+int dlsynth_reverb(dlsynth *synth, int channel, uint8_t value) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
   synth->synth->reverb(channel, value);
   return 1;
 }
-int dlsynth_chorus(struct dlsynth *synth, int channel, uint8_t value) {
+int dlsynth_chorus(dlsynth *synth, int channel, uint8_t value) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
   synth->synth->chorus(channel, value);
   return 1;
 }
-int dlsynth_pitch_bend_range(struct dlsynth *synth, int channel,
-                             uint16_t value) {
+int dlsynth_pitch_bend_range(dlsynth *synth, int channel, uint16_t value) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
   synth->synth->pitchBendRange(channel, value);
   return 1;
 }
-int dlsynth_fine_tuning(struct dlsynth *synth, int channel, uint16_t value) {
+int dlsynth_fine_tuning(dlsynth *synth, int channel, uint16_t value) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
   synth->synth->fineTuning(channel, value);
   return 1;
 }
-int dlsynth_coarse_tuning(struct dlsynth *synth, int channel, uint16_t value) {
+int dlsynth_coarse_tuning(dlsynth *synth, int channel, uint16_t value) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
   synth->synth->coarseTuning(channel, value);
   return 1;
 }
-int dlsynth_reset_controllers(struct dlsynth *synth, int channel) {
+int dlsynth_reset_controllers(dlsynth *synth, int channel) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
   synth->synth->resetControllers(channel);
   return 1;
 }
-int dlsynth_all_notes_off(struct dlsynth *synth) {
+int dlsynth_all_notes_off(dlsynth *synth) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
   synth->synth->allNotesOff();
   return 1;
 }
-int dlsynth_all_sound_off(struct dlsynth *synth) {
+int dlsynth_all_sound_off(dlsynth *synth) {
   DLSYNTH_CHECK_SYNTH_NOT_NULL
 
   synth->synth->allSoundOff();
@@ -482,7 +480,7 @@ struct dlsynth_wavesample {
 
 int dlsynth_new_wavesample_oneshot(uint16_t unityNote, int16_t fineTune,
                                    int32_t gain,
-                                   struct dlsynth_wavesample **wavesample) {
+                                   dlsynth_wavesample **wavesample) {
   if (wavesample == nullptr) {
     dlsynth_error = DLSYNTH_INVALID_ARGS;
     return 0;
@@ -494,7 +492,7 @@ int dlsynth_new_wavesample_oneshot(uint16_t unityNote, int16_t fineTune,
 int dlsynth_new_wavesample_looped(uint16_t unityNote, int16_t fineTune,
                                   int32_t gain, enum dlsynth_loop_type type,
                                   uint32_t loopStart, uint32_t loopLength,
-                                  struct dlsynth_wavesample **wavesample) {
+                                  dlsynth_wavesample **wavesample) {
   if (wavesample == nullptr) {
     dlsynth_error = DLSYNTH_INVALID_ARGS;
     return 0;
@@ -505,7 +503,7 @@ int dlsynth_new_wavesample_looped(uint16_t unityNote, int16_t fineTune,
                            loopLength))};
   return 1;
 }
-int dlsynth_free_wavesample(struct dlsynth_wavesample *wavesample) {
+int dlsynth_free_wavesample(dlsynth_wavesample *wavesample) {
   if (wavesample != nullptr) {
     delete wavesample;
   }
@@ -515,8 +513,8 @@ int dlsynth_free_wavesample(struct dlsynth_wavesample *wavesample) {
 
 int dlsynth_new_wav_mono(int sampleRate, const float *dataBegin,
                          const float *dataEnd,
-                         const struct dlsynth_wavesample *wavesample,
-                         struct dlsynth_wav **wav) {
+                         const dlsynth_wavesample *wavesample,
+                         dlsynth_wav **wav) {
   if (wav == nullptr) {
     dlsynth_error = DLSYNTH_INVALID_ARGS;
     return 0;
@@ -547,8 +545,8 @@ int dlsynth_new_wav_stereo(int sampleRate, const float *leftDataBegin,
                            const float *leftDataEnd,
                            const float *rightDataBegin,
                            const float *rightDataEnd,
-                           const struct dlsynth_wavesample *wavesample,
-                           struct dlsynth_wav **wav) {
+                           const dlsynth_wavesample *wavesample,
+                           dlsynth_wav **wav) {
   if (wav == nullptr) {
     dlsynth_error = DLSYNTH_INVALID_ARGS;
     return 0;
@@ -586,7 +584,7 @@ struct dlsynth_wavepool {
   std::vector<DLSynth::Wave> waves;
 };
 
-int dlsynth_new_wavepool(struct dlsynth_wavepool **wavepool) {
+int dlsynth_new_wavepool(dlsynth_wavepool **wavepool) {
   if (wavepool == nullptr) {
     dlsynth_error = DLSYNTH_INVALID_ARGS;
     return 0;
@@ -595,8 +593,7 @@ int dlsynth_new_wavepool(struct dlsynth_wavepool **wavepool) {
   *wavepool = new dlsynth_wavepool();
   return 1;
 }
-int dlsynth_wavepool_add(struct dlsynth_wavepool *wavepool,
-                         const struct dlsynth_wav *wav) {
+int dlsynth_wavepool_add(dlsynth_wavepool *wavepool, const dlsynth_wav *wav) {
   if (wavepool == nullptr || wav == nullptr) {
     dlsynth_error = DLSYNTH_INVALID_ARGS;
     return 0;
@@ -606,7 +603,7 @@ int dlsynth_wavepool_add(struct dlsynth_wavepool *wavepool,
   return 1;
 }
 
-int dlsynth_free_wavepool(struct dlsynth_wavepool *wavepool) {
+int dlsynth_free_wavepool(dlsynth_wavepool *wavepool) {
   if (wavepool != nullptr) {
     delete wavepool;
   }
@@ -618,7 +615,7 @@ struct dlsynth_blocklist {
   std::vector<DLSynth::ConnectionBlock> blocks;
 };
 
-int dlsynth_new_blocklist(struct dlsynth_blocklist **blocklist) {
+int dlsynth_new_blocklist(dlsynth_blocklist **blocklist) {
   if (blocklist == nullptr) {
     dlsynth_error = DLSYNTH_INVALID_ARGS;
     return 0;
@@ -629,7 +626,7 @@ int dlsynth_new_blocklist(struct dlsynth_blocklist **blocklist) {
 }
 
 int dlsynth_blocklist_add(
- struct dlsynth_blocklist *blocklist, enum dlsynth_source source,
+ dlsynth_blocklist *blocklist, enum dlsynth_source source,
  enum dlsynth_source control, enum dlsynth_dest destination, int32_t scale,
  int sourceInvert, int sourceBipolar, enum dlsynth_transf sourceTransform,
  int controlInvert, int controlBipolar, enum dlsynth_transf controlTransform) {
@@ -651,7 +648,7 @@ int dlsynth_blocklist_add(
   return 1;
 }
 
-int dlsynth_free_blocklist(struct dlsynth_blocklist *blocklist) {
+int dlsynth_free_blocklist(dlsynth_blocklist *blocklist) {
   if (blocklist != nullptr) {
     delete blocklist;
   }
@@ -663,7 +660,7 @@ struct dlsynth_regionlist {
   std::vector<DLSynth::Region> regions;
 };
 
-int dlsynth_new_regionlist(struct dlsynth_regionlist **regionlist) {
+int dlsynth_new_regionlist(dlsynth_regionlist **regionlist) {
   if (regionlist == nullptr) {
     dlsynth_error = DLSYNTH_INVALID_ARGS;
     return 0;
@@ -673,10 +670,9 @@ int dlsynth_new_regionlist(struct dlsynth_regionlist **regionlist) {
   return 1;
 }
 
-int dlsynth_add_region(struct dlsynth_regionlist *list, uint16_t minKey,
+int dlsynth_add_region(dlsynth_regionlist *list, uint16_t minKey,
                        uint16_t maxKey, uint16_t minVelocity,
-                       uint16_t maxVelocity,
-                       const struct dlsynth_blocklist *blocklist,
+                       uint16_t maxVelocity, const dlsynth_blocklist *blocklist,
                        uint32_t waveIndex, int selfNonExclusive) {
   if (list == nullptr || minKey > maxKey || minVelocity > maxVelocity ||
       blocklist == nullptr) {
@@ -690,12 +686,12 @@ int dlsynth_add_region(struct dlsynth_regionlist *list, uint16_t minKey,
   return 1;
 }
 
-int dlsynth_add_region_wavesample(struct dlsynth_regionlist *list,
-                                  uint16_t minKey, uint16_t maxKey,
-                                  uint16_t minVelocity, uint16_t maxVelocity,
-                                  const struct dlsynth_blocklist *blocklist,
+int dlsynth_add_region_wavesample(dlsynth_regionlist *list, uint16_t minKey,
+                                  uint16_t maxKey, uint16_t minVelocity,
+                                  uint16_t maxVelocity,
+                                  const dlsynth_blocklist *blocklist,
                                   uint32_t waveIndex, int selfNonExclusive,
-                                  const struct dlsynth_wavesample *wavesample) {
+                                  const dlsynth_wavesample *wavesample) {
   if (list == nullptr || minKey > maxKey || minVelocity > maxVelocity ||
       blocklist == nullptr) {
     dlsynth_error = DLSYNTH_INVALID_ARGS;
@@ -708,7 +704,7 @@ int dlsynth_add_region_wavesample(struct dlsynth_regionlist *list,
   return 1;
 }
 
-int dlsynth_free_regionlist(struct dlsynth_regionlist *list) {
+int dlsynth_free_regionlist(dlsynth_regionlist *list) {
   if (list != nullptr) {
     delete list;
   }
@@ -720,7 +716,7 @@ struct dlsynth_instrlist {
   std::vector<DLSynth::Instrument> instruments;
 };
 
-int dlsynth_new_instrlist(struct dlsynth_instrlist **list) {
+int dlsynth_new_instrlist(dlsynth_instrlist **list) {
   if (list == nullptr) {
     dlsynth_error = DLSYNTH_INVALID_ARGS;
     return 0;
@@ -730,10 +726,10 @@ int dlsynth_new_instrlist(struct dlsynth_instrlist **list) {
   return 1;
 }
 
-int dlsynth_add_instrument(struct dlsynth_instrlist *list, uint32_t midiBank,
+int dlsynth_add_instrument(dlsynth_instrlist *list, uint32_t midiBank,
                            uint32_t midiInstrument, int isDrumInstrument,
-                           const struct dlsynth_blocklist *blocklist,
-                           const struct dlsynth_regionlist *regions) {
+                           const dlsynth_blocklist *blocklist,
+                           const dlsynth_regionlist *regions) {
   if (list == nullptr || blocklist == nullptr || regions == nullptr) {
     dlsynth_error = DLSYNTH_INVALID_ARGS;
     return 0;
@@ -744,7 +740,7 @@ int dlsynth_add_instrument(struct dlsynth_instrlist *list, uint32_t midiBank,
   return 1;
 }
 
-int dlsynth_free_instrlist(struct dlsynth_instrlist *list) {
+int dlsynth_free_instrlist(dlsynth_instrlist *list) {
   if (list != nullptr) {
     delete list;
   }
@@ -752,9 +748,9 @@ int dlsynth_free_instrlist(struct dlsynth_instrlist *list) {
   return 1;
 }
 
-int dlsynth_new_sound(struct dlsynth_sound **sound,
-                      const struct dlsynth_instrlist *instruments,
-                      const struct dlsynth_wavepool *wavepool) {
+int dlsynth_new_sound(dlsynth_sound **sound,
+                      const dlsynth_instrlist *instruments,
+                      const dlsynth_wavepool *wavepool) {
   if (sound == nullptr || instruments == nullptr || wavepool == nullptr) {
     dlsynth_error = DLSYNTH_INVALID_ARGS;
     return 0;
