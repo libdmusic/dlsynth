@@ -26,15 +26,11 @@ int main() {
     return 1;
   }
 
-  struct dlsynth_settings settings = {
-    44100,               /* Sample rate        */
-    2,                   /* Number of channels */
-    DLSYNTH_INTERLEAVED, /* Interleaved output */
-    16,                  /* Number of voices   */
-  };
-
   struct dlsynth* synth;
-  if(!dlsynth_init(&settings, &synth)) {
+  if(!dlsynth_init(
+      44100, /* Output sample rate */
+      32,    /* Number of voices   */
+      &synth)) {
     fprintf(stderr, "Could not init synth\n");
     return 1;
   }
@@ -42,6 +38,7 @@ int main() {
   dlsynth_note_on(synth,
     instr, /* Instrument to use   */
     0,     /* Channel of the note */
+    100,   /* Note priority       */
     43     /* MIDI note           */
   );
 
