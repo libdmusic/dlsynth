@@ -84,6 +84,18 @@ if(NOT GIT_EXECUTABLE STREQUAL "GIT_NOTFOUND" AND EXISTS "${CMAKE_SOURCE_DIR}/.g
         OUTPUT_VARIABLE GIT_COMMIT
         ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE
     )
+
+    execute_process(
+        COMMAND "${GIT_EXECUTABLE}" status --porcelain
+        WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+        OUTPUT_VARIABLE GIT_EDITS
+        ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE
+    )
+
+    if(NOT GIT_EDITS STREQUAL "")
+        set(GIT_COMMIT "${GIT_COMMIT}-dirty")
+    endif()
+
     target_compile_options(dlsynth PRIVATE -DDLSYNTH_COMMIT="${GIT_COMMIT}")
 endif()
 
