@@ -79,12 +79,16 @@ vcpkg install dlsynth --head
 
 On Debian-based distros (like Ubuntu) you can add the following line to `/etc/apt/sources.list.d/libdmusic.list`:
 
-    deb [trusted=yes] https://repo.libdmusic.org/apt/ /
+```txt
+deb [trusted=yes] https://repo.libdmusic.org/apt/ /
+```
 
 then run
 
-    sudo apt update
-    sudo apt install dlsynth-dev
+```sh
+sudo apt update
+sudo apt install dlsynth-dev
+```
 
 You can then use `dlsynth` as any other CMake-available library:
 
@@ -122,12 +126,16 @@ and its headers and install it somewhere CMake can find it.
 
 Under Debian-based distros (like Ubuntu) you can add the following line to `/etc/apt/sources.list.d/libdmusic.list`:
 
-    deb [trusted=yes] https://repo.libdmusic.org/apt/ /
+```txt
+deb [trusted=yes] https://repo.libdmusic.org/apt/ /
+```
 
 then run
 
-    sudo apt update
-    sudo apt install riffcpp-dev
+```sh
+sudo apt update
+sudo apt install riffcpp-dev
+```
 
 After cloning the repo, run the following commands:
 
