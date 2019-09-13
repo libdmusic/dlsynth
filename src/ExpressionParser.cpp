@@ -1,5 +1,4 @@
 #include "ExpressionParser.hpp"
-#include "Structs.hpp"
 #include "Uuid.hpp"
 #include <array>
 #include <functional>

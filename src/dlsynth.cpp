@@ -2,6 +2,7 @@
 #include "Instrument.hpp"
 #include "NumericUtils.hpp"
 #include "Sound.hpp"
+#include "Structs/Range.hpp"
 #include "Synth/Synthesizer.hpp"
 #include "Wave.hpp"
 #include <algorithm>
@@ -11,6 +12,7 @@
 #include <limits>
 #include <memory>
 #include <riffcpp.hpp>
+
 static std::atomic<int> dlsynth_error{DLSYNTH_NO_ERROR};
 
 int dlsynth_get_last_error() { return dlsynth_error; }
@@ -680,9 +682,9 @@ int dlsynth_add_region(dlsynth_regionlist *list, uint16_t minKey,
     return 0;
   }
 
-  list->regions.emplace_back(DLSynth::Range{minKey, maxKey},
-                             DLSynth::Range{minVelocity, maxVelocity},
-                             blocklist->blocks, waveIndex, selfNonExclusive);
+  list->regions.emplace_back(Range{minKey, maxKey},
+                             Range{minVelocity, maxVelocity}, blocklist->blocks,
+                             waveIndex, selfNonExclusive);
   return 1;
 }
 
@@ -699,8 +701,8 @@ int dlsynth_add_region_wavesample(dlsynth_regionlist *list, uint16_t minKey,
   }
 
   list->regions.emplace_back(
-   DLSynth::Range{minKey, maxKey}, DLSynth::Range{minVelocity, maxVelocity},
-   blocklist->blocks, waveIndex, selfNonExclusive, wavesample->wavesample);
+   Range{minKey, maxKey}, Range{minVelocity, maxVelocity}, blocklist->blocks,
+   waveIndex, selfNonExclusive, wavesample->wavesample);
   return 1;
 }
 

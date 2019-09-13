@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<structs>
+  <struct name="AdpcmCoeffs">
+    <field name="iCoef1" type="std::int16_t" />
+    <field name="iCoef2" type="std::int16_t" />
+  </struct>
+  <struct name="AdpcmFormat">
+    <dependency name="AdpcmCoeffs.hpp" />
+
+    <field name="samplesPerBlock" type="std::uint16_t" />
+    <field name="numCoeffs" type="std::uint16_t" />
+    <field name="coeffs" type="AdpcmCoeffs" count="numCoeffs" />
+  </struct>
+  <struct name="art">
+    <dependency name="cblock.hpp" />
+
+    <field name="cbSize" type="std::uint32_t" />
+    <field name="cConnectionBlocks" type="std::uint32_t" />
+    <field name="blocks" type="cblock" count="cConnectionBlocks" offset="cbSize" />
+  </struct>
+  <struct name="cblock">
+    <field name="usSource" type="std::uint16_t" />
+    <field name="usControl" type="std::uint16_t" />
+    <field name="usDestination" type="std::uint16_t" />
+    <field name="usTransform" type="std::uint16_t" />
+    <field name="lScale" type="std::int32_t" />
+  </struct>
+  <struct name="insh">
+    <field name="cRegions" type="std::uint32_t" />
+    <field name="ulBank" type="std::uint32_t" />
+    <field name="ulInstrument" type="std::uint32_t" />
+  </struct>
+  <struct name="Range">
+    <field name="low" type="std::uint16_t" />
+    <field name="high" type="std::uint16_t" />
+    <extra>
+<![CDATA[
+constexpr bool inRange(std::uint16_t value) const noexcept {
+  return (value <= high && value >= low) || (low == 0 && high == 0);
+}
+]]>
+    </extra>
+  </struct>
+  <struct name="rgnh">
+    <dependency name="Range.hpp" />
+
+    <field name="RangeKey" type="Range" />
+    <field name="RangeVelocity" type="Range" />
+    <field name="fusOptions" type="std::uint16_t" />
+    <field name="usKeyGroup" type="std::uint16_t" />
+  </struct>
+  <struct name="Uuid">
+    <field name="a" type="std::uint32_t" />
+    <field name="b" type="std::uint16_t" />
+    <field name="c" type="std::uint16_t" />
+    <field name="d" type="std::uint8_t" count="8" />
+  </struct>
+  <struct name="WaveFormat">
+    <field name="FormatTag" type="std::uint16_t" />
+    <field name="NumChannels" type="std::uint16_t" />
+    <field name="SamplesPerSec" type="std::uint32_t" />
+    <field name="AvgBytesPerSec" type="std::uint32_t" />
+    <field name="BlockAlign" type="std::uint16_t" />
+
+    <extra><![CDATA[
+  static constexpr std::uint16_t Unknown = 0x0000;
+  static constexpr std::uint16_t Pcm = 0x0001;
+  static constexpr std::uint16_t MsAdpcm = 0x0002;
+  static constexpr std::uint16_t Float = 0x0003;
+  static constexpr std::uint16_t ALaw = 0x0006;
+  static constexpr std::uint16_t MuLaw = 0x0007;
+  static constexpr std::uint16_t DviAdpcm = 0x0011;
+  static constexpr std::uint16_t ImaAdpcm = DviAdpcm;
+]]></extra>
+  </struct>
+  <struct name="WaveFormatEx">
+    <dependency name="WaveFormat.hpp" />
+
+    <field name="FormatTag" type="std::uint16_t" />
+    <field name="NumChannels" type="std::uint16_t" />
+    <field name="SamplesPerSec" type="std::uint32_t" />
+    <field name="AvgBytesPerSec" type="std::uint32_t" />
+    <field name="BlockAlign" type="std::uint16_t" />
+    <field name="BitsPerSample" type="std::uint16_t" />
+    <field name="ExtraInfoSize" type="std::uint16_t" />
+    <field name="ExtraData" type="char" max-count="ExtraInfoSize" />
+
+    <extra><![CDATA[
+  inline WaveFormat toWaveFormat() const {
+    return {FormatTag, NumChannels, SamplesPerSec, AvgBytesPerSec, BlockAlign};
+  }
+]]></extra>
+  </struct>
+  <struct name="wlnk">
+    <field name="fusOptions" type="std::uint16_t" />
+    <field name="usPhaseGroup" type="std::uint16_t" />
+    <field name="ulChannel" type="std::uint32_t" />
+    <field name="ulTableIndex" type="std::uint32_t" />
+  </struct>
+  <struct name="wsmp_loop">
+    <field name="cbSize" type="std::uint32_t" />
+    <field name="ulLoopType" type="std::uint32_t" />
+    <field name="ulLoopStart" type="std::uint32_t" />
+    <field name="ulLoopLength" type="std::uint32_t" />
+  </struct>
+  <struct name="wsmp">
+    <dependency name="wsmp_loop.hpp" />
+
+    <field name="cbSize" type="std::uint32_t" />
+    <field name="usUnityNote" type="std::uint16_t" />
+    <field name="sFineTune" type="std::int16_t" />
+    <field name="lGain" type="std::int32_t" />
+    <field name="fulOptions" type="std::uint32_t" />
+    <field name="cSampleLoops" type="std::uint32_t" />
+    <field name="loops" type="wsmp_loop" count="cSampleLoops" offset="cbSize" />
+  </struct>
+</structs>

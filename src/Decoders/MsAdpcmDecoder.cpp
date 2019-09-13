@@ -1,5 +1,7 @@
 #include "../Error.hpp"
 #include "../NumericUtils.hpp"
+#include "../Structs/AdpcmCoeffs.hpp"
+#include "../Structs/AdpcmFormat.hpp"
 #include "Decoders.hpp"
 #include <algorithm>
 #include <array>
@@ -18,14 +20,62 @@ template <typename TIn, typename TOut> constexpr TOut clamp(TIn value) {
     return (TOut)value;
 }
 
-#pragma pack(push, 1)
 template <int NumChannels> struct AdpcmHeader {
   std::array<std::uint8_t, NumChannels> predictor;
   std::array<std::uint16_t, NumChannels> iDelta;
   std::array<std::int16_t, NumChannels> samp1;
   std::array<std::int16_t, NumChannels> samp2;
+
+  static AdpcmHeader<NumChannels> read(const char *data) {
+    AdpcmHeader<NumChannels> header;
+
+    for (int i = 0; i < NumChannels; i++) {
+      header.predictor[i] = *(data++);
+    }
+
+    for (int i = 0; i < NumChannels; i++) {
+#ifndef DLSYNTH_BIGENDIAN
+      std::uint16_t value = *reinterpret_cast<const std::uint16_t *>(data);
+#else
+      std::array<char, 2> buf = {data[0], data[1]};
+      std::reverse(buf.begin(), buf.end());
+      std::uint16_t value =
+       *reinterpret_cast<const std::uint16_t *>(buf.data());
+#endif
+      data += sizeof(std::uint16_t);
+
+      header.iDelta[i] = value;
+    }
+
+    for (int i = 0; i < NumChannels; i++) {
+#ifndef DLSYNTH_BIGENDIAN
+      std::int16_t value = *reinterpret_cast<const std::int16_t *>(data);
+#else
+      std::array<char, 2> buf = {data[0], data[1]};
+      std::reverse(buf.begin(), buf.end());
+      std::int16_t value = *reinterpret_cast<const std::int16_t *>(buf.data());
+#endif
+      data += sizeof(std::int16_t);
+
+      header.samp1[i] = value;
+    }
+
+    for (int i = 0; i < NumChannels; i++) {
+#ifndef DLSYNTH_BIGENDIAN
+      std::int16_t value = *reinterpret_cast<const std::int16_t *>(data);
+#else
+      std::array<char, 2> buf = {data[0], data[1]};
+      std::reverse(buf.begin(), buf.end());
+      std::int16_t value = *reinterpret_cast<const std::int16_t *>(buf.data());
+#endif
+      data += sizeof(std::int16_t);
+
+      header.samp2[i] = value;
+    }
+
+    return header;
+  }
 };
-#pragma pack(pop)
 
 constexpr int AdaptationTable[] = {230, 230, 230, 230, 307, 409, 512, 614,
                                    768, 614, 512, 409, 307, 230, 230, 230};
@@ -39,7 +89,7 @@ class MsAdpcmDecoder : public WaveDecoder {
     if (blockSize < sizeof(AdpcmHeader<NumChannels>))
       return;
 
-    auto header = *(reinterpret_cast<const AdpcmHeader<NumChannels> *>(data));
+    auto header = AdpcmHeader<NumChannels>::read(data);
     auto dataEnd = data + blockSize;
     data += sizeof(header);
 

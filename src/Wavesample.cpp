@@ -1,6 +1,6 @@
 #include "Wavesample.hpp"
 #include "NumericUtils.hpp"
-#include "Structs.hpp"
+#include "Structs/wsmp.hpp"
 #include <algorithm>
 
 using namespace DLSynth;
@@ -51,7 +51,7 @@ float Wavesample::gain() const noexcept {
 const WavesampleLoop *Wavesample::loop() const noexcept { return m_loop.get(); }
 
 Wavesample Wavesample::readChunk(riffcpp::Chunk &chunk) {
-  wsmp wavesample = ::DLSynth::readChunk<wsmp>(chunk);
+  wsmp wavesample = ::readChunk<wsmp>(chunk);
   if (wavesample.cSampleLoops) {
     const auto &loopData = wavesample.loops[0];
 

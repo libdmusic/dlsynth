@@ -3,7 +3,6 @@
 #include "DecoderTable.hpp"
 #include "Error.hpp"
 #include "Info.hpp"
-#include "Structs.hpp"
 #include "Uuid.hpp"
 #include "WaveDecoder.hpp"
 #include "Wavesample.hpp"
@@ -131,7 +130,7 @@ Wave Wave::readChunk(riffcpp::Chunk &chunk) {
       if (fact_found)
         throw Error("Duplicate fact chunk", ErrorCode::INVALID_FILE);
 
-      fact = ::DLSynth::readChunk<std::uint32_t>(child);
+      fact = ::readChunk<std::uint32_t>(child);
       fact_found = true;
     } else if (child.id() == data_id) {
       if (data_found)
@@ -144,7 +143,7 @@ Wave Wave::readChunk(riffcpp::Chunk &chunk) {
       if (guid_found)
         throw Error("Duplicate GUID", ErrorCode::INVALID_FILE);
 
-      guid = ::DLSynth::readChunk<Uuid>(child);
+      guid = ::readChunk<Uuid>(child);
       guid_found = true;
     } else if (child.id() == wsmp_id) {
       if (wsmp_found)

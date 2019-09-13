@@ -6,8 +6,9 @@
 #include <riffcpp.hpp>
 #include <vector>
 
-namespace DLSynth {
 struct Uuid;
+
+namespace DLSynth {
 class Info;
 /// A DLS Collection of instruments
 class Sound final {

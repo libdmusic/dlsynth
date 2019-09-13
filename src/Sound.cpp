@@ -137,7 +137,7 @@ Sound Sound::readChunk(riffcpp::Chunk &chunk, std::uint32_t sampleRate) {
         throw Error("Duplicate DLID", ErrorCode::INVALID_FILE);
       }
 
-      dlid = ::DLSynth::readChunk<Uuid>(child);
+      dlid = ::readChunk<Uuid>(child);
     } else if (child.id() == riffcpp::list_id) {
       if (child.type() == wvpl_id) {
         if (wvpl_found)

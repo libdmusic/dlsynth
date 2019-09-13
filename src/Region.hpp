@@ -3,7 +3,7 @@
 
 #include "Articulator.hpp"
 #include "ExpressionParser.hpp"
-#include "Structs.hpp"
+#include "Structs/Range.hpp"
 #include "Wavesample.hpp"
 #include <memory>
 

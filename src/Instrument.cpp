@@ -2,7 +2,8 @@
 #include "CommonFourCCs.hpp"
 #include "Error.hpp"
 #include "Info.hpp"
-#include "Structs.hpp"
+#include "Structs/Uuid.hpp"
+#include "Structs/insh.hpp"
 #include "Uuid.hpp"
 #include <cassert>
 #include <memory>
@@ -172,14 +173,14 @@ Instrument Instrument::readChunk(riffcpp::Chunk &chunk,
       if (dlid_found) {
         throw Error("Duplicate DLID", ErrorCode::INVALID_FILE);
       }
-      dlid = ::DLSynth::readChunk<Uuid>(child);
+      dlid = ::readChunk<Uuid>(child);
       dlid_found = true;
     } else if (child.id() == insh_id) {
       if (insh_found) {
         throw Error("Duplicate instrument header", ErrorCode::INVALID_FILE);
       }
 
-      header = ::DLSynth::readChunk<insh>(child);
+      header = ::readChunk<insh>(child);
 
       insh_found = true;
     } else if (child.id() == riffcpp::list_id) {

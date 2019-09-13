@@ -6,8 +6,9 @@
 #include <cstdint>
 #include <riffcpp.hpp>
 
-namespace DLSynth {
 struct Uuid;
+
+namespace DLSynth {
 class Info;
 
 /// A DLS instrument, part of a DLS Collection
