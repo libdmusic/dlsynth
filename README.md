@@ -87,14 +87,14 @@ then run
 
 ```sh
 sudo apt update
-sudo apt install dlsynth-dev
+sudo apt install libdlsynth-dev
 ```
 
 You can then use `dlsynth` as any other CMake-available library:
 
 ```cmake
 find_package(dlsynth CONFIG REQUIRED)
-target_link_libraries(my_app PRIVATE dlsynth::dlsynth)
+target_link_libraries(my_app PRIVATE libdmusic::dlsynth)
 ```
 
 ## Building
@@ -134,7 +134,7 @@ then run
 
 ```sh
 sudo apt update
-sudo apt install riffcpp-dev
+sudo apt install libriffcpp-dev
 ```
 
 After cloning the repo, run the following commands:

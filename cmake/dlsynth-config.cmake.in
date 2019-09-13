@@ -1,5 +1,5 @@
 @PACKAGE_INIT@
 
-if(NOT TARGET DLSynth::dlsynth)
+if(NOT TARGET libdmusic::dlsynth)
     include(${CMAKE_CURRENT_LIST_DIR}/dlsynth-targets.cmake)
 endif() 
