@@ -1,7 +1,8 @@
 #include "Region.hpp"
 #include "CommonFourCCs.hpp"
 #include "Error.hpp"
-#include "Structs.hpp"
+#include "Structs/rgnh.hpp"
+#include "Structs/wlnk.hpp"
 
 using namespace DLSynth;
 
@@ -96,7 +97,7 @@ Region Region::readChunk(riffcpp::Chunk &chunk,
         throw Error("Duplicate region header", ErrorCode::INVALID_FILE);
       }
       rgnh_found = true;
-      header = ::DLSynth::readChunk<rgnh>(child);
+      header = ::readChunk<rgnh>(child);
     } else if (child.id() == wsmp_id) {
       if (wsmp_found) {
         throw Error("Duplicate wavesample", ErrorCode::INVALID_FILE);
@@ -107,7 +108,7 @@ Region Region::readChunk(riffcpp::Chunk &chunk,
       if (wvlnk_found) {
         throw Error("Duplicate wavelink", ErrorCode::INVALID_FILE);
       }
-      wavelink = ::DLSynth::readChunk<wlnk>(child);
+      wavelink = ::readChunk<wlnk>(child);
       wvlnk_found = true;
     } else if (child.id() == riffcpp::list_id) {
       if (child.type() == lart_id || child.type() == lar2_id) {

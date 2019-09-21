@@ -1,0 +1,5 @@
+libdlsynth (@VERSION@-@SUBVERSION@) @DISTROSERIES@; urgency=low
+
+  * Auto-generated
+
+ -- @MAINTAINER@  @DPKG_DATE@

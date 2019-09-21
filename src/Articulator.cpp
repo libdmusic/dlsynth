@@ -1,7 +1,7 @@
 #include "Articulator.hpp"
 #include "CommonFourCCs.hpp"
 #include "Error.hpp"
-#include "Structs.hpp"
+#include "Structs/art.hpp"
 #include <set>
 
 using namespace DLSynth;

@@ -2,7 +2,8 @@
 #include "CommonFourCCs.hpp"
 #include "Error.hpp"
 #include "Info.hpp"
-#include "Structs.hpp"
+#include "Structs/Uuid.hpp"
+#include "Structs/insh.hpp"
 #include "Uuid.hpp"
 #include <cassert>
 #include <memory>
@@ -18,12 +19,13 @@ struct Instrument::impl {
   std::unique_ptr<Info> m_info;
   bool m_isDrum;
 
-  impl(std::uint32_t midiBank, std::uint32_t midiInstrument,
+  impl(std::uint32_t midiBank, std::uint32_t midiInstrument, bool isDrum,
        const std::vector<ConnectionBlock> &blocks,
        const std::vector<Region> &regions, std::unique_ptr<Uuid> dlid,
        std::unique_ptr<Info> info) noexcept
     : m_midiBank(midiBank)
     , m_midiInstrument(midiInstrument)
+    , m_isDrum(isDrum)
     , m_blocks(blocks)
     , m_regions(regions)
     , m_dlid(std::move(dlid))
@@ -32,6 +34,7 @@ struct Instrument::impl {
   impl(const impl &i) noexcept
     : m_midiBank(i.m_midiBank)
     , m_midiInstrument(i.m_midiInstrument)
+    , m_isDrum(i.m_isDrum)
     , m_blocks(i.m_blocks)
     , m_regions(i.m_regions)
     , m_dlid(i.m_dlid ? std::make_unique<Uuid>(*i.m_dlid) : nullptr)
@@ -42,30 +45,32 @@ Instrument::Instrument(std::uint32_t midiBank, std::uint32_t midiInstrument,
                        bool isDrumInstrument,
                        const std::vector<ConnectionBlock> &connectionBlocks,
                        const std::vector<Region> &regions) noexcept
-  : m_pimpl(new impl(midiBank, midiInstrument, connectionBlocks, regions,
-                     nullptr, nullptr)) {}
+  : m_pimpl(new impl(midiBank, midiInstrument, isDrumInstrument,
+                     connectionBlocks, regions, nullptr, nullptr)) {}
 
 Instrument::Instrument(std::uint32_t midiBank, std::uint32_t midiInstrument,
                        bool isDrumInstrument,
                        const std::vector<ConnectionBlock> &connectionBlocks,
                        const std::vector<Region> &regions,
                        const Uuid &dlid) noexcept
-  : m_pimpl(new impl(midiBank, midiInstrument, connectionBlocks, regions,
-                     std::make_unique<Uuid>(dlid), nullptr)) {}
+  : m_pimpl(new impl(midiBank, midiInstrument, isDrumInstrument,
+                     connectionBlocks, regions, std::make_unique<Uuid>(dlid),
+                     nullptr)) {}
 Instrument::Instrument(std::uint32_t midiBank, std::uint32_t midiInstrument,
                        bool isDrumInstrument,
                        const std::vector<ConnectionBlock> &connectionBlocks,
                        const std::vector<Region> &regions,
                        const Info &info) noexcept
-  : m_pimpl(new impl(midiBank, midiInstrument, connectionBlocks, regions,
-                     nullptr, std::make_unique<Info>(info))) {}
+  : m_pimpl(new impl(midiBank, midiInstrument, isDrumInstrument,
+                     connectionBlocks, regions, nullptr,
+                     std::make_unique<Info>(info))) {}
 Instrument::Instrument(std::uint32_t midiBank, std::uint32_t midiInstrument,
                        bool isDrumInstrument,
                        const std::vector<ConnectionBlock> &connectionBlocks,
                        const std::vector<Region> &regions, const Uuid &dlid,
                        const Info &info) noexcept
-  : m_pimpl(new impl(midiBank, midiInstrument, connectionBlocks, regions,
-                     std::make_unique<Uuid>(dlid),
+  : m_pimpl(new impl(midiBank, midiInstrument, isDrumInstrument,
+                     connectionBlocks, regions, std::make_unique<Uuid>(dlid),
                      std::make_unique<Info>(info))) {}
 
 Instrument::Instrument(const Instrument &instr) noexcept
@@ -75,7 +80,8 @@ Instrument::Instrument(Instrument &&instr) noexcept : m_pimpl(instr.m_pimpl) {
   instr.m_pimpl = nullptr;
 }
 
-Instrument &Instrument::operator=(const Instrument &instr) noexcept {
+const Instrument &Instrument::operator=(const Instrument &instr) const
+ noexcept {
   delete m_pimpl;
   m_pimpl = new impl(*instr.m_pimpl);
   return *this;
@@ -167,14 +173,14 @@ Instrument Instrument::readChunk(riffcpp::Chunk &chunk,
       if (dlid_found) {
         throw Error("Duplicate DLID", ErrorCode::INVALID_FILE);
       }
-      dlid = ::DLSynth::readChunk<Uuid>(child);
+      dlid = ::readChunk<Uuid>(child);
       dlid_found = true;
     } else if (child.id() == insh_id) {
       if (insh_found) {
         throw Error("Duplicate instrument header", ErrorCode::INVALID_FILE);
       }
 
-      header = ::DLSynth::readChunk<insh>(child);
+      header = ::readChunk<insh>(child);
 
       insh_found = true;
     } else if (child.id() == riffcpp::list_id) {

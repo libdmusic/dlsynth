@@ -6,14 +6,15 @@
 #include <riffcpp.hpp>
 #include <vector>
 
-namespace DLSynth {
 struct Uuid;
+
+namespace DLSynth {
 class Info;
 /// A DLS Collection of instruments
 class Sound final {
   struct impl;
 
-  impl *m_pimpl;
+  mutable impl *m_pimpl;
 
 public:
   Sound(const std::vector<Instrument> &instruments,
@@ -29,7 +30,7 @@ public:
   Sound(const Sound &snd) noexcept;
   ~Sound();
 
-  Sound &operator=(const Sound &) noexcept;
+  const Sound &operator=(const Sound &) const noexcept;
 
   /// Returns the Uuid of the sound, if it exists
   const Uuid *dlid() const noexcept;

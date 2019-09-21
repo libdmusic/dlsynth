@@ -23,11 +23,13 @@ namespace Synth {
 
     Voice &operator=(const Voice &) = delete;
 
-    void noteOn(std::uint8_t note, std::uint8_t velocity,
+    void noteOn(int channel, int priority, std::uint8_t note,
+                std::uint8_t velocity, bool isDrum,
                 const Wavesample *wavesample, const Wave &sample,
                 const std::vector<ConnectionBlock> &connectionBlocks);
     void noteOff();
     void soundOff();
+    void sustain(bool value);
 
     void controlChange(Source source, float value);
 
@@ -35,6 +37,8 @@ namespace Synth {
 
     bool playing() const;
     std::uint8_t note() const;
+    int channel() const;
+    int priority() const;
     std::chrono::steady_clock::time_point startTime() const;
 
     void render_fill(float *beginLeft, float *endLeft, float *beginRight,

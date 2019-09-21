@@ -1,7 +1,8 @@
 #ifndef WAVEDECODER_HPP
 #define WAVEDECODER_HPP
 
-#include "Structs.hpp"
+#include "Structs/WaveFormat.hpp"
+#include "Structs/WaveFormatEx.hpp"
 #include "Wave.hpp"
 #include <cstddef>
 #include <cstdint>

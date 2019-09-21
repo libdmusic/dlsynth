@@ -7,9 +7,10 @@
 #include <riffcpp.hpp>
 #include <vector>
 
+struct Uuid;
+
 namespace DLSynth {
 class Wavesample;
-struct Uuid;
 class Info;
 
 class Wave final {

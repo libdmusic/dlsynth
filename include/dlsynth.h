@@ -7,6 +7,23 @@ extern "C" {
 #include "dlsynth_export.h"
 #include <stddef.h>
 #include <stdint.h>
+
+#define DLSYNTH_MAJOR 0
+#define DLSYNTH_MINOR 2
+#define DLSYNTH_PATCH 0
+
+/// Version info for the linked library
+struct dlsynth_version {
+  int major; ///< Major version number
+  int minor; ///< Minor version number
+  int patch; ///< Patch version number
+
+  const char *commit; ///< Git commit hash
+};
+
+/// Obtains information about the version of the linked dlsynth library
+DLSYNTH_EXPORT const struct dlsynth_version *dlsynth_get_version(void);
+
 /// A DLS synthesizer
 struct dlsynth;
 
@@ -18,26 +35,6 @@ struct dlsynth_instr;
 
 /// A WAV file
 struct dlsynth_wav;
-
-enum dlsynth_interleave { DLSYNTH_INTERLEAVED, DLSYNTH_SEQUENTIAL };
-
-/// Settings that should be used when rendering audio
-struct dlsynth_settings {
-  /// Sample rate at which to render the audio
-  uint32_t sample_rate;
-
-  /// Number of audio channels to render
-  int num_channels;
-
-  /// Wheter the audio channels should be interleaved or sequential
-  enum dlsynth_interleave interleaved;
-
-  /// Maximum number of voices to allocate for rendering
-  unsigned num_voices;
-
-  /// The instrument to use for rendering
-  const struct dlsynth_instr *instrument;
-};
 
 /**
  * @defgroup SynthManagement Synthesizer management
@@ -58,18 +55,19 @@ struct dlsynth_settings {
  * @defgroup SoundCreation Sound collection creation
  *
  */
+
 /**
  * @defgroup Rendering Sound rendering
  *
  */
+
 /// Initializes a DLS synthesizer
 /**
  * @ingroup SynthManagement
  * @return Nonzero on success, zero on failure
  */
 int DLSYNTH_EXPORT dlsynth_init(
- const struct dlsynth_settings
-  *settings,            ///< [in] Settings to use when rendering audio
+ int sample_rate, int num_voices,
  struct dlsynth **synth ///< [out] The initialized synthesizer
 );
 
@@ -90,8 +88,10 @@ int DLSYNTH_EXPORT dlsynth_free(
  */
 int DLSYNTH_EXPORT dlsynth_render_float(
  struct dlsynth *synth, ///< [in] The synthesizer to use for rendering
- float *buffer,         ///< [in,out] The buffer to execute rendering in
- size_t frames,         ///< [in] The number of frames to render
+ size_t nframes,        ///< [in] Number of frames to render
+ float *lout,           ///< [in,out] Buffer to store left channel data in
+ float *rout,           ///< [in,out] Buffer to store right channel data in
+ size_t incr,           ///< [in] Increment between sample positions
  float gain ///< [in] Gain to apply while rendering (0 means silent, 1 means
             ///< unity gain)
 );
@@ -104,8 +104,10 @@ int DLSYNTH_EXPORT dlsynth_render_float(
  */
 int DLSYNTH_EXPORT dlsynth_render_int16(
  struct dlsynth *synth, ///< [in] The synthesizer to use for rendering
- int16_t *buffer,       ///< [in,out] The buffer to execute rendering in
- size_t frames,         ///< [in] The number of frames to render
+ size_t nframes,        ///< [in] Number of frames to render
+ int16_t *lout,         ///< [in,out] Buffer to store left channel data in
+ int16_t *rout,         ///< [in,out] Buffer to store right channel data in
+ size_t incr,           ///< [in] Increment between sample positions
  float gain ///< [in] Gain to apply while rendering (0 means silent, 1 means
             ///< unity gain)
 );
@@ -118,8 +120,10 @@ int DLSYNTH_EXPORT dlsynth_render_int16(
  */
 int DLSYNTH_EXPORT dlsynth_render_float_mix(
  struct dlsynth *synth, ///< [in] The synthesizer to use for rendering
- float *buffer,         ///< [in,out] The buffer to execute rendering in
- size_t frames,         ///< [in] The number of frames to render
+ size_t nframes,        ///< [in] Number of frames to render
+ float *lout,           ///< [in,out] Buffer to store left channel data in
+ float *rout,           ///< [in,out] Buffer to store right channel data in
+ size_t incr,           ///< [in] Increment between sample positions
  float gain ///< [in] Gain to apply while rendering (0 means silent, 1 means
             ///< unity gain)
 );
@@ -131,8 +135,12 @@ int DLSYNTH_EXPORT dlsynth_render_float_mix(
  */
 int DLSYNTH_EXPORT dlsynth_note_on(
  struct dlsynth *synth, ///< [in] The synthesizer to send the message to
- uint8_t note,          ///< [in] The note which the event refers to
- uint8_t velocity       ///< [in] Velocity of the note
+ const struct dlsynth_instr
+  *instr,         ///< [in] Instrument to use for rendering the note
+ int channel,     ///< [in] Channel to associate the note to
+ int priority,    ///< [in] Priority of the note to play
+ uint8_t note,    ///< [in] The note which the event refers to
+ uint8_t velocity ///< [in] Velocity of the note
 );
 
 /// Sends a MIDI note off event to a synthesizer
@@ -142,6 +150,7 @@ int DLSYNTH_EXPORT dlsynth_note_on(
  */
 int DLSYNTH_EXPORT dlsynth_note_off(
  struct dlsynth *synth, ///< [in] The synthesizer to send the message to
+ int channel,           ///< [in] The channel which the event refers to
  uint8_t note           ///< [in] The note which the event refers to
 );
 
@@ -152,6 +161,7 @@ int DLSYNTH_EXPORT dlsynth_note_off(
  */
 int DLSYNTH_EXPORT dlsynth_poly_pressure(
  struct dlsynth *synth, ///< [in] The synthesizer to send the message to
+ int channel,           ///< [in] The channel which the event refers to
  uint8_t note,          ///< [in] The note which the event refers to
  uint8_t value          ///< [in] The pressure value of the event
 );
@@ -163,6 +173,7 @@ int DLSYNTH_EXPORT dlsynth_poly_pressure(
  */
 int DLSYNTH_EXPORT dlsynth_channel_pressure(
  struct dlsynth *synth, ///< [in] The synthesizer to send the message to
+ int channel,           ///< [in] The channel which the event refers to
  uint8_t value          ///< [in] The pressure value of the event
 );
 
@@ -173,69 +184,136 @@ int DLSYNTH_EXPORT dlsynth_channel_pressure(
  */
 int DLSYNTH_EXPORT dlsynth_pitch_bend(
  struct dlsynth *synth, ///< [in] The synthesizer to send the message to
+ int channel,           ///< [in] The channel which the event refers to
  uint16_t value         ///< [in] Value of the pitch bend event
 );
 
+/// Sends a MIDI channel volume change event
 /**
  * @ingroup SynthManagement
+ * @return Nonzero on success, zero on failure
  */
-int DLSYNTH_EXPORT dlsynth_volume(struct dlsynth *synth, uint8_t value);
+int DLSYNTH_EXPORT dlsynth_volume(
+ struct dlsynth *synth, ///< [in] The synthesizer to send the message to
+ int channel,           ///< [in] The channel which the event refers to
+ uint8_t value          ///< [in] New volume value
+);
 
+/// Sends a MIDI channel pan change event
 /**
  * @ingroup SynthManagement
+ * @return Nonzero on success, zero on failure
  */
-int DLSYNTH_EXPORT dlsynth_pan(struct dlsynth *synth, uint8_t value);
+int DLSYNTH_EXPORT dlsynth_pan(
+ struct dlsynth *synth, ///< [in] The synthesizer to send the message to
+ int channel,           ///< [in] The channel to which the event refers to
+ uint8_t value          ///< [in] New pan value
+);
 
+/// Sends a MIDI modulation change event
 /**
  * @ingroup SynthManagement
+ * @return Nonzero on success, zero on failure
  */
-int DLSYNTH_EXPORT dlsynth_modulation(struct dlsynth *synth, uint8_t value);
+int DLSYNTH_EXPORT dlsynth_modulation(
+ struct dlsynth *synth, ///< [in] The synthesizer to send the message to
+ int channel,           ///< [in] The channel to which the event refers to
+ uint8_t value          ///< [in] New modulation value
+);
 
+/// Sends a MIDI sustain change event
 /**
  * @ingroup SynthManagement
+ * @return Nonzero on success, zero on failure
  */
-int DLSYNTH_EXPORT dlsynth_sustain(struct dlsynth *synth, int status);
+int DLSYNTH_EXPORT dlsynth_sustain(
+ struct dlsynth *synth, ///< [in] The synthesizer to send the message to
+ int channel,           ///< [in] The channel to which the event refers to
+ int status             ///< [in] 1 for sustain on, 0 for sustain off
+);
 
+/// Sends a MIDI channel reverb change event
 /**
  * @ingroup SynthManagement
+ * @return Nonzero on success, zero on failure
  */
-int DLSYNTH_EXPORT dlsynth_reverb(struct dlsynth *synth, uint8_t value);
+int DLSYNTH_EXPORT dlsynth_reverb(
+ struct dlsynth *synth, ///< [in] The synthesizer to send the message to
+ int channel,           ///< [in] The channel to which the event refers to
+ uint8_t value          ///< [in] New revern value
+);
 
+/// Sends a MIDI channel chorus change event
 /**
  * @ingroup SynthManagement
+ * @return Nonzero on success, zero on failure
  */
-int DLSYNTH_EXPORT dlsynth_chorus(struct dlsynth *synth, uint8_t value);
+int DLSYNTH_EXPORT dlsynth_chorus(
+ struct dlsynth *synth, ///< [in] The synthesizer to send the message to
+ int channel,           ///< [in] The channel to which the event refers to
+ uint8_t value          ///< [in] New chorus value
+);
 
+/// Sends a MIDI pitch bend range change event
 /**
  * @ingroup SynthManagement
+ * @return Nonzero on success, zero on failure
  */
-int DLSYNTH_EXPORT dlsynth_pitch_bend_range(struct dlsynth *synth,
-                                            uint16_t value);
+int DLSYNTH_EXPORT dlsynth_pitch_bend_range(
+ struct dlsynth *synth, ///< [in] The synthesizer to send the message to
+ int channel,           ///< [in] The channel to which the event refers to
+ uint16_t value         ///< [in] New pitch bend range
+);
 
+/// Sends a MIDI fine tune event
 /**
  * @ingroup SynthManagement
+ * @return Nonzero on success, zero on failure
  */
-int DLSYNTH_EXPORT dlsynth_fine_tuning(struct dlsynth *synth, uint16_t value);
+int DLSYNTH_EXPORT dlsynth_fine_tuning(
+ struct dlsynth *synth, ///< [in] The synthesizer to send the message to
+ int channel,           ///< [in] The channel to which the event refers to
+ uint16_t value         ///< [in] New fine tuning value
+);
 
+/// Sends a MIDI coarse tune event
 /**
  * @ingroup SynthManagement
+ * @return Nonzero on success, zero on failure
  */
-int DLSYNTH_EXPORT dlsynth_coarse_tuning(struct dlsynth *synth, uint16_t value);
+int DLSYNTH_EXPORT dlsynth_coarse_tuning(
+ struct dlsynth *synth, ///< [in] The synthesizer to send the message to
+ int channel,           ///< [in] The channel to which the event refers to
+ uint16_t value         ///< [in] New coarse tuning value
+);
 
+/// Sends a MIDI reset all channel controllers event
 /**
  * @ingroup SynthManagement
+ * @return Nonzero on success, zero on failure
  */
-int DLSYNTH_EXPORT dlsynth_reset_controllers(struct dlsynth *synth);
+int DLSYNTH_EXPORT dlsynth_reset_controllers(
+ struct dlsynth *synth, ///< [in] The synthesizer to send the message to
+ int channel            ///< [in] The channel to which the event refers to
+);
 
+/// Sends a MIDI All Notes Off event
 /**
  * @ingroup SynthManagement
+ * @return Nonzero on success, zero on failure
  */
-int DLSYNTH_EXPORT dlsynth_all_notes_off(struct dlsynth *synth);
+int DLSYNTH_EXPORT dlsynth_all_notes_off(
+ struct dlsynth *synth ///< [in] The synthesizer to send the message to
+);
 
+/// Sends a MIDI All Sound Off event
 /**
  * @ingroup SynthManagement
+ * @return Nonzero on success, zero on failure
  */
-int DLSYNTH_EXPORT dlsynth_all_sound_off(struct dlsynth *synth);
+int DLSYNTH_EXPORT dlsynth_all_sound_off(
+ struct dlsynth *synth ///< [in] The synthesizer to send the message to
+);
 
 /// Loads a DLS file from a path
 /**
@@ -287,9 +365,10 @@ int DLSYNTH_EXPORT dlsynth_sound_instr_count(
  */
 int DLSYNTH_EXPORT dlsynth_sound_instr_info(
  const struct dlsynth_instr
-  *instr,        ///< [in] The instrument of which to obtain info
- uint32_t *bank, ///< [out] MIDI bank of the instrument
- uint32_t *patch ///< [out] MIDI Program Change of the instrument
+  *instr,         ///< [in] The instrument of which to obtain info
+ uint32_t *bank,  ///< [out] MIDI bank of the instrument
+ uint32_t *patch, ///< [out] MIDI Program Change of the instrument
+ int *isDrum      ///< [out] Whether the istrument is a drum sound or not
 );
 
 /// Obtains a reference to a DLS instrument from its MIDI parameters
@@ -302,6 +381,7 @@ int DLSYNTH_EXPORT dlsynth_sound_instr_info(
 int DLSYNTH_EXPORT dlsynth_get_instr_patch(
  uint32_t bank,  ///< [in] MIDI bank of the instrument
  uint32_t patch, ///< [in] MIDI Program Change of the instrument
+ int drum,       ///< [in] Whether to search for a drum sound or not
  const struct dlsynth_sound
   *sound, ///< [in] DLS sound where the instrument is contained
  struct dlsynth_instr **instr ///< [out] The instrument

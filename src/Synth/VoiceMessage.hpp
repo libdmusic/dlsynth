@@ -17,13 +17,17 @@ namespace Synth {
   };
 
   class NoteOnMessage final : public VoiceMessage {
+    int m_channel;
     std::uint8_t m_note, m_velocity;
+    bool m_isDrum;
+    int m_priority;
     const Wavesample *m_wavesample;
     const Wave &m_sample;
     std::vector<ConnectionBlock> m_connectionBlocks;
 
   public:
-    NoteOnMessage(std::uint8_t note, std::uint8_t velocity,
+    NoteOnMessage(int channel, int priority, std::uint8_t note,
+                  std::uint8_t velocity, bool isDrum,
                   const Wavesample *wavesample, const Wave &sample,
                   const std::vector<ConnectionBlock> &m_connectionBlocks);
     ~NoteOnMessage() override;
@@ -31,6 +35,9 @@ namespace Synth {
 
     std::uint8_t note() const;
     std::uint8_t velocity() const;
+    int channel() const;
+    bool isDrum() const;
+    int priority() const;
 
     const Wavesample *wavesample() const;
     const Wave &sample() const;
@@ -74,6 +81,18 @@ namespace Synth {
     void accept(VoiceMessageExecutor *executor) override;
   };
 
+  class SustainChangeMessage final : public VoiceMessage {
+    bool m_value;
+
+  public:
+    SustainChangeMessage(bool value);
+    ~SustainChangeMessage() override;
+
+    bool value() const;
+
+    void accept(VoiceMessageExecutor *executor) override;
+  };
+
   class VoiceMessageExecutor {
   public:
     virtual ~VoiceMessageExecutor();
@@ -82,6 +101,7 @@ namespace Synth {
     virtual void execute(const SoundOffMessage &message) = 0;
     virtual void execute(const ControlChangeMessage &message) = 0;
     virtual void execute(const ResetControllersMessage &message) = 0;
+    virtual void execute(const SustainChangeMessage &message) = 0;
   };
 } // namespace Synth
 } // namespace DLSynth

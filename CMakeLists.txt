@@ -1,15 +1,16 @@
 cmake_minimum_required(VERSION 3.1)
-project(dlsynth VERSION 0.1.0
+project(dlsynth VERSION 0.2.0
                 DESCRIPTION "DLS Synth library"
                 LANGUAGES C CXX)
 
 add_library(dlsynth "")
-add_library(DLSynth::dlsynth ALIAS dlsynth)
+add_library(libdmusic::dlsynth ALIAS dlsynth)
 
 include(GenerateExportHeader)
 generate_export_header(dlsynth)
 
 set(DLSYNTH_ENABLE_SIMD "OFF" CACHE STRING "The SIMD instruction set to use")
+option(DLSYNTH_BIGENDIAN "Whether the target architecture is big endian" OFF)
 
 target_sources(dlsynth
     PRIVATE
@@ -46,6 +47,13 @@ target_include_directories(dlsynth
         $<INSTALL_INTERFACE:include>
 )
 
+if(DLSYNTH_BIGENDIAN)
+    target_compile_definitions(dlsynth
+        PRIVATE
+            DLSYNTH_BIGENDIAN=1
+    )
+endif()
+
 if(DLSYNTH_ENABLE_SIMD STREQUAL "SSE")
     target_compile_definitions(dlsynth PRIVATE DLSYNTH_USE_SSE=1)
     if(MSVC AND CMAKE_SIZEOF_VOID_P EQUAL "4")
@@ -75,9 +83,32 @@ elseif(DLSYNTH_ENABLE_SIMD STREQUAL "SSE3")
     endif()
 endif()
 
+find_program(GIT_EXECUTABLE "git")
+if(NOT GIT_EXECUTABLE STREQUAL "GIT_NOTFOUND" AND EXISTS "${CMAKE_SOURCE_DIR}/.git")
+    execute_process(
+        COMMAND "${GIT_EXECUTABLE}" rev-parse -q HEAD
+        WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+        OUTPUT_VARIABLE GIT_COMMIT
+        ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE
+    )
+
+    execute_process(
+        COMMAND "${GIT_EXECUTABLE}" status --porcelain
+        WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+        OUTPUT_VARIABLE GIT_EDITS
+        ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE
+    )
+
+    if(NOT GIT_EDITS STREQUAL "")
+        set(GIT_COMMIT "${GIT_COMMIT}-dirty")
+    endif()
+
+    target_compile_options(dlsynth PRIVATE -DDLSYNTH_COMMIT="${GIT_COMMIT}")
+endif()
+
 find_package(riffcpp 2.2 CONFIG REQUIRED)
 
-target_link_libraries(dlsynth PRIVATE riffcpp::riffcpp)
+target_link_libraries(dlsynth PRIVATE libdmusic::riffcpp)
 
 include(GNUInstallDirs)
 
@@ -108,7 +139,7 @@ install(
 install(
     EXPORT dlsynth-targets
     FILE dlsynth-targets.cmake
-    NAMESPACE dlsynth::
+    NAMESPACE libdmusic::
     DESTINATION share/dlsynth
     COMPONENT devel
 )
@@ -150,8 +181,8 @@ set(CPACK_DEBIAN_RUNTIME_PACKAGE_NAME "libdlsynth")
 set(CPACK_DEBIAN_DEVEL_PACKAGE_NAME "libdlsynth-dev")
 set(CPACK_DEBIAN_RUNTIME_FILE_NAME libdlsynth_${CPACK_PACKAGE_VERSION}.deb)
 set(CPACK_DEBIAN_DEVEL_FILE_NAME libdlsynth-dev_${CPACK_PACKAGE_VERSION}.deb)
-set(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6 (>= 2.14), libstdc++6 (>= 5.2), libgcc1 (>= 1:3.0), riffcpp (>= 2.2), riffcpp (<< 2.3)")
-set(CPACK_DEBIAN_DEVEL_PACKAGE_DEPENDS "${CPACK_DEBIAN_PACKAGE_DEPENDS}, libdlsynth (>= 0.1), libdlsynth (<< 0.2)")
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6 (>= 2.14), libstdc++6 (>= 5.2), libgcc1 (>= 1:3.0), libriffcpp (>= 2.2), libriffcpp (<< 2.3)")
+set(CPACK_DEBIAN_DEVEL_PACKAGE_DEPENDS "${CPACK_DEBIAN_PACKAGE_DEPENDS}, libdlsynth (= ${CPACK_PACKAGE_VERSION})")
 set(CPACK_DEB_COMPONENT_INSTALL ON)
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
 set(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/README.md")

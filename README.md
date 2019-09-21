@@ -26,22 +26,38 @@ int main() {
     return 1;
   }
 
-  struct dlsynth_settings settings = {
-    44100,               /* Sample rate        */
-    2,                   /* Number of channels */
-    DLSYNTH_INTERLEAVED, /* Interleaved output */
-    16,                  /* Number of voices   */
-    instr                /* Instrument to use  */
-  };
-
   struct dlsynth* synth;
-  if(!dlsynth_init(&settings, &synth)) {
+  if(!dlsynth_init(
+      44100, /* Output sample rate */
+      32,    /* Number of voices   */
+      &synth)) {
     fprintf(stderr, "Could not init synth\n");
     return 1;
   }
 
-  dlsynth_note_on(synth, 43);
-  if(!dlsynth_render_int16(synth, someBuf, bufLen, 1.0f)) {
+  dlsynth_note_on(synth,
+    instr, /* Instrument to use   */
+    0,     /* Channel of the note */
+    100,   /* Note priority       */
+    43     /* MIDI note           */
+  );
+
+  int16_t* outputBuffer = /* ... */;
+
+  // Mono rendering
+  if(!dlsynth_render_int16(synth, numFrames, outputBuffer, NULL, 1, 1.0f)) {
+    fprintf(stderr, "Could not render buffer\n");
+    return 1;
+  }
+
+  // Interleaved stereo rendering
+  if(!dlsynth_render_int16(synth, numFrames, outputBuffer, outputBuffer + 1, 2, 1.0f)) {
+    fprintf(stderr, "Could not render buffer\n");
+    return 1;
+  }
+
+  // Sequential stereo rendering
+  if(!dlsynth_render_int16(synth, numFrames, outputBuffer, outputBuffer + numFrames, 1, 1.0f)) {
     fprintf(stderr, "Could not render buffer\n");
     return 1;
   }
@@ -63,18 +79,22 @@ vcpkg install dlsynth --head
 
 On Debian-based distros (like Ubuntu) you can add the following line to `/etc/apt/sources.list.d/libdmusic.list`:
 
-    deb [trusted=yes] https://repo.libdmusic.org/apt/ /
+```txt
+deb [trusted=yes] https://repo.libdmusic.org/apt/ /
+```
 
 then run
 
-    sudo apt update
-    sudo apt install dlsynth-dev
+```sh
+sudo apt update
+sudo apt install libdlsynth-dev
+```
 
 You can then use `dlsynth` as any other CMake-available library:
 
 ```cmake
 find_package(dlsynth CONFIG REQUIRED)
-target_link_libraries(my_app PRIVATE dlsynth::dlsynth)
+target_link_libraries(my_app PRIVATE libdmusic::dlsynth)
 ```
 
 ## Building
@@ -106,12 +126,16 @@ and its headers and install it somewhere CMake can find it.
 
 Under Debian-based distros (like Ubuntu) you can add the following line to `/etc/apt/sources.list.d/libdmusic.list`:
 
-    deb [trusted=yes] https://repo.libdmusic.org/apt/ /
+```txt
+deb [trusted=yes] https://repo.libdmusic.org/apt/ /
+```
 
 then run
 
-    sudo apt update
-    sudo apt install riffcpp-dev
+```sh
+sudo apt update
+sudo apt install libriffcpp-dev
+```
 
 After cloning the repo, run the following commands:
 

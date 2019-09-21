@@ -1,7 +1,8 @@
 #ifndef DECODERTABLE_HPP
 #define DECODERTABLE_HPP
 
-#include "Structs.hpp"
+#include "Structs/WaveFormat.hpp"
+#include "Structs/WaveFormatEx.hpp"
 #include "Wave.hpp"
 #include <memory>
 #include <unordered_map>

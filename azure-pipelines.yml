@@ -27,9 +27,9 @@ jobs:
         SIMD_VALUE: SSE3
   steps:
   - script: |
-      echo "deb [trusted=yes] https://repo.libdmusic.org/apt/ /" | sudo dd of=/etc/apt/sources.list.d/libdmusic.list
+      sudo add-apt-repository ppa:libdmusic/libriffcpp
       sudo apt-get update
-      sudo apt-get install riffcpp-dev
+      sudo apt-get install libriffcpp-dev
     displayName: Resolve dependencies
   - script: |
       mkdir build
@@ -122,9 +122,9 @@ jobs:
     vmImage: 'ubuntu-latest'
   steps:
   - script: |
-      echo "deb [trusted=yes] https://repo.libdmusic.org/apt/ /" | sudo dd of=/etc/apt/sources.list.d/libdmusic.list
+      sudo add-apt-repository ppa:libdmusic/libriffcpp
       sudo apt-get update
-      sudo apt-get install riffcpp-dev
+      sudo apt-get install libriffcpp-dev
     displayName: Resolve dependencies
   - script: |
       mkdir build
@@ -135,4 +135,18 @@ jobs:
       mv *.deb artifacts/
     displayName: Build
   - publish: $(System.DefaultWorkingDirectory)/build/artifacts/
+    displayName: Publish artifacts
+- job: MakeDocs
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - script: sudo apt-get install doxygen graphviz
+    displayName: Install Doxygen
+  - script: doxygen
+    displayName: Generate documentation
+  - script: |
+      mkdir artifacts
+      tar -czvf artifacts/docs.tar.gz docs
+    displayName: Create tarball
+  - publish: $(System.DefaultWorkingDirectory)/artifacts/
     displayName: Publish artifacts
