@@ -1,0 +1,20 @@
+Source: libdlsynth
+Priority: optional
+Maintainer: @MAINTAINER@
+Build-Depends: debhelper (>= 10), cmake, g++ (>= 4:5.0.0), libriffcpp-dev (>= 2.2), libriffcpp-dev (< 2.3)
+Standards-Version: 4.0.0
+Section: libs
+Homepage: https://dlsynth.libdmusic.org
+
+Package: libdlsynth
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libriffcpp (>= 2.2), libriffcpp (< 2.3)
+Description: DLS Software synthesizer library
+ DLS Software synthesizer library.
+
+Package: libdlsynth-dev
+Section: libdevel
+Architecture: any
+Depends: libdlsynth (= ${binary:Version}), ${misc:Depends}
+Description: Header files and libraries for developing applications for libdlsynth
+ Header files and libraries for developing applications for libdlsynth.
