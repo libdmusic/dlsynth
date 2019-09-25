@@ -77,10 +77,10 @@ that includes a portfile for `dlsynth`. You can install it by requesting the
 vcpkg install dlsynth --head
 ```
 
-On Debian-based distros (like Ubuntu) you can add the following line to `/etc/apt/sources.list.d/libdmusic.list`:
+On Debian-based distros (like Ubuntu) you can add the following PPA to apt:
 
-```txt
-deb [trusted=yes] https://repo.libdmusic.org/apt/ /
+```sh
+sudo add-apt-repository ppa:libdmusic/unstable
 ```
 
 then run
