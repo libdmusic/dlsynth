@@ -4,3 +4,6 @@ build/
 .ccls-cache/
 .ccls
 docs/
+debian/changelog
+debian/control
+debian/copyright
