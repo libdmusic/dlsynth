@@ -27,7 +27,7 @@ jobs:
         SIMD_VALUE: SSE3
   steps:
   - script: |
-      sudo add-apt-repository ppa:libdmusic/libriffcpp
+      sudo add-apt-repository ppa:libdmusic/unstable
       sudo apt-get update
       sudo apt-get install libriffcpp-dev
     displayName: Resolve dependencies
@@ -122,7 +122,7 @@ jobs:
     vmImage: 'ubuntu-latest'
   steps:
   - script: |
-      sudo add-apt-repository ppa:libdmusic/libriffcpp
+      sudo add-apt-repository ppa:libdmusic/unstable
       sudo apt-get update
       sudo apt-get install libriffcpp-dev
     displayName: Resolve dependencies
