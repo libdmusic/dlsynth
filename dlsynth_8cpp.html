@@ -75,6 +75,7 @@ $(function() {
 <code>#include &quot;<a class="el" href="_instrument_8hpp_source.html">Instrument.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_numeric_utils_8hpp_source.html">NumericUtils.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_sound_8hpp_source.html">Sound.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_range_8hpp_source.html">Structs/Range.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_synthesizer_8hpp_source.html">Synth/Synthesizer.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_wave_8hpp_source.html">Wave.hpp</a>&quot;</code><br />
 <code>#include &lt;algorithm&gt;</code><br />
@@ -130,10 +131,10 @@ Functions</h2></td></tr>
 <tr class="separator:ga1fabd22f79c54d4878c002174db63ece"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab070c1fc98e8356e2a5d6f432d112d2f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8cpp.html#ab070c1fc98e8356e2a5d6f432d112d2f">dlsynth_sound_instr_count</a> (const <a class="el" href="structdlsynth__sound.html">dlsynth_sound</a> *sound, std::size_t *count)</td></tr>
 <tr class="separator:ab070c1fc98e8356e2a5d6f432d112d2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c66fae561f49c69761f109c17baeea1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8cpp.html#a2c66fae561f49c69761f109c17baeea1">dlsynth_sound_instr_info</a> (const <a class="el" href="structdlsynth__instr.html">dlsynth_instr</a> *instr, uint32_t *bank, uint32_t *patch)</td></tr>
-<tr class="separator:a2c66fae561f49c69761f109c17baeea1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab089ccf7e2706dd5c5d4866d53826480"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8cpp.html#ab089ccf7e2706dd5c5d4866d53826480">dlsynth_get_instr_patch</a> (std::uint32_t bank, std::uint32_t patch, const <a class="el" href="structdlsynth__sound.html">dlsynth_sound</a> *sound, <a class="el" href="structdlsynth__instr.html">dlsynth_instr</a> **instr)</td></tr>
-<tr class="separator:ab089ccf7e2706dd5c5d4866d53826480"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a860abbd687b6b055dbc50d3761cedcfd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8cpp.html#a860abbd687b6b055dbc50d3761cedcfd">dlsynth_sound_instr_info</a> (const <a class="el" href="structdlsynth__instr.html">dlsynth_instr</a> *instr, uint32_t *bank, uint32_t *patch, int *isDrum)</td></tr>
+<tr class="separator:a860abbd687b6b055dbc50d3761cedcfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52c3a05b6cd4c86394823b15fdc61256"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8cpp.html#a52c3a05b6cd4c86394823b15fdc61256">dlsynth_get_instr_patch</a> (std::uint32_t bank, std::uint32_t patch, int drum, const <a class="el" href="structdlsynth__sound.html">dlsynth_sound</a> *sound, <a class="el" href="structdlsynth__instr.html">dlsynth_instr</a> **instr)</td></tr>
+<tr class="separator:a52c3a05b6cd4c86394823b15fdc61256"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed3a690336f3874766d11d0c2a4470df"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dlsynth_8cpp.html#aed3a690336f3874766d11d0c2a4470df">dlsynth_get_instr_num</a> (std::size_t instr_num, const <a class="el" href="structdlsynth__sound.html">dlsynth_sound</a> *sound, <a class="el" href="structdlsynth__instr.html">dlsynth_instr</a> **instr)</td></tr>
 <tr class="separator:aed3a690336f3874766d11d0c2a4470df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3953a94bd91dd0531cf604c449ac159f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___instr_management.html#ga3953a94bd91dd0531cf604c449ac159f">dlsynth_free_instr</a> (<a class="el" href="structdlsynth__instr.html">dlsynth_instr</a> *instr)</td></tr>
@@ -334,8 +335,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ab089ccf7e2706dd5c5d4866d53826480"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab089ccf7e2706dd5c5d4866d53826480">&#9670;&nbsp;</a></span>dlsynth_get_instr_patch()</h2>
+<a id="a52c3a05b6cd4c86394823b15fdc61256"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52c3a05b6cd4c86394823b15fdc61256">&#9670;&nbsp;</a></span>dlsynth_get_instr_patch()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -351,6 +352,12 @@ Functions</h2></td></tr>
           <td></td>
           <td class="paramtype">std::uint32_t&#160;</td>
           <td class="paramname"><em>patch</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>drum</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>

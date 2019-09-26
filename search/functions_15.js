@@ -25,6 +25,7 @@ var searchData=
   ['_7esound',['~Sound',['../class_d_l_synth_1_1_sound.html#a0907389078bf740be2a5763366ad3376',1,'DLSynth::Sound']]],
   ['_7esoundoffmessage',['~SoundOffMessage',['../class_d_l_synth_1_1_synth_1_1_sound_off_message.html#ae7a77bfa95f3793a25f551dcfd261906',1,'DLSynth::Synth::SoundOffMessage']]],
   ['_7espscqueue',['~SPSCQueue',['../classrigtorp_1_1_s_p_s_c_queue.html#a56ad9428ab82606becf2a8f9ab661ef5',1,'rigtorp::SPSCQueue']]],
+  ['_7esustainchangemessage',['~SustainChangeMessage',['../class_d_l_synth_1_1_synth_1_1_sustain_change_message.html#a42a29c093193ddb8af815d67ada74d32',1,'DLSynth::Synth::SustainChangeMessage']]],
   ['_7eswitchtransform',['~SwitchTransform',['../class_switch_transform.html#a5ad878472f6629bb02f1afb812d50e02',1,'SwitchTransform']]],
   ['_7esynthesizer',['~Synthesizer',['../class_d_l_synth_1_1_synth_1_1_synthesizer.html#a23e5e65b4d7024318009d4f550c11c04',1,'DLSynth::Synth::Synthesizer']]],
   ['_7etransform',['~Transform',['../class_d_l_synth_1_1_synth_1_1_transform.html#aa72e286c069850db80927b0e6554cd3e',1,'DLSynth::Synth::Transform']]],

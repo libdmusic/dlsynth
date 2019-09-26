@@ -89,12 +89,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac4923262f6851444fadd03fccce828ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa33a1d88d075b8820305928a3f3f61bd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_d_l_synth_1_1_synth_1_1_voice.html">Voice</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_synth_1_1_voice.html#aa33a1d88d075b8820305928a3f3f61bd">operator=</a> (const <a class="el" href="class_d_l_synth_1_1_synth_1_1_voice.html">Voice</a> &amp;)=delete</td></tr>
 <tr class="separator:aa33a1d88d075b8820305928a3f3f61bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20b5cb11285d216d655475406195bb49"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_synth_1_1_voice.html#a20b5cb11285d216d655475406195bb49">noteOn</a> (std::uint8_t <a class="el" href="class_d_l_synth_1_1_synth_1_1_voice.html#ac8fa36c32b5beef8188a5111a62f87b0">note</a>, std::uint8_t velocity, const <a class="el" href="class_d_l_synth_1_1_wavesample.html">Wavesample</a> *wavesample, const <a class="el" href="class_d_l_synth_1_1_wave.html">Wave</a> &amp;sample, const std::vector&lt; <a class="el" href="class_d_l_synth_1_1_connection_block.html">ConnectionBlock</a> &gt; &amp;connectionBlocks)</td></tr>
-<tr class="separator:a20b5cb11285d216d655475406195bb49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2611cc073c82514c2b9b60842bb87392"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_synth_1_1_voice.html#a2611cc073c82514c2b9b60842bb87392">noteOn</a> (int <a class="el" href="class_d_l_synth_1_1_synth_1_1_voice.html#ab36f8cd87c2958d96fa536387bd746fe">channel</a>, int <a class="el" href="class_d_l_synth_1_1_synth_1_1_voice.html#a292836ba10468a793797232c546d1f1c">priority</a>, std::uint8_t <a class="el" href="class_d_l_synth_1_1_synth_1_1_voice.html#ac8fa36c32b5beef8188a5111a62f87b0">note</a>, std::uint8_t velocity, bool isDrum, const <a class="el" href="class_d_l_synth_1_1_wavesample.html">Wavesample</a> *wavesample, const <a class="el" href="class_d_l_synth_1_1_wave.html">Wave</a> &amp;sample, const std::vector&lt; <a class="el" href="class_d_l_synth_1_1_connection_block.html">ConnectionBlock</a> &gt; &amp;connectionBlocks)</td></tr>
+<tr class="separator:a2611cc073c82514c2b9b60842bb87392"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a673f430c872ee03874e2039a70338b6b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_synth_1_1_voice.html#a673f430c872ee03874e2039a70338b6b">noteOff</a> ()</td></tr>
 <tr class="separator:a673f430c872ee03874e2039a70338b6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acab08dde436a6456b7fa9c8757a1b5ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_synth_1_1_voice.html#acab08dde436a6456b7fa9c8757a1b5ef">soundOff</a> ()</td></tr>
 <tr class="separator:acab08dde436a6456b7fa9c8757a1b5ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae696761cee09b64b99be90f2837359f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_synth_1_1_voice.html#ae696761cee09b64b99be90f2837359f8">sustain</a> (bool value)</td></tr>
+<tr class="separator:ae696761cee09b64b99be90f2837359f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a238c4a44ae034d5eb62dd57edec75ab8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_synth_1_1_voice.html#a238c4a44ae034d5eb62dd57edec75ab8">controlChange</a> (<a class="el" href="namespace_d_l_synth.html#a407e32fd406a3269a40aa958b22ea196">Source</a> source, float value)</td></tr>
 <tr class="separator:a238c4a44ae034d5eb62dd57edec75ab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a2181d9533f3c9343e38a9bb6ba2876"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_synth_1_1_voice.html#a2a2181d9533f3c9343e38a9bb6ba2876">resetControllers</a> ()</td></tr>
@@ -103,6 +105,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab96e2c6a8e76018a31b97613692f36ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8fa36c32b5beef8188a5111a62f87b0"><td class="memItemLeft" align="right" valign="top">std::uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_synth_1_1_voice.html#ac8fa36c32b5beef8188a5111a62f87b0">note</a> () const</td></tr>
 <tr class="separator:ac8fa36c32b5beef8188a5111a62f87b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab36f8cd87c2958d96fa536387bd746fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_synth_1_1_voice.html#ab36f8cd87c2958d96fa536387bd746fe">channel</a> () const</td></tr>
+<tr class="separator:ab36f8cd87c2958d96fa536387bd746fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a292836ba10468a793797232c546d1f1c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_synth_1_1_voice.html#a292836ba10468a793797232c546d1f1c">priority</a> () const</td></tr>
+<tr class="separator:a292836ba10468a793797232c546d1f1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a13a98b411361cd56a225843509b87414"><td class="memItemLeft" align="right" valign="top">std::chrono::steady_clock::time_point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_synth_1_1_voice.html#a13a98b411361cd56a225843509b87414">startTime</a> () const</td></tr>
 <tr class="separator:a13a98b411361cd56a225843509b87414"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a065f541856f908212070fb13f8947bbe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_l_synth_1_1_synth_1_1_voice.html#a065f541856f908212070fb13f8947bbe">render_fill</a> (float *beginLeft, float *endLeft, float *beginRight, float *endRight, std::size_t bufferSkip, float gain)</td></tr>
@@ -165,6 +171,23 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab36f8cd87c2958d96fa536387bd746fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab36f8cd87c2958d96fa536387bd746fe">&#9670;&nbsp;</a></span>channel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Voice::channel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a238c4a44ae034d5eb62dd57edec75ab8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a238c4a44ae034d5eb62dd57edec75ab8">&#9670;&nbsp;</a></span>controlChange()</h2>
 
@@ -227,8 +250,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a20b5cb11285d216d655475406195bb49"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a20b5cb11285d216d655475406195bb49">&#9670;&nbsp;</a></span>noteOn()</h2>
+<a id="a2611cc073c82514c2b9b60842bb87392"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2611cc073c82514c2b9b60842bb87392">&#9670;&nbsp;</a></span>noteOn()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -236,6 +259,18 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void Voice::noteOn </td>
           <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>priority</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">std::uint8_t&#160;</td>
           <td class="paramname"><em>note</em>, </td>
         </tr>
@@ -244,6 +279,12 @@ Public Member Functions</h2></td></tr>
           <td></td>
           <td class="paramtype">std::uint8_t&#160;</td>
           <td class="paramname"><em>velocity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isDrum</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -307,6 +348,23 @@ Public Member Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">bool Voice::playing </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a292836ba10468a793797232c546d1f1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a292836ba10468a793797232c546d1f1c">&#9670;&nbsp;</a></span>priority()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Voice::priority </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -465,6 +523,24 @@ Public Member Functions</h2></td></tr>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae696761cee09b64b99be90f2837359f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae696761cee09b64b99be90f2837359f8">&#9670;&nbsp;</a></span>sustain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Voice::sustain </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">

@@ -21,7 +21,6 @@ var searchData=
   ['instrument_2ehpp',['Instrument.hpp',['../_instrument_8hpp.html',1,'']]],
   ['instruments',['instruments',['../structdlsynth__instrlist.html#aa30cfac6f8a66f155dee6a36c7fcbbe7',1,'dlsynth_instrlist::instruments()'],['../class_d_l_synth_1_1_sound.html#aab8acea43d2e4dab1732fb6f151b3d6b',1,'DLSynth::Sound::instruments()']]],
   ['int24_5ft',['int24_t',['../struct_d_l_synth_1_1int24__t.html',1,'DLSynth']]],
-  ['interleaved',['interleaved',['../structdlsynth__settings.html#a84c0694f0e83c994bf0169ba5a99cb22',1,'dlsynth_settings::interleaved()'],['../structdlsynth.html#a42eefbbe426c687ff058d7ef7f532546',1,'dlsynth::interleaved()']]],
   ['inverse_5fnormalize',['inverse_normalize',['../namespace_d_l_synth.html#af1ce1dc73ec4c3b2e6a5fda29f3ec862',1,'DLSynth']]],
   ['invert',['invert',['../class_d_l_synth_1_1_transform_params.html#a69babfbc4c352ea7de1a73042309dbb7',1,'DLSynth::TransformParams::invert()'],['../class_d_l_synth_1_1_synth_1_1_transform.html#a0e7e41e88ebc64cca430da61240f7b8c',1,'DLSynth::Synth::Transform::invert()']]],
   ['isbj_5fid',['ISBJ_id',['../_common_four_c_cs_8hpp.html#a998916c7ff2f82720ae7a7da5b74ce95',1,'CommonFourCCs.hpp']]],

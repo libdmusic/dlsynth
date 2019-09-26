@@ -106,6 +106,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af910539dc551caa41b54fe7dfa7da77b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed8552eb76f8e7637f8527accb1ca522"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_voice_1_1impl.html#aed8552eb76f8e7637f8527accb1ca522">updateFiltEg</a> ()</td></tr>
 <tr class="separator:aed8552eb76f8e7637f8527accb1ca522"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a455347073a7d15749071b18f9ea7f1c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_voice_1_1impl.html#a455347073a7d15749071b18f9ea7f1c4">execute</a> (const <a class="el" href="class_d_l_synth_1_1_synth_1_1_sustain_change_message.html">SustainChangeMessage</a> &amp;message) override</td></tr>
+<tr class="separator:a455347073a7d15749071b18f9ea7f1c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ca7f6b533081756089e3791246e2f77"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_voice_1_1impl.html#a2ca7f6b533081756089e3791246e2f77">execute</a> (const <a class="el" href="class_d_l_synth_1_1_synth_1_1_note_on_message.html">NoteOnMessage</a> &amp;message) override</td></tr>
 <tr class="separator:a2ca7f6b533081756089e3791246e2f77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9228f8c7376a0ce9ac06502ea987d07e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_voice_1_1impl.html#a9228f8c7376a0ce9ac06502ea987d07e">execute</a> (const <a class="el" href="class_d_l_synth_1_1_synth_1_1_note_off_message.html">NoteOffMessage</a> &amp;message) override</td></tr>
@@ -144,8 +146,18 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a7c69a84ec9a06a7d0d434dc1586a25ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4bb728f517f02078b9cc84fa148eeb18"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_voice_1_1impl.html#a4bb728f517f02078b9cc84fa148eeb18">m_playing</a></td></tr>
 <tr class="separator:a4bb728f517f02078b9cc84fa148eeb18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32035f718f7be2a06f8a34b000d279e2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_voice_1_1impl.html#a32035f718f7be2a06f8a34b000d279e2">m_sustain</a></td></tr>
+<tr class="separator:a32035f718f7be2a06f8a34b000d279e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1aa3d7b3dc197af5a7fa807d1ed38554"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_voice_1_1impl.html#a1aa3d7b3dc197af5a7fa807d1ed38554">m_released</a></td></tr>
+<tr class="separator:a1aa3d7b3dc197af5a7fa807d1ed38554"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78f4d4c62cdbdc0c928c500e5c81d6d7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_voice_1_1impl.html#a78f4d4c62cdbdc0c928c500e5c81d6d7">m_isDrum</a></td></tr>
+<tr class="separator:a78f4d4c62cdbdc0c928c500e5c81d6d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8886bf3fcef380be38ad095b6bbfb35f"><td class="memItemLeft" align="right" valign="top">std::uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_voice_1_1impl.html#a8886bf3fcef380be38ad095b6bbfb35f">m_note</a></td></tr>
 <tr class="separator:a8886bf3fcef380be38ad095b6bbfb35f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab1d8eec2af22b98380f051f8fb9fb42"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_voice_1_1impl.html#aab1d8eec2af22b98380f051f8fb9fb42">m_channel</a></td></tr>
+<tr class="separator:aab1d8eec2af22b98380f051f8fb9fb42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0cbcf6e5ae38b2edee5b07b5aeacd0d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_voice_1_1impl.html#aa0cbcf6e5ae38b2edee5b07b5aeacd0d">m_priority</a></td></tr>
+<tr class="separator:aa0cbcf6e5ae38b2edee5b07b5aeacd0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71c3d699fa28dd3f5d7cf830e2080753"><td class="memItemLeft" align="right" valign="top">std::uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_voice_1_1impl.html#a71c3d699fa28dd3f5d7cf830e2080753">m_velocity</a></td></tr>
 <tr class="separator:a71c3d699fa28dd3f5d7cf830e2080753"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a459f02798c3c432e699d9fb3b34000ae"><td class="memItemLeft" align="right" valign="top">std::chrono::steady_clock::time_point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_voice_1_1impl.html#a459f02798c3c432e699d9fb3b34000ae">m_startTime</a></td></tr>
@@ -266,7 +278,7 @@ Static Public Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a2ca7f6b533081756089e3791246e2f77"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ca7f6b533081756089e3791246e2f77">&#9670;&nbsp;</a></span>execute() <span class="overload">[1/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ca7f6b533081756089e3791246e2f77">&#9670;&nbsp;</a></span>execute() <span class="overload">[2/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -294,7 +306,7 @@ Static Public Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a9228f8c7376a0ce9ac06502ea987d07e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9228f8c7376a0ce9ac06502ea987d07e">&#9670;&nbsp;</a></span>execute() <span class="overload">[2/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a9228f8c7376a0ce9ac06502ea987d07e">&#9670;&nbsp;</a></span>execute() <span class="overload">[3/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -322,7 +334,7 @@ Static Public Attributes</h2></td></tr>
 </div>
 </div>
 <a id="acc00f25a5911eff5a6111744dfa3f38a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acc00f25a5911eff5a6111744dfa3f38a">&#9670;&nbsp;</a></span>execute() <span class="overload">[3/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#acc00f25a5911eff5a6111744dfa3f38a">&#9670;&nbsp;</a></span>execute() <span class="overload">[4/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -350,7 +362,7 @@ Static Public Attributes</h2></td></tr>
 </div>
 </div>
 <a id="aa4027ef362b275d01547df73bbc38652"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa4027ef362b275d01547df73bbc38652">&#9670;&nbsp;</a></span>execute() <span class="overload">[4/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4027ef362b275d01547df73bbc38652">&#9670;&nbsp;</a></span>execute() <span class="overload">[5/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -378,7 +390,7 @@ Static Public Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a9d83fc2455604b3ad57200adc5caa8fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9d83fc2455604b3ad57200adc5caa8fd">&#9670;&nbsp;</a></span>execute() <span class="overload">[5/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d83fc2455604b3ad57200adc5caa8fd">&#9670;&nbsp;</a></span>execute() <span class="overload">[6/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -736,6 +748,20 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="aab1d8eec2af22b98380f051f8fb9fb42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab1d8eec2af22b98380f051f8fb9fb42">&#9670;&nbsp;</a></span>m_channel</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DLSynth::Synth::Voice::impl::m_channel</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a5f07787313c869cf4da9e829a5cf3297"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5f07787313c869cf4da9e829a5cf3297">&#9670;&nbsp;</a></span>m_connections</h2>
 
@@ -869,21 +895,35 @@ Static Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_pitch_node.html">PitchNode</a> DLSynth::Synth::Voice::impl::m_pitchNode</td>
+          <td class="memname">bool DLSynth::Synth::Voice::impl::m_playing</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a4bb728f517f02078b9cc84fa148eeb18"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4bb728f517f02078b9cc84fa148eeb18">&#9670;&nbsp;</a></span>m_playing</h2>
+<a id="aa0cbcf6e5ae38b2edee5b07b5aeacd0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0cbcf6e5ae38b2edee5b07b5aeacd0d">&#9670;&nbsp;</a></span>m_priority</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool DLSynth::Synth::Voice::impl::m_playing</td>
+          <td class="memname">int DLSynth::Synth::Voice::impl::m_priority</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1aa3d7b3dc197af5a7fa807d1ed38554"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1aa3d7b3dc197af5a7fa807d1ed38554">&#9670;&nbsp;</a></span>m_released</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool DLSynth::Synth::Voice::impl::m_released</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -954,6 +994,20 @@ Static Public Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">std::chrono::steady_clock::time_point DLSynth::Synth::Voice::impl::m_startTime</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a32035f718f7be2a06f8a34b000d279e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32035f718f7be2a06f8a34b000d279e2">&#9670;&nbsp;</a></span>m_sustain</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool DLSynth::Synth::Voice::impl::m_sustain</td>
         </tr>
       </table>
 </div><div class="memdoc">

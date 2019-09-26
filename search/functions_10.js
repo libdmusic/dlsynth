@@ -24,7 +24,8 @@ var searchData=
   ['subject',['subject',['../class_d_l_synth_1_1_info.html#a85c35a1caa46d3c691bfe3c36b8af547',1,'DLSynth::Info']]],
   ['subscribe',['subscribe',['../class_d_l_synth_1_1_synth_1_1_observable_signal.html#a1a594a951a8ebc00b0b81e5c40e6a052',1,'DLSynth::Synth::ObservableSignal']]],
   ['supports',['supports',['../class_query_map.html#ac5ee5da3b3b06b76a2cd1a4a7928012f',1,'QueryMap']]],
-  ['sustain',['sustain',['../class_d_l_synth_1_1_synth_1_1_synthesizer.html#ad52c6dd6b446f43ae1b0ba4985f4976b',1,'DLSynth::Synth::Synthesizer']]],
+  ['sustain',['sustain',['../class_d_l_synth_1_1_synth_1_1_synthesizer.html#a332a37841979773cbf128036a68e937e',1,'DLSynth::Synth::Synthesizer::sustain()'],['../class_d_l_synth_1_1_synth_1_1_voice.html#ae696761cee09b64b99be90f2837359f8',1,'DLSynth::Synth::Voice::sustain()']]],
+  ['sustainchangemessage',['SustainChangeMessage',['../class_d_l_synth_1_1_synth_1_1_sustain_change_message.html#a71efa85a30e5658ccaef167247176d41',1,'DLSynth::Synth::SustainChangeMessage']]],
   ['switchtransform',['SwitchTransform',['../class_switch_transform.html#a727726f3230de4bd5786c56bdbbbc29a',1,'SwitchTransform']]],
-  ['synthesizer',['Synthesizer',['../class_d_l_synth_1_1_synth_1_1_synthesizer.html#ad0cdbd036e771275234236fd6517c617',1,'DLSynth::Synth::Synthesizer::Synthesizer(const Sound &amp;collection, std::size_t instrumentIndex, std::size_t voiceCount, std::uint32_t sampleRate)'],['../class_d_l_synth_1_1_synth_1_1_synthesizer.html#a2e13c1f6cd1573e5e10af431591b890c',1,'DLSynth::Synth::Synthesizer::Synthesizer(Synthesizer &amp;&amp;synth)']]]
+  ['synthesizer',['Synthesizer',['../class_d_l_synth_1_1_synth_1_1_synthesizer.html#a43c11429ad9237a6e1c8996ac560f079',1,'DLSynth::Synth::Synthesizer::Synthesizer(std::size_t voiceCount, std::uint32_t sampleRate)'],['../class_d_l_synth_1_1_synth_1_1_synthesizer.html#a2e13c1f6cd1573e5e10af431591b890c',1,'DLSynth::Synth::Synthesizer::Synthesizer(Synthesizer &amp;&amp;synth)']]]
 ];
