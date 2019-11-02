@@ -9,7 +9,7 @@ extern "C" {
 #include <stdint.h>
 
 #define DLSYNTH_MAJOR 0
-#define DLSYNTH_MINOR 2
+#define DLSYNTH_MINOR 3
 #define DLSYNTH_PATCH 0
 
 /// Version info for the linked library
@@ -64,7 +64,7 @@ struct dlsynth_wav;
 /// Initializes a DLS synthesizer
 /**
  * @ingroup SynthManagement
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_init(
  int sample_rate, int num_voices,
@@ -74,7 +74,7 @@ int DLSYNTH_EXPORT dlsynth_init(
 /// Frees the resources allocated for a synthesizer
 /**
  * @ingroup SynthManagement
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_free(
  struct dlsynth *synth ///< [in] The synthesizer to free
@@ -84,7 +84,7 @@ int DLSYNTH_EXPORT dlsynth_free(
 /**
  * @ingroup Rendering
  * Data in the buffer passed as a parameter will be overwritten.
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_render_float(
  struct dlsynth *synth, ///< [in] The synthesizer to use for rendering
@@ -100,7 +100,7 @@ int DLSYNTH_EXPORT dlsynth_render_float(
 /**
  * @ingroup Rendering
  * Data in the buffer passed as a parameter will be overwritten.
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_render_int16(
  struct dlsynth *synth, ///< [in] The synthesizer to use for rendering
@@ -116,7 +116,7 @@ int DLSYNTH_EXPORT dlsynth_render_int16(
 /**
  * @ingroup Rendering
  * New audio data will be mixed on top of the existing data in the buffer.
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_render_float_mix(
  struct dlsynth *synth, ///< [in] The synthesizer to use for rendering
@@ -131,7 +131,7 @@ int DLSYNTH_EXPORT dlsynth_render_float_mix(
 /// Sends a MIDI note on event to a synthesizer
 /**
  * @ingroup SynthManagement
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_note_on(
  struct dlsynth *synth, ///< [in] The synthesizer to send the message to
@@ -146,7 +146,7 @@ int DLSYNTH_EXPORT dlsynth_note_on(
 /// Sends a MIDI note off event to a synthesizer
 /**
  * @ingroup SynthManagement
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_note_off(
  struct dlsynth *synth, ///< [in] The synthesizer to send the message to
@@ -157,7 +157,7 @@ int DLSYNTH_EXPORT dlsynth_note_off(
 /// Sends a MIDI polyphonic pressure (aftertouch) event
 /**
  * @ingroup SynthManagement
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_poly_pressure(
  struct dlsynth *synth, ///< [in] The synthesizer to send the message to
@@ -169,7 +169,7 @@ int DLSYNTH_EXPORT dlsynth_poly_pressure(
 /// Sends a MIDI channel pressure (aftertouch) event
 /**
  * @ingroup SynthManagement
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_channel_pressure(
  struct dlsynth *synth, ///< [in] The synthesizer to send the message to
@@ -180,7 +180,7 @@ int DLSYNTH_EXPORT dlsynth_channel_pressure(
 /// Sends a MIDI pitch bend event
 /**
  * @ingroup SynthManagement
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_pitch_bend(
  struct dlsynth *synth, ///< [in] The synthesizer to send the message to
@@ -191,7 +191,7 @@ int DLSYNTH_EXPORT dlsynth_pitch_bend(
 /// Sends a MIDI channel volume change event
 /**
  * @ingroup SynthManagement
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_volume(
  struct dlsynth *synth, ///< [in] The synthesizer to send the message to
@@ -202,7 +202,7 @@ int DLSYNTH_EXPORT dlsynth_volume(
 /// Sends a MIDI channel pan change event
 /**
  * @ingroup SynthManagement
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_pan(
  struct dlsynth *synth, ///< [in] The synthesizer to send the message to
@@ -213,7 +213,7 @@ int DLSYNTH_EXPORT dlsynth_pan(
 /// Sends a MIDI modulation change event
 /**
  * @ingroup SynthManagement
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_modulation(
  struct dlsynth *synth, ///< [in] The synthesizer to send the message to
@@ -224,7 +224,7 @@ int DLSYNTH_EXPORT dlsynth_modulation(
 /// Sends a MIDI sustain change event
 /**
  * @ingroup SynthManagement
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_sustain(
  struct dlsynth *synth, ///< [in] The synthesizer to send the message to
@@ -235,7 +235,7 @@ int DLSYNTH_EXPORT dlsynth_sustain(
 /// Sends a MIDI channel reverb change event
 /**
  * @ingroup SynthManagement
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_reverb(
  struct dlsynth *synth, ///< [in] The synthesizer to send the message to
@@ -246,7 +246,7 @@ int DLSYNTH_EXPORT dlsynth_reverb(
 /// Sends a MIDI channel chorus change event
 /**
  * @ingroup SynthManagement
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_chorus(
  struct dlsynth *synth, ///< [in] The synthesizer to send the message to
@@ -257,7 +257,7 @@ int DLSYNTH_EXPORT dlsynth_chorus(
 /// Sends a MIDI pitch bend range change event
 /**
  * @ingroup SynthManagement
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_pitch_bend_range(
  struct dlsynth *synth, ///< [in] The synthesizer to send the message to
@@ -268,7 +268,7 @@ int DLSYNTH_EXPORT dlsynth_pitch_bend_range(
 /// Sends a MIDI fine tune event
 /**
  * @ingroup SynthManagement
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_fine_tuning(
  struct dlsynth *synth, ///< [in] The synthesizer to send the message to
@@ -279,7 +279,7 @@ int DLSYNTH_EXPORT dlsynth_fine_tuning(
 /// Sends a MIDI coarse tune event
 /**
  * @ingroup SynthManagement
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_coarse_tuning(
  struct dlsynth *synth, ///< [in] The synthesizer to send the message to
@@ -290,7 +290,7 @@ int DLSYNTH_EXPORT dlsynth_coarse_tuning(
 /// Sends a MIDI reset all channel controllers event
 /**
  * @ingroup SynthManagement
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_reset_controllers(
  struct dlsynth *synth, ///< [in] The synthesizer to send the message to
@@ -300,7 +300,7 @@ int DLSYNTH_EXPORT dlsynth_reset_controllers(
 /// Sends a MIDI All Notes Off event
 /**
  * @ingroup SynthManagement
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_all_notes_off(
  struct dlsynth *synth ///< [in] The synthesizer to send the message to
@@ -309,7 +309,7 @@ int DLSYNTH_EXPORT dlsynth_all_notes_off(
 /// Sends a MIDI All Sound Off event
 /**
  * @ingroup SynthManagement
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_all_sound_off(
  struct dlsynth *synth ///< [in] The synthesizer to send the message to
@@ -318,7 +318,7 @@ int DLSYNTH_EXPORT dlsynth_all_sound_off(
 /// Loads a DLS file from a path
 /**
  * @ingroup SoundManagement
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_load_sound_file(
  const char *path,            ///< [in] Path of the file to load
@@ -330,7 +330,7 @@ int DLSYNTH_EXPORT dlsynth_load_sound_file(
 /// Loads a DLS file from a memory buffer
 /**
  * @ingroup SoundManagement
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_load_sound_buf(
  const void *buf, ///< [in] The buffer from which to load the file
@@ -343,14 +343,14 @@ int DLSYNTH_EXPORT dlsynth_load_sound_buf(
 /// Frees the resources allocated for a DLS file
 /**
  * @ingroup SoundManagement
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_free_sound(struct dlsynth_sound *sound);
 
 /// Obtains the number of instruments in this sound
 /**
  * @ingroup SoundManagement
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_sound_instr_count(
  const struct dlsynth_sound
@@ -361,7 +361,7 @@ int DLSYNTH_EXPORT dlsynth_sound_instr_count(
 /// Obtains info about an instrument contained in a sound collection
 /**
  * @ingroup InstrManagement
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_sound_instr_info(
  const struct dlsynth_instr
@@ -376,7 +376,7 @@ int DLSYNTH_EXPORT dlsynth_sound_instr_info(
  * @ingroup InstrManagement
  * @remarks Access to an instrument after the containing \ref dlsynth_sound has
  * been free'd is undefined and should not be attempted.
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_get_instr_patch(
  uint32_t bank,  ///< [in] MIDI bank of the instrument
@@ -392,7 +392,7 @@ int DLSYNTH_EXPORT dlsynth_get_instr_patch(
  * @ingroup InstrManagement
  * @remarks Access to an instrument after the containing \ref dlsynth_sound has
  * been free'd is undefined and should not be attempted.
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_get_instr_num(
  size_t instr_num, ///< [in] Index of the instrument
@@ -404,13 +404,13 @@ int DLSYNTH_EXPORT dlsynth_get_instr_num(
 /// Frees a reference to a DLS instrument
 /**
  * @ingroup InstrManagement
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_free_instr(struct dlsynth_instr *instr);
 
 /// Loads a WAV file for decoding
 /**
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_load_wav_file(
  const char *path,        ///< [in] Path of the file to load
@@ -419,7 +419,7 @@ int DLSYNTH_EXPORT dlsynth_load_wav_file(
 
 /// Loads a WAV file for decoding from a buffer
 /**
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_load_wav_buffer(
  const void *buf,         ///< [in] The buffer from which to load the file
@@ -429,7 +429,7 @@ int DLSYNTH_EXPORT dlsynth_load_wav_buffer(
 
 /// Obtains info about a loaded WAV file
 /**
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_get_wav_info(
  const struct dlsynth_wav *wav, ///< [in] The file of which to obtain info
@@ -439,7 +439,7 @@ int DLSYNTH_EXPORT dlsynth_get_wav_info(
 
 /// Returns the decoded audio data of a WAV file
 /**
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_get_wav_data(
  const struct dlsynth_wav *wav, ///< [in] The file to decode
@@ -449,7 +449,7 @@ int DLSYNTH_EXPORT dlsynth_get_wav_data(
 
 /// Frees the resources allocated for a WAV file
 /**
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_free_wav(struct dlsynth_wav *wav);
 
@@ -458,18 +458,6 @@ enum dlsynth_error {
 #include "dlsynth_errors.h"
 #undef DLSYNTH_ERROR
 };
-
-/// Returns the last error generated by a function call
-/**
- * @return Nonzero on success, zero on failure
- */
-int DLSYNTH_EXPORT dlsynth_get_last_error(void);
-
-/// Resets the last generated error to DLSYNTH_NO_ERROR
-/**
- * @return Nonzero on success, zero on failure
- */
-void DLSYNTH_EXPORT dlsynth_reset_last_error(void);
 
 /// An object describing the parameters to be used when playing a sample
 /**
@@ -490,7 +478,7 @@ enum dlsynth_loop_type {
 /// Creates a new one-shot wavesample
 /**
  * @ingroup SoundCreation
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_new_wavesample_oneshot(
  uint16_t unityNote, ///< [in] The natural MIDI note pitch for this sample
@@ -504,7 +492,7 @@ int DLSYNTH_EXPORT dlsynth_new_wavesample_oneshot(
 /// Creates a new looped wavesample
 /**
  * @ingroup SoundCreation
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_new_wavesample_looped(
  uint16_t unityNote, ///< [in] The natural MIDI note pitch for this sample
@@ -521,7 +509,7 @@ int DLSYNTH_EXPORT dlsynth_new_wavesample_looped(
 /// Frees the resources associated with a wavesample
 /**
  * @ingroup SoundCreation
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT
 dlsynth_free_wavesample(struct dlsynth_wavesample *wavesample);
@@ -529,7 +517,7 @@ dlsynth_free_wavesample(struct dlsynth_wavesample *wavesample);
 /// Creates a new mono WAV
 /**
  * @ingroup SoundCreation
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_new_wav_mono(
  int sampleRate,         ///< [in] Sample rate of the WAV in samples per second
@@ -543,7 +531,7 @@ int DLSYNTH_EXPORT dlsynth_new_wav_mono(
 /// Creates a new stereo WAV
 /**
  * @ingroup SoundCreation
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_new_wav_stereo(
  int sampleRate, ///< [in] Sample rate of the WAV in samples per second
@@ -569,7 +557,7 @@ struct dlsynth_wavepool;
 /// Creates a new empty wavepool
 /**
  * @ingroup SoundCreation
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_new_wavepool(
  struct dlsynth_wavepool **wavepool ///< [out] The new wavepool
@@ -578,7 +566,7 @@ int DLSYNTH_EXPORT dlsynth_new_wavepool(
 /// Adds a WAV to a wavepool
 /**
  * @ingroup SoundCreation
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_wavepool_add(
  struct dlsynth_wavepool
@@ -589,7 +577,7 @@ int DLSYNTH_EXPORT dlsynth_wavepool_add(
 /// Frees the resources associated with a wavepool
 /**
  * @ingroup SoundCreation
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_free_wavepool(
  struct dlsynth_wavepool *wavepool ///< [in] The wavepool to free
@@ -671,7 +659,7 @@ enum dlsynth_transf {
 /// Creates a new blocklist
 /**
  * @ingroup SoundCreation
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_new_blocklist(
  struct dlsynth_blocklist **blocklist ///< [out] The new blocklist
@@ -680,7 +668,7 @@ int DLSYNTH_EXPORT dlsynth_new_blocklist(
 /// Adds a connection block to a blocklist
 /**
  * @ingroup SoundCreation
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_blocklist_add(
  struct dlsynth_blocklist *
@@ -703,7 +691,7 @@ int DLSYNTH_EXPORT dlsynth_blocklist_add(
 /// Releases the resources associated with a blocklist
 /**
  * @ingroup SoundCreation
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_free_blocklist(
  struct dlsynth_blocklist *blocklist ///< [in] Blocklist to free
@@ -718,7 +706,7 @@ struct dlsynth_regionlist;
 /// Creates a new regionlist
 /**
  * @ingroup SoundCreation
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_new_regionlist(
  struct dlsynth_regionlist **regionlist ///< [in] The new regionlist
@@ -727,7 +715,7 @@ int DLSYNTH_EXPORT dlsynth_new_regionlist(
 /// Adds a region to a regionlist
 /**
  * @ingroup SoundCreation
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_add_region(
  struct dlsynth_regionlist
@@ -748,7 +736,7 @@ int DLSYNTH_EXPORT dlsynth_add_region(
 /// specified in the WAV
 /**
  * @ingroup SoundCreation
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_add_region_wavesample(
  struct dlsynth_regionlist
@@ -770,7 +758,7 @@ int DLSYNTH_EXPORT dlsynth_add_region_wavesample(
 /// Releases the resources associated with a regionlist
 /**
  * @ingroup SoundCreation
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_free_regionlist(
  struct dlsynth_regionlist *regionlist ///< [in] Regionlist to release
@@ -785,7 +773,7 @@ struct dlsynth_instrlist;
 /// Creates a new list of instruments
 /**
  * @ingroup SoundCreation
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_new_instrlist(
  struct dlsynth_instrlist **list ///< [out] The created instrument list
@@ -794,7 +782,7 @@ int DLSYNTH_EXPORT dlsynth_new_instrlist(
 /// Adds an instrument to a list of instruments
 /**
  * @ingroup SoundCreation
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_add_instrument(
  struct dlsynth_instrlist
@@ -812,7 +800,7 @@ int DLSYNTH_EXPORT dlsynth_add_instrument(
 /// Releases the resources associated with a list of instruments
 /**
  * @ingroup SoundCreation
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_free_instrlist(
  struct dlsynth_instrlist *list ///< [in] The instrument list to free
@@ -821,7 +809,7 @@ int DLSYNTH_EXPORT dlsynth_free_instrlist(
 /// Creates a new sound collection
 /**
  * @ingroup SoundCreation
- * @return Nonzero on success, zero on failure
+ * @return Zero on success, nonzero on failure
  */
 int DLSYNTH_EXPORT dlsynth_new_sound(
  struct dlsynth_sound **sound, ///< [out] The created sound collection
