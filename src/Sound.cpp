@@ -30,58 +30,45 @@ struct Sound::impl {
 
 Sound::Sound(const std::vector<Instrument> &instruments,
              const std::vector<Wave> &wavepool) noexcept
-  : m_pimpl(new impl(wavepool, instruments, nullptr, nullptr)) {}
+  : m_pimpl(std::make_unique<impl>(wavepool, instruments, nullptr, nullptr)) {}
 Sound::Sound(const std::vector<Instrument> &instruments,
              const std::vector<Wave> &wavepool, const Uuid &dlid) noexcept
-  : m_pimpl(
-     new impl(wavepool, instruments, std::make_unique<Uuid>(dlid), nullptr)) {}
+  : m_pimpl(std::make_unique<impl>(wavepool, instruments,
+                                   std::make_unique<Uuid>(dlid), nullptr)) {}
 Sound::Sound(const std::vector<Instrument> &instruments,
              const std::vector<Wave> &wavepool, const Info &info) noexcept
-  : m_pimpl(
-     new impl(wavepool, instruments, nullptr, std::make_unique<Info>(info))) {}
+  : m_pimpl(std::make_unique<impl>(wavepool, instruments, nullptr,
+                                   std::make_unique<Info>(info))) {}
 Sound::Sound(const std::vector<Instrument> &instruments,
              const std::vector<Wave> &wavepool, const Uuid &dlid,
              const Info &info) noexcept
-  : m_pimpl(new impl(wavepool, instruments, std::make_unique<Uuid>(dlid),
-                     std::make_unique<Info>(info))) {}
+  : m_pimpl(std::make_unique<impl>(wavepool, instruments,
+                                   std::make_unique<Uuid>(dlid),
+                                   std::make_unique<Info>(info))) {}
 
-Sound::Sound(Sound &&snd) noexcept : m_pimpl(snd.m_pimpl) {
-  snd.m_pimpl = nullptr;
-}
+Sound::Sound(Sound &&snd) noexcept : m_pimpl(std::move(snd.m_pimpl)) {}
 
-Sound::Sound(const Sound &snd) noexcept : m_pimpl(new impl(*snd.m_pimpl)) {}
+Sound::Sound(const Sound &snd) noexcept
+  : m_pimpl(std::make_unique<impl>(*snd.m_pimpl)) {}
 
 const Sound &Sound::operator=(const Sound &snd) const noexcept {
-  delete m_pimpl;
-  m_pimpl = new impl(*snd.m_pimpl);
+  m_pimpl = std::make_unique<impl>(*snd.m_pimpl);
   return *this;
 }
 
-Sound::~Sound() {
-  if (m_pimpl != nullptr) {
-    delete m_pimpl;
-  }
-}
+Sound::~Sound() = default;
 
-const Uuid *Sound::dlid() const noexcept {
-  assert(m_pimpl != nullptr);
-  return m_pimpl->m_dlid.get();
-}
+const Uuid *Sound::dlid() const noexcept { return m_pimpl->m_dlid.get(); }
 
 const std::vector<Instrument> &Sound::instruments() const noexcept {
-  assert(m_pimpl != nullptr);
   return m_pimpl->m_instruments;
 }
 
 const std::vector<Wave> &Sound::wavepool() const noexcept {
-  assert(m_pimpl != nullptr);
   return m_pimpl->m_wavepool;
 }
 
-const Info *Sound::info() const noexcept {
-  assert(m_pimpl != nullptr);
-  return m_pimpl->m_info.get();
-}
+const Info *Sound::info() const noexcept { return m_pimpl->m_info.get(); }
 
 static void load_wavepool(riffcpp::Chunk &chunk,
                           std::vector<Wave> &m_wavepool) {

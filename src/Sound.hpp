@@ -3,8 +3,10 @@
 #include "ExpressionParser.hpp"
 #include "Instrument.hpp"
 #include "Wave.hpp"
+#include <memory>
 #include <riffcpp.hpp>
 #include <vector>
+
 
 struct Uuid;
 
@@ -14,7 +16,7 @@ class Info;
 class Sound final {
   struct impl;
 
-  mutable impl *m_pimpl;
+  mutable std::unique_ptr<impl> m_pimpl;
 
 public:
   Sound(const std::vector<Instrument> &instruments,

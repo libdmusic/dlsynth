@@ -4,7 +4,9 @@
 #include "ExpressionParser.hpp"
 #include "Region.hpp"
 #include <cstdint>
+#include <memory>
 #include <riffcpp.hpp>
+
 
 struct Uuid;
 
@@ -14,7 +16,7 @@ class Info;
 /// A DLS instrument, part of a DLS Collection
 class Instrument final {
   struct impl;
-  mutable impl *m_pimpl;
+  mutable std::unique_ptr<impl> m_pimpl;
 
 public:
   Instrument(std::uint32_t midiBank, std::uint32_t midiInstrument,

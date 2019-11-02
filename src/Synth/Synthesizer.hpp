@@ -2,6 +2,7 @@
 #define SYNTHESIZER_HPP
 
 #include "../Sound.hpp"
+#include <memory>
 
 namespace DLSynth {
 namespace Synth {
@@ -9,7 +10,7 @@ namespace Synth {
   /// to produce audio data according to what an @ref Instrument specifies
   class Synthesizer final {
     struct impl;
-    impl *pimpl;
+    std::unique_ptr<impl> pimpl;
 
   public:
     Synthesizer(std::size_t voiceCount, std::uint32_t sampleRate);

@@ -8,13 +8,15 @@
 #include "../Wavesample.hpp"
 #include <chrono>
 #include <cstdint>
+#include <memory>
 #include <vector>
+
 
 namespace DLSynth {
 namespace Synth {
   class Voice final {
     struct impl;
-    impl *pimpl;
+    std::unique_ptr<impl> pimpl;
 
   public:
     Voice(std::uint32_t sampleRate);

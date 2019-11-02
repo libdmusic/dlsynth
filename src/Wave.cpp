@@ -50,53 +50,33 @@ Wave::Wave(const std::vector<float> &leftData,
               wavesample ? std::make_unique<Wavesample>(*wavesample) : nullptr,
               guid ? std::make_unique<Uuid>(*guid) : nullptr,
               info ? std::make_unique<Info>(*info) : nullptr)) {}
-Wave::Wave(Wave &&wave) noexcept : m_pimpl(wave.m_pimpl) {
-  wave.m_pimpl = nullptr;
-}
+Wave::Wave(Wave &&wave) noexcept : m_pimpl(std::move(wave.m_pimpl)) {}
 
-Wave::Wave(const Wave &wave) noexcept : m_pimpl(new impl(*wave.m_pimpl)) {}
+Wave::Wave(const Wave &wave) noexcept
+  : m_pimpl(std::make_unique<impl>(*wave.m_pimpl)) {}
 
 Wave &Wave::operator=(const Wave &wave) noexcept {
-  delete m_pimpl;
-  m_pimpl = new impl(*wave.m_pimpl);
+  m_pimpl = std::make_unique<impl>(*wave.m_pimpl);
   return *this;
 }
 
-const std::vector<float> &Wave::leftData() const {
-  assert(m_pimpl != nullptr);
-  return m_pimpl->m_leftData;
-}
+const std::vector<float> &Wave::leftData() const { return m_pimpl->m_leftData; }
 
 const std::vector<float> &Wave::rightData() const {
-  assert(m_pimpl != nullptr);
   return m_pimpl->m_rightData;
 }
 
-const Uuid *Wave::guid() const {
-  assert(m_pimpl != nullptr);
-  return m_pimpl->m_guid.get();
-};
+const Uuid *Wave::guid() const { return m_pimpl->m_guid.get(); };
 
 const Wavesample *Wave::wavesample() const {
-  assert(m_pimpl != nullptr);
   return m_pimpl->m_wavesample.get();
 };
 
-int Wave::sampleRate() const {
-  assert(m_pimpl != nullptr);
-  return m_pimpl->m_sampleRate;
-}
+int Wave::sampleRate() const { return m_pimpl->m_sampleRate; }
 
-const Info *Wave::info() const {
-  assert(m_pimpl != nullptr);
-  return m_pimpl->m_info.get();
-}
+const Info *Wave::info() const { return m_pimpl->m_info.get(); }
 
-Wave::~Wave() {
-  if (m_pimpl != nullptr) {
-    delete m_pimpl;
-  }
-}
+Wave::~Wave() = default;
 
 Wave Wave::readChunk(riffcpp::Chunk &chunk) {
   bool fmt_found = false;

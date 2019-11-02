@@ -16,7 +16,7 @@ class Info;
 class Wave final {
   struct impl;
 
-  impl *m_pimpl;
+  std::unique_ptr<impl> m_pimpl;
 
 public:
   Wave(const std::vector<float> &leftData, const std::vector<float> &rightData,

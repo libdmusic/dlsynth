@@ -45,89 +45,71 @@ Instrument::Instrument(std::uint32_t midiBank, std::uint32_t midiInstrument,
                        bool isDrumInstrument,
                        const std::vector<ConnectionBlock> &connectionBlocks,
                        const std::vector<Region> &regions) noexcept
-  : m_pimpl(new impl(midiBank, midiInstrument, isDrumInstrument,
-                     connectionBlocks, regions, nullptr, nullptr)) {}
+  : m_pimpl(std::make_unique<impl>(midiBank, midiInstrument, isDrumInstrument,
+                                   connectionBlocks, regions, nullptr,
+                                   nullptr)) {}
 
 Instrument::Instrument(std::uint32_t midiBank, std::uint32_t midiInstrument,
                        bool isDrumInstrument,
                        const std::vector<ConnectionBlock> &connectionBlocks,
                        const std::vector<Region> &regions,
                        const Uuid &dlid) noexcept
-  : m_pimpl(new impl(midiBank, midiInstrument, isDrumInstrument,
-                     connectionBlocks, regions, std::make_unique<Uuid>(dlid),
-                     nullptr)) {}
+  : m_pimpl(std::make_unique<impl>(midiBank, midiInstrument, isDrumInstrument,
+                                   connectionBlocks, regions,
+                                   std::make_unique<Uuid>(dlid), nullptr)) {}
 Instrument::Instrument(std::uint32_t midiBank, std::uint32_t midiInstrument,
                        bool isDrumInstrument,
                        const std::vector<ConnectionBlock> &connectionBlocks,
                        const std::vector<Region> &regions,
                        const Info &info) noexcept
-  : m_pimpl(new impl(midiBank, midiInstrument, isDrumInstrument,
-                     connectionBlocks, regions, nullptr,
-                     std::make_unique<Info>(info))) {}
+  : m_pimpl(std::make_unique<impl>(midiBank, midiInstrument, isDrumInstrument,
+                                   connectionBlocks, regions, nullptr,
+                                   std::make_unique<Info>(info))) {}
 Instrument::Instrument(std::uint32_t midiBank, std::uint32_t midiInstrument,
                        bool isDrumInstrument,
                        const std::vector<ConnectionBlock> &connectionBlocks,
                        const std::vector<Region> &regions, const Uuid &dlid,
                        const Info &info) noexcept
-  : m_pimpl(new impl(midiBank, midiInstrument, isDrumInstrument,
-                     connectionBlocks, regions, std::make_unique<Uuid>(dlid),
-                     std::make_unique<Info>(info))) {}
+  : m_pimpl(std::make_unique<impl>(
+     midiBank, midiInstrument, isDrumInstrument, connectionBlocks, regions,
+     std::make_unique<Uuid>(dlid), std::make_unique<Info>(info))) {}
 
 Instrument::Instrument(const Instrument &instr) noexcept
-  : m_pimpl(new impl(*instr.m_pimpl)) {}
+  : m_pimpl(std::make_unique<impl>(*instr.m_pimpl)) {}
 
-Instrument::Instrument(Instrument &&instr) noexcept : m_pimpl(instr.m_pimpl) {
-  instr.m_pimpl = nullptr;
-}
+Instrument::Instrument(Instrument &&instr) noexcept
+  : m_pimpl(std::move(instr.m_pimpl)) {}
 
 const Instrument &Instrument::operator=(const Instrument &instr) const
  noexcept {
-  delete m_pimpl;
-  m_pimpl = new impl(*instr.m_pimpl);
+  m_pimpl = std::make_unique<impl>(*instr.m_pimpl);
   return *this;
 }
 
-Instrument::~Instrument() {
-  if (m_pimpl != nullptr) {
-    delete m_pimpl;
-  }
-}
+Instrument::~Instrument() = default;
 
-const Uuid *Instrument::dlid() const noexcept {
-  assert(m_pimpl != nullptr);
-  return m_pimpl->m_dlid.get();
-}
+const Uuid *Instrument::dlid() const noexcept { return m_pimpl->m_dlid.get(); }
 
 std::uint32_t Instrument::midiBank() const noexcept {
-  assert(m_pimpl != nullptr);
   return m_pimpl->m_midiBank;
 }
 
 std::uint32_t Instrument::midiInstrument() const noexcept {
-  assert(m_pimpl != nullptr);
   return m_pimpl->m_midiInstrument;
 }
 
 const std::vector<Region> &Instrument::regions() const noexcept {
-  assert(m_pimpl != nullptr);
   return m_pimpl->m_regions;
 }
 
 const std::vector<ConnectionBlock> &Instrument::connectionBlocks() const
  noexcept {
-  assert(m_pimpl != nullptr);
   return m_pimpl->m_blocks;
 }
 
-const Info *Instrument::info() const noexcept {
-  assert(m_pimpl != nullptr);
-  return m_pimpl->m_info.get();
-}
+const Info *Instrument::info() const noexcept { return m_pimpl->m_info.get(); }
 
-bool Instrument::isDrumInstrument() const noexcept {
-  assert(m_pimpl != nullptr);
-  return m_pimpl->m_isDrum;
-}
+bool Instrument::isDrumInstrument() const noexcept { return m_pimpl->m_isDrum; }
 
 static void load_regions(riffcpp::Chunk &chunk,
                          const ExpressionParser &exprParser,

@@ -1,7 +1,9 @@
 #ifndef MODMATRIX_HPP
 #define MODMATRIX_HPP
 #include "../Articulator.hpp"
+#include <memory>
 #include <vector>
+
 
 namespace DLSynth {
 namespace Synth {
@@ -26,7 +28,7 @@ namespace Synth {
   class ObservableSignal {
     struct impl;
 
-    impl *pimpl;
+    std::unique_ptr<impl> pimpl;
 
   public:
     ObservableSignal();
@@ -46,7 +48,7 @@ namespace Synth {
   class SignalSource : public ObservableSignal {
     struct impl;
 
-    impl *pimpl;
+    std::unique_ptr<impl> pimpl;
 
   public:
     SignalSource();
@@ -65,7 +67,7 @@ namespace Synth {
   class SignalDestination : public ObservableSignal, public SignalObserver {
     struct impl;
 
-    impl *pimpl;
+    std::unique_ptr<impl> pimpl;
 
   public:
     SignalDestination();
