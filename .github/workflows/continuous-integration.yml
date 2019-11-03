@@ -1,0 +1,54 @@
+name: Build
+
+on: [push]
+
+jobs:
+  build:
+    name: Ubuntu build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        shared: ['ON', 'OFF']
+        buildtype: ['Debug', 'Release']
+        simd: ['OFF', 'SSE3']
+    
+    steps:
+    - uses: actions/checkout@v1
+    - run: sudo add-apt-repository ppa:libdmusic/unstable
+    - run: sudo apt update
+    - run: sudo apt install libriffcpp-dev
+    - run: mkdir build
+    - run: cd build
+    - run: cmake ${GITHUB_WORKSPACE} -DBUILD_SHARED_LIBS=${{ matrix.shared }} -DCMAKE_BUILD_TYPE=${{ matrix.buildtype }} -DDLSYNTH_ENABLE_SIMD=${{ matrix.simd }}
+    - run: cmake --build .
+  
+  build:
+    name: Windows build
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        buildtype: ['Debug', 'Release']
+        simd: ['OFF', 'SSE3']
+        plat:
+          - gen: Win32
+            conf:
+              - triplet: 'x86-windows'
+                shared: 'ON'
+              - triplet: 'x86-windows-static'
+                shared: 'OFF'
+          - gen: x64
+            conf:
+              - triplet: 'x64-windows'
+                shared: 'ON'
+              - triplet: 'x64-windows-static'
+                shared: 'OFF'
+    
+    steps:
+    - uses: actions/checkout@v1
+    - run: git clone --depth=1 https://github.com/Microsoft/vcpkg
+    - run: call vcpkg\bootstrap-vcpkg.bat
+    - run: vcpkg\vcpkg.exe install --triplet $(VCPKG_TRIPLET) $(VCPKG_PACKAGES)
+    - run: mkdir build
+    - run: cd build
+    - run: cmake ${GITHUB_WORKSPACE} -A ${{ matrix.plat.gen }} -DBUILD_SHARED_LIBS=${{ matrix.plat.conf.shared }} -DVCPKG_TARGET_TRIPLET=${{ matrix.plat.conf.triplet }} -DCMAKE_TOOLCHAIN_FILE=..\vcpkg\scripts\buildsystems\vcpkg.cmake -DDLSYNTH_ENABLE_SIMD=${{ matrix.simd }}
+    - run: cmake --build . --config ${{ matrix.buildtype }}
