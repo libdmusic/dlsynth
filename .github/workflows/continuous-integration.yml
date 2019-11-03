@@ -29,26 +29,28 @@ jobs:
       matrix:
         buildtype: ['Debug', 'Release']
         simd: ['OFF', 'SSE3']
-        plat:
-          - gen: Win32
-            conf:
-              - triplet: 'x86-windows'
-                shared: 'ON'
-              - triplet: 'x86-windows-static'
-                shared: 'OFF'
-          - gen: x64
-            conf:
-              - triplet: 'x64-windows'
-                shared: 'ON'
-              - triplet: 'x64-windows-static'
-                shared: 'OFF'
+        shared: ['ON', 'OFF']
+        plat: ['Win32', 'x64']
+        include:
+          - shared: 'ON'
+            plat: 'Win32'
+            triplet: 'x86-windows'
+          - shared: 'OFF'
+            plat: 'Win32'
+            triplet: 'x86-windows-static'
+          - shared: 'ON'
+            plat: 'x64'
+            triplet: 'x64-windows'
+          - shared: 'ON'
+            plat: 'x64'
+            triplet: 'x64-windows-static'
     
     steps:
     - uses: actions/checkout@v1
     - run: git clone --depth=1 https://github.com/Microsoft/vcpkg
-    - run: call vcpkg\bootstrap-vcpkg.bat
-    - run: vcpkg\vcpkg.exe install --triplet $(VCPKG_TRIPLET) $(VCPKG_PACKAGES)
+    - run: .\vcpkg\scripts\bootstrap.ps1
+    - run: .\vcpkg\vcpkg.exe install --triplet ${{ matrix.triplet }} riffcpp
     - run: mkdir build
     - run: cd build
-    - run: cmake ${GITHUB_WORKSPACE} -A ${{ matrix.plat.gen }} -DBUILD_SHARED_LIBS=${{ matrix.plat.conf.shared }} -DVCPKG_TARGET_TRIPLET=${{ matrix.plat.conf.triplet }} -DCMAKE_TOOLCHAIN_FILE=..\vcpkg\scripts\buildsystems\vcpkg.cmake -DDLSYNTH_ENABLE_SIMD=${{ matrix.simd }}
+    - run: cmake ${GITHUB_WORKSPACE} -A ${{ matrix.plat }} -DBUILD_SHARED_LIBS=${{ matrix.shared }} -DVCPKG_TARGET_TRIPLET=${{ matrix.triplet }} -DCMAKE_TOOLCHAIN_FILE=..\vcpkg\scripts\buildsystems\vcpkg.cmake -DDLSYNTH_ENABLE_SIMD=${{ matrix.simd }}
     - run: cmake --build . --config ${{ matrix.buildtype }}
