@@ -3,7 +3,7 @@ name: Build
 on: [push]
 
 jobs:
-  build:
+  build-ubuntu:
     name: Ubuntu build
     runs-on: ubuntu-latest
     strategy:
@@ -22,7 +22,7 @@ jobs:
     - run: cmake ${GITHUB_WORKSPACE} -DBUILD_SHARED_LIBS=${{ matrix.shared }} -DCMAKE_BUILD_TYPE=${{ matrix.buildtype }} -DDLSYNTH_ENABLE_SIMD=${{ matrix.simd }}
     - run: cmake --build .
   
-  build:
+  build-windows:
     name: Windows build
     runs-on: windows-latest
     strategy:
