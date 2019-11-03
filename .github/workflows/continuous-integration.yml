@@ -52,5 +52,5 @@ jobs:
     - run: .\vcpkg\vcpkg.exe install --triplet ${{ matrix.triplet }} riffcpp
     - run: mkdir build
     - run: cd build
-    - run: cmake ${GITHUB_WORKSPACE} -A ${{ matrix.plat }} -DBUILD_SHARED_LIBS=${{ matrix.shared }} -DVCPKG_TARGET_TRIPLET=${{ matrix.triplet }} -DCMAKE_TOOLCHAIN_FILE=..\vcpkg\scripts\buildsystems\vcpkg.cmake -DDLSYNTH_ENABLE_SIMD=${{ matrix.simd }}
+    - run: cmake $env:GITHUB_WORKSPACE -A ${{ matrix.plat }} -DBUILD_SHARED_LIBS=${{ matrix.shared }} -DVCPKG_TARGET_TRIPLET=${{ matrix.triplet }} -DCMAKE_TOOLCHAIN_FILE=..\vcpkg\scripts\buildsystems\vcpkg.cmake -DDLSYNTH_ENABLE_SIMD=${{ matrix.simd }}
     - run: cmake --build . --config ${{ matrix.buildtype }}
