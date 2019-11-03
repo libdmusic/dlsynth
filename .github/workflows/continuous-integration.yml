@@ -41,7 +41,7 @@ jobs:
           - shared: 'ON'
             plat: 'x64'
             triplet: 'x64-windows'
-          - shared: 'ON'
+          - shared: 'OFF'
             plat: 'x64'
             triplet: 'x64-windows-static'
     
