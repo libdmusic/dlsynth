@@ -14,13 +14,17 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
-    - run: sudo add-apt-repository ppa:libdmusic/unstable
-    - run: sudo apt update
-    - run: sudo apt install libriffcpp-dev
-    - run: mkdir build
-    - run: cd build
-    - run: cmake ${GITHUB_WORKSPACE} -DBUILD_SHARED_LIBS=${{ matrix.shared }} -DCMAKE_BUILD_TYPE=${{ matrix.buildtype }} -DDLSYNTH_ENABLE_SIMD=${{ matrix.simd }}
-    - run: cmake --build .
+    - name: Install dependencies
+      run: |
+           sudo add-apt-repository ppa:libdmusic/unstable
+           sudo apt-get update
+           sudo apt-get install libriffcpp-dev
+    - name: Configure
+      working-directory: build
+      run: cmake ${GITHUB_WORKSPACE} -DBUILD_SHARED_LIBS=${{ matrix.shared }} -DCMAKE_BUILD_TYPE=${{ matrix.buildtype }} -DDLSYNTH_ENABLE_SIMD=${{ matrix.simd }}
+    - name: Build
+      working-directory: build
+      run: cmake --build .
   
   build-windows:
     name: Windows build
@@ -47,15 +51,16 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
-    - run: git clone --depth=1 https://github.com/Microsoft/vcpkg
-    - run: .\vcpkg\scripts\bootstrap.ps1
-    - run: .\vcpkg\vcpkg.exe install --triplet ${{ matrix.triplet }} riffcpp
-    - run: mkdir build
-    - run: cd build
-    - run: ls ..
-    - run: ls ../vcpkg
-    - run: ls ../vcpkg/scripts
-    - run: ls ../vcpkg/scripts/buildsystems
-    - run: echo $env:GITHUB_WORKSPACE
-    - run: cmake $env:GITHUB_WORKSPACE -A ${{ matrix.plat }} -DBUILD_SHARED_LIBS=${{ matrix.shared }} -DVCPKG_TARGET_TRIPLET=${{ matrix.triplet }} -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake -DDLSYNTH_ENABLE_SIMD=${{ matrix.simd }}
-    - run: cmake --build . --config ${{ matrix.buildtype }}
+    - name: Download vcpkg
+      run: git clone --depth=1 https://github.com/Microsoft/vcpkg
+    - name: Build vcpkg
+      working-directory: vcpkg
+      run: |
+           .\scripts\bootstrap.ps1
+           .\vcpkg.exe install --triplet ${{ matrix.triplet }} riffcpp
+    - name: Configure
+      working-directory: build
+      run: cmake $env:GITHUB_WORKSPACE -A ${{ matrix.plat }} -DBUILD_SHARED_LIBS=${{ matrix.shared }} -DVCPKG_TARGET_TRIPLET=${{ matrix.triplet }} -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake -DDLSYNTH_ENABLE_SIMD=${{ matrix.simd }}
+    - name: Build
+      working-directory: build
+      run: cmake --build . --config ${{ matrix.buildtype }}
