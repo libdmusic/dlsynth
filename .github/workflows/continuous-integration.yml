@@ -14,6 +14,8 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
+    - name: Prepare
+      run: mkdir build
     - name: Install dependencies
       run: |
            sudo add-apt-repository ppa:libdmusic/unstable
@@ -51,6 +53,8 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
+    - name: Prepare
+      run: mkdir build
     - name: Download vcpkg
       run: git clone --depth=1 https://github.com/Microsoft/vcpkg
     - name: Build vcpkg
