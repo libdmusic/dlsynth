@@ -15,22 +15,23 @@ DirectMusic) and outputs audio data.
 
 int main() {
   struct dlsynth_sound* snd;
-  if(!dlsynth_load_sound_file("myfile.dls", 44100, &snd)) {
+  int err;
+  if((err = dlsynth_load_sound_file("myfile.dls", 44100, &snd))) {
     fprintf(stderr, "Could not load file\n");
     return 1;
   }
 
   struct dlsynth_instr* instr;
-  if(!dlsynth_get_instr_num(0, snd, &instr)) {
+  if((err = dlsynth_get_instr_num(0, snd, &instr))) {
     fprintf(stderr, "Could not load instrument\n");
     return 1;
   }
 
   struct dlsynth* synth;
-  if(!dlsynth_init(
+  if((err = dlsynth_init(
       44100, /* Output sample rate */
       32,    /* Number of voices   */
-      &synth)) {
+      &synth))) {
     fprintf(stderr, "Could not init synth\n");
     return 1;
   }
@@ -45,19 +46,19 @@ int main() {
   int16_t* outputBuffer = /* ... */;
 
   // Mono rendering
-  if(!dlsynth_render_int16(synth, numFrames, outputBuffer, NULL, 1, 1.0f)) {
+  if((err = dlsynth_render_int16(synth, numFrames, outputBuffer, NULL, 1, 1.0f))) {
     fprintf(stderr, "Could not render buffer\n");
     return 1;
   }
 
   // Interleaved stereo rendering
-  if(!dlsynth_render_int16(synth, numFrames, outputBuffer, outputBuffer + 1, 2, 1.0f)) {
+  if((err = dlsynth_render_int16(synth, numFrames, outputBuffer, outputBuffer + 1, 2, 1.0f))) {
     fprintf(stderr, "Could not render buffer\n");
     return 1;
   }
 
   // Sequential stereo rendering
-  if(!dlsynth_render_int16(synth, numFrames, outputBuffer, outputBuffer + numFrames, 1, 1.0f)) {
+  if((err = dlsynth_render_int16(synth, numFrames, outputBuffer, outputBuffer + numFrames, 1, 1.0f))) {
     fprintf(stderr, "Could not render buffer\n");
     return 1;
   }

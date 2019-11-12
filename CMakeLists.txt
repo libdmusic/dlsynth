@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.1)
-project(dlsynth VERSION 0.3.0
+project(dlsynth VERSION 0.4.0
                 DESCRIPTION "DLS Synth library"
                 LANGUAGES C CXX)
 

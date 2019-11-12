@@ -1,4 +1,4 @@
-set(VERSION "0.3.0" CACHE STRING "Version of the package")
+set(VERSION "0.4.0" CACHE STRING "Version of the package")
 set(MAINTAINER "Francesco Bertolaccini <francesco@bertolaccini.dev>" CACHE STRING "Maintainer of the package")
 set(COPYRIGHT "2019 - ${MAINTAINER}" CACHE STRING "Copyright string of the package")
 set(DISTROSERIES "bionic" CACHE STRING "Distroseries of the package")

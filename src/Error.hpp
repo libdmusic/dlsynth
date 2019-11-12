@@ -7,7 +7,7 @@
 
 namespace DLSynth {
 enum class ErrorCode : int {
-#define DLSYNTH_ERROR(name, value) name = value,
+#define DLSYNTH_ERROR(name, value, msg) name = value,
 #include <dlsynth_errors.h>
 #undef DLSYNTH_ERROR
 };
