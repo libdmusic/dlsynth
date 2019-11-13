@@ -106,7 +106,7 @@ jobs:
       run: |
             sudo add-apt-repository ppa:libdmusic/unstable
             sudo apt-get update
-            sudo apt-get install libriffcpp-dev dpkg-dev debhelper dh-make
+            sudo apt-get install libriffcpp-dev cmake dpkg-dev debhelper dh-make
     - name: Prepare
       run: cmake -P ConfigureDeb.cmake
     - name: Make source archives
