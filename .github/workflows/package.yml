@@ -108,7 +108,7 @@ jobs:
             sudo apt-get update
             sudo apt-get install libriffcpp-dev dpkg-dev debhelper dh-make
     - name: Prepare
-      run: cmake -E ConfigureDeb.cmake
+      run: cmake -P ConfigureDeb.cmake
     - name: Make source archives
       working-directory: ..
       run: |
