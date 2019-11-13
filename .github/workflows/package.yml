@@ -49,7 +49,7 @@ jobs:
                  set(VCPKG_CRT_LINKAGE dynamic)
                  set(VCPKG_LIBRARY_LINKAGE static)
       run: |
-           $env:DYNCRT | Out-File -FilePath triplets/${{ matrix.triplet }}).cmake -Encoding ASCII
+           $env:DYNCRT | Out-File -FilePath triplets/${{ matrix.triplet }}.cmake -Encoding ASCII
            .\scripts\bootstrap.ps1
            .\vcpkg.exe install --triplet ${{ matrix.triplet }} riffcpp
     - name: Configure
