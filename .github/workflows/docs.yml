@@ -1,6 +1,9 @@
 name: Build & deploy docs
 
-on: [push]
+on:
+  push:
+    tags:
+      - 'v*'
 
 jobs:
   build-docs:
@@ -31,5 +34,12 @@ jobs:
       with:
         name: docs
         path: .
-    - name: Test
-      run: git status
+    - name: Commit changes
+      run: |
+        git config --local user.email "francesco@bertolaccini.dev"
+        git config --local user.name "Francesco Bertolaccini"
+        git commit -m "Update docs" -a
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}

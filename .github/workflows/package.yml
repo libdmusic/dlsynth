@@ -1,0 +1,139 @@
+name: Package & release
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  package-windows:
+    name: Build Windows packages
+    env:
+    strategy:
+      matrix:
+        shared: ['ON', 'OFF']
+        plat: ['Win32', 'x64']
+        include:
+          - shared: 'ON'
+            plat: 'Win32'
+            arch: 'x86'
+            triplet: 'x86-windows-dyncrt'
+          - shared: 'OFF'
+            plat: 'Win32'
+            arch: 'x86'
+            triplet: 'x86-windows-static'
+          - shared: 'ON'
+            arch: 'x64'
+            plat: 'x64'
+            triplet: 'x64-windows-dyncrt'
+          - shared: 'OFF'
+            arch: 'x64'
+            plat: 'x64'
+            triplet: 'x64-windows-static'
+    steps:
+    - uses: actions/checkout@v1
+    - name: Prepare
+      run: mkdir build
+    - name: Download vcpkg
+      run: git clone --depth=1 https://github.com/Microsoft/vcpkg
+    - name: Cache vcpkg
+      uses: actions/cache@v1
+      with:
+        path: vcpkg/installed
+        key: ${{ matrix.triplet }}-1
+    - name: Build vcpkg
+      working-directory: vcpkg
+      env:
+        DYNCRT: |
+                 set(VCPKG_TARGET_ARCHITECTURE ${{ matrix.arch }})
+                 set(VCPKG_CRT_LINKAGE dynamic)
+                 set(VCPKG_LIBRARY_LINKAGE static)
+      run: |
+           $env:DYNCRT | Out-File -FilePath triplets/${{ matrix.triplet }}).cmake -Encoding ASCII
+           .\scripts\bootstrap.ps1
+           .\vcpkg.exe install --triplet ${{ matrix.triplet }} riffcpp
+    - name: Configure
+      working-directory: build
+      run: cmake -A ${{ matrix.plat }} -DBUILD_SHARED_LIBS=${{ matrix.shared }} -DVCPKG_TARGET_TRIPLET=${{ matrix.triplet }} -DCMAKE_TOOLCHAIN_FILE="$env:GITHUB_WORKSPACE/vcpkg/scripts/buildsystems/vcpkg.cmake" $env:GITHUB_WORKSPACE
+    - name: Build
+      working-directory: build
+      run: cmake --build . --config Release
+    - name: Package
+      working-directory: build
+      run: cpack -C Release -G ZIP -P artifacts
+    - name: Upload artifacts
+      uses: actions/upload-artifact@master
+      with:
+        name: win-pkgs
+        path: build/artifacts
+  
+  package-deb:
+    name: Build DEB package
+    steps:
+    - uses: actions/checkout@v1
+    - name: Prepare
+      run: mkdir build
+    - name: Install dependencies
+      run: |
+           sudo add-apt-repository ppa:libdmusic/unstable
+           sudo apt-get update
+           sudo apt-get install libriffcpp-dev
+    - name: Configure
+      working-directory: build
+      run: cmake ${GITHUB_WORKSPACE} -DBUILD_SHARED_LIBS=${{ matrix.shared }} -DCMAKE_BUILD_TYPE=Release
+    - name: Build
+      working-directory: build
+      run: cmake --build .
+    - name: Package
+      working-directory: build
+      run: cpack -C Release -G DEB -B artifacts
+    - name: Upload artifacts
+      uses: actions/upload-artifact@master
+      with:
+        name: deb-pkgs
+        path: build/artifacts
+
+  package-dsc:
+    name: Build DSC package
+    steps:
+    - run: export VERSION=$( echo ${{ github.ref }} | sed 's/v\([0-9]\+\(\.[0-9]\+\)\+\)/\1/' )
+    - uses: actions/checkout@v1
+      with:
+        path: libdlsynth-${{ env.VERSION }}
+    - name: Install dependencies
+      run: |
+            sudo add-apt-repository ppa:libdmusic/unstable
+            sudo apt-get update
+            sudo apt-get install libriffcpp-dev dpkg-dev debhelper dh-make
+    - name: Prepare
+      run: cmake -E ConfigureDeb.cmake
+    - name: Make source archives
+      working-directory: ..
+      run: |
+            tar cfj libdlsynth-$VERSION.tar.bz2 libdlsynth-$VERSION
+            cp libdlsynth-$VERSION.tar.bz2 libdlsynth-$VERSION.orig.tar.bz2
+    - name: Build package
+      working-directory: ..
+      env:
+        DEBEMAIL: francesco@bertolaccini.dev
+        DEBFULLNAME: Francesco Bertolaccini
+      run: dpkg-buildpackage -us -uc
+    - name: Upload artifacts
+      uses: actions/upload-artifact@master
+      with:
+        name: deb-arch
+        path: ..
+  
+  create-release:
+    name: Create GitHub Release
+    steps:
+    - name: Download Windows artifacts
+      uses: actions/download-artifact@master
+      with:
+        name: win-pkgs
+        path: .
+    - name: Download Linux artifacts
+      uses: actions/download-artifact@master
+      with:
+        name: linux-pkgs
+        path: .
