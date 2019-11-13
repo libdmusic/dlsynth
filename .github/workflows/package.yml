@@ -113,7 +113,7 @@ jobs:
       working-directory: ..
       run: |
             tar cfj libdlsynth-$VERSION.tar.bz2 libdlsynth-$VERSION
-            cp libdlsynth-$VERSION.tar.bz2 libdlsynth-$VERSION.orig.tar.bz2
+            cp libdlsynth-$VERSION.tar.bz2 libdlsynth_$VERSION.orig.tar.bz2
     - name: Build package
       env:
         DEBEMAIL: francesco@bertolaccini.dev
