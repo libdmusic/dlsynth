@@ -98,7 +98,9 @@ jobs:
     name: Build DSC package
     runs-on: ubuntu-latest
     steps:
-    - run: export VERSION=$( echo ${{ github.ref }} | sed 's/v\([0-9]\+\(\.[0-9]\+\)\+\)/\1/' )
+    - run: |
+            export VERSION=$( echo ${{ github.ref }} | sed 's/[a-zA-Z/]*v\([0-9]\+\(\.[0-9]\+\)\+\)\(-[a-zA-Z0-9]\+\)\?/\1/' )
+            echo $VERSION
     - uses: actions/checkout@v1
       with:
         path: libdlsynth-${{ env.VERSION }}
