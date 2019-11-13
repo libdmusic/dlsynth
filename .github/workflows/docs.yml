@@ -1,18 +1,18 @@
-name: Build
+name: Build & deploy docs
 
 on: [push]
 
 jobs:
-  build-ubuntu:
-    name: Ubuntu build
+  build-docs:
+    name: Build docs
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - uses: actions/checkout@v1
-      with:
-        ref: refs/heads/gh-pages
-        path: docs
     - name: Install Doxygen
       run: sudo apt-get install doxygen
     - name: Generate docs
       run: doxygen
+    - name: Upload artifact
+      uses: actions/upload-artifact@master
+      name: docs
+      path: docs
