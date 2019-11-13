@@ -57,6 +57,11 @@ jobs:
       run: mkdir build
     - name: Download vcpkg
       run: git clone --depth=1 https://github.com/Microsoft/vcpkg
+    - name: Cache vcpkg
+      uses: actions/cache@v1
+      with:
+        path: vcpkg/installed
+        key: ${{ matrix.triplet }}-1
     - name: Build vcpkg
       working-directory: vcpkg
       run: |
