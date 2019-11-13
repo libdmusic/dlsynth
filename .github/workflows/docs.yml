@@ -17,3 +17,19 @@ jobs:
       with:
         name: docs
         path: docs
+
+  update-pages:
+    name: Upload docs to GH Pages
+    needs: build-docs
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        ref: refs/heads/gh-pages
+    - name: Download artifact
+      uses: actions/download-artifact@master
+      with:
+        name: docs
+        path: .
+    - name: Test
+      run: git status
