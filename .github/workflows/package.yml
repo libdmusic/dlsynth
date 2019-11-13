@@ -115,7 +115,6 @@ jobs:
             tar cfj libdlsynth-$VERSION.tar.bz2 libdlsynth-$VERSION
             cp libdlsynth-$VERSION.tar.bz2 libdlsynth-$VERSION.orig.tar.bz2
     - name: Build package
-      working-directory: ..
       env:
         DEBEMAIL: francesco@bertolaccini.dev
         DEBFULLNAME: Francesco Bertolaccini
