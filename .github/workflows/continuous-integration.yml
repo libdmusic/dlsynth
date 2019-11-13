@@ -56,11 +56,7 @@ jobs:
     - name: Prepare
       run: mkdir build
     - name: Download vcpkg
-      uses: actions/checkout@v1
-      with:
-        repository: https://github.com/Microsoft/vcpkg
-        fetch-depth: 1
-        path: vcpkg
+      run: git clone --depth=1 https://github.com/Microsoft/vcpkg
     - name: Cache vcpkg
       uses: actions/cache@v1
       with:
