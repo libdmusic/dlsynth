@@ -98,12 +98,15 @@ jobs:
     name: Build DSC package
     runs-on: ubuntu-latest
     steps:
-    - run: |
-            export VERSION=$( echo ${{ github.ref }} | sed 's/[a-zA-Z/]*v\([0-9]\+\(\.[0-9]\+\)\+\)\(-[a-zA-Z0-9]\+\)\?/\1/' )
-            echo $VERSION
+    - uses: frabert/replace-string-action@v1
+      id: version
+      with:
+        pattern: '[\d\w/]*v(\d+(?:\.\d+)*)'
+        string: ${{ github.ref }}
+        replace-with: $1
     - uses: actions/checkout@v1
       with:
-        path: libdlsynth-${{ env.VERSION }}
+        path: libdlsynth-${{ steps.version.outputs.replaced }}
     - name: Install dependencies
       run: |
             sudo add-apt-repository ppa:libdmusic/unstable
@@ -114,8 +117,8 @@ jobs:
     - name: Make source archives
       working-directory: ..
       run: |
-            tar cfj libdlsynth-$VERSION.tar.bz2 libdlsynth-$VERSION
-            cp libdlsynth-$VERSION.tar.bz2 libdlsynth_$VERSION.orig.tar.bz2
+            tar cfj libdlsynth-${{ steps.version.outputs.replaced }}.tar.bz2 libdlsynth-${{ steps.version.outputs.replaced }}
+            cp libdlsynth-${{ steps.version.outputs.replaced }}.tar.bz2 libdlsynth_${{ steps.version.outputs.replaced }}.orig.tar.bz2
     - name: Build package
       env:
         DEBEMAIL: francesco@bertolaccini.dev
