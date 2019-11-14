@@ -101,7 +101,7 @@ jobs:
     - uses: frabert/replace-string-action@v1
       id: version
       with:
-        pattern: '[\d\w/]*v(\d+(?:\.\d+)*)'
+        pattern: '[\w/]*v(\d+(?:\.\d+)*)(?:-\w+)?'
         string: ${{ github.ref }}
         replace-with: $1
     - uses: actions/checkout@v1
