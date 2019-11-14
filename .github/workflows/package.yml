@@ -60,7 +60,7 @@ jobs:
       run: cmake --build . --config Release
     - name: Package
       working-directory: build
-      run: cpack -C Release -G ZIP -P artifacts
+      run: cpack -G ZIP -C Release -B artifacts
     - name: Upload artifacts
       uses: actions/upload-artifact@master
       with:
@@ -87,7 +87,7 @@ jobs:
       run: cmake --build .
     - name: Package
       working-directory: build
-      run: cpack -C Release -G DEB -B artifacts
+      run: cpack -G DEB -C Release -B artifacts
     - name: Upload artifacts
       uses: actions/upload-artifact@master
       with:
@@ -124,8 +124,13 @@ jobs:
         DEBEMAIL: francesco@bertolaccini.dev
         DEBFULLNAME: Francesco Bertolaccini
       run: dpkg-buildpackage -us -uc
+    - name: Move artifacts
+      working-directory: ..
+      run: |
+            mkdir artifacts
+            mv *.changes *.dsc *.bz2 artifacts
     - name: Upload artifacts
       uses: actions/upload-artifact@master
       with:
         name: deb-arch
-        path: ..
+        path: ../artifacts
