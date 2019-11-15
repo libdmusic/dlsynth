@@ -60,7 +60,10 @@ jobs:
       run: cmake --build . --config Release
     - name: Package
       working-directory: build
-      run: cpack -G ZIP -C Release -B artifacts
+      run: |
+             cpack -G ZIP -C Release
+             mkdir artifacts
+             mv *.zip artifacts
     - name: Upload artifacts
       uses: actions/upload-artifact@master
       with:
@@ -87,7 +90,10 @@ jobs:
       run: cmake --build .
     - name: Package
       working-directory: build
-      run: cpack -G DEB -C Release -B artifacts
+      run: |
+            cpack -G DEB -C Release
+            mkdir artifacts
+            mv *.deb artifacts
     - name: Upload artifacts
       uses: actions/upload-artifact@master
       with:
@@ -116,9 +122,11 @@ jobs:
       run: cmake -P ConfigureDeb.cmake
     - name: Make source archives
       working-directory: ..
+      env:
+        VERSION: ${{ steps.version.outputs.replaced }}
       run: |
-            tar cfj libdlsynth-${{ steps.version.outputs.replaced }}.tar.bz2 libdlsynth-${{ steps.version.outputs.replaced }}
-            cp libdlsynth-${{ steps.version.outputs.replaced }}.tar.bz2 libdlsynth_${{ steps.version.outputs.replaced }}.orig.tar.bz2
+            tar cfj libdlsynth-$VERSION.tar.bz2 libdlsynth-$VERSION
+            cp libdlsynth-$VERSION.tar.bz2 libdlsynth_$VERSION.orig.tar.bz2
     - name: Build package
       env:
         DEBEMAIL: francesco@bertolaccini.dev
