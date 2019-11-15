@@ -9,7 +9,7 @@ extern "C" {
 #include <stdint.h>
 
 #define DLSYNTH_MAJOR 0
-#define DLSYNTH_MINOR 3
+#define DLSYNTH_MINOR 4
 #define DLSYNTH_PATCH 0
 
 /// Version info for the linked library
