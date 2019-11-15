@@ -203,8 +203,8 @@ Enumerations</h2></td></tr>
 <a class="el" href="namespace_d_l_synth.html#a25a6d41585e95b5e72cad1f65e4684adabbc155fb2b111bf61c4f5ff892915e6b">TransformType::Switch</a> = 0x0003
  }</td></tr>
 <tr class="separator:a25a6d41585e95b5e72cad1f65e4684ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30571f4357f7c5194614f1ec64f7c5af"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#a30571f4357f7c5194614f1ec64f7c5af">ErrorCode</a> : int { <a class="el" href="namespace_d_l_synth.html#a30571f4357f7c5194614f1ec64f7c5afa3da47ab3386705685d6dc6399b9edf5b">ErrorCode::DLSYNTH_ERROR</a>, 
-<a class="el" href="namespace_d_l_synth.html#a30571f4357f7c5194614f1ec64f7c5afa67c088f813e08bd03d12bd1ea03c11b4">ErrorCode::DLSYNTH_ERROR</a> =(NO_WAVESAMPLE, 9)# 11 "C:/Users/berto/dlsynth/src/Error.hpp" 2
+<tr class="memitem:a30571f4357f7c5194614f1ec64f7c5af"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#a30571f4357f7c5194614f1ec64f7c5af">ErrorCode</a> : int { <a class="el" href="namespace_d_l_synth.html#a30571f4357f7c5194614f1ec64f7c5afab19c3fdcc3a9422b6f92877a14c1953f">ErrorCode::DLSYNTH_ERROR</a>, 
+<a class="el" href="namespace_d_l_synth.html#a30571f4357f7c5194614f1ec64f7c5afa67c088f813e08bd03d12bd1ea03c11b4">ErrorCode::DLSYNTH_ERROR</a>
  }</td></tr>
 <tr class="separator:a30571f4357f7c5194614f1ec64f7c5af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac19ebe34ed1eb9f1a213d24de6e340ff"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#ac19ebe34ed1eb9f1a213d24de6e340ff">LoopType</a> : std::uint32_t { <a class="el" href="namespace_d_l_synth.html#ac19ebe34ed1eb9f1a213d24de6e340ffa67d2f6740a8eaebf4d5c6f79be8da481">LoopType::Forward</a> = 0x0000, 
@@ -250,10 +250,6 @@ Functions</h2></td></tr>
 <tr class="separator:a8a449285780f8352a2edb44d79826342"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a322b6ae46143a579ac4caea1c0144b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#a3a322b6ae46143a579ac4caea1c0144b">lerp</a> (float v0, float v1, float t)</td></tr>
 <tr class="separator:a3a322b6ae46143a579ac4caea1c0144b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8dbef1e67d58e91ccad600f6c0ab7ca2"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#a8dbef1e67d58e91ccad600f6c0ab7ca2">operator==</a> (const Uuid &amp;lhs, const Uuid &amp;rhs) noexcept</td></tr>
-<tr class="separator:a8dbef1e67d58e91ccad600f6c0ab7ca2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5524935aaa83695533c394b2b72ddc3b"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_d_l_synth.html#a5524935aaa83695533c394b2b72ddc3b">operator!=</a> (const Uuid &amp;lhs, const Uuid &amp;rhs) noexcept</td></tr>
-<tr class="separator:a5524935aaa83695533c394b2b72ddc3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -344,10 +340,8 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a30571f4357f7c5194614f1ec64f7c5afa3da47ab3386705685d6dc6399b9edf5b"></a>DLSYNTH_ERROR&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a30571f4357f7c5194614f1ec64f7c5afa67c088f813e08bd03d12bd1ea03c11b4"></a>DLSYNTH_ERROR&#160;</td><td class="fielddoc"><p>An unknown error has been encountered while processing the request. </p>
-<p>No error has been encountered The file couldn't be opened The file was opened correctly, but contained invalid data The specified instrument doesn't exist The arguments that were passed were not valid The file uses an unsupported codec A condition has failed while loading the file A region uses an invalid wavepool index A wavesample specifies an out-of-range region A region has no wavesample </p>
-</td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a30571f4357f7c5194614f1ec64f7c5afab19c3fdcc3a9422b6f92877a14c1953f"></a>DLSYNTH_ERROR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a30571f4357f7c5194614f1ec64f7c5afa67c088f813e08bd03d12bd1ea03c11b4"></a>DLSYNTH_ERROR&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -719,78 +713,6 @@ template&lt;&gt; </div>
           <td></td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a5524935aaa83695533c394b2b72ddc3b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5524935aaa83695533c394b2b72ddc3b">&#9670;&nbsp;</a></span>operator!=()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr bool DLSynth::operator!= </td>
-          <td>(</td>
-          <td class="paramtype">const Uuid &amp;&#160;</td>
-          <td class="paramname"><em>lhs</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const Uuid &amp;&#160;</td>
-          <td class="paramname"><em>rhs</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8dbef1e67d58e91ccad600f6c0ab7ca2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8dbef1e67d58e91ccad600f6c0ab7ca2">&#9670;&nbsp;</a></span>operator==()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr bool DLSynth::operator== </td>
-          <td>(</td>
-          <td class="paramtype">const Uuid &amp;&#160;</td>
-          <td class="paramname"><em>lhs</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const Uuid &amp;&#160;</td>
-          <td class="paramname"><em>rhs</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>

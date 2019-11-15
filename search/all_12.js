@@ -1,6 +1,7 @@
 var searchData=
 [
   ['timeunitstocents',['timeUnitsToCents',['../namespace_d_l_synth.html#ad90bf9cd5639e29bd698e8d5b9e128e6',1,'DLSynth']]],
+  ['towaveformat',['toWaveFormat',['../struct_wave_format_ex.html#a97a91a5df477d52a026c31703e2c9213',1,'WaveFormatEx']]],
   ['transform',['Transform',['../class_d_l_synth_1_1_synth_1_1_transform.html',1,'DLSynth::Synth::Transform'],['../class_d_l_synth_1_1_synth_1_1_transform.html#aa3ca47fd4a0ae53c347262808593cab2',1,'DLSynth::Synth::Transform::Transform()']]],
   ['transform_2ecpp',['Transform.cpp',['../_transform_8cpp.html',1,'']]],
   ['transform_2ehpp',['Transform.hpp',['../_transform_8hpp.html',1,'']]],

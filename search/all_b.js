@@ -15,7 +15,6 @@ var searchData=
   ['m_5fgainuptodate',['m_gainUpToDate',['../struct_signal_destination_1_1impl.html#a1837c65a986116a25de9140001f21922',1,'SignalDestination::impl']]],
   ['m_5fguid',['m_guid',['../struct_wave_1_1impl.html#a95c13e020c06e16ffeae8a9256424b58',1,'Wave::impl']]],
   ['m_5finfo',['m_info',['../struct_instrument_1_1impl.html#a8aaa29655862a015632e2b1377b13dc6',1,'DLSynth::Instrument::impl::m_info()'],['../struct_sound_1_1impl.html#a9e56b68fced14ef82216f68a73432cb7',1,'DLSynth::Sound::impl::m_info()'],['../struct_wave_1_1impl.html#a718a98ebf86f2e8413522a246f952f8e',1,'DLSynth::Wave::impl::m_info()']]],
-  ['m_5finstrument',['m_instrument',['../struct_synthesizer_1_1impl.html#af73612b5f1fdccdd33705cd7992f226b',1,'Synthesizer::impl']]],
   ['m_5finstruments',['m_instruments',['../struct_sound_1_1impl.html#aa6e996cfa819bea0a7d1bed476e8db70',1,'Sound::impl']]],
   ['m_5fisdrum',['m_isDrum',['../struct_instrument_1_1impl.html#acbb38931dc92d721ddec06a335929a3e',1,'DLSynth::Instrument::impl::m_isDrum()'],['../struct_voice_1_1impl.html#a78f4d4c62cdbdc0c928c500e5c81d6d7',1,'DLSynth::Synth::Voice::impl::m_isDrum()']]],
   ['m_5flastupdatedvalue',['m_lastUpdatedValue',['../struct_signal_source_1_1impl.html#a9e9790af562d5cb109c83f2ce488a1aa',1,'SignalSource::impl']]],
@@ -60,9 +59,12 @@ var searchData=
   ['minor',['minor',['../structdlsynth__version.html#af272353cb2cb468ad2fba3da3b4d8517',1,'dlsynth_version']]],
   ['modmatrix_2ecpp',['ModMatrix.cpp',['../_mod_matrix_8cpp.html',1,'']]],
   ['modmatrix_2ehpp',['ModMatrix.hpp',['../_mod_matrix_8hpp.html',1,'']]],
-  ['modulation',['modulation',['../class_d_l_synth_1_1_synth_1_1_synthesizer.html#af92a232d3e7d45ffb74636a3572e8d47',1,'DLSynth::Synth::Synthesizer']]],
+  ['modulation',['modulation',['../class_d_l_synth_1_1_synth_1_1_synthesizer.html#acca220c28906da57220c2b208de3447b',1,'DLSynth::Synth::Synthesizer']]],
+  ['msadpcm',['MsAdpcm',['../struct_wave_format.html#ab6f3e604e6980f9e2066b94fbb52ecfd',1,'WaveFormat']]],
   ['msadpcmdecoder',['MsAdpcmDecoder',['../class_ms_adpcm_decoder.html',1,'MsAdpcmDecoder'],['../class_ms_adpcm_decoder.html#adb92cab6b380ebf9711a3df6bd06e1ec',1,'MsAdpcmDecoder::MsAdpcmDecoder(const WaveFormatEx &amp;format, std::uint32_t fact, const std::vector&lt; char &gt; &amp;data)'],['../class_ms_adpcm_decoder.html#a65cb2af30b0f69683863b82996c28a56',1,'MsAdpcmDecoder::MsAdpcmDecoder(const WaveFormatEx &amp;format, const std::vector&lt; char &gt; &amp;data)']]],
   ['msadpcmdecoder_2ecpp',['MsAdpcmDecoder.cpp',['../_ms_adpcm_decoder_8cpp.html',1,'']]],
   ['mul',['Mul',['../_expression_parser_8cpp.html#a751f5463d98870f136ae2a46f6e76017a62b6d55816cf737bfc6f42e60df1a3f2',1,'ExpressionParser.cpp']]],
-  ['mulawtable',['muLawTable',['../_logarithmic_decoder_8cpp.html#aa0a1340681551ad6f16f653e432b32e3',1,'LogarithmicDecoder.cpp']]]
+  ['mulaw',['MuLaw',['../struct_wave_format.html#a3cf90579b8834c595548bc899296c662',1,'WaveFormat']]],
+  ['mulawtable',['muLawTable',['../_logarithmic_decoder_8cpp.html#aa0a1340681551ad6f16f653e432b32e3',1,'LogarithmicDecoder.cpp']]],
+  ['mutex',['mutex',['../struct_synthesizer_1_1impl.html#a59aba89041d579493ed18a5d772bc248',1,'Synthesizer::impl']]]
 ];

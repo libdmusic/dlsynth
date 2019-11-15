@@ -11,7 +11,8 @@ var searchData=
   ['noteon',['noteOn',['../class_d_l_synth_1_1_synth_1_1_e_g.html#a17b81293465502e18b7bf50cc296327f',1,'DLSynth::Synth::EG::noteOn()'],['../class_d_l_synth_1_1_synth_1_1_synthesizer.html#ab568b27acfd79ee307ac53c9b290fa3e',1,'DLSynth::Synth::Synthesizer::noteOn()'],['../class_d_l_synth_1_1_synth_1_1_voice.html#a2611cc073c82514c2b9b60842bb87392',1,'DLSynth::Synth::Voice::noteOn()']]],
   ['noteonmessage',['NoteOnMessage',['../class_d_l_synth_1_1_synth_1_1_note_on_message.html',1,'DLSynth::Synth::NoteOnMessage'],['../class_d_l_synth_1_1_synth_1_1_note_on_message.html#afb898fb15ef25d369e86197d1ca41d41',1,'DLSynth::Synth::NoteOnMessage::NoteOnMessage()']]],
   ['num_5fframes',['num_frames',['../class_float_decoder.html#aa1499a6d83487578fb15ce0262339ecd',1,'FloatDecoder::num_frames()'],['../class_logarithmic_decoder.html#a9796262660b0d90ffe298e1ebfe58f6a',1,'LogarithmicDecoder::num_frames()'],['../class_ms_adpcm_decoder.html#ae52ff9a795716d1b2ae420c7ddb31220',1,'MsAdpcmDecoder::num_frames()'],['../class_pcm_decoder.html#ad732edba988fcc051bae477ac8878dff',1,'PcmDecoder::num_frames()'],['../class_d_l_synth_1_1_wave_decoder.html#a6d80784a7687a9b69d4b88339234dd1c',1,'DLSynth::WaveDecoder::num_frames()']]],
-  ['num_5fvoices',['num_voices',['../structdlsynth__settings.html#a3b07ae004b24b8ba25a673658f82260f',1,'dlsynth_settings']]],
+  ['numchannels',['NumChannels',['../struct_wave_format.html#a96a1af7044be63294e14a62102e3dc9b',1,'WaveFormat::NumChannels()'],['../struct_wave_format_ex.html#a0604a144699187cbdfbd7d1e0f03820a',1,'WaveFormatEx::NumChannels()']]],
+  ['numcoeffs',['numCoeffs',['../struct_adpcm_format.html#a738553fe2d3aa54814672f55527a5300',1,'AdpcmFormat']]],
   ['numeric_5flimits_3c_20dlsynth_3a_3aint24_5ft_20_3e',['numeric_limits&lt; DLSynth::int24_t &gt;',['../structstd_1_1numeric__limits_3_01_d_l_synth_1_1int24__t_01_4.html',1,'std']]],
   ['numericutils_2ehpp',['NumericUtils.hpp',['../_numeric_utils_8hpp.html',1,'']]]
 ];

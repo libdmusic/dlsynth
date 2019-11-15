@@ -1,10 +1,13 @@
 var searchData=
 [
-  ['wave',['wave',['../structdlsynth__wav.html#aa8f2976e7f221c7c2f19109d4915ee48',1,'dlsynth_wav']]],
-  ['wave_5fid',['WAVE_id',['../_common_four_c_cs_8hpp.html#a96953d83625fe81ebb13e531728cf280',1,'WAVE_id():&#160;CommonFourCCs.hpp'],['../_common_four_c_cs_8hpp.html#a25ef3824b1504569e7ddd8d3a57e6c04',1,'wave_id():&#160;CommonFourCCs.hpp']]],
-  ['waves',['waves',['../structdlsynth__wavepool.html#a3b6635c189f1fbe16cf71494871f246f',1,'dlsynth_wavepool']]],
-  ['wavesample',['wavesample',['../structdlsynth__wavesample.html#abe8e85313bead7d5bc351932406d1126',1,'dlsynth_wavesample']]],
-  ['wlnk_5fid',['wlnk_id',['../_common_four_c_cs_8hpp.html#a8b9f0fc1764f4932b1f0559b0126c617',1,'CommonFourCCs.hpp']]],
-  ['wsmp_5fid',['wsmp_id',['../_common_four_c_cs_8hpp.html#aa60c0480b5246df1ef7995db29f120b5',1,'CommonFourCCs.hpp']]],
-  ['wvpl_5fid',['wvpl_id',['../_common_four_c_cs_8hpp.html#a558ba79718fbf9e49478bcc91830347f',1,'CommonFourCCs.hpp']]]
+  ['samp1',['samp1',['../struct_adpcm_header.html#aead982d7425c21123765f3bbc6bd44b9',1,'AdpcmHeader']]],
+  ['samp2',['samp2',['../struct_adpcm_header.html#ab971c0cc91d8636faf5cf79b5de623d1',1,'AdpcmHeader']]],
+  ['samplesperblock',['samplesPerBlock',['../struct_adpcm_format.html#ab9c637d25f80f36788eb3186b60830f9',1,'AdpcmFormat']]],
+  ['samplespersec',['SamplesPerSec',['../struct_wave_format.html#a9f3f9d884b5249859b7f2ff03518861e',1,'WaveFormat::SamplesPerSec()'],['../struct_wave_format_ex.html#afa902d75664531953b2b8ee3e55360a3',1,'WaveFormatEx::SamplesPerSec()']]],
+  ['scale',['scale',['../struct_connection.html#a5437fe363069819be54a241d196cd2fe',1,'Connection']]],
+  ['sfinetune',['sFineTune',['../structwsmp.html#aef8b02aeaace3eb1148e62f1fb89baae',1,'wsmp']]],
+  ['sound',['sound',['../structdlsynth__sound.html#a31056f657c0f082a327bb762d195b5ae',1,'dlsynth_sound::sound()'],['../structdlsynth__instr.html#ad157c53202f490d4fa2c440bac5adc5c',1,'dlsynth_instr::sound()']]],
+  ['src',['src',['../struct_connection.html#a199d3ea5927f73ad90cbf341707b625e',1,'Connection']]],
+  ['srctransform',['srcTransform',['../struct_connection.html#acb70922fbaa41dc650508e686ce0e0b0',1,'Connection']]],
+  ['synth',['synth',['../structdlsynth.html#a90fa1c47d2004833cdd53afd85c500af',1,'dlsynth']]]
 ];

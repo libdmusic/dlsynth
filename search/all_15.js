@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['wave',['Wave',['../class_d_l_synth_1_1_wave.html',1,'DLSynth::Wave'],['../structdlsynth__wav.html#aa8f2976e7f221c7c2f19109d4915ee48',1,'dlsynth_wav::wave()'],['../class_d_l_synth_1_1_wave.html#a99e4130ec292512cb5b02f2b3e4b5c11',1,'DLSynth::Wave::Wave(const std::vector&lt; float &gt; &amp;leftData, const std::vector&lt; float &gt; &amp;rightData, int sampleRate, const Wavesample *wavesample, const Info *info, const Uuid *guid) noexcept'],['../class_d_l_synth_1_1_wave.html#a8bc95cf1168385588a87ac0167beb436',1,'DLSynth::Wave::Wave(Wave &amp;&amp;wave) noexcept'],['../class_d_l_synth_1_1_wave.html#af032024dea420c676eb339c317abf852',1,'DLSynth::Wave::Wave(const Wave &amp;wave) noexcept']]],
+  ['wave',['Wave',['../class_d_l_synth_1_1_wave.html',1,'DLSynth::Wave'],['../class_d_l_synth_1_1_wave.html#a99e4130ec292512cb5b02f2b3e4b5c11',1,'DLSynth::Wave::Wave(const std::vector&lt; float &gt; &amp;leftData, const std::vector&lt; float &gt; &amp;rightData, int sampleRate, const Wavesample *wavesample, const Info *info, const Uuid *guid) noexcept'],['../class_d_l_synth_1_1_wave.html#a8bc95cf1168385588a87ac0167beb436',1,'DLSynth::Wave::Wave(Wave &amp;&amp;wave) noexcept'],['../class_d_l_synth_1_1_wave.html#af032024dea420c676eb339c317abf852',1,'DLSynth::Wave::Wave(const Wave &amp;wave) noexcept'],['../structdlsynth__wav.html#aa8f2976e7f221c7c2f19109d4915ee48',1,'dlsynth_wav::wave()']]],
   ['wave_2ecpp',['Wave.cpp',['../_wave_8cpp.html',1,'']]],
   ['wave_2ehpp',['Wave.hpp',['../_wave_8hpp.html',1,'']]],
   ['wave_5fid',['WAVE_id',['../_common_four_c_cs_8hpp.html#a96953d83625fe81ebb13e531728cf280',1,'WAVE_id():&#160;CommonFourCCs.hpp'],['../_common_four_c_cs_8hpp.html#a25ef3824b1504569e7ddd8d3a57e6c04',1,'wave_id():&#160;CommonFourCCs.hpp']]],
@@ -8,7 +8,9 @@ var searchData=
   ['wavedecoder_2ehpp',['WaveDecoder.hpp',['../_wave_decoder_8hpp.html',1,'']]],
   ['wavedecoderfactory',['WaveDecoderFactory',['../class_d_l_synth_1_1_wave_decoder_factory.html',1,'DLSynth']]],
   ['wavedecoderptr',['WaveDecoderPtr',['../class_d_l_synth_1_1_wave_decoder_factory.html#ae4c354dc384c38abf116276a79708a15',1,'DLSynth::WaveDecoderFactory']]],
+  ['waveformat',['WaveFormat',['../struct_wave_format.html',1,'']]],
   ['waveformat_2ehpp',['WaveFormat.hpp',['../_wave_format_8hpp.html',1,'']]],
+  ['waveformatex',['WaveFormatEx',['../struct_wave_format_ex.html',1,'']]],
   ['waveformatex_2ehpp',['WaveFormatEx.hpp',['../_wave_format_ex_8hpp.html',1,'']]],
   ['waveindex',['waveIndex',['../class_d_l_synth_1_1_region.html#ac64626c78356a8b000b1ba94e844ee95',1,'DLSynth::Region']]],
   ['wavepool',['wavepool',['../class_d_l_synth_1_1_sound.html#a361aeb8cd22d90e6f189a9a5cbd72cc6',1,'DLSynth::Sound']]],
@@ -17,10 +19,13 @@ var searchData=
   ['wavesample_2ecpp',['Wavesample.cpp',['../_wavesample_8cpp.html',1,'']]],
   ['wavesample_2ehpp',['Wavesample.hpp',['../_wavesample_8hpp.html',1,'']]],
   ['wavesampleloop',['WavesampleLoop',['../class_d_l_synth_1_1_wavesample_loop.html',1,'DLSynth::WavesampleLoop'],['../class_d_l_synth_1_1_wavesample_loop.html#aed497a511ab2e014d7b4bddca557de40',1,'DLSynth::WavesampleLoop::WavesampleLoop()']]],
+  ['wlnk',['wlnk',['../structwlnk.html',1,'']]],
   ['wlnk_2ehpp',['wlnk.hpp',['../wlnk_8hpp.html',1,'']]],
   ['wlnk_5fid',['wlnk_id',['../_common_four_c_cs_8hpp.html#a8b9f0fc1764f4932b1f0559b0126c617',1,'CommonFourCCs.hpp']]],
+  ['wsmp',['wsmp',['../structwsmp.html',1,'']]],
   ['wsmp_2ehpp',['wsmp.hpp',['../wsmp_8hpp.html',1,'']]],
   ['wsmp_5fid',['wsmp_id',['../_common_four_c_cs_8hpp.html#aa60c0480b5246df1ef7995db29f120b5',1,'CommonFourCCs.hpp']]],
+  ['wsmp_5floop',['wsmp_loop',['../structwsmp__loop.html',1,'']]],
   ['wsmp_5floop_2ehpp',['wsmp_loop.hpp',['../wsmp__loop_8hpp.html',1,'']]],
   ['wvpl_5fid',['wvpl_id',['../_common_four_c_cs_8hpp.html#a558ba79718fbf9e49478bcc91830347f',1,'CommonFourCCs.hpp']]]
 ];

@@ -68,62 +68,74 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gab9d6f42569483e4bdaf3fec19aad1572"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#gab9d6f42569483e4bdaf3fec19aad1572">dlsynth_init</a> (const struct <a class="el" href="structdlsynth__settings.html">dlsynth_settings</a> *settings, struct <a class="el" href="structdlsynth.html">dlsynth</a> **synth)</td></tr>
-<tr class="memdesc:gab9d6f42569483e4bdaf3fec19aad1572"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a DLS synthesizer.  <a href="#gab9d6f42569483e4bdaf3fec19aad1572">More...</a><br /></td></tr>
-<tr class="separator:gab9d6f42569483e4bdaf3fec19aad1572"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5b3175dc379fd78e050756470cdec84f"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#ga5b3175dc379fd78e050756470cdec84f">dlsynth_free</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth)</td></tr>
-<tr class="memdesc:ga5b3175dc379fd78e050756470cdec84f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the resources allocated for a synthesizer.  <a href="#ga5b3175dc379fd78e050756470cdec84f">More...</a><br /></td></tr>
-<tr class="separator:ga5b3175dc379fd78e050756470cdec84f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacb5bf70a560c58827da7411662084f9c"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#gacb5bf70a560c58827da7411662084f9c">dlsynth_note_on</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, uint8_t note, uint8_t velocity)</td></tr>
-<tr class="memdesc:gacb5bf70a560c58827da7411662084f9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a MIDI note on event to a synthesizer.  <a href="#gacb5bf70a560c58827da7411662084f9c">More...</a><br /></td></tr>
-<tr class="separator:gacb5bf70a560c58827da7411662084f9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga621b4b807ce6d8abf713873d8745d885"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#ga621b4b807ce6d8abf713873d8745d885">dlsynth_note_off</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, uint8_t note)</td></tr>
-<tr class="memdesc:ga621b4b807ce6d8abf713873d8745d885"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a MIDI note off event to a synthesizer.  <a href="#ga621b4b807ce6d8abf713873d8745d885">More...</a><br /></td></tr>
-<tr class="separator:ga621b4b807ce6d8abf713873d8745d885"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga49c4f7a71a40581e55192a9e838af20f"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#ga49c4f7a71a40581e55192a9e838af20f">dlsynth_poly_pressure</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, uint8_t note, uint8_t value)</td></tr>
-<tr class="memdesc:ga49c4f7a71a40581e55192a9e838af20f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a MIDI polyphonic pressure (aftertouch) event.  <a href="#ga49c4f7a71a40581e55192a9e838af20f">More...</a><br /></td></tr>
-<tr class="separator:ga49c4f7a71a40581e55192a9e838af20f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab19cf22f7bc38474db5ed8fe782383f6"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#gab19cf22f7bc38474db5ed8fe782383f6">dlsynth_channel_pressure</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, uint8_t value)</td></tr>
-<tr class="memdesc:gab19cf22f7bc38474db5ed8fe782383f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a MIDI channel pressure (aftertouch) event.  <a href="#gab19cf22f7bc38474db5ed8fe782383f6">More...</a><br /></td></tr>
-<tr class="separator:gab19cf22f7bc38474db5ed8fe782383f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad2e265c1d16e92685dcc7905b7e9e4de"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#gad2e265c1d16e92685dcc7905b7e9e4de">dlsynth_pitch_bend</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, uint16_t value)</td></tr>
-<tr class="memdesc:gad2e265c1d16e92685dcc7905b7e9e4de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a MIDI pitch bend event.  <a href="#gad2e265c1d16e92685dcc7905b7e9e4de">More...</a><br /></td></tr>
-<tr class="separator:gad2e265c1d16e92685dcc7905b7e9e4de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga70e84be65bb9fcc9cac0665a36bad969"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#ga70e84be65bb9fcc9cac0665a36bad969">dlsynth_volume</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, uint8_t value)</td></tr>
-<tr class="separator:ga70e84be65bb9fcc9cac0665a36bad969"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5a11e39bc0184eec45c23ba992b5194c"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#ga5a11e39bc0184eec45c23ba992b5194c">dlsynth_pan</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, uint8_t value)</td></tr>
-<tr class="separator:ga5a11e39bc0184eec45c23ba992b5194c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6d73bae1676299232db56c305d20fa66"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#ga6d73bae1676299232db56c305d20fa66">dlsynth_modulation</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, uint8_t value)</td></tr>
-<tr class="separator:ga6d73bae1676299232db56c305d20fa66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac3a0614df77adca9fa9f6751dcaa95fe"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#gac3a0614df77adca9fa9f6751dcaa95fe">dlsynth_sustain</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, int status)</td></tr>
-<tr class="separator:gac3a0614df77adca9fa9f6751dcaa95fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga81659c7e6762737dbb44cbcb7496a920"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#ga81659c7e6762737dbb44cbcb7496a920">dlsynth_reverb</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, uint8_t value)</td></tr>
-<tr class="separator:ga81659c7e6762737dbb44cbcb7496a920"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga500488fb4d50fc53e7a54e8417499b21"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#ga500488fb4d50fc53e7a54e8417499b21">dlsynth_chorus</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, uint8_t value)</td></tr>
-<tr class="separator:ga500488fb4d50fc53e7a54e8417499b21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga299d69bfe7a58f804e48acd770996dfe"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#ga299d69bfe7a58f804e48acd770996dfe">dlsynth_pitch_bend_range</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, uint16_t value)</td></tr>
-<tr class="separator:ga299d69bfe7a58f804e48acd770996dfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga04365635f8849a7c83275bf2b86597aa"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#ga04365635f8849a7c83275bf2b86597aa">dlsynth_fine_tuning</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, uint16_t value)</td></tr>
-<tr class="separator:ga04365635f8849a7c83275bf2b86597aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf0089fdeb1ed0a7442eda15d0b440bee"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#gaf0089fdeb1ed0a7442eda15d0b440bee">dlsynth_coarse_tuning</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, uint16_t value)</td></tr>
-<tr class="separator:gaf0089fdeb1ed0a7442eda15d0b440bee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gace8105adc65df0c4c4cb340f3bf6d691"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#gace8105adc65df0c4c4cb340f3bf6d691">dlsynth_reset_controllers</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth)</td></tr>
-<tr class="separator:gace8105adc65df0c4c4cb340f3bf6d691"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga20ac625257c516b353d5bb2697dc9ac7"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#ga20ac625257c516b353d5bb2697dc9ac7">dlsynth_all_notes_off</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth)</td></tr>
-<tr class="separator:ga20ac625257c516b353d5bb2697dc9ac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad6bfc49cac51930c73ae6f6198e2084d"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#gad6bfc49cac51930c73ae6f6198e2084d">dlsynth_all_sound_off</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth)</td></tr>
-<tr class="separator:gad6bfc49cac51930c73ae6f6198e2084d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf5fd66c8402d780d87674e6bb8622062"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#gaf5fd66c8402d780d87674e6bb8622062">dlsynth_init</a> (int sample_rate, int num_voices, struct <a class="el" href="structdlsynth.html">dlsynth</a> **synth)</td></tr>
+<tr class="memdesc:gaf5fd66c8402d780d87674e6bb8622062"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a DLS synthesizer.  <a href="#gaf5fd66c8402d780d87674e6bb8622062">More...</a><br /></td></tr>
+<tr class="separator:gaf5fd66c8402d780d87674e6bb8622062"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf774402054c281528c7349e4c13d537d"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#gaf774402054c281528c7349e4c13d537d">dlsynth_free</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth)</td></tr>
+<tr class="memdesc:gaf774402054c281528c7349e4c13d537d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the resources allocated for a synthesizer.  <a href="#gaf774402054c281528c7349e4c13d537d">More...</a><br /></td></tr>
+<tr class="separator:gaf774402054c281528c7349e4c13d537d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7fbd8752150522925e97a108f86ee9a9"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#ga7fbd8752150522925e97a108f86ee9a9">dlsynth_note_on</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, const struct <a class="el" href="structdlsynth__instr.html">dlsynth_instr</a> *instr, int channel, int priority, uint8_t note, uint8_t velocity)</td></tr>
+<tr class="memdesc:ga7fbd8752150522925e97a108f86ee9a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a MIDI note on event to a synthesizer.  <a href="#ga7fbd8752150522925e97a108f86ee9a9">More...</a><br /></td></tr>
+<tr class="separator:ga7fbd8752150522925e97a108f86ee9a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1fd56ffde261a629c7c3c91239607a4b"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#ga1fd56ffde261a629c7c3c91239607a4b">dlsynth_note_off</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, int channel, uint8_t note)</td></tr>
+<tr class="memdesc:ga1fd56ffde261a629c7c3c91239607a4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a MIDI note off event to a synthesizer.  <a href="#ga1fd56ffde261a629c7c3c91239607a4b">More...</a><br /></td></tr>
+<tr class="separator:ga1fd56ffde261a629c7c3c91239607a4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab1e56afd1a2066e65716edae9e17b220"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#gab1e56afd1a2066e65716edae9e17b220">dlsynth_poly_pressure</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, int channel, uint8_t note, uint8_t value)</td></tr>
+<tr class="memdesc:gab1e56afd1a2066e65716edae9e17b220"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a MIDI polyphonic pressure (aftertouch) event.  <a href="#gab1e56afd1a2066e65716edae9e17b220">More...</a><br /></td></tr>
+<tr class="separator:gab1e56afd1a2066e65716edae9e17b220"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaff8d474cecff13e13325b7dc1637ff90"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#gaff8d474cecff13e13325b7dc1637ff90">dlsynth_channel_pressure</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, int channel, uint8_t value)</td></tr>
+<tr class="memdesc:gaff8d474cecff13e13325b7dc1637ff90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a MIDI channel pressure (aftertouch) event.  <a href="#gaff8d474cecff13e13325b7dc1637ff90">More...</a><br /></td></tr>
+<tr class="separator:gaff8d474cecff13e13325b7dc1637ff90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafe993faff965d337dde84111dfb69f80"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#gafe993faff965d337dde84111dfb69f80">dlsynth_pitch_bend</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, int channel, uint16_t value)</td></tr>
+<tr class="memdesc:gafe993faff965d337dde84111dfb69f80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a MIDI pitch bend event.  <a href="#gafe993faff965d337dde84111dfb69f80">More...</a><br /></td></tr>
+<tr class="separator:gafe993faff965d337dde84111dfb69f80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5c46c2e68278a8537b880ac36de94919"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#ga5c46c2e68278a8537b880ac36de94919">dlsynth_volume</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, int channel, uint8_t value)</td></tr>
+<tr class="memdesc:ga5c46c2e68278a8537b880ac36de94919"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a MIDI channel volume change event.  <a href="#ga5c46c2e68278a8537b880ac36de94919">More...</a><br /></td></tr>
+<tr class="separator:ga5c46c2e68278a8537b880ac36de94919"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac1998f2e05de85a0b31c3a13fa4360ec"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#gac1998f2e05de85a0b31c3a13fa4360ec">dlsynth_pan</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, int channel, uint8_t value)</td></tr>
+<tr class="memdesc:gac1998f2e05de85a0b31c3a13fa4360ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a MIDI channel pan change event.  <a href="#gac1998f2e05de85a0b31c3a13fa4360ec">More...</a><br /></td></tr>
+<tr class="separator:gac1998f2e05de85a0b31c3a13fa4360ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga25c2447018789e570c820b8f4c4dd41e"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#ga25c2447018789e570c820b8f4c4dd41e">dlsynth_modulation</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, int channel, uint8_t value)</td></tr>
+<tr class="memdesc:ga25c2447018789e570c820b8f4c4dd41e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a MIDI modulation change event.  <a href="#ga25c2447018789e570c820b8f4c4dd41e">More...</a><br /></td></tr>
+<tr class="separator:ga25c2447018789e570c820b8f4c4dd41e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9fb7780f6bc8c50f37d1fd43ad80d73c"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#ga9fb7780f6bc8c50f37d1fd43ad80d73c">dlsynth_sustain</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, int channel, int status)</td></tr>
+<tr class="memdesc:ga9fb7780f6bc8c50f37d1fd43ad80d73c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a MIDI sustain change event.  <a href="#ga9fb7780f6bc8c50f37d1fd43ad80d73c">More...</a><br /></td></tr>
+<tr class="separator:ga9fb7780f6bc8c50f37d1fd43ad80d73c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf6853906fbb3ebca4b77e071dabd4424"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#gaf6853906fbb3ebca4b77e071dabd4424">dlsynth_reverb</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, int channel, uint8_t value)</td></tr>
+<tr class="memdesc:gaf6853906fbb3ebca4b77e071dabd4424"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a MIDI channel reverb change event.  <a href="#gaf6853906fbb3ebca4b77e071dabd4424">More...</a><br /></td></tr>
+<tr class="separator:gaf6853906fbb3ebca4b77e071dabd4424"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac9b6e1643571a5f6a62df50651288bee"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#gac9b6e1643571a5f6a62df50651288bee">dlsynth_chorus</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, int channel, uint8_t value)</td></tr>
+<tr class="memdesc:gac9b6e1643571a5f6a62df50651288bee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a MIDI channel chorus change event.  <a href="#gac9b6e1643571a5f6a62df50651288bee">More...</a><br /></td></tr>
+<tr class="separator:gac9b6e1643571a5f6a62df50651288bee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0f4e10fa2189e7e8ab90bc342416552e"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#ga0f4e10fa2189e7e8ab90bc342416552e">dlsynth_pitch_bend_range</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, int channel, uint16_t value)</td></tr>
+<tr class="memdesc:ga0f4e10fa2189e7e8ab90bc342416552e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a MIDI pitch bend range change event.  <a href="#ga0f4e10fa2189e7e8ab90bc342416552e">More...</a><br /></td></tr>
+<tr class="separator:ga0f4e10fa2189e7e8ab90bc342416552e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4201cee8fd0d2312dc50d51034dbe539"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#ga4201cee8fd0d2312dc50d51034dbe539">dlsynth_fine_tuning</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, int channel, uint16_t value)</td></tr>
+<tr class="memdesc:ga4201cee8fd0d2312dc50d51034dbe539"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a MIDI fine tune event.  <a href="#ga4201cee8fd0d2312dc50d51034dbe539">More...</a><br /></td></tr>
+<tr class="separator:ga4201cee8fd0d2312dc50d51034dbe539"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1e01683e53a4bd36ca3d41809e8caafb"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#ga1e01683e53a4bd36ca3d41809e8caafb">dlsynth_coarse_tuning</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, int channel, uint16_t value)</td></tr>
+<tr class="memdesc:ga1e01683e53a4bd36ca3d41809e8caafb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a MIDI coarse tune event.  <a href="#ga1e01683e53a4bd36ca3d41809e8caafb">More...</a><br /></td></tr>
+<tr class="separator:ga1e01683e53a4bd36ca3d41809e8caafb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae984de68837e676a076e5ea398dd706b"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#gae984de68837e676a076e5ea398dd706b">dlsynth_reset_controllers</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth, int channel)</td></tr>
+<tr class="memdesc:gae984de68837e676a076e5ea398dd706b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a MIDI reset all channel controllers event.  <a href="#gae984de68837e676a076e5ea398dd706b">More...</a><br /></td></tr>
+<tr class="separator:gae984de68837e676a076e5ea398dd706b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6207ab4ab3477fb867bce089f036b3c3"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#ga6207ab4ab3477fb867bce089f036b3c3">dlsynth_all_notes_off</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth)</td></tr>
+<tr class="memdesc:ga6207ab4ab3477fb867bce089f036b3c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a MIDI All Notes Off event.  <a href="#ga6207ab4ab3477fb867bce089f036b3c3">More...</a><br /></td></tr>
+<tr class="separator:ga6207ab4ab3477fb867bce089f036b3c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaeb7b29d92c062f89885bcaef22c693f6"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___synth_management.html#gaeb7b29d92c062f89885bcaef22c693f6">dlsynth_all_sound_off</a> (struct <a class="el" href="structdlsynth.html">dlsynth</a> *synth)</td></tr>
+<tr class="memdesc:gaeb7b29d92c062f89885bcaef22c693f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a MIDI All Sound Off event.  <a href="#gaeb7b29d92c062f89885bcaef22c693f6">More...</a><br /></td></tr>
+<tr class="separator:gaeb7b29d92c062f89885bcaef22c693f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga20ac625257c516b353d5bb2697dc9ac7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga20ac625257c516b353d5bb2697dc9ac7">&#9670;&nbsp;</a></span>dlsynth_all_notes_off()</h2>
+<a id="ga6207ab4ab3477fb867bce089f036b3c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6207ab4ab3477fb867bce089f036b3c3">&#9670;&nbsp;</a></span>dlsynth_all_notes_off()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_all_notes_off </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_all_notes_off </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
           <td class="paramname"><em>synth</em></td><td>)</td>
@@ -132,16 +144,25 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Sends a MIDI All Notes Off event. </p>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">synth</td><td>The synthesizer to send the message to </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="gad6bfc49cac51930c73ae6f6198e2084d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gad6bfc49cac51930c73ae6f6198e2084d">&#9670;&nbsp;</a></span>dlsynth_all_sound_off()</h2>
+<a id="gaeb7b29d92c062f89885bcaef22c693f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaeb7b29d92c062f89885bcaef22c693f6">&#9670;&nbsp;</a></span>dlsynth_all_sound_off()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_all_sound_off </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_all_sound_off </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
           <td class="paramname"><em>synth</em></td><td>)</td>
@@ -150,19 +171,34 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Sends a MIDI All Sound Off event. </p>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">synth</td><td>The synthesizer to send the message to </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="gab19cf22f7bc38474db5ed8fe782383f6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gab19cf22f7bc38474db5ed8fe782383f6">&#9670;&nbsp;</a></span>dlsynth_channel_pressure()</h2>
+<a id="gaff8d474cecff13e13325b7dc1637ff90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaff8d474cecff13e13325b7dc1637ff90">&#9670;&nbsp;</a></span>dlsynth_channel_pressure()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_channel_pressure </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_channel_pressure </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
           <td class="paramname"><em>synth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -179,10 +215,11 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Sends a MIDI channel pressure (aftertouch) event. </p>
-<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">synth</td><td>The synthesizer to send the message to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">channel</td><td>The channel which the event refers to </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>The pressure value of the event </td></tr>
   </table>
   </dd>
@@ -190,17 +227,23 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga500488fb4d50fc53e7a54e8417499b21"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga500488fb4d50fc53e7a54e8417499b21">&#9670;&nbsp;</a></span>dlsynth_chorus()</h2>
+<a id="gac9b6e1643571a5f6a62df50651288bee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac9b6e1643571a5f6a62df50651288bee">&#9670;&nbsp;</a></span>dlsynth_chorus()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_chorus </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_chorus </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
           <td class="paramname"><em>synth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -216,19 +259,36 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Sends a MIDI channel chorus change event. </p>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">synth</td><td>The synthesizer to send the message to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">channel</td><td>The channel to which the event refers to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>New chorus value </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="gaf0089fdeb1ed0a7442eda15d0b440bee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaf0089fdeb1ed0a7442eda15d0b440bee">&#9670;&nbsp;</a></span>dlsynth_coarse_tuning()</h2>
+<a id="ga1e01683e53a4bd36ca3d41809e8caafb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1e01683e53a4bd36ca3d41809e8caafb">&#9670;&nbsp;</a></span>dlsynth_coarse_tuning()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_coarse_tuning </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_coarse_tuning </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
           <td class="paramname"><em>synth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -244,19 +304,36 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Sends a MIDI coarse tune event. </p>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">synth</td><td>The synthesizer to send the message to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">channel</td><td>The channel to which the event refers to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>New coarse tuning value </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="ga04365635f8849a7c83275bf2b86597aa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga04365635f8849a7c83275bf2b86597aa">&#9670;&nbsp;</a></span>dlsynth_fine_tuning()</h2>
+<a id="ga4201cee8fd0d2312dc50d51034dbe539"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4201cee8fd0d2312dc50d51034dbe539">&#9670;&nbsp;</a></span>dlsynth_fine_tuning()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_fine_tuning </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_fine_tuning </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
           <td class="paramname"><em>synth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -272,16 +349,27 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Sends a MIDI fine tune event. </p>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">synth</td><td>The synthesizer to send the message to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">channel</td><td>The channel to which the event refers to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>New fine tuning value </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="ga5b3175dc379fd78e050756470cdec84f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga5b3175dc379fd78e050756470cdec84f">&#9670;&nbsp;</a></span>dlsynth_free()</h2>
+<a id="gaf774402054c281528c7349e4c13d537d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf774402054c281528c7349e4c13d537d">&#9670;&nbsp;</a></span>dlsynth_free()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_free </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_free </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
           <td class="paramname"><em>synth</em></td><td>)</td>
@@ -291,7 +379,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Frees the resources allocated for a synthesizer. </p>
-<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">synth</td><td>The synthesizer to free </td></tr>
@@ -301,17 +389,23 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gab9d6f42569483e4bdaf3fec19aad1572"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gab9d6f42569483e4bdaf3fec19aad1572">&#9670;&nbsp;</a></span>dlsynth_init()</h2>
+<a id="gaf5fd66c8402d780d87674e6bb8622062"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf5fd66c8402d780d87674e6bb8622062">&#9670;&nbsp;</a></span>dlsynth_init()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_init </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_init </td>
           <td>(</td>
-          <td class="paramtype">const struct <a class="el" href="structdlsynth__settings.html">dlsynth_settings</a> *&#160;</td>
-          <td class="paramname"><em>settings</em>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sample_rate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num_voices</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -328,10 +422,9 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Initializes a DLS synthesizer. </p>
-<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">settings</td><td>Settings to use when rendering audio </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">synth</td><td>The initialized synthesizer </td></tr>
   </table>
   </dd>
@@ -339,17 +432,23 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga6d73bae1676299232db56c305d20fa66"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga6d73bae1676299232db56c305d20fa66">&#9670;&nbsp;</a></span>dlsynth_modulation()</h2>
+<a id="ga25c2447018789e570c820b8f4c4dd41e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga25c2447018789e570c820b8f4c4dd41e">&#9670;&nbsp;</a></span>dlsynth_modulation()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_modulation </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_modulation </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
           <td class="paramname"><em>synth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -365,19 +464,36 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Sends a MIDI modulation change event. </p>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">synth</td><td>The synthesizer to send the message to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">channel</td><td>The channel to which the event refers to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>New modulation value </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="ga621b4b807ce6d8abf713873d8745d885"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga621b4b807ce6d8abf713873d8745d885">&#9670;&nbsp;</a></span>dlsynth_note_off()</h2>
+<a id="ga1fd56ffde261a629c7c3c91239607a4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1fd56ffde261a629c7c3c91239607a4b">&#9670;&nbsp;</a></span>dlsynth_note_off()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_note_off </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_note_off </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
           <td class="paramname"><em>synth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -394,10 +510,11 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Sends a MIDI note off event to a synthesizer. </p>
-<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">synth</td><td>The synthesizer to send the message to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">channel</td><td>The channel which the event refers to </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">note</td><td>The note which the event refers to </td></tr>
   </table>
   </dd>
@@ -405,17 +522,35 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gacb5bf70a560c58827da7411662084f9c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gacb5bf70a560c58827da7411662084f9c">&#9670;&nbsp;</a></span>dlsynth_note_on()</h2>
+<a id="ga7fbd8752150522925e97a108f86ee9a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7fbd8752150522925e97a108f86ee9a9">&#9670;&nbsp;</a></span>dlsynth_note_on()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_note_on </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_note_on </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
           <td class="paramname"><em>synth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const struct <a class="el" href="structdlsynth__instr.html">dlsynth_instr</a> *&#160;</td>
+          <td class="paramname"><em>instr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>priority</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -438,10 +573,13 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Sends a MIDI note on event to a synthesizer. </p>
-<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">synth</td><td>The synthesizer to send the message to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">instr</td><td>Instrument to use for rendering the note </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">channel</td><td>Channel to associate the note to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">priority</td><td>Priority of the note to play </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">note</td><td>The note which the event refers to </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">velocity</td><td>Velocity of the note </td></tr>
   </table>
@@ -450,17 +588,23 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga5a11e39bc0184eec45c23ba992b5194c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga5a11e39bc0184eec45c23ba992b5194c">&#9670;&nbsp;</a></span>dlsynth_pan()</h2>
+<a id="gac1998f2e05de85a0b31c3a13fa4360ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac1998f2e05de85a0b31c3a13fa4360ec">&#9670;&nbsp;</a></span>dlsynth_pan()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_pan </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_pan </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
           <td class="paramname"><em>synth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -476,19 +620,36 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Sends a MIDI channel pan change event. </p>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">synth</td><td>The synthesizer to send the message to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">channel</td><td>The channel to which the event refers to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>New pan value </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="gad2e265c1d16e92685dcc7905b7e9e4de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gad2e265c1d16e92685dcc7905b7e9e4de">&#9670;&nbsp;</a></span>dlsynth_pitch_bend()</h2>
+<a id="gafe993faff965d337dde84111dfb69f80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafe993faff965d337dde84111dfb69f80">&#9670;&nbsp;</a></span>dlsynth_pitch_bend()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_pitch_bend </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_pitch_bend </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
           <td class="paramname"><em>synth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -505,10 +666,11 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Sends a MIDI pitch bend event. </p>
-<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">synth</td><td>The synthesizer to send the message to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">channel</td><td>The channel which the event refers to </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>Value of the pitch bend event </td></tr>
   </table>
   </dd>
@@ -516,17 +678,23 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga299d69bfe7a58f804e48acd770996dfe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga299d69bfe7a58f804e48acd770996dfe">&#9670;&nbsp;</a></span>dlsynth_pitch_bend_range()</h2>
+<a id="ga0f4e10fa2189e7e8ab90bc342416552e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0f4e10fa2189e7e8ab90bc342416552e">&#9670;&nbsp;</a></span>dlsynth_pitch_bend_range()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_pitch_bend_range </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_pitch_bend_range </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
           <td class="paramname"><em>synth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -542,19 +710,36 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Sends a MIDI pitch bend range change event. </p>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">synth</td><td>The synthesizer to send the message to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">channel</td><td>The channel to which the event refers to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>New pitch bend range </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="ga49c4f7a71a40581e55192a9e838af20f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga49c4f7a71a40581e55192a9e838af20f">&#9670;&nbsp;</a></span>dlsynth_poly_pressure()</h2>
+<a id="gab1e56afd1a2066e65716edae9e17b220"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab1e56afd1a2066e65716edae9e17b220">&#9670;&nbsp;</a></span>dlsynth_poly_pressure()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_poly_pressure </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_poly_pressure </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
           <td class="paramname"><em>synth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -577,10 +762,11 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Sends a MIDI polyphonic pressure (aftertouch) event. </p>
-<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">synth</td><td>The synthesizer to send the message to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">channel</td><td>The channel which the event refers to </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">note</td><td>The note which the event refers to </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>The pressure value of the event </td></tr>
   </table>
@@ -589,35 +775,61 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gace8105adc65df0c4c4cb340f3bf6d691"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gace8105adc65df0c4c4cb340f3bf6d691">&#9670;&nbsp;</a></span>dlsynth_reset_controllers()</h2>
+<a id="gae984de68837e676a076e5ea398dd706b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae984de68837e676a076e5ea398dd706b">&#9670;&nbsp;</a></span>dlsynth_reset_controllers()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_reset_controllers </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_reset_controllers </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
-          <td class="paramname"><em>synth</em></td><td>)</td>
+          <td class="paramname"><em>synth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>Sends a MIDI reset all channel controllers event. </p>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">synth</td><td>The synthesizer to send the message to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">channel</td><td>The channel to which the event refers to </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="ga81659c7e6762737dbb44cbcb7496a920"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga81659c7e6762737dbb44cbcb7496a920">&#9670;&nbsp;</a></span>dlsynth_reverb()</h2>
+<a id="gaf6853906fbb3ebca4b77e071dabd4424"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf6853906fbb3ebca4b77e071dabd4424">&#9670;&nbsp;</a></span>dlsynth_reverb()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_reverb </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_reverb </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
           <td class="paramname"><em>synth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -633,19 +845,36 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Sends a MIDI channel reverb change event. </p>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">synth</td><td>The synthesizer to send the message to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">channel</td><td>The channel to which the event refers to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>New revern value </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="gac3a0614df77adca9fa9f6751dcaa95fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gac3a0614df77adca9fa9f6751dcaa95fe">&#9670;&nbsp;</a></span>dlsynth_sustain()</h2>
+<a id="ga9fb7780f6bc8c50f37d1fd43ad80d73c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9fb7780f6bc8c50f37d1fd43ad80d73c">&#9670;&nbsp;</a></span>dlsynth_sustain()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_sustain </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_sustain </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
           <td class="paramname"><em>synth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -661,19 +890,36 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Sends a MIDI sustain change event. </p>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">synth</td><td>The synthesizer to send the message to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">channel</td><td>The channel to which the event refers to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">status</td><td>1 for sustain on, 0 for sustain off </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="ga70e84be65bb9fcc9cac0665a36bad969"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga70e84be65bb9fcc9cac0665a36bad969">&#9670;&nbsp;</a></span>dlsynth_volume()</h2>
+<a id="ga5c46c2e68278a8537b880ac36de94919"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5c46c2e68278a8537b880ac36de94919">&#9670;&nbsp;</a></span>dlsynth_volume()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_volume </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_volume </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth.html">dlsynth</a> *&#160;</td>
           <td class="paramname"><em>synth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -688,6 +934,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Sends a MIDI channel volume change event. </p>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">synth</td><td>The synthesizer to send the message to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">channel</td><td>The channel which the event refers to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>New volume value </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['pan',['pan',['../class_d_l_synth_1_1_synth_1_1_synthesizer.html#aaca7d0421fd7370f064d6a31fdf6132a',1,'DLSynth::Synth::Synthesizer::pan()'],['../namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981af6d4a17b27da35c2d90ce13801f36782',1,'DLSynth::Pan()']]],
+  ['pan',['pan',['../class_d_l_synth_1_1_synth_1_1_synthesizer.html#a3e5482c1531224832256eeffb390d1c9',1,'DLSynth::Synth::Synthesizer::pan()'],['../namespace_d_l_synth.html#ae1a4cc00c93ef96301ba03aaf4370981af6d4a17b27da35c2d90ce13801f36782',1,'DLSynth::Pan()']]],
+  ['patch',['patch',['../structdlsynth__version.html#a2287ef724eb7198e258e226816b42914',1,'dlsynth_version']]],
+  ['pcm',['Pcm',['../struct_wave_format.html#a496cdbb3b972120c92e9e253917661ad',1,'WaveFormat']]],
   ['pcmdecoder',['PcmDecoder',['../class_pcm_decoder.html',1,'PcmDecoder&lt; T &gt;'],['../class_pcm_decoder.html#a2700b60ab1455fd8c770540d86f33fb6',1,'PcmDecoder::PcmDecoder(const WaveFormat &amp;format, const std::vector&lt; char &gt; &amp;data)'],['../class_pcm_decoder.html#a50bce27932b70d8bec62661be09a77ed',1,'PcmDecoder::PcmDecoder(const WaveFormat &amp;format, std::uint32_t fact, const std::vector&lt; char &gt; &amp;data)']]],
   ['pcmdecoder_2ecpp',['PcmDecoder.cpp',['../_pcm_decoder_8cpp.html',1,'']]],
   ['percentunitstoratio',['percentUnitsToRatio',['../namespace_d_l_synth.html#a63e85e113f5699c6c7f13ac9523a3d78',1,'DLSynth']]],

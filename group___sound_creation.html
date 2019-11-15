@@ -146,63 +146,63 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga6df962b05b832cdc3ef3019b529edd88"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga6df962b05b832cdc3ef3019b529edd88">dlsynth_new_wavesample_oneshot</a> (uint16_t unityNote, int16_t fineTune, int32_t gain, struct <a class="el" href="structdlsynth__wavesample.html">dlsynth_wavesample</a> **wavesample)</td></tr>
-<tr class="memdesc:ga6df962b05b832cdc3ef3019b529edd88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new one-shot wavesample.  <a href="#ga6df962b05b832cdc3ef3019b529edd88">More...</a><br /></td></tr>
-<tr class="separator:ga6df962b05b832cdc3ef3019b529edd88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga97952e49d0a5c775d5e7a22330948743"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga97952e49d0a5c775d5e7a22330948743">dlsynth_new_wavesample_looped</a> (uint16_t unityNote, int16_t fineTune, int32_t gain, enum <a class="el" href="group___sound_creation.html#gafd743b42a46ce69f08553d124ec8952b">dlsynth_loop_type</a> type, uint32_t loopStart, uint32_t loopLength, struct <a class="el" href="structdlsynth__wavesample.html">dlsynth_wavesample</a> **wavesample)</td></tr>
-<tr class="memdesc:ga97952e49d0a5c775d5e7a22330948743"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new looped wavesample.  <a href="#ga97952e49d0a5c775d5e7a22330948743">More...</a><br /></td></tr>
-<tr class="separator:ga97952e49d0a5c775d5e7a22330948743"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac07010e8ed234c659787956f745c371d"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#gac07010e8ed234c659787956f745c371d">dlsynth_free_wavesample</a> (struct <a class="el" href="structdlsynth__wavesample.html">dlsynth_wavesample</a> *wavesample)</td></tr>
-<tr class="memdesc:gac07010e8ed234c659787956f745c371d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the resources associated with a wavesample.  <a href="#gac07010e8ed234c659787956f745c371d">More...</a><br /></td></tr>
-<tr class="separator:gac07010e8ed234c659787956f745c371d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac382ad6c44a703b05dd90b7f8124f5e3"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#gac382ad6c44a703b05dd90b7f8124f5e3">dlsynth_new_wav_mono</a> (int sampleRate, const float *dataBegin, const float *dataEnd, const struct <a class="el" href="structdlsynth__wavesample.html">dlsynth_wavesample</a> *wavesample, struct <a class="el" href="structdlsynth__wav.html">dlsynth_wav</a> **wav)</td></tr>
-<tr class="memdesc:gac382ad6c44a703b05dd90b7f8124f5e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new mono WAV.  <a href="#gac382ad6c44a703b05dd90b7f8124f5e3">More...</a><br /></td></tr>
-<tr class="separator:gac382ad6c44a703b05dd90b7f8124f5e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga528c661195329e5221b8b5862df836fc"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga528c661195329e5221b8b5862df836fc">dlsynth_new_wav_stereo</a> (int sampleRate, const float *leftDataBegin, const float *leftDataEnd, const float *rightDataBegin, const float *rightDataEnd, const struct <a class="el" href="structdlsynth__wavesample.html">dlsynth_wavesample</a> *wavesample, struct <a class="el" href="structdlsynth__wav.html">dlsynth_wav</a> **wav)</td></tr>
-<tr class="memdesc:ga528c661195329e5221b8b5862df836fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new stereo WAV.  <a href="#ga528c661195329e5221b8b5862df836fc">More...</a><br /></td></tr>
-<tr class="separator:ga528c661195329e5221b8b5862df836fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa74b08927a50a2519dd41533c05fd473"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#gaa74b08927a50a2519dd41533c05fd473">dlsynth_new_wavepool</a> (struct <a class="el" href="structdlsynth__wavepool.html">dlsynth_wavepool</a> **wavepool)</td></tr>
-<tr class="memdesc:gaa74b08927a50a2519dd41533c05fd473"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new empty wavepool.  <a href="#gaa74b08927a50a2519dd41533c05fd473">More...</a><br /></td></tr>
-<tr class="separator:gaa74b08927a50a2519dd41533c05fd473"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1a4e7024f5d6a92a1b1ccab57dea6236"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga1a4e7024f5d6a92a1b1ccab57dea6236">dlsynth_wavepool_add</a> (struct <a class="el" href="structdlsynth__wavepool.html">dlsynth_wavepool</a> *wavepool, const struct <a class="el" href="structdlsynth__wav.html">dlsynth_wav</a> *wav)</td></tr>
-<tr class="memdesc:ga1a4e7024f5d6a92a1b1ccab57dea6236"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a WAV to a wavepool.  <a href="#ga1a4e7024f5d6a92a1b1ccab57dea6236">More...</a><br /></td></tr>
-<tr class="separator:ga1a4e7024f5d6a92a1b1ccab57dea6236"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0c7527766fa4b60d5688d43904082661"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga0c7527766fa4b60d5688d43904082661">dlsynth_free_wavepool</a> (struct <a class="el" href="structdlsynth__wavepool.html">dlsynth_wavepool</a> *wavepool)</td></tr>
-<tr class="memdesc:ga0c7527766fa4b60d5688d43904082661"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the resources associated with a wavepool.  <a href="#ga0c7527766fa4b60d5688d43904082661">More...</a><br /></td></tr>
-<tr class="separator:ga0c7527766fa4b60d5688d43904082661"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8b6f66fcc7afcdece47a433c3a214e76"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga8b6f66fcc7afcdece47a433c3a214e76">dlsynth_new_blocklist</a> (struct <a class="el" href="structdlsynth__blocklist.html">dlsynth_blocklist</a> **blocklist)</td></tr>
-<tr class="memdesc:ga8b6f66fcc7afcdece47a433c3a214e76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new blocklist.  <a href="#ga8b6f66fcc7afcdece47a433c3a214e76">More...</a><br /></td></tr>
-<tr class="separator:ga8b6f66fcc7afcdece47a433c3a214e76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga158e9bea23807e5b8a2fd26f82b29c15"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga158e9bea23807e5b8a2fd26f82b29c15">dlsynth_blocklist_add</a> (struct <a class="el" href="structdlsynth__blocklist.html">dlsynth_blocklist</a> *blocklist, enum <a class="el" href="group___sound_creation.html#gaced293522972e47670225bc2a691f205">dlsynth_source</a> source, enum <a class="el" href="group___sound_creation.html#gaced293522972e47670225bc2a691f205">dlsynth_source</a> control, enum <a class="el" href="group___sound_creation.html#ga8dda4bc3b6ee9be4147246f929037240">dlsynth_dest</a> destination, int32_t scale, int sourceInvert, int sourceBipolar, enum <a class="el" href="group___sound_creation.html#ga6848b516f2b4bc6b84e32fc074380991">dlsynth_transf</a> sourceTransform, int controlInvert, int controlBipolar, enum <a class="el" href="group___sound_creation.html#ga6848b516f2b4bc6b84e32fc074380991">dlsynth_transf</a> controlTransform)</td></tr>
-<tr class="memdesc:ga158e9bea23807e5b8a2fd26f82b29c15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a connection block to a blocklist.  <a href="#ga158e9bea23807e5b8a2fd26f82b29c15">More...</a><br /></td></tr>
-<tr class="separator:ga158e9bea23807e5b8a2fd26f82b29c15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaaa68d2a4f444689c5da019c8958c0e89"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#gaaa68d2a4f444689c5da019c8958c0e89">dlsynth_free_blocklist</a> (struct <a class="el" href="structdlsynth__blocklist.html">dlsynth_blocklist</a> *blocklist)</td></tr>
-<tr class="memdesc:gaaa68d2a4f444689c5da019c8958c0e89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases the resources associated with a blocklist.  <a href="#gaaa68d2a4f444689c5da019c8958c0e89">More...</a><br /></td></tr>
-<tr class="separator:gaaa68d2a4f444689c5da019c8958c0e89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5534a50b01a484424c37a626f6abcf36"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga5534a50b01a484424c37a626f6abcf36">dlsynth_new_regionlist</a> (struct <a class="el" href="structdlsynth__regionlist.html">dlsynth_regionlist</a> **regionlist)</td></tr>
-<tr class="memdesc:ga5534a50b01a484424c37a626f6abcf36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new regionlist.  <a href="#ga5534a50b01a484424c37a626f6abcf36">More...</a><br /></td></tr>
-<tr class="separator:ga5534a50b01a484424c37a626f6abcf36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga279e69b0a046da8a36f2950fa5462193"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga279e69b0a046da8a36f2950fa5462193">dlsynth_add_region</a> (struct <a class="el" href="structdlsynth__regionlist.html">dlsynth_regionlist</a> *regionlist, uint16_t minKey, uint16_t maxKey, uint16_t minVelocity, uint16_t maxVelocity, const struct <a class="el" href="structdlsynth__blocklist.html">dlsynth_blocklist</a> *blocklist, uint32_t waveIndex, int selfNonExclusive)</td></tr>
-<tr class="memdesc:ga279e69b0a046da8a36f2950fa5462193"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a region to a regionlist.  <a href="#ga279e69b0a046da8a36f2950fa5462193">More...</a><br /></td></tr>
-<tr class="separator:ga279e69b0a046da8a36f2950fa5462193"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga146feba2705797bf955e1867e3ad4eb4"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga146feba2705797bf955e1867e3ad4eb4">dlsynth_add_region_wavesample</a> (struct <a class="el" href="structdlsynth__regionlist.html">dlsynth_regionlist</a> *regionlist, uint16_t minKey, uint16_t maxKey, uint16_t minVelocity, uint16_t maxVelocity, const struct <a class="el" href="structdlsynth__blocklist.html">dlsynth_blocklist</a> *blocklist, uint32_t waveIndex, int selfNonExclusive, const struct <a class="el" href="structdlsynth__wavesample.html">dlsynth_wavesample</a> *wavesample)</td></tr>
-<tr class="memdesc:ga146feba2705797bf955e1867e3ad4eb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a region to a regionlist with a wavesample that overrides the one specified in the WAV.  <a href="#ga146feba2705797bf955e1867e3ad4eb4">More...</a><br /></td></tr>
-<tr class="separator:ga146feba2705797bf955e1867e3ad4eb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga233729692e523bd0cd73ae52558d5172"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga233729692e523bd0cd73ae52558d5172">dlsynth_free_regionlist</a> (struct <a class="el" href="structdlsynth__regionlist.html">dlsynth_regionlist</a> *regionlist)</td></tr>
-<tr class="memdesc:ga233729692e523bd0cd73ae52558d5172"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases the resources associated with a regionlist.  <a href="#ga233729692e523bd0cd73ae52558d5172">More...</a><br /></td></tr>
-<tr class="separator:ga233729692e523bd0cd73ae52558d5172"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafe26afd92bd2d3ea11de69ed31a7810c"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#gafe26afd92bd2d3ea11de69ed31a7810c">dlsynth_new_instrlist</a> (struct <a class="el" href="structdlsynth__instrlist.html">dlsynth_instrlist</a> **list)</td></tr>
-<tr class="memdesc:gafe26afd92bd2d3ea11de69ed31a7810c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new list of instruments.  <a href="#gafe26afd92bd2d3ea11de69ed31a7810c">More...</a><br /></td></tr>
-<tr class="separator:gafe26afd92bd2d3ea11de69ed31a7810c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5bbafca324d98daab447c3434c5bfe92"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga5bbafca324d98daab447c3434c5bfe92">dlsynth_add_instrument</a> (struct <a class="el" href="structdlsynth__instrlist.html">dlsynth_instrlist</a> *list, uint32_t midiBank, uint32_t midiInstrument, int isDrumInstrument, const struct <a class="el" href="structdlsynth__blocklist.html">dlsynth_blocklist</a> *blocklist, const struct <a class="el" href="structdlsynth__regionlist.html">dlsynth_regionlist</a> *regions)</td></tr>
-<tr class="memdesc:ga5bbafca324d98daab447c3434c5bfe92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an instrument to a list of instruments.  <a href="#ga5bbafca324d98daab447c3434c5bfe92">More...</a><br /></td></tr>
-<tr class="separator:ga5bbafca324d98daab447c3434c5bfe92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga21d67691eea7b09bbce45a908241ed27"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga21d67691eea7b09bbce45a908241ed27">dlsynth_free_instrlist</a> (struct <a class="el" href="structdlsynth__instrlist.html">dlsynth_instrlist</a> *list)</td></tr>
-<tr class="memdesc:ga21d67691eea7b09bbce45a908241ed27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases the resources associated with a list of instruments.  <a href="#ga21d67691eea7b09bbce45a908241ed27">More...</a><br /></td></tr>
-<tr class="separator:ga21d67691eea7b09bbce45a908241ed27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga00fddf0899ba6b8edb98c7d29bb300e7"><td class="memItemLeft" align="right" valign="top">int DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga00fddf0899ba6b8edb98c7d29bb300e7">dlsynth_new_sound</a> (struct <a class="el" href="structdlsynth__sound.html">dlsynth_sound</a> **sound, const struct <a class="el" href="structdlsynth__instrlist.html">dlsynth_instrlist</a> *instruments, const struct <a class="el" href="structdlsynth__wavepool.html">dlsynth_wavepool</a> *wavepool)</td></tr>
-<tr class="memdesc:ga00fddf0899ba6b8edb98c7d29bb300e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new sound collection.  <a href="#ga00fddf0899ba6b8edb98c7d29bb300e7">More...</a><br /></td></tr>
-<tr class="separator:ga00fddf0899ba6b8edb98c7d29bb300e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8f7a1b50e00f6f62aff0e018652c7cc8"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga8f7a1b50e00f6f62aff0e018652c7cc8">dlsynth_new_wavesample_oneshot</a> (uint16_t unityNote, int16_t fineTune, int32_t gain, struct <a class="el" href="structdlsynth__wavesample.html">dlsynth_wavesample</a> **wavesample)</td></tr>
+<tr class="memdesc:ga8f7a1b50e00f6f62aff0e018652c7cc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new one-shot wavesample.  <a href="#ga8f7a1b50e00f6f62aff0e018652c7cc8">More...</a><br /></td></tr>
+<tr class="separator:ga8f7a1b50e00f6f62aff0e018652c7cc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga659796974afb17a90614d2c9d48cc983"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga659796974afb17a90614d2c9d48cc983">dlsynth_new_wavesample_looped</a> (uint16_t unityNote, int16_t fineTune, int32_t gain, enum <a class="el" href="group___sound_creation.html#gafd743b42a46ce69f08553d124ec8952b">dlsynth_loop_type</a> type, uint32_t loopStart, uint32_t loopLength, struct <a class="el" href="structdlsynth__wavesample.html">dlsynth_wavesample</a> **wavesample)</td></tr>
+<tr class="memdesc:ga659796974afb17a90614d2c9d48cc983"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new looped wavesample.  <a href="#ga659796974afb17a90614d2c9d48cc983">More...</a><br /></td></tr>
+<tr class="separator:ga659796974afb17a90614d2c9d48cc983"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadc59f5d85e10f58063e50977df832e05"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#gadc59f5d85e10f58063e50977df832e05">dlsynth_free_wavesample</a> (struct <a class="el" href="structdlsynth__wavesample.html">dlsynth_wavesample</a> *wavesample)</td></tr>
+<tr class="memdesc:gadc59f5d85e10f58063e50977df832e05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the resources associated with a wavesample.  <a href="#gadc59f5d85e10f58063e50977df832e05">More...</a><br /></td></tr>
+<tr class="separator:gadc59f5d85e10f58063e50977df832e05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae9d9d1296b1effb035cd04fda9a47fb6"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#gae9d9d1296b1effb035cd04fda9a47fb6">dlsynth_new_wav_mono</a> (int sampleRate, const float *dataBegin, const float *dataEnd, const struct <a class="el" href="structdlsynth__wavesample.html">dlsynth_wavesample</a> *wavesample, struct <a class="el" href="structdlsynth__wav.html">dlsynth_wav</a> **wav)</td></tr>
+<tr class="memdesc:gae9d9d1296b1effb035cd04fda9a47fb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new mono WAV.  <a href="#gae9d9d1296b1effb035cd04fda9a47fb6">More...</a><br /></td></tr>
+<tr class="separator:gae9d9d1296b1effb035cd04fda9a47fb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5c2052679726989246cc65f85b578e55"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga5c2052679726989246cc65f85b578e55">dlsynth_new_wav_stereo</a> (int sampleRate, const float *leftDataBegin, const float *leftDataEnd, const float *rightDataBegin, const float *rightDataEnd, const struct <a class="el" href="structdlsynth__wavesample.html">dlsynth_wavesample</a> *wavesample, struct <a class="el" href="structdlsynth__wav.html">dlsynth_wav</a> **wav)</td></tr>
+<tr class="memdesc:ga5c2052679726989246cc65f85b578e55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new stereo WAV.  <a href="#ga5c2052679726989246cc65f85b578e55">More...</a><br /></td></tr>
+<tr class="separator:ga5c2052679726989246cc65f85b578e55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gade32d80cfc41295df57db1152350e142"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#gade32d80cfc41295df57db1152350e142">dlsynth_new_wavepool</a> (struct <a class="el" href="structdlsynth__wavepool.html">dlsynth_wavepool</a> **wavepool)</td></tr>
+<tr class="memdesc:gade32d80cfc41295df57db1152350e142"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new empty wavepool.  <a href="#gade32d80cfc41295df57db1152350e142">More...</a><br /></td></tr>
+<tr class="separator:gade32d80cfc41295df57db1152350e142"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga687f9ccc493da59dc37b2207566e808b"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga687f9ccc493da59dc37b2207566e808b">dlsynth_wavepool_add</a> (struct <a class="el" href="structdlsynth__wavepool.html">dlsynth_wavepool</a> *wavepool, const struct <a class="el" href="structdlsynth__wav.html">dlsynth_wav</a> *wav)</td></tr>
+<tr class="memdesc:ga687f9ccc493da59dc37b2207566e808b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a WAV to a wavepool.  <a href="#ga687f9ccc493da59dc37b2207566e808b">More...</a><br /></td></tr>
+<tr class="separator:ga687f9ccc493da59dc37b2207566e808b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga96977ab46680126aa48f14f615d29d39"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga96977ab46680126aa48f14f615d29d39">dlsynth_free_wavepool</a> (struct <a class="el" href="structdlsynth__wavepool.html">dlsynth_wavepool</a> *wavepool)</td></tr>
+<tr class="memdesc:ga96977ab46680126aa48f14f615d29d39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the resources associated with a wavepool.  <a href="#ga96977ab46680126aa48f14f615d29d39">More...</a><br /></td></tr>
+<tr class="separator:ga96977ab46680126aa48f14f615d29d39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0388f122ea96a084e3acd00f846e6465"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga0388f122ea96a084e3acd00f846e6465">dlsynth_new_blocklist</a> (struct <a class="el" href="structdlsynth__blocklist.html">dlsynth_blocklist</a> **blocklist)</td></tr>
+<tr class="memdesc:ga0388f122ea96a084e3acd00f846e6465"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new blocklist.  <a href="#ga0388f122ea96a084e3acd00f846e6465">More...</a><br /></td></tr>
+<tr class="separator:ga0388f122ea96a084e3acd00f846e6465"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3a5a603739fdf0c600693635efc80372"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga3a5a603739fdf0c600693635efc80372">dlsynth_blocklist_add</a> (struct <a class="el" href="structdlsynth__blocklist.html">dlsynth_blocklist</a> *blocklist, enum <a class="el" href="group___sound_creation.html#gaced293522972e47670225bc2a691f205">dlsynth_source</a> source, enum <a class="el" href="group___sound_creation.html#gaced293522972e47670225bc2a691f205">dlsynth_source</a> control, enum <a class="el" href="group___sound_creation.html#ga8dda4bc3b6ee9be4147246f929037240">dlsynth_dest</a> destination, int32_t scale, int sourceInvert, int sourceBipolar, enum <a class="el" href="group___sound_creation.html#ga6848b516f2b4bc6b84e32fc074380991">dlsynth_transf</a> sourceTransform, int controlInvert, int controlBipolar, enum <a class="el" href="group___sound_creation.html#ga6848b516f2b4bc6b84e32fc074380991">dlsynth_transf</a> controlTransform)</td></tr>
+<tr class="memdesc:ga3a5a603739fdf0c600693635efc80372"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a connection block to a blocklist.  <a href="#ga3a5a603739fdf0c600693635efc80372">More...</a><br /></td></tr>
+<tr class="separator:ga3a5a603739fdf0c600693635efc80372"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga54a01487568eb0a9a51ae87245a393aa"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga54a01487568eb0a9a51ae87245a393aa">dlsynth_free_blocklist</a> (struct <a class="el" href="structdlsynth__blocklist.html">dlsynth_blocklist</a> *blocklist)</td></tr>
+<tr class="memdesc:ga54a01487568eb0a9a51ae87245a393aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases the resources associated with a blocklist.  <a href="#ga54a01487568eb0a9a51ae87245a393aa">More...</a><br /></td></tr>
+<tr class="separator:ga54a01487568eb0a9a51ae87245a393aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaafaf591e21ee5ce68c33c2b5237091b"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#gaaafaf591e21ee5ce68c33c2b5237091b">dlsynth_new_regionlist</a> (struct <a class="el" href="structdlsynth__regionlist.html">dlsynth_regionlist</a> **regionlist)</td></tr>
+<tr class="memdesc:gaaafaf591e21ee5ce68c33c2b5237091b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new regionlist.  <a href="#gaaafaf591e21ee5ce68c33c2b5237091b">More...</a><br /></td></tr>
+<tr class="separator:gaaafaf591e21ee5ce68c33c2b5237091b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga39c174ef9945d9385b9baac07fbc24c0"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga39c174ef9945d9385b9baac07fbc24c0">dlsynth_add_region</a> (struct <a class="el" href="structdlsynth__regionlist.html">dlsynth_regionlist</a> *regionlist, uint16_t minKey, uint16_t maxKey, uint16_t minVelocity, uint16_t maxVelocity, const struct <a class="el" href="structdlsynth__blocklist.html">dlsynth_blocklist</a> *blocklist, uint32_t waveIndex, int selfNonExclusive)</td></tr>
+<tr class="memdesc:ga39c174ef9945d9385b9baac07fbc24c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a region to a regionlist.  <a href="#ga39c174ef9945d9385b9baac07fbc24c0">More...</a><br /></td></tr>
+<tr class="separator:ga39c174ef9945d9385b9baac07fbc24c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1c173a7566dba6592b60c78246546907"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga1c173a7566dba6592b60c78246546907">dlsynth_add_region_wavesample</a> (struct <a class="el" href="structdlsynth__regionlist.html">dlsynth_regionlist</a> *regionlist, uint16_t minKey, uint16_t maxKey, uint16_t minVelocity, uint16_t maxVelocity, const struct <a class="el" href="structdlsynth__blocklist.html">dlsynth_blocklist</a> *blocklist, uint32_t waveIndex, int selfNonExclusive, const struct <a class="el" href="structdlsynth__wavesample.html">dlsynth_wavesample</a> *wavesample)</td></tr>
+<tr class="memdesc:ga1c173a7566dba6592b60c78246546907"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a region to a regionlist with a wavesample that overrides the one specified in the WAV.  <a href="#ga1c173a7566dba6592b60c78246546907">More...</a><br /></td></tr>
+<tr class="separator:ga1c173a7566dba6592b60c78246546907"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga621fcc3b828c4f75e703eac094bd2e58"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#ga621fcc3b828c4f75e703eac094bd2e58">dlsynth_free_regionlist</a> (struct <a class="el" href="structdlsynth__regionlist.html">dlsynth_regionlist</a> *regionlist)</td></tr>
+<tr class="memdesc:ga621fcc3b828c4f75e703eac094bd2e58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases the resources associated with a regionlist.  <a href="#ga621fcc3b828c4f75e703eac094bd2e58">More...</a><br /></td></tr>
+<tr class="separator:ga621fcc3b828c4f75e703eac094bd2e58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadc76f24016011e6185808acdd2b0b379"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#gadc76f24016011e6185808acdd2b0b379">dlsynth_new_instrlist</a> (struct <a class="el" href="structdlsynth__instrlist.html">dlsynth_instrlist</a> **list)</td></tr>
+<tr class="memdesc:gadc76f24016011e6185808acdd2b0b379"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new list of instruments.  <a href="#gadc76f24016011e6185808acdd2b0b379">More...</a><br /></td></tr>
+<tr class="separator:gadc76f24016011e6185808acdd2b0b379"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac7923235ed6fafa109497e88925ed0d0"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#gac7923235ed6fafa109497e88925ed0d0">dlsynth_add_instrument</a> (struct <a class="el" href="structdlsynth__instrlist.html">dlsynth_instrlist</a> *list, uint32_t midiBank, uint32_t midiInstrument, int isDrumInstrument, const struct <a class="el" href="structdlsynth__blocklist.html">dlsynth_blocklist</a> *blocklist, const struct <a class="el" href="structdlsynth__regionlist.html">dlsynth_regionlist</a> *regions)</td></tr>
+<tr class="memdesc:gac7923235ed6fafa109497e88925ed0d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an instrument to a list of instruments.  <a href="#gac7923235ed6fafa109497e88925ed0d0">More...</a><br /></td></tr>
+<tr class="separator:gac7923235ed6fafa109497e88925ed0d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaba7aeee1603139ab0a3f449736da6407"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#gaba7aeee1603139ab0a3f449736da6407">dlsynth_free_instrlist</a> (struct <a class="el" href="structdlsynth__instrlist.html">dlsynth_instrlist</a> *list)</td></tr>
+<tr class="memdesc:gaba7aeee1603139ab0a3f449736da6407"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases the resources associated with a list of instruments.  <a href="#gaba7aeee1603139ab0a3f449736da6407">More...</a><br /></td></tr>
+<tr class="separator:gaba7aeee1603139ab0a3f449736da6407"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadde4b7f423b2e7e27d886bf031c93ae2"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_creation.html#gadde4b7f423b2e7e27d886bf031c93ae2">dlsynth_new_sound</a> (struct <a class="el" href="structdlsynth__sound.html">dlsynth_sound</a> **sound, const struct <a class="el" href="structdlsynth__instrlist.html">dlsynth_instrlist</a> *instruments, const struct <a class="el" href="structdlsynth__wavepool.html">dlsynth_wavepool</a> *wavepool)</td></tr>
+<tr class="memdesc:gadde4b7f423b2e7e27d886bf031c93ae2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new sound collection.  <a href="#gadde4b7f423b2e7e27d886bf031c93ae2">More...</a><br /></td></tr>
+<tr class="separator:gadde4b7f423b2e7e27d886bf031c93ae2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
@@ -326,14 +326,14 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga5bbafca324d98daab447c3434c5bfe92"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga5bbafca324d98daab447c3434c5bfe92">&#9670;&nbsp;</a></span>dlsynth_add_instrument()</h2>
+<a id="gac7923235ed6fafa109497e88925ed0d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac7923235ed6fafa109497e88925ed0d0">&#9670;&nbsp;</a></span>dlsynth_add_instrument()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_add_instrument </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_add_instrument </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth__instrlist.html">dlsynth_instrlist</a> *&#160;</td>
           <td class="paramname"><em>list</em>, </td>
@@ -377,7 +377,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Adds an instrument to a list of instruments. </p>
-<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">list</td><td>The list to which the new instrument will be added </td></tr>
@@ -392,14 +392,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga279e69b0a046da8a36f2950fa5462193"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga279e69b0a046da8a36f2950fa5462193">&#9670;&nbsp;</a></span>dlsynth_add_region()</h2>
+<a id="ga39c174ef9945d9385b9baac07fbc24c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga39c174ef9945d9385b9baac07fbc24c0">&#9670;&nbsp;</a></span>dlsynth_add_region()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_add_region </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_add_region </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth__regionlist.html">dlsynth_regionlist</a> *&#160;</td>
           <td class="paramname"><em>regionlist</em>, </td>
@@ -455,7 +455,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Adds a region to a regionlist. </p>
-<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">regionlist</td><td>The list to which the new region will be added </td></tr>
@@ -472,14 +472,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga146feba2705797bf955e1867e3ad4eb4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga146feba2705797bf955e1867e3ad4eb4">&#9670;&nbsp;</a></span>dlsynth_add_region_wavesample()</h2>
+<a id="ga1c173a7566dba6592b60c78246546907"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1c173a7566dba6592b60c78246546907">&#9670;&nbsp;</a></span>dlsynth_add_region_wavesample()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_add_region_wavesample </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_add_region_wavesample </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth__regionlist.html">dlsynth_regionlist</a> *&#160;</td>
           <td class="paramname"><em>regionlist</em>, </td>
@@ -541,7 +541,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Adds a region to a regionlist with a wavesample that overrides the one specified in the WAV. </p>
-<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">regionlist</td><td>The list to which the new region will be added </td></tr>
@@ -559,14 +559,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga158e9bea23807e5b8a2fd26f82b29c15"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga158e9bea23807e5b8a2fd26f82b29c15">&#9670;&nbsp;</a></span>dlsynth_blocklist_add()</h2>
+<a id="ga3a5a603739fdf0c600693635efc80372"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3a5a603739fdf0c600693635efc80372">&#9670;&nbsp;</a></span>dlsynth_blocklist_add()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_blocklist_add </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_blocklist_add </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth__blocklist.html">dlsynth_blocklist</a> *&#160;</td>
           <td class="paramname"><em>blocklist</em>, </td>
@@ -640,7 +640,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Adds a connection block to a blocklist. </p>
-<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">blocklist</td><td>The blocklist to which the connection block will be added </td></tr>
@@ -660,14 +660,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gaaa68d2a4f444689c5da019c8958c0e89"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaaa68d2a4f444689c5da019c8958c0e89">&#9670;&nbsp;</a></span>dlsynth_free_blocklist()</h2>
+<a id="ga54a01487568eb0a9a51ae87245a393aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga54a01487568eb0a9a51ae87245a393aa">&#9670;&nbsp;</a></span>dlsynth_free_blocklist()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_free_blocklist </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_free_blocklist </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth__blocklist.html">dlsynth_blocklist</a> *&#160;</td>
           <td class="paramname"><em>blocklist</em></td><td>)</td>
@@ -677,7 +677,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Releases the resources associated with a blocklist. </p>
-<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">blocklist</td><td>Blocklist to free </td></tr>
@@ -687,14 +687,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga21d67691eea7b09bbce45a908241ed27"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga21d67691eea7b09bbce45a908241ed27">&#9670;&nbsp;</a></span>dlsynth_free_instrlist()</h2>
+<a id="gaba7aeee1603139ab0a3f449736da6407"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaba7aeee1603139ab0a3f449736da6407">&#9670;&nbsp;</a></span>dlsynth_free_instrlist()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_free_instrlist </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_free_instrlist </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth__instrlist.html">dlsynth_instrlist</a> *&#160;</td>
           <td class="paramname"><em>list</em></td><td>)</td>
@@ -704,7 +704,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Releases the resources associated with a list of instruments. </p>
-<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">list</td><td>The instrument list to free </td></tr>
@@ -714,14 +714,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga233729692e523bd0cd73ae52558d5172"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga233729692e523bd0cd73ae52558d5172">&#9670;&nbsp;</a></span>dlsynth_free_regionlist()</h2>
+<a id="ga621fcc3b828c4f75e703eac094bd2e58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga621fcc3b828c4f75e703eac094bd2e58">&#9670;&nbsp;</a></span>dlsynth_free_regionlist()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_free_regionlist </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_free_regionlist </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth__regionlist.html">dlsynth_regionlist</a> *&#160;</td>
           <td class="paramname"><em>regionlist</em></td><td>)</td>
@@ -731,7 +731,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Releases the resources associated with a regionlist. </p>
-<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">regionlist</td><td>Regionlist to release </td></tr>
@@ -741,14 +741,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga0c7527766fa4b60d5688d43904082661"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga0c7527766fa4b60d5688d43904082661">&#9670;&nbsp;</a></span>dlsynth_free_wavepool()</h2>
+<a id="ga96977ab46680126aa48f14f615d29d39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga96977ab46680126aa48f14f615d29d39">&#9670;&nbsp;</a></span>dlsynth_free_wavepool()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_free_wavepool </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_free_wavepool </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth__wavepool.html">dlsynth_wavepool</a> *&#160;</td>
           <td class="paramname"><em>wavepool</em></td><td>)</td>
@@ -758,7 +758,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Frees the resources associated with a wavepool. </p>
-<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">wavepool</td><td>The wavepool to free </td></tr>
@@ -768,14 +768,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gac07010e8ed234c659787956f745c371d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gac07010e8ed234c659787956f745c371d">&#9670;&nbsp;</a></span>dlsynth_free_wavesample()</h2>
+<a id="gadc59f5d85e10f58063e50977df832e05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gadc59f5d85e10f58063e50977df832e05">&#9670;&nbsp;</a></span>dlsynth_free_wavesample()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_free_wavesample </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_free_wavesample </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth__wavesample.html">dlsynth_wavesample</a> *&#160;</td>
           <td class="paramname"><em>wavesample</em></td><td>)</td>
@@ -785,18 +785,18 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Frees the resources associated with a wavesample. </p>
-<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
 
 </div>
 </div>
-<a id="ga8b6f66fcc7afcdece47a433c3a214e76"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga8b6f66fcc7afcdece47a433c3a214e76">&#9670;&nbsp;</a></span>dlsynth_new_blocklist()</h2>
+<a id="ga0388f122ea96a084e3acd00f846e6465"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0388f122ea96a084e3acd00f846e6465">&#9670;&nbsp;</a></span>dlsynth_new_blocklist()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_new_blocklist </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_new_blocklist </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth__blocklist.html">dlsynth_blocklist</a> **&#160;</td>
           <td class="paramname"><em>blocklist</em></td><td>)</td>
@@ -806,7 +806,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Creates a new blocklist. </p>
-<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">blocklist</td><td>The new blocklist </td></tr>
@@ -816,14 +816,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gafe26afd92bd2d3ea11de69ed31a7810c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gafe26afd92bd2d3ea11de69ed31a7810c">&#9670;&nbsp;</a></span>dlsynth_new_instrlist()</h2>
+<a id="gadc76f24016011e6185808acdd2b0b379"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gadc76f24016011e6185808acdd2b0b379">&#9670;&nbsp;</a></span>dlsynth_new_instrlist()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_new_instrlist </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_new_instrlist </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth__instrlist.html">dlsynth_instrlist</a> **&#160;</td>
           <td class="paramname"><em>list</em></td><td>)</td>
@@ -833,7 +833,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Creates a new list of instruments. </p>
-<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">list</td><td>The created instrument list </td></tr>
@@ -843,14 +843,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga5534a50b01a484424c37a626f6abcf36"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga5534a50b01a484424c37a626f6abcf36">&#9670;&nbsp;</a></span>dlsynth_new_regionlist()</h2>
+<a id="gaaafaf591e21ee5ce68c33c2b5237091b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaaafaf591e21ee5ce68c33c2b5237091b">&#9670;&nbsp;</a></span>dlsynth_new_regionlist()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_new_regionlist </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_new_regionlist </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth__regionlist.html">dlsynth_regionlist</a> **&#160;</td>
           <td class="paramname"><em>regionlist</em></td><td>)</td>
@@ -860,7 +860,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Creates a new regionlist. </p>
-<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">regionlist</td><td>The new regionlist </td></tr>
@@ -870,14 +870,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga00fddf0899ba6b8edb98c7d29bb300e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga00fddf0899ba6b8edb98c7d29bb300e7">&#9670;&nbsp;</a></span>dlsynth_new_sound()</h2>
+<a id="gadde4b7f423b2e7e27d886bf031c93ae2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gadde4b7f423b2e7e27d886bf031c93ae2">&#9670;&nbsp;</a></span>dlsynth_new_sound()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_new_sound </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_new_sound </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth__sound.html">dlsynth_sound</a> **&#160;</td>
           <td class="paramname"><em>sound</em>, </td>
@@ -903,7 +903,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Creates a new sound collection. </p>
-<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">sound</td><td>The created sound collection </td></tr>
@@ -915,14 +915,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gac382ad6c44a703b05dd90b7f8124f5e3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gac382ad6c44a703b05dd90b7f8124f5e3">&#9670;&nbsp;</a></span>dlsynth_new_wav_mono()</h2>
+<a id="gae9d9d1296b1effb035cd04fda9a47fb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae9d9d1296b1effb035cd04fda9a47fb6">&#9670;&nbsp;</a></span>dlsynth_new_wav_mono()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_new_wav_mono </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_new_wav_mono </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>sampleRate</em>, </td>
@@ -960,7 +960,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Creates a new mono WAV. </p>
-<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">sampleRate</td><td>Sample rate of the WAV in samples per second </td></tr>
@@ -974,14 +974,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga528c661195329e5221b8b5862df836fc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga528c661195329e5221b8b5862df836fc">&#9670;&nbsp;</a></span>dlsynth_new_wav_stereo()</h2>
+<a id="ga5c2052679726989246cc65f85b578e55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5c2052679726989246cc65f85b578e55">&#9670;&nbsp;</a></span>dlsynth_new_wav_stereo()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_new_wav_stereo </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_new_wav_stereo </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>sampleRate</em>, </td>
@@ -1031,7 +1031,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Creates a new stereo WAV. </p>
-<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">sampleRate</td><td>Sample rate of the WAV in samples per second </td></tr>
@@ -1047,14 +1047,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gaa74b08927a50a2519dd41533c05fd473"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa74b08927a50a2519dd41533c05fd473">&#9670;&nbsp;</a></span>dlsynth_new_wavepool()</h2>
+<a id="gade32d80cfc41295df57db1152350e142"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gade32d80cfc41295df57db1152350e142">&#9670;&nbsp;</a></span>dlsynth_new_wavepool()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_new_wavepool </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_new_wavepool </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth__wavepool.html">dlsynth_wavepool</a> **&#160;</td>
           <td class="paramname"><em>wavepool</em></td><td>)</td>
@@ -1064,7 +1064,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Creates a new empty wavepool. </p>
-<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">wavepool</td><td>The new wavepool </td></tr>
@@ -1074,14 +1074,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga97952e49d0a5c775d5e7a22330948743"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga97952e49d0a5c775d5e7a22330948743">&#9670;&nbsp;</a></span>dlsynth_new_wavesample_looped()</h2>
+<a id="ga659796974afb17a90614d2c9d48cc983"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga659796974afb17a90614d2c9d48cc983">&#9670;&nbsp;</a></span>dlsynth_new_wavesample_looped()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_new_wavesample_looped </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_new_wavesample_looped </td>
           <td>(</td>
           <td class="paramtype">uint16_t&#160;</td>
           <td class="paramname"><em>unityNote</em>, </td>
@@ -1131,7 +1131,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Creates a new looped wavesample. </p>
-<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">unityNote</td><td>The natural MIDI note pitch for this sample </td></tr>
@@ -1147,14 +1147,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga6df962b05b832cdc3ef3019b529edd88"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga6df962b05b832cdc3ef3019b529edd88">&#9670;&nbsp;</a></span>dlsynth_new_wavesample_oneshot()</h2>
+<a id="ga8f7a1b50e00f6f62aff0e018652c7cc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8f7a1b50e00f6f62aff0e018652c7cc8">&#9670;&nbsp;</a></span>dlsynth_new_wavesample_oneshot()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_new_wavesample_oneshot </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_new_wavesample_oneshot </td>
           <td>(</td>
           <td class="paramtype">uint16_t&#160;</td>
           <td class="paramname"><em>unityNote</em>, </td>
@@ -1186,7 +1186,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Creates a new one-shot wavesample. </p>
-<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">unityNote</td><td>The natural MIDI note pitch for this sample </td></tr>
@@ -1199,14 +1199,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga1a4e7024f5d6a92a1b1ccab57dea6236"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga1a4e7024f5d6a92a1b1ccab57dea6236">&#9670;&nbsp;</a></span>dlsynth_wavepool_add()</h2>
+<a id="ga687f9ccc493da59dc37b2207566e808b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga687f9ccc493da59dc37b2207566e808b">&#9670;&nbsp;</a></span>dlsynth_wavepool_add()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DLSYNTH_EXPORT dlsynth_wavepool_add </td>
+          <td class="memname">enum <a class="el" href="dlsynth_8h.html#aaf24e9ecadad58acffda48af229fe9bb">dlsynth_error</a> DLSYNTH_EXPORT dlsynth_wavepool_add </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structdlsynth__wavepool.html">dlsynth_wavepool</a> *&#160;</td>
           <td class="paramname"><em>wavepool</em>, </td>
@@ -1226,7 +1226,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Adds a WAV to a wavepool. </p>
-<dl class="section return"><dt>Returns</dt><dd>Nonzero on success, zero on failure </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, nonzero on failure </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">wavepool</td><td>The wavepool to which the WAV will be added </td></tr>
