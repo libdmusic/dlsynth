@@ -61,7 +61,7 @@ jobs:
     - name: Package
       working-directory: build
       run: |
-             cpack -G ZIP -C Release
+             & 'C:\Program Files\CMake\bin\cpack.exe' -G ZIP -C Release
              mkdir artifacts
              mv *.zip artifacts
     - name: Upload artifacts

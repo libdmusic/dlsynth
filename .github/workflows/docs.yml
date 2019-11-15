@@ -15,32 +15,9 @@ jobs:
       run: sudo apt-get install doxygen
     - name: Generate docs
       run: doxygen
-    - name: Upload artifact
-      uses: actions/upload-artifact@master
-      with:
-        name: docs
-        path: docs
-
-  update-pages:
-    name: Upload docs to GH Pages
-    needs: build-docs
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-      with:
-        ref: refs/heads/gh-pages
-    - name: Download artifact
-      uses: actions/download-artifact@master
-      with:
-        name: docs
-        path: .
-    - name: Commit changes
-      run: |
-        git config --local user.email "francesco@bertolaccini.dev"
-        git config --local user.name "Francesco Bertolaccini"
-        git commit -m "Update docs" -a
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: gh-pages
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v2.5.0
+      env:
+        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: ./docs
