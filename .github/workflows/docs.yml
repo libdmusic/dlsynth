@@ -15,6 +15,11 @@ jobs:
       run: sudo apt-get install doxygen
     - name: Generate docs
       run: doxygen
+    - name: Add additional files
+      working-directory: docs
+      run: |
+            echo 'dlsynth.libdmusic.org' > CNAME
+            touch .nojekyll
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v2.5.0
       env:
