@@ -46,19 +46,28 @@ int main() {
   int16_t* outputBuffer = /* ... */;
 
   // Mono rendering
-  if((err = dlsynth_render_int16(synth, numFrames, outputBuffer, NULL, 1, 1.0f))) {
+  if((err = dlsynth_render_int16(
+        synth, numFrames,
+        outputBuffer, NULL,
+        1, 1.0f))) {
     fprintf(stderr, "Could not render buffer\n");
     return 1;
   }
 
   // Interleaved stereo rendering
-  if((err = dlsynth_render_int16(synth, numFrames, outputBuffer, outputBuffer + 1, 2, 1.0f))) {
+  if((err = dlsynth_render_int16(
+        synth, numFrames,
+        outputBuffer, outputBuffer + 1,
+        2, 1.0f))) {
     fprintf(stderr, "Could not render buffer\n");
     return 1;
   }
 
   // Sequential stereo rendering
-  if((err = dlsynth_render_int16(synth, numFrames, outputBuffer, outputBuffer + numFrames, 1, 1.0f))) {
+  if((err = dlsynth_render_int16(
+        synth, numFrames,
+        outputBuffer, outputBuffer + numFrames,
+        1, 1.0f))) {
     fprintf(stderr, "Could not render buffer\n");
     return 1;
   }
