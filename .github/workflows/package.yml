@@ -1,6 +1,9 @@
 name: Package & release
 
-on: [push]
+on:
+  push:
+    tags:
+      - v*
 
 jobs:
   package-windows:
