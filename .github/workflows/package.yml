@@ -1,9 +1,6 @@
 name: Package & release
 
-on:
-  push:
-    tags:
-      - v*
+on: [push]
 
 jobs:
   package-windows:
@@ -136,6 +133,7 @@ jobs:
       working-directory: ..
       run: |
             mkdir artifacts
+            ls
             mv *.changes *.dsc *.bz2 artifacts
     - name: Upload artifacts
       uses: actions/upload-artifact@master
